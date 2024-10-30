@@ -1,0 +1,28 @@
+^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\CMAKEFILES\16CBB431F040DC9B51D07A3EA3D969DF\GEN_DEFINES.ASM.RULE
+setlocal
+Debug\asm_offset.exe MASM
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\CMAKEFILES\641A1F42BD458B900FCB5FFBF698FD12\LOADER_ASM_GEN_FILES.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\_DEPS\VULKAN-LOADER-SRC\LOADER\CMAKELISTS.TXT
+setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/_deps/vulkan-loader-build/loader/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

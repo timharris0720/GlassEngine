@@ -1,0 +1,10 @@
+^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\_DEPS\GLFW-SRC\SRC\CMAKELISTS.TXT
+setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/_deps/glfw-build/src/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

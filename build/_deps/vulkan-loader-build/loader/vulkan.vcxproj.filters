@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\allocation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\cJSON.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\debug_utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\extension_manual.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader_environment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\gpa_helper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\settings.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\terminator.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\trampoline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\unknown_function_handling.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\wsi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader_windows.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\dirent_on_windows.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\allocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\cJSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\debug_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\extension_manual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader_environment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\gpa_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\unknown_function_handling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\wsi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\vulkan-1.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-unknown-chain.dir\$(Configuration)\unknown_ext_chain_masm.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{1E756E28-2C45-34B7-A3C4-0A8BCF2AFB10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{8EA9DAA3-22A1-34B5-979B-AAF7FA987548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{63D1D712-1BFC-3476-8004-024EE4720779}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

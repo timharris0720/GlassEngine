@@ -1,0 +1,10 @@
+^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\CMAKEFILES\08179D0E19274F3EA4DF3891B89C7FE8\GENERATE.STAMP.RULE
+setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Docs/Code/Engines/Glass Engine 1/build/GlassEngine.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

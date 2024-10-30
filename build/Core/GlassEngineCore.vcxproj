@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3AF50D82-5FB5-3F8D-B206-0B14D4B35C40}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>GlassEngineCore</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GlassEngineCore.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GlassEngineCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GlassEngineCore.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GlassEngineCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">GlassEngineCore.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">GlassEngineCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">GlassEngineCore.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">GlassEngineCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"Debug\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\_deps\glfw-build\src\Debug\glfw3.lib;..\_deps\glew-build\lib\Debug\glewd.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\Debug\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Docs/Code/Engines/Glass Engine 1/build/Core/Debug/GlassEngineCore.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Docs/Code/Engines/Glass Engine 1/build/Core/Debug/GlassEngineCore.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"Release\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\_deps\glfw-build\src\Release\glfw3.lib;..\_deps\glew-build\lib\Release\glew.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\Release\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Docs/Code/Engines/Glass Engine 1/build/Core/Release/GlassEngineCore.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Docs/Code/Engines/Glass Engine 1/build/Core/Release/GlassEngineCore.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"MinSizeRel\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\_deps\glfw-build\src\MinSizeRel\glfw3.lib;..\_deps\glew-build\lib\MinSizeRel\glew.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\MinSizeRel\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Docs/Code/Engines/Glass Engine 1/build/Core/MinSizeRel/GlassEngineCore.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Docs/Code/Engines/Glass Engine 1/build/Core/MinSizeRel/GlassEngineCore.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"RelWithDebInfo\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\_deps\glfw-build\src\RelWithDebInfo\glfw3.lib;..\_deps\glew-build\lib\RelWithDebInfo\glew.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\RelWithDebInfo\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Docs/Code/Engines/Glass Engine 1/build/Core/RelWithDebInfo/GlassEngineCore.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Docs/Code/Engines/Glass Engine 1/build/Core/RelWithDebInfo/GlassEngineCore.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Docs\Code\Engines\Glass Engine 1\Core\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/Core/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitupdate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/Core/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitupdate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/Core/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitupdate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\Apps\Cmake\bin\cmake.exe "-SD:/Docs/Code/Engines/Glass Engine 1" "-BD:/Docs/Code/Engines/Glass Engine 1/build" --check-stamp-file "D:/Docs/Code/Engines/Glass Engine 1/build/Core/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\glew-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glew\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\glfw-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glfw\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\glm-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\glm\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-headers\vulkan-headers-gitupdate.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\download.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\patch.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\update.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitclone.cmake;D:\Docs\Code\Engines\Glass Engine 1\build\CMakeFiles\fc-tmp\vulkan-loader\vulkan-loader-gitupdate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.cpp" />
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\renderer.cpp" />
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\ZERO_CHECK.vcxproj">
+      <Project>{8522042A-7400-3BF6-A167-2C763F39E204}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-build\src\glfw.vcxproj">
+      <Project>{CED1A34E-483D-38B3-B45D-8468A9D68BC7}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-build\libglew_static.vcxproj">
+      <Project>{CF51FC65-169A-3514-A9E6-8486118D6C29}</Project>
+      <Name>libglew_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.vcxproj">
+      <Project>{3FA91DAD-7CCD-3068-81F6-C194F37E0247}</Project>
+      <Name>vulkan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

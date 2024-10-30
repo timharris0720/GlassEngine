@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Debug\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\Debug\asm_offset.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\x64\Debug\loader_asm_gen_files</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\Debug\vulkan-1.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\Core\Debug\GlassEngineCore.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Debug\ALL_BUILD</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

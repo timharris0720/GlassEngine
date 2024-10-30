@@ -1,0 +1,15 @@
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\allocation.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\allocation.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\cJSON.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\cJSON.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\debug_utils.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\debug_utils.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\extension_manual.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\extension_manual.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader_environment.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\loader_environment.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\gpa_helper.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\gpa_helper.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\loader.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\log.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\log.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\settings.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\settings.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\terminator.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\terminator.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\trampoline.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\trampoline.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\unknown_function_handling.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\unknown_function_handling.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\wsi.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\wsi.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\loader_windows.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\loader_windows.obj
+D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-src\loader\dirent_on_windows.c;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.dir\Release\dirent_on_windows.obj

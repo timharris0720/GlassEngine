@@ -1,0 +1,804 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22621 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+      Build started 30/10/2024 17:15:02.
+      
+      Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdC\\CompilerIdC.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdC\\CompilerIdC.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:01.09
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/3.30.1/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+      Build started 30/10/2024 17:15:03.
+      
+      Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\3.30.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:01.14
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/3.30.1/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-dtf4d1"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-dtf4d1"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-dtf4d1'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_17438.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:05.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\cmTC_17438.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_17438.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\Debug\\".
+          Creating directory "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_17438.dir\\Debug\\\\" /Fd"cmTC_17438.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_17438.dir\\Debug\\\\" /Fd"cmTC_17438.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\Debug\\cmTC_17438.exe" /INCREMENTAL /ILK:"cmTC_17438.dir\\Debug\\cmTC_17438.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-dtf4d1/Debug/cmTC_17438.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-dtf4d1/Debug/cmTC_17438.lib" /MACHINE:X64  /machine:x64 cmTC_17438.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_17438.vcxproj -> D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\Debug\\cmTC_17438.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\Debug\\cmTC_17438.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\cmTC_17438.write.1u.tlog" "cmTC_17438.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\unsuccessfulbuild".
+          Touching "cmTC_17438.dir\\Debug\\cmTC_17438.tlog\\cmTC_17438.lastbuildstate".
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dtf4d1\\cmTC_17438.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:01.14
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Applications/VS22Preview/VC/Tools/MSVC/14.42.34321/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Applications/VS22Preview/VC/Tools/MSVC/14.42.34321/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-nw90k4"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-nw90k4"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-nw90k4'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_a209c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:06.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\cmTC_a209c.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_a209c.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\Debug\\".
+          Creating directory "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a209c.dir\\Debug\\\\" /Fd"cmTC_a209c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a209c.dir\\Debug\\\\" /Fd"cmTC_a209c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\Debug\\cmTC_a209c.exe" /INCREMENTAL /ILK:"cmTC_a209c.dir\\Debug\\cmTC_a209c.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-nw90k4/Debug/cmTC_a209c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-nw90k4/Debug/cmTC_a209c.lib" /MACHINE:X64  /machine:x64 cmTC_a209c.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_a209c.vcxproj -> D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\Debug\\cmTC_a209c.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\Debug\\cmTC_a209c.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\cmTC_a209c.write.1u.tlog" "cmTC_a209c.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\unsuccessfulbuild".
+          Touching "cmTC_a209c.dir\\Debug\\cmTC_a209c.tlog\\cmTC_a209c.lastbuildstate".
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nw90k4\\cmTC_a209c.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:01.22
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Applications/VS22Preview/VC/Tools/MSVC/14.42.34321/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Applications/VS22Preview/VC/Tools/MSVC/14.42.34321/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-hqlqpa"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-hqlqpa"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Docs/Code/Engines/Glass Engine 1/build/_deps/glfw-src/CMake/modules"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-hqlqpa'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_d0ec4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:18.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\cmTC_d0ec4.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_d0ec4.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\Debug\\".
+          Creating directory "cmTC_d0ec4.dir\\Debug\\cmTC_d0ec4.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_d0ec4.dir\\Debug\\cmTC_d0ec4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d0ec4.dir\\Debug\\cmTC_d0ec4.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_d0ec4.dir\\Debug\\\\" /Fd"cmTC_d0ec4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_d0ec4.dir\\Debug\\\\" /Fd"cmTC_d0ec4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\src.c"
+          src.c
+        D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\src.c(1,1): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\cmTC_d0ec4.vcxproj]
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\cmTC_d0ec4.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\cmTC_d0ec4.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\src.c(1,1): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hqlqpa\\cmTC_d0ec4.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-skp99w"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-skp99w"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Docs/Code/Engines/Glass Engine 1/build/_deps/glfw-src/CMake/modules"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-skp99w'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_806cf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:18.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\cmTC_806cf.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_806cf.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\Debug\\".
+          Creating directory "cmTC_806cf.dir\\Debug\\cmTC_806cf.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_806cf.dir\\Debug\\cmTC_806cf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_806cf.dir\\Debug\\cmTC_806cf.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_806cf.dir\\Debug\\\\" /Fd"cmTC_806cf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_806cf.dir\\Debug\\\\" /Fd"cmTC_806cf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\Debug\\cmTC_806cf.exe" /INCREMENTAL /ILK:"cmTC_806cf.dir\\Debug\\cmTC_806cf.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-skp99w/Debug/cmTC_806cf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-skp99w/Debug/cmTC_806cf.lib" /MACHINE:X64  /machine:x64 cmTC_806cf.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\cmTC_806cf.vcxproj]
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\cmTC_806cf.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\cmTC_806cf.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-skp99w\\cmTC_806cf.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.50
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-e41p7s"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-e41p7s"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Docs/Code/Engines/Glass Engine 1/build/_deps/glfw-src/CMake/modules"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-e41p7s'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_aeeaa.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:19.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\cmTC_aeeaa.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_aeeaa.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\Debug\\".
+          Creating directory "cmTC_aeeaa.dir\\Debug\\cmTC_aeeaa.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_aeeaa.dir\\Debug\\cmTC_aeeaa.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_aeeaa.dir\\Debug\\cmTC_aeeaa.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_aeeaa.dir\\Debug\\\\" /Fd"cmTC_aeeaa.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_aeeaa.dir\\Debug\\\\" /Fd"cmTC_aeeaa.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\Debug\\cmTC_aeeaa.exe" /INCREMENTAL /ILK:"cmTC_aeeaa.dir\\Debug\\cmTC_aeeaa.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-e41p7s/Debug/cmTC_aeeaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-e41p7s/Debug/cmTC_aeeaa.lib" /MACHINE:X64  /machine:x64 cmTC_aeeaa.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\cmTC_aeeaa.vcxproj]
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\cmTC_aeeaa.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\cmTC_aeeaa.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e41p7s\\cmTC_aeeaa.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.53
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "build/_deps/vulkan-loader-src/CMakeLists.txt:221 (check_function_exists)"
+    checks:
+      - "Looking for secure_getenv"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-36dyay"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-36dyay"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MSVC_RUNTIME_LIBRARY: "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "HAVE_SECURE_GETENV"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-36dyay'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_2960d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:37.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_2960d.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\Debug\\".
+          Creating directory "cmTC_2960d.dir\\Debug\\cmTC_2960d.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_2960d.dir\\Debug\\cmTC_2960d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2960d.dir\\Debug\\cmTC_2960d.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=secure_getenv /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_2960d.dir\\Debug\\\\" /Fd"cmTC_2960d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=secure_getenv /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_2960d.dir\\Debug\\\\" /Fd"cmTC_2960d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\Debug\\cmTC_2960d.exe" /INCREMENTAL /ILK:"cmTC_2960d.dir\\Debug\\cmTC_2960d.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-36dyay/Debug/cmTC_2960d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-36dyay/Debug/cmTC_2960d.lib" /MACHINE:X64  /machine:x64 cmTC_2960d.dir\\Debug\\CheckFunctionExists.obj
+        CheckFunctionExists.obj : error LNK2019: unresolved external symbol secure_getenv referenced in function main [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj]
+        D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\Debug\\cmTC_2960d.exe : fatal error LNK1120: 1 unresolved externals [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj]
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          CheckFunctionExists.obj : error LNK2019: unresolved external symbol secure_getenv referenced in function main [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj]
+          D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\Debug\\cmTC_2960d.exe : fatal error LNK1120: 1 unresolved externals [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36dyay\\cmTC_2960d.vcxproj]
+        
+            0 Warning(s)
+            2 Error(s)
+        
+        Time Elapsed 00:00:00.79
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "build/_deps/vulkan-loader-src/CMakeLists.txt:222 (check_function_exists)"
+    checks:
+      - "Looking for __secure_getenv"
+    directories:
+      source: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-um87y4"
+      binary: "D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-um87y4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MSVC_RUNTIME_LIBRARY: "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+      CMAKE_WARN_DEPRECATED: "FALSE"
+    buildResult:
+      variable: "HAVE___SECURE_GETENV"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-um87y4'
+        
+        Run Build Command(s): C:/Applications/VS22Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_74403.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.0-preview-24426-07+07a6d0d9c for .NET Framework
+        Build started 30/10/2024 17:15:38.
+        
+        Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_74403.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\Debug\\".
+          Creating directory "cmTC_74403.dir\\Debug\\cmTC_74403.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_74403.dir\\Debug\\cmTC_74403.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_74403.dir\\Debug\\cmTC_74403.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=__secure_getenv /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_74403.dir\\Debug\\\\" /Fd"cmTC_74403.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34321.1 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=__secure_getenv /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c11 /Fo"cmTC_74403.dir\\Debug\\\\" /Fd"cmTC_74403.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Applications\\VS22Preview\\VC\\Tools\\MSVC\\14.42.34321\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\Debug\\cmTC_74403.exe" /INCREMENTAL /ILK:"cmTC_74403.dir\\Debug\\cmTC_74403.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-um87y4/Debug/cmTC_74403.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/CMakeScratch/TryCompile-um87y4/Debug/cmTC_74403.lib" /MACHINE:X64  /machine:x64 cmTC_74403.dir\\Debug\\CheckFunctionExists.obj
+        CheckFunctionExists.obj : error LNK2019: unresolved external symbol __secure_getenv referenced in function main [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj]
+        D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\Debug\\cmTC_74403.exe : fatal error LNK1120: 1 unresolved externals [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj]
+        Done Building Project "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          CheckFunctionExists.obj : error LNK2019: unresolved external symbol __secure_getenv referenced in function main [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj]
+          D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\Debug\\cmTC_74403.exe : fatal error LNK1120: 1 unresolved externals [D:\\Docs\\Code\\Engines\\Glass Engine 1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-um87y4\\cmTC_74403.vcxproj]
+        
+            0 Warning(s)
+            2 Error(s)
+        
+        Time Elapsed 00:00:00.67
+        
+      exitCode: 1
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is AppleClang using "--version" did not match "(Apple (clang|LLVM) version)":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is Clang using "--version" did not match "(clang version)":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is ARMClang using "--version" did not match "armclang":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is OrangeC using "--version" did not match "occ \\(OrangeC\\) Version":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is HP using "-V" did not match "HP C":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : -V
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is Intel using "--version" did not match "(ICC)":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is IntelLLVM using "--version" did not match "(Intel[^
+      ]+oneAPI)":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : --version
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is SunPro using "-V" did not match "Sun C":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : -V
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1205 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is XL using "-qversion" did not match "XL C":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      MASM : warning A4018:invalid command-line option : -qversion
+      MASM : fatal error A1017:missing source filename
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1192 (message)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "build/_deps/vulkan-loader-src/loader/CMakeLists.txt:136 (enable_language)"
+    message: |
+      Checking whether the ASM_MASM compiler is MSVC using "-?" matched "Microsoft":
+      Microsoft (R) Macro Assembler (x64) Version 14.42.34321.1
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+              ML64 [ /options ] filelist [ /link linkoptions ]
+      
+      /Bl<linker> Use alternate linker          /Sf Generate first pass listing
+      /c Assemble without linking               /Sl<width> Set line width
+      /Cp Preserve case of user identifiers     /Sn Suppress symbol-table listing
+      /Cx Preserve case in publics, externs     /Sp<length> Set page length
+      /D<name>[=text] Define text macro         /Ss<string> Set subtitle
+      /EP Output preprocessed listing to stdout /St<string> Set title
+      /F <hex> Set stack size (bytes)           /Sx List false conditionals
+      /Fe<file> Name executable                 /Ta<file> Assemble non-.ASM file
+      /Fl[file] Generate listing                /w Same as /W0 /WX
+      /Fm[file] Generate map                    /WX Treat warnings as errors
+      /Fo<file> Name object file                /W<number> Set warning level
+      /Fr[file] Generate limited browser info   /X Ignore INCLUDE environment path
+      /FR[file] Generate full browser info      /Zd Add line number debug info
+      /I<name> Add include path                 /Zf Make all symbols public
+      /link <linker options and libraries>      /Zi Add symbolic debug info
+      /nologo Suppress copyright message        /Zp[n] Set structure alignment
+      /Sa Maximize source listing               /Zs Perform syntax check only
+      /ZH:MD5 Use MD5 for checksum in debug info
+      /ZH:SHA_256 Use SHA256 for checksum in debug info (default)
+      /Gy[-] separate functions for linker      /quiet Suppress 'Assembling' message
+      /errorReport:<option> Deprecated. Report internal assembler errors to Microsoft
+          none - do not send report
+          prompt - prompt to immediately send report
+          queue - at next admin logon, prompt to send report
+          send - send report automatically
+...
