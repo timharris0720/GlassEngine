@@ -13,7 +13,6 @@ D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/eglew.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/glew.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/glxew.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/wglew.h
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/win64/Release/bin/plugins/GlassGFX.openGL.dll
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/common.hpp
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/exponential.hpp
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/ext.hpp

@@ -50,6 +50,7 @@ add_library(GlassGFX.openGL SHARED ${SRC_FILES} ${HEAD_FILES})
 target_include_directories(GlassGFX.openGL PUBLIC ${glfw_SOURCE_DIR}/include)
 target_include_directories(GlassGFX.openGL PUBLIC ${glew_SOURCE_DIR}/include)
 target_include_directories(GlassGFX.openGL PUBLIC "${OutputIncDir}")
+target_include_directories(GlassGFX.openGL PUBLIC "${OutputIncDirGE}")
 target_link_libraries(GlassGFX.openGL PUBLIC
 glfw
 libglew_static
@@ -76,7 +77,7 @@ file(GLOB GLM_INCLUDES_gtx_inl  ${glm_SOURCE_DIR}/glm/gtx/*.inl)
 file(GLOB GLM_INCLUDES_simd  ${glm_SOURCE_DIR}/glm/simd/*.h)
 
 
-install(TARGETS GlassGFX.openGL  DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}/plugins,${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}>/plugins)
+install(TARGETS GlassGFX.openGL DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG},${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}>)
 install(TARGETS libglew_static DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG},${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE}>)
 install(FILES     ${GLM_INCLUDES_glm}    DESTINATION  	${OutputIncDir}/glm)
 install(FILES     ${GLM_INCLUDES_detail}    DESTINATION  	${OutputIncDir}/glm/detail)

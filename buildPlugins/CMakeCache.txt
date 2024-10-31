@@ -163,7 +163,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=GlassEngine
+CMAKE_PROJECT_NAME:STATIC=GlassEnginePlugins
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0
@@ -324,6 +324,15 @@ GLFW_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/gl
 
 //Force use of high-performance GPU on hybrid systems
 GLFW_USE_HYBRID_HPG:BOOL=OFF
+
+//Value Computed by CMake
+GlassEnginePlugins_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins
+
+//Value Computed by CMake
+GlassEnginePlugins_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+GlassEnginePlugins_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Plugins
 
 //Value Computed by CMake
 GlassEngine_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins
