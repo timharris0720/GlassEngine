@@ -1,6 +1,6 @@
 ^D:\DOCS\CODE\ENGINES\GLASS ENGINE 1\BUILD\CMAKEFILES\16CBB431F040DC9B51D07A3EA3D969DF\GEN_DEFINES.ASM.RULE
 setlocal
-Debug\asm_offset.exe MASM
+"D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Debug\bin\asm_offset.exe" MASM
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

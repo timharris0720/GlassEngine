@@ -5,16 +5,22 @@
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\Release\asm_offset.exe</FullPath>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\asm_offset.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\x64\Release\loader_asm_gen_files</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\Release\vulkan-1.dll</FullPath>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\vulkan-1.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\Core\Release\GlassEngineCore.dll</FullPath>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\GlassEngineCore.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\GlassEngineRuntime.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\GlassEngineScripting.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Release\ALL_BUILD</FullPath>

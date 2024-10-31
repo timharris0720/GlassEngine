@@ -5,7 +5,7 @@
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\Debug\asm_offset.exe</FullPath>
+      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Debug\bin\asm_offset.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,15 +1,6 @@
 # CMake generation dependency list for this directory.
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeASMCompiler.cmake.in
 D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeASMInformation.cmake
 D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeASM_MASMInformation.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineASM_MASMCompiler.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestASMCompiler.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeTestASM_MASMCompiler.cmake
 D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
 D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageMessage.cmake
 D:/Apps/Cmake/share/cmake-3.30/Modules/FindPkgConfig.cmake
