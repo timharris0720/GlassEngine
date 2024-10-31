@@ -92,7 +92,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -105,21 +105,21 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"Debug\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR=\"Debug\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <MASM>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="Debug";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(IncludePaths)</IncludePaths>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </MASM>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -127,7 +127,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Debug\lib\glfw3.lib;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Debug\lib\glewd.lib;opengl32.lib;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Debug\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -154,23 +154,23 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"Release\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR=\"Release\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <MASM>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="Release";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(IncludePaths)</IncludePaths>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </MASM>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -178,7 +178,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\lib\glfw3.lib;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\lib\glew.lib;opengl32.lib;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -193,7 +193,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -205,23 +205,23 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"MinSizeRel\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR=\"MinSizeRel\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <MASM>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="MinSizeRel";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(IncludePaths)</IncludePaths>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </MASM>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -229,7 +229,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\_deps\glfw-build\src\MinSizeRel\glfw3.lib;..\_deps\glew-build\lib\MinSizeRel\glew.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\MinSizeRel\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -244,7 +244,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -257,21 +257,21 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR=\"RelWithDebInfo\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR=\"RelWithDebInfo\";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <MASM>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLEW_STATIC;WIN32_MEAN_AND_LEAN;VC_EXTRALEAN;_CRT_SECURE_NO_WARNINGS;GLEW_NO_GLU;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
-      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(IncludePaths)</IncludePaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLASS_ENGINE_EXPORTS_CORE;CMAKE_INTDIR="RelWithDebInfo";GlassEngineCore_EXPORTS</PreprocessorDefinitions>
+      <IncludePaths>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(IncludePaths)</IncludePaths>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </MASM>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-src\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-headers-src\include;D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-src\glm\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -279,7 +279,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\_deps\glfw-build\src\RelWithDebInfo\glfw3.lib;..\_deps\glew-build\lib\RelWithDebInfo\glew.lib;opengl32.lib;..\_deps\vulkan-loader-build\loader\RelWithDebInfo\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -351,8 +351,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.cpp" />
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.cpp" />
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\renderer.cpp" />
     <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.h" />
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\plugin.h" />
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\ZERO_CHECK.vcxproj">
@@ -360,18 +363,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-build\src\glfw.vcxproj">
-      <Project>{CED1A34E-483D-38B3-B45D-8468A9D68BC7}</Project>
-      <Name>glfw</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-build\libglew_static.vcxproj">
-      <Project>{CF51FC65-169A-3514-A9E6-8486118D6C29}</Project>
-      <Name>libglew_static</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.vcxproj">
-      <Project>{3FA91DAD-7CCD-3068-81F6-C194F37E0247}</Project>
-      <Name>vulkan</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

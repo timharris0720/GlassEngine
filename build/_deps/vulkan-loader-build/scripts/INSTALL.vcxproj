@@ -196,7 +196,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glm-build\ALL_BUILD.vcxproj">
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\ALL_BUILD.vcxproj">
       <Project>{BF7694C3-0319-3551-8B61-7208D58EE3F0}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

@@ -4,12 +4,21 @@
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\plugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

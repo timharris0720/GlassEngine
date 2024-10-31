@@ -186,14 +186,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{50123994-70C2-3D80-AC44-48B543CF6557}</Project>
       <Name>asm_offset</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glfw-build\src\glfw.vcxproj">
-      <Project>{CED1A34E-483D-38B3-B45D-8468A9D68BC7}</Project>
-      <Name>glfw</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\glew-build\libglew_static.vcxproj">
-      <Project>{CF51FC65-169A-3514-A9E6-8486118D6C29}</Project>
-      <Name>libglew_static</Name>
-    </ProjectReference>
     <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-opt.vcxproj">
       <Project>{9089F63F-6163-341A-926B-91CECDF29A6D}</Project>
       <Name>loader-opt</Name>

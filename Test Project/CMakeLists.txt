@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.30)
+project(testingProj VERSION 1.0)
+set(CMAKE_MESSAGE_LOG_LEVEL STATUS)
+
+set(INCLUDE_DIRR "../Library/build/include")
+if(WIN32)
+set(LIBRARY_BASE_DIR "../Library/build/win64")
+elseif(UNIX)
+set(LIBRARY_BASE_DIR "../Library/build/unix_x64")
+endif()
