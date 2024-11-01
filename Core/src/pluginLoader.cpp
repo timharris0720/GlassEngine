@@ -16,27 +16,38 @@ std::wstring stringToWString(const std::string& str) {
 
 #include "PluginLoader.h"
 #include <iostream>
+#include <string>
 namespace Plugin{
-    bool PluginLoader::loadPlugin(const std::string& pluginPath) {
+    bool PluginLoader::loadPlugin(const std::string& pluginPath, PluginType type) {
     #ifdef _WIN32
         // Load the shared library on Windows
         std::wstring widePluginPath = stringToWString(pluginPath);
+        /*if(pluginPath.find(".dll") == std::string::npos){
+            widePluginPath = stringToWString(pluginPath + ".dll");
+        }*/
+
+        
         libraryHandle = LoadLibraryA(pluginPath.c_str());
         if (!libraryHandle) {
             std::cerr << "Cannot open library: " << GetLastError() << std::endl;
             return false;
         }
-
-        // Load the create function
-        typedef GlassGFXPlugin* (*CreateRenderAPI)();
-        CreateRenderAPI createRenderAPI = (CreateRenderAPI)GetProcAddress((HMODULE)libraryHandle, "create");
-        if (!createRenderAPI) {
+        typedef GlassPlugin* (*pluginLoaded)();
+        pluginLoaded plugin = (pluginLoaded)GetProcAddress((HMODULE)libraryHandle, "create");
+        if (!plugin) {
             std::cerr << "Cannot load symbol 'create': " << GetLastError() << std::endl;
             FreeLibrary((HMODULE)libraryHandle);
             return false;
         }
+        // Load the create function
+        
     #else
         // Load the shared library on Linux
+
+        if(pluginPath.find(".so") == std::string::npos){
+            pluginPath = pluginPath + ".so";
+        }
+
         libraryHandle = dlopen(pluginPath.c_str(), RTLD_NOW);
         if (!libraryHandle) {
             std::cerr << "Cannot open library: " << dlerror() << std::endl;
@@ -55,7 +66,12 @@ namespace Plugin{
     #endif
 
         // Create the plugin instance and store it
-        graphicsPlugin.reset(createRenderAPI()); // Use unique_ptr for automatic cleanup
+         // Use unique_ptr for automatic cleanup
+        if (type==PluginType::GFX_PLUGIN){
+            
+            graphicsPlugin.reset(plugin());
+        }
+        
         return true;
     }
     void PluginLoader::cleanup() {

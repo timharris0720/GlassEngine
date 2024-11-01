@@ -1,6 +1,5 @@
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/vulkan-1.lib
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin/vulkan-1.dll
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin/GlassEngineCore.dll
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/plugin.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/pluginLoader.h
@@ -46,5 +45,3 @@ D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/vk_video/vulkan_vi
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/vk_video/vulkan_video_codec_h265std_decode.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/vk_video/vulkan_video_codec_h265std_encode.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/vk_video/vulkan_video_codecs_common.h
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin/GlassEngineRuntime.dll
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin/GlassEngineScripting.dll

@@ -352,7 +352,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.cpp" />
     <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.cpp" />
-    <ClCompile Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\renderer.cpp" />
     <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\core.h" />
     <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\plugin.h" />
     <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Core\src\pluginLoader.h" />

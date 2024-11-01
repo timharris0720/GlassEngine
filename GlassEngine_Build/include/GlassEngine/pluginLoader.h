@@ -21,12 +21,12 @@ namespace Plugin {
     };
     class PluginLoader {
     public:
-        bool loadPlugin(const std::string& pluginPath);
+        bool loadPlugin(const std::string& pluginPath, PluginType type);
         void cleanup();
-        std::unique_ptr<GlassGFXPlugin> getGFX_Plugin();
+        std::unique_ptr<GlassPlugin> getGFX_Plugin();
 
     private:
-        std::unique_ptr<GlassGFXPlugin> graphicsPlugin;
+        std::unique_ptr<GlassPlugin> graphicsPlugin;
         std::vector<std::unique_ptr<GlassPlugin>> glassPluginsLoaded;
         void* libraryHandle = nullptr; 
     };

@@ -335,15 +335,6 @@ GlassEnginePlugins_IS_TOP_LEVEL:STATIC=ON
 GlassEnginePlugins_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Plugins
 
 //Value Computed by CMake
-GlassEngine_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins
-
-//Value Computed by CMake
-GlassEngine_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-GlassEngine_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Plugins
-
-//Value Computed by CMake
 GlassGFX.openGL_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/GlassGFXopenGL
 
 //Value Computed by CMake

@@ -1,7 +1,16 @@
 // OpenGLRenderAPI.h
 #include "GlassEngine/plugin.h"
+#ifdef _WIN32
+#ifdef OPENGL_PLUGIN
+#define OPENGL_PLUGIN_API __declspec(dllexport)
+#else
+#define OPENGL_PLUGIN_API __declspec(dllimport)
+#endif
+#else
+#define OPENGL_PLUGIN_API
+#endif
 
-class OpenGLRenderAPI : public GlassGFXPlugin {
+class OpenGLRenderAPI : public GlassPlugin {
 public:
     void initialize() override {
         // OpenGL initialization code
@@ -26,6 +35,6 @@ public:
 };
 
 // Plugin Registration
-extern "C" GlassGFXPlugin* create() {
+extern "C" OPENGL_PLUGIN_API GlassPlugin* create() {
     return new OpenGLRenderAPI();
 }
