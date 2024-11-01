@@ -19,12 +19,11 @@ namespace Core {
 			
 		};
 		class Application {
-		private:
-			Plugin::PluginLoader pluginLoader;
 		public:
 			Application() = default;
 			Application(AppSpec appSpec);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
+			Plugin::PluginLoader pluginLoader;
 		};
 	}
 }

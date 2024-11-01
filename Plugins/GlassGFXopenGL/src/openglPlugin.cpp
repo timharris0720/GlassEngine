@@ -12,25 +12,10 @@
 
 class OpenGLRenderAPI : public GlassPlugin {
 public:
-    void initialize() override {
+    bool onLoad() override {
         // OpenGL initialization code
-        std::cout << "Hello World" << std::endl;
-    }
-
-    void render() override {
-        // OpenGL rendering code
-    }
-
-    void cleanup() override {
-        // OpenGL cleanup code
-    }
-
-    void setTexture(const std::string& texturePath) override {
-        // Load and bind OpenGL texture
-    }
-
-    void setShader(const std::string& shaderPath) override {
-        // Load OpenGL shader
+        std::cout << "Hello World bwwawa" << std::endl;
+        return true;
     }
 };
 

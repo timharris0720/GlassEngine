@@ -19,15 +19,20 @@ namespace Plugin {
         GFX_PLUGIN = 0,
         OTHER,
     };
+    struct PluginStruct {
+        std::unique_ptr<GlassPlugin> apiInstance;
+        void* libraryHandle;  // Library handle for the plugin
+    };
     class PluginLoader {
     public:
         bool loadPlugin(const std::string& pluginPath, PluginType type);
         void cleanup();
-        std::unique_ptr<GlassPlugin> getGFX_Plugin();
-
+        void pluginUpdate();
+        //PluginStruct* getRendererPlugin();
+        //std::vector<PluginStruct> getLoadedPlugins();
     private:
-        std::unique_ptr<GlassPlugin> graphicsPlugin;
-        std::vector<std::unique_ptr<GlassPlugin>> glassPluginsLoaded;
+        PluginStruct pRenderingBackend;
+        std::vector<PluginStruct> loadedPlugins;
         void* libraryHandle = nullptr; 
     };
 }

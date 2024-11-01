@@ -17,77 +17,99 @@ std::wstring stringToWString(const std::string& str) {
 #include "PluginLoader.h"
 #include <iostream>
 #include <string>
+
+#ifdef _WIN32
+    #include <windows.h>
+    #define LOAD_LIBRARY(path) LoadLibraryA(path.c_str())
+    #define GET_SYMBOL(handle, symbol) GetProcAddress((HMODULE)(handle), symbol)
+    #define CLOSE_LIBRARY(handle) FreeLibrary((HMODULE)(handle))
+#else
+    #include <dlfcn.h>
+    #define LOAD_LIBRARY(path) dlopen(path.c_str(), RTLD_NOW)
+    #define GET_SYMBOL(handle, symbol) dlsym(handle, symbol)
+    #define CLOSE_LIBRARY(handle) dlclose(handle)
+#endif
+
 namespace Plugin{
-    bool PluginLoader::loadPlugin(const std::string& pluginPath, PluginType type) {
-    #ifdef _WIN32
-        // Load the shared library on Windows
-        std::wstring widePluginPath = stringToWString(pluginPath);
-        /*if(pluginPath.find(".dll") == std::string::npos){
-            widePluginPath = stringToWString(pluginPath + ".dll");
-        }*/
-
+    bool PluginLoader::loadPlugin(const std::string& pluginName, PluginType type) {
         
-        libraryHandle = LoadLibraryA(pluginPath.c_str());
+        #ifdef _WIN32
+            std::string pluginPath = pluginName + ".dll";
+        #else
+            std::string pluginPath = pluginName + ".so";
+        #endif
+        
+        void* libraryHandle = LOAD_LIBRARY(pluginPath);
         if (!libraryHandle) {
-            std::cerr << "Cannot open library: " << GetLastError() << std::endl;
-            return false;
-        }
-        typedef GlassPlugin* (*pluginLoaded)();
-        pluginLoaded plugin = (pluginLoaded)GetProcAddress((HMODULE)libraryHandle, "create");
-        if (!plugin) {
-            std::cerr << "Cannot load symbol 'create': " << GetLastError() << std::endl;
-            FreeLibrary((HMODULE)libraryHandle);
-            return false;
-        }
-        // Load the create function
-        
-    #else
-        // Load the shared library on Linux
-
-        if(pluginPath.find(".so") == std::string::npos){
-            pluginPath = pluginPath + ".so";
+        #ifdef _WIN32
+                std::cerr  << pluginName <<": Cannot open library: " << GetLastError() << std::endl;
+        #else
+                std::cerr  << pluginName <<": Cannot open library: " << dlerror() << std::endl;
+        #endif
+                return false;
         }
 
-        libraryHandle = dlopen(pluginPath.c_str(), RTLD_NOW);
-        if (!libraryHandle) {
-            std::cerr << "Cannot open library: " << dlerror() << std::endl;
+        using GlassPluginCreate = GlassPlugin* (*)();
+
+        // Retrieve the 'create' function from the library
+        auto createGlassPlugin = reinterpret_cast<GlassPluginCreate>(GET_SYMBOL(libraryHandle, "create"));
+        if (!createGlassPlugin) {
+            #ifdef _WIN32
+                std::cerr << pluginName <<": Cannot load symbol 'create': " << GetLastError() << std::endl;
+            #else
+                std::cerr <<  pluginName <<": Cannot load symbol 'create': " << dlerror() << std::endl;
+            #endif
+            CLOSE_LIBRARY(libraryHandle);
             return false;
         }
 
-        // Load the create function
-        typedef GlassGFXPlugin* (*CreateRenderAPI)();
-        CreateRenderAPI createRenderAPI = (CreateRenderAPI)dlsym(libraryHandle, "create");
-        const char* dlsym_error = dlerror();
-        if (dlsym_error) {
-            std::cerr << "Cannot load symbol 'create': " << dlsym_error << std::endl;
-            dlclose(libraryHandle);
+        std::unique_ptr<GlassPlugin> apiInstance(createGlassPlugin());
+        if (!apiInstance) {
+            std::cerr << "Failed to create GlassPlugin instance from " << pluginName << std::endl;
+            CLOSE_LIBRARY(libraryHandle);
             return false;
         }
-    #endif
 
-        // Create the plugin instance and store it
-         // Use unique_ptr for automatic cleanup
-        if (type==PluginType::GFX_PLUGIN){
-            
-            graphicsPlugin.reset(plugin());
+        // Attempt to call the onLoad function on the instance
+        if (!apiInstance->onLoad()) {
+            std::cerr << pluginName << ": onLoad failed." << std::endl;
+            CLOSE_LIBRARY(libraryHandle);
+            return false;
         }
-        
+
+        std::cout << "Loaded Plugin:  " << pluginName << std::endl;
+
+        PluginStruct plugin;
+        plugin.apiInstance = std::move(apiInstance);
+        plugin.libraryHandle = libraryHandle;
+        if(type == Plugin::GFX_PLUGIN)
+            pRenderingBackend = std::move(plugin);
+        else
+            loadedPlugins.push_back(std::move(plugin));
         return true;
     }
     void PluginLoader::cleanup() {
-    if (graphicsPlugin) {
-        graphicsPlugin->cleanup();
-    }
+        for (auto& plugin : loadedPlugins) {
+            if (plugin.apiInstance) {
+                plugin.apiInstance->cleanup();
+            }
 
-        // Free the library handle
-    #ifdef _WIN32
-        if (libraryHandle) {
-            FreeLibrary((HMODULE)libraryHandle);
+            // Close the library handle
+            CLOSE_LIBRARY(plugin.libraryHandle);
         }
-    #else
-        if (libraryHandle) {
-            dlclose(libraryHandle);
-        }
-    #endif
+        loadedPlugins.clear();
     }
+    void PluginLoader::pluginUpdate(){
+        for (const auto& plugin : loadedPlugins) {
+            if (plugin.apiInstance) {
+                plugin.apiInstance->Update();
+            }
+        }
+    }
+    /*PluginStruct* PluginLoader::getRendererPlugin(){
+        return &pRenderingBackend;
+    }
+    std::vector<PluginStruct> PluginLoader::getLoadedPlugins(){
+        return loadedPlugins;
+    }*/
 }

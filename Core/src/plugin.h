@@ -4,12 +4,13 @@
 
 class GlassPlugin {
     public:
-    virtual ~GlassPlugin() {}
-    virtual void initialize() = 0;
-    virtual void render() = 0;
-    virtual void cleanup() = 0;
+    virtual ~GlassPlugin() {};
+    virtual bool onLoad() = 0;
+    virtual void onInit() {};
+    virtual void Update() {};
+    virtual void cleanup() {};
     
-    virtual void setTexture(const std::string& texturePath) = 0;
-    virtual void setShader(const std::string& shaderPath) = 0;
+    virtual void setTexture(const std::string& texturePath) {};
+    virtual void setShader(const std::string& shaderPath) {};
 
 };
