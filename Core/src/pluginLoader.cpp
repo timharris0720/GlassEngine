@@ -48,44 +48,78 @@ namespace Plugin{
         #endif
                 return false;
         }
+        if(type != PluginType::GFX_PLUGIN){
+            using GlassPluginCreate = GlassPlugin* (*)();
 
-        using GlassPluginCreate = GlassPlugin* (*)();
+            // Retrieve the 'create' function from the library
+            auto createGlassPlugin = reinterpret_cast<GlassPluginCreate>(GET_SYMBOL(libraryHandle, "create"));
+            if (!createGlassPlugin) {
+                #ifdef _WIN32
+                    std::cerr << pluginName <<": Cannot load symbol 'create': " << GetLastError() << std::endl;
+                #else
+                    std::cerr <<  pluginName <<": Cannot load symbol 'create': " << dlerror() << std::endl;
+                #endif
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
 
-        // Retrieve the 'create' function from the library
-        auto createGlassPlugin = reinterpret_cast<GlassPluginCreate>(GET_SYMBOL(libraryHandle, "create"));
-        if (!createGlassPlugin) {
-            #ifdef _WIN32
-                std::cerr << pluginName <<": Cannot load symbol 'create': " << GetLastError() << std::endl;
-            #else
-                std::cerr <<  pluginName <<": Cannot load symbol 'create': " << dlerror() << std::endl;
-            #endif
-            CLOSE_LIBRARY(libraryHandle);
-            return false;
-        }
+            std::unique_ptr<GlassPlugin> apiInstance(createGlassPlugin());
+            if (!apiInstance) {
+                std::cerr << "Failed to create GlassPlugin instance from " << pluginName << std::endl;
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
 
-        std::unique_ptr<GlassPlugin> apiInstance(createGlassPlugin());
-        if (!apiInstance) {
-            std::cerr << "Failed to create GlassPlugin instance from " << pluginName << std::endl;
-            CLOSE_LIBRARY(libraryHandle);
-            return false;
-        }
+            // Attempt to call the onLoad function on the instance
+            if (!apiInstance->onLoad()) {
+                std::cerr << pluginName << ": onLoad failed." << std::endl;
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
 
-        // Attempt to call the onLoad function on the instance
-        if (!apiInstance->onLoad()) {
-            std::cerr << pluginName << ": onLoad failed." << std::endl;
-            CLOSE_LIBRARY(libraryHandle);
-            return false;
-        }
-
-        std::cout << "Loaded Plugin:  " << pluginName << std::endl;
-
-        PluginStruct plugin;
-        plugin.apiInstance = std::move(apiInstance);
-        plugin.libraryHandle = libraryHandle;
-        if(type == Plugin::GFX_PLUGIN)
-            pRenderingBackend = std::move(plugin);
-        else
+            std::cout << "Loaded Plugin:  " << pluginName << std::endl;
+            
+            PluginStruct plugin;
+            plugin.apiInstance = std::move(apiInstance);
+            plugin.libraryHandle = libraryHandle;
             loadedPlugins.push_back(std::move(plugin));
+        }
+        else {
+            using GlassPluginCreate = GlassPlugin_GFX* (*)();
+
+            auto createGlassPlugin = reinterpret_cast<GlassPluginCreate>(GET_SYMBOL(libraryHandle, "create"));
+            if (!createGlassPlugin) {
+                #ifdef _WIN32
+                    std::cerr << pluginName <<": Cannot load symbol 'create': " << GetLastError() << std::endl;
+                #else
+                    std::cerr <<  pluginName <<": Cannot load symbol 'create': " << dlerror() << std::endl;
+                #endif
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
+
+            std::unique_ptr<GlassPlugin_GFX> apiInstance(createGlassPlugin());
+            if (!apiInstance) {
+                std::cerr << "Failed to create GlassPlugin_GFX instance from " << pluginName << std::endl;
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
+
+            // Attempt to call the onLoad function on the instance
+            if (!apiInstance->onLoad()) {
+                std::cerr << pluginName << ": onLoad failed." << std::endl;
+                CLOSE_LIBRARY(libraryHandle);
+                return false;
+            }
+
+            std::cout << "Loaded Graphics Plugin:  " << pluginName << std::endl;
+            
+            PluginStruct_GFX plugin;
+            plugin.apiInstance = std::move(apiInstance);
+            plugin.libraryHandle = libraryHandle;
+            pRenderingBackend = std::move(plugin);
+        }
+        
         return true;
     }
     void PluginLoader::cleanup() {
@@ -106,10 +140,4 @@ namespace Plugin{
             }
         }
     }
-    /*PluginStruct* PluginLoader::getRendererPlugin(){
-        return &pRenderingBackend;
-    }
-    std::vector<PluginStruct> PluginLoader::getLoadedPlugins(){
-        return loadedPlugins;
-    }*/
 }

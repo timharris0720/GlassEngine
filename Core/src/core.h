@@ -14,15 +14,23 @@
 
 namespace Core {
 	namespace App {
+		enum RenderBackend {
+			OPENGL = 0,
+			VULKAN,
+			DX11,
+			DX12
+		};
 		struct AppSpec {
 			std::string name;
-			
+			int height;
+			int width;
 		};
 		class Application {
 		public:
 			Application() = default;
-			Application(AppSpec appSpec);
+			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
+			
 			Plugin::PluginLoader pluginLoader;
 		};
 	}
