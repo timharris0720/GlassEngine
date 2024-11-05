@@ -10,13 +10,17 @@ namespace Core {
 			if(backend == RenderBackend::OPENGL){
 				loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
 			}
-			if(backend == RenderBackend::VULKAN){
-				loadPlugin("GlassGFX.vulkan", Plugin::GFX_PLUGIN);
+			WindowProperties winProp;
+			winProp.name = appSpec.name;
+			winProp.height = appSpec.height;
+			winProp.width = appSpec.width;
+			pluginLoader.pRenderingBackend.apiInstance->createRenderContext(winProp);
+			
+
+			while(pluginLoader.pRenderingBackend.apiInstance->shouldWindowClose() == false){
+				pluginLoader.pluginUpdate();
 			}
-			if(backend == RenderBackend::DX11){
-				loadPlugin("GlassGFX.dx11", Plugin::GFX_PLUGIN);
-			}
-			pluginLoader.pRenderingBackend.apiInstance->createApplication(appSpec.name,appSpec.width,appSpec.height);
+
 		}
 	}
 

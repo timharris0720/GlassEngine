@@ -12,29 +12,46 @@
 
 #include <GL/glew.h>
 #include "GLFW/glfw3.h"
+#include "GlassEngine/Logger.h"
 
 class OpenGLRenderAPI : public GlassPlugin_GFX {
-    private:
-public:
+private:
     GLFWwindow* window;
+    Logger logger = Logger("GlassGFX.OpenGL.Plugin", "Log.txt");
+public:
+
     bool onLoad() override {
-        // OpenGL initialization code
-        if(!glewInit()){
+        logger.ToggleFileLogging();
+        if(!glfwInit()){
+            logger.ErrorLog("GLFW Failed To INIT");
             return false;
         }
-        std::cout << "WOOO GLEW INITS" << std::endl;
+        
+        logger.InfoLog("Beasdasdasd");
+        // OpenGL initialization code
+        if(!glewInit()){
+            logger.ErrorLog("GLEW Failed To INIT");
+            return false;
+        }
+        
         return true;
     }
     
-    void createApplication(std::string name, int width,int height) override{
-        window = glfwCreateWindow(width,height,name.c_str(),NULL,NULL);
+    void createRenderContext(WindowProperties winProps) override{
+        winData = winProps;
+        window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
     }
-
-    std::any execute(const std::string& command, const std::any& data = {}) override {
-        if (command == "getShaderInfo") {
-            return "asdasd";
-        }
-        return {}; // Return empty for unsupported commands
+    void* GetNativeWindow() const {return window;}
+    
+    void Update() override {
+        glfwPollEvents();
+        
+    }
+    bool shouldWindowClose() override{
+        return glfwWindowShouldClose(window);
+    }
+    void VsyncCallback() override {
+        glfwSwapInterval(winData.vsync);
     }
 };
 

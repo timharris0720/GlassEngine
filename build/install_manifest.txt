@@ -1,5 +1,6 @@
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/vulkan-1.lib
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin/vulkan-1.dll
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/Logger.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/plugin.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/pluginLoader.h

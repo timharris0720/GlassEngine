@@ -10,7 +10,7 @@
 #endif
 #include <iostream>
 #include "pluginLoader.h"
-
+#include "GlassEngine/Logger.h"
 
 namespace Core {
 	namespace App {
@@ -26,11 +26,14 @@ namespace Core {
 			int width;
 		};
 		class Application {
+		private:
+			RenderBackend api;
+			Logger logger = Logger("Core","Log.txt");
 		public:
 			Application() = default;
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
-			
+			RenderBackend GetAPI() {return api;}
 			Plugin::PluginLoader pluginLoader;
 		};
 	}

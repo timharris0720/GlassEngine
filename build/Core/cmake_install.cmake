@@ -132,7 +132,7 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h;D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/plugin.h;D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/pluginLoader.h")
+   "D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/Logger.h;D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h;D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/plugin.h;D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/pluginLoader.h")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
@@ -140,6 +140,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   file(INSTALL DESTINATION "D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine" TYPE FILE FILES
+    "D:/Docs/Code/Engines/Glass Engine 1/Core/src/Logger.h"
     "D:/Docs/Code/Engines/Glass Engine 1/Core/src/core.h"
     "D:/Docs/Code/Engines/Glass Engine 1/Core/src/plugin.h"
     "D:/Docs/Code/Engines/Glass Engine 1/Core/src/pluginLoader.h"
