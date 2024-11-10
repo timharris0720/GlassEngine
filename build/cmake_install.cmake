@@ -42,11 +42,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("D:/Docs/Code/Engines/Glass Engine 1/build/Runtime/cmake_install.cmake")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/Docs/Code/Engines/Glass Engine 1/build/Scripting/cmake_install.cmake")
-endif()
-
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(REMOVE_RECURSE "D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/bin")
 endif()

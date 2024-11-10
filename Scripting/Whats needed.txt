@@ -1,2 +1,0 @@
-Scripting Api
-Custom abstraction

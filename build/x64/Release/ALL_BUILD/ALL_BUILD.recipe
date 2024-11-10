@@ -11,18 +11,6 @@
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\GlassEngineRuntime.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\GlassEngineScripting.dll</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\asm_offset.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\x64\Release\loader_asm_gen_files</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>D:\Docs\Code\Engines\Glass Engine 1\GlassEngine_Build\win64\Release\bin\vulkan-1.dll</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
       <FullPath>D:\Docs\Code\Engines\Glass Engine 1\build\x64\Release\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

@@ -1,4 +1,3 @@
-#pragma once
 #ifdef _WIN32
 #ifdef GLASS_ENGINE_EXPORTS_CORE
 #define GLASS_ENGINE_API __declspec(dllexport)
@@ -14,11 +13,17 @@
 #include <vector>
 #include <memory>
 #include "plugin.h"
+#include "Logger.h"
 namespace Plugin {
     enum PluginType {
         GFX_PLUGIN = 0,
         OTHER,
     };
+    enum PluginErrorCode {
+        CANNOT_CREATE_INSTANCE = 10,
+        ONLOAD_FAILED = 11,
+    };
+
     struct PluginStruct {
         std::unique_ptr<GlassPlugin> apiInstance;
         void* libraryHandle;  // Library handle for the plugin
@@ -30,6 +35,7 @@ namespace Plugin {
     };
     class PluginLoader {
     public:
+
         PluginStruct_GFX pRenderingBackend;
         std::vector<PluginStruct> loadedPlugins;
 
@@ -37,7 +43,7 @@ namespace Plugin {
         void cleanup();
         void pluginUpdate();
     private:
-        
+        Logger logger = Logger("Core.PluginLoader", "Log.txt");
         void* libraryHandle = nullptr; 
     };
 }

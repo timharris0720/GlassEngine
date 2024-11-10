@@ -10,10 +10,30 @@
 #endif
 #include <iostream>
 #include "pluginLoader.h"
-#include "GlassEngine/Logger.h"
+#include "glm/glm.hpp"
+#include "Logger.h"
+/*
+	TODO:
+    -----
+	- High Level Renderer
+	- Gamobjects
+	- Meshes
+	- Input
+	
+
+
+*/
+
+
 
 namespace Core {
 	namespace App {
+		enum ErrorCode {
+			GLFW_CANT_INIT = 32,
+			GLEW_CANT_INIT = 33,
+			COMP_NO_NAME = 34,
+			COMP_NO_SCRIPT = 35,
+		};
 		enum RenderBackend {
 			OPENGL = 0,
 			VULKAN,
@@ -34,7 +54,74 @@ namespace Core {
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
+			
 			Plugin::PluginLoader pluginLoader;
+		};
+	}
+	namespace Scripting {
+		class Script {
+			public:
+			virtual ~Script() = default;
+			virtual void Start() {}
+			virtual void Update() {}
+		};
+
+		class Component {
+			private:
+				std::shared_ptr<Scripting::Script> script;
+			public:
+				std::string name;
+				Component() = default;
+				GLASS_ENGINE_API Component(std::string name);
+				GLASS_ENGINE_API std::shared_ptr<Scripting::Script> GetScript();
+				template<typename T>
+				void SetScript(){
+					static_assert(std::is_base_of<Script, T>::value, "Pushed type is not subclass of Layer!");
+					script = std::make_shared<T>();	
+				}
+				GLASS_ENGINE_API void SetScript(const std::shared_ptr<Scripting::Script>& script);
+
+
+				GLASS_ENGINE_API App::ErrorCode validateComponent();
+		};
+	}
+	namespace Object {
+		struct Transform {
+			glm::vec3 position;
+			glm::vec3 rotation;
+			glm::vec3 scale;
+			
+		};
+
+		struct Mesh {
+			std::vector<glm::vec3> vertices;
+			std::vector<glm::vec3> normals;
+		};
+
+
+
+		class Object {
+			public:
+				void SetActive(bool active);
+				bool isActive = true;
+		};
+
+		class GameObject : public Object {
+			private:
+				std::vector<std::shared_ptr<Scripting::Component>> componenets;
+			public:
+				GameObject() = default;
+				GLASS_ENGINE_API GameObject(std::string name);
+				std::string name;
+				Transform transform;
+				Mesh mesh;
+				std::vector<GameObject> children;
+				template<typename T>
+				void AddComponent(){
+					static_assert(std::is_base_of<Component, T>::value, "Pushed type is not subclass of Script!");
+					componenets.emplace_back(std::make_shared<T>())->GetScript()->Start();	
+				}
+				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Scripting::Component>& component);
 		};
 	}
 }

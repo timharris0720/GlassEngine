@@ -6,9 +6,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="D:\Docs\Code\Engines\Glass Engine 1\Plugins\GlassGFXopenGL\src\oglPlugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="D:\Docs\Code\Engines\Glass Engine 1\Plugins\GlassGFXopenGL\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{17E0A9BF-C983-3E75-8DAD-D4FFC24113EE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{83702AC6-8791-3D2C-B214-E2B2C97F08B2}</UniqueIdentifier>
     </Filter>

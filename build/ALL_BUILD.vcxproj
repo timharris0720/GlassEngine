@@ -59,7 +59,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -186,31 +185,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{F777F366-7CF0-3BDA-A15D-30F2158F126F}</Project>
       <Name>GlassEngineRuntime</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\Scripting\GlassEngineScripting.vcxproj">
-      <Project>{4A466989-0F7E-3BFD-8A9F-6BD8C6195A3A}</Project>
-      <Name>GlassEngineScripting</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\asm_offset.vcxproj">
-      <Project>{50123994-70C2-3D80-AC44-48B543CF6557}</Project>
-      <Name>asm_offset</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-opt.vcxproj">
-      <Project>{9089F63F-6163-341A-926B-91CECDF29A6D}</Project>
-      <Name>loader-opt</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-unknown-chain.vcxproj">
-      <Project>{E78692D9-9B00-3730-BD3B-0F23E8D1592C}</Project>
-      <Name>loader-unknown-chain</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.vcxproj">
-      <Project>{3FA91DAD-7CCD-3068-81F6-C194F37E0247}</Project>
-      <Name>vulkan</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>

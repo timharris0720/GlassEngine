@@ -23,5 +23,27 @@ namespace Core {
 
 		}
 	}
+	namespace Scripting {
+		Component::Component(std::string m_name) {
+			name = m_name;
+		}
+		std::shared_ptr<Script> Component::GetScript(){
+			return this->script;
+		}
 
-}
+		void Component::SetScript(const std::shared_ptr<Scripting::Script>& _script){
+			script = _script;
+		}
+
+
+		
+	}
+	namespace Object{
+		GameObject::GameObject(std::string name_){
+			name = name_;
+		}
+		void GameObject::AddComponent(const std::shared_ptr<Scripting::Component>& component){
+			this->componenets.emplace_back(component); component->GetScript()->Start();
+		}
+	}
+}	

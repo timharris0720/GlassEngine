@@ -44,7 +44,6 @@ set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 
 add_subdirectory(Core)
 add_subdirectory(Runtime)
-add_subdirectory(Scripting)
 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/bin\")") 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/lib\")")

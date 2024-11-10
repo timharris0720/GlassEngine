@@ -195,7 +195,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\buildPlugins\_deps\glm-build\ALL_BUILD.vcxproj">
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\buildPlugins\_deps\glew-build\ALL_BUILD.vcxproj">
       <Project>{C23E9FF0-76F8-33B8-B8EF-542317CAEF4C}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

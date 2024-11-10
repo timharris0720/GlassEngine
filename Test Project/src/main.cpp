@@ -1,10 +1,10 @@
-#include "GlassEngine/core.h"
+#include "GlassEngine/GlassEngine.h"
 int main() {
-    Core::App::AppSpec appSpec;
+    App::AppSpec appSpec;
     appSpec.name = "Application";
     appSpec.width = 600;
     appSpec.height = 480;
-    Core::App::Application app(appSpec, Core::App::OPENGL);
+    App::Application app(appSpec, Core::App::OPENGL);
     
     std::cout << "HIII" << std::endl;
     

@@ -4,9 +4,6 @@ D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/CMakeFiles/ZERO_CHECK.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/GlassGFXopenGL/CMakeFiles/GlassGFX.openGL.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/GlassGFXopenGL/CMakeFiles/INSTALL.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/GlassGFXopenGL/CMakeFiles/ALL_BUILD.dir
-D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glm-build/CMakeFiles/INSTALL.dir
-D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glm-build/CMakeFiles/ALL_BUILD.dir
-D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glm-build/glm/CMakeFiles/INSTALL.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glfw-build/CMakeFiles/uninstall.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glfw-build/CMakeFiles/INSTALL.dir
 D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glfw-build/CMakeFiles/ALL_BUILD.dir

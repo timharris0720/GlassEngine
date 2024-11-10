@@ -59,7 +59,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -125,7 +124,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
@@ -138,7 +137,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
@@ -151,7 +150,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Docs/Code/Engines/Glass Engine 1/Core/CMakeLists.txt</Message>
@@ -164,7 +163,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindOpenGL.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\PatchInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\RepositoryInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\UpdateInfo.txt.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitclone.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\gitupdate.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\shared_internal_commands.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\ExternalProject\stepscript.cmake.in;D:\Apps\Cmake\share\cmake-3.30\Modules\FetchContent.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindGit.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;D:\Apps\Cmake\share\cmake-3.30\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Docs\Code\Engines\Glass Engine 1\build\Core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
@@ -182,27 +181,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{3AF50D82-5FB5-3F8D-B206-0B14D4B35C40}</Project>
       <Name>GlassEngineCore</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\asm_offset.vcxproj">
-      <Project>{50123994-70C2-3D80-AC44-48B543CF6557}</Project>
-      <Name>asm_offset</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-opt.vcxproj">
-      <Project>{9089F63F-6163-341A-926B-91CECDF29A6D}</Project>
-      <Name>loader-opt</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\loader-unknown-chain.vcxproj">
-      <Project>{E78692D9-9B00-3730-BD3B-0F23E8D1592C}</Project>
-      <Name>loader-unknown-chain</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\_deps\vulkan-loader-build\loader\vulkan.vcxproj">
-      <Project>{3FA91DAD-7CCD-3068-81F6-C194F37E0247}</Project>
-      <Name>vulkan</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>
