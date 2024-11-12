@@ -34,12 +34,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Docs/Code/Engines/Glass Engine 1/build/Core/cmake_install.cmake")
+  include("D:/Docs/Code/Engines/Glass Engine 1/build/src/Core/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Docs/Code/Engines/Glass Engine 1/build/Runtime/cmake_install.cmake")
+  include("D:/Docs/Code/Engines/Glass Engine 1/build/src/Runtime/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)

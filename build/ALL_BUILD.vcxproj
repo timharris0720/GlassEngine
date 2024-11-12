@@ -177,11 +177,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\Core\GlassEngineCore.vcxproj">
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\src\Core\GlassEngineCore.vcxproj">
       <Project>{3AF50D82-5FB5-3F8D-B206-0B14D4B35C40}</Project>
       <Name>GlassEngineCore</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\Runtime\GlassEngineRuntime.vcxproj">
+    <ProjectReference Include="D:\Docs\Code\Engines\Glass Engine 1\build\src\Runtime\GlassEngineRuntime.vcxproj">
       <Project>{F777F366-7CF0-3BDA-A15D-30F2158F126F}</Project>
       <Name>GlassEngineRuntime</Name>
     </ProjectReference>

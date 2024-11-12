@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
+
+
+
 project(GlassEngine VERSION 1.0)
 set(CMAKE_MESSAGE_LOG_LEVEL STATUS)
 
@@ -42,8 +45,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${OUTPUT_BASE_DIR}/Debug/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${OUTPUT_BASE_DIR}/Release/lib")
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 
-add_subdirectory(Core)
-add_subdirectory(Runtime)
+add_subdirectory(src/Core)
+add_subdirectory(src/Runtime)
 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/bin\")") 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/lib\")")

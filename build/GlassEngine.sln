@@ -10,12 +10,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxp
 		{8522042A-7400-3BF6-A167-2C763F39E204} = {8522042A-7400-3BF6-A167-2C763F39E204}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlassEngineCore", "Core\GlassEngineCore.vcxproj", "{3AF50D82-5FB5-3F8D-B206-0B14D4B35C40}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlassEngineCore", "src\Core\GlassEngineCore.vcxproj", "{3AF50D82-5FB5-3F8D-B206-0B14D4B35C40}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8522042A-7400-3BF6-A167-2C763F39E204} = {8522042A-7400-3BF6-A167-2C763F39E204}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlassEngineRuntime", "Runtime\GlassEngineRuntime.vcxproj", "{F777F366-7CF0-3BDA-A15D-30F2158F126F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlassEngineRuntime", "src\Runtime\GlassEngineRuntime.vcxproj", "{F777F366-7CF0-3BDA-A15D-30F2158F126F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8522042A-7400-3BF6-A167-2C763F39E204} = {8522042A-7400-3BF6-A167-2C763F39E204}
 	EndProjectSection

@@ -1,5 +1,9 @@
 #include "GlassEngine/GlassEngine.h"
+Logger logger("MainApp","log.txt");
 int main() {
+
+    
+
     App::AppSpec appSpec;
     appSpec.name = "Application";
     appSpec.width = 600;
@@ -8,7 +12,7 @@ int main() {
     
     std::cout << "HIII" << std::endl;
     
-    
+    logger.InfoLog("Current Version: %i . %i", CORE_VERSION_MAJOR,CORE_VERSION_MINOR);
 
     
     while(true){

@@ -320,22 +320,22 @@ FETCHCONTENT_UPDATES_DISCONNECTED_VULKAN-LOADER:BOOL=OFF
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
 //Value Computed by CMake
-GlassEngineCore_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/build/Core
+GlassEngineCore_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/build/src/Core
 
 //Value Computed by CMake
 GlassEngineCore_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-GlassEngineCore_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Core
+GlassEngineCore_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/src/Core
 
 //Value Computed by CMake
-GlassEngineRuntime_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/build/Runtime
+GlassEngineRuntime_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/build/src/Runtime
 
 //Value Computed by CMake
 GlassEngineRuntime_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-GlassEngineRuntime_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Runtime
+GlassEngineRuntime_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/src/Runtime
 
 //Value Computed by CMake
 GlassEngineScripting_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/build/Scripting

@@ -9,7 +9,11 @@ FetchContent_Declare(
 	GIT_TAG 	bf71a834948186f4097caa076cd2663c69a10e1e
 )
 FetchContent_MakeAvailable(glm)
+set(Version_Major 1)
+set(Version_Minor 0)
 
+# Generate the Config.h file
+configure_file(src/version.h.in src/version.h)
 
 if(WIN32)
 set(SYSTEM_USING "win64")
