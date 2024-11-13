@@ -272,10 +272,6 @@ FETCHCONTENT_SOURCE_DIR_GLEW:PATH=
 // for glfw
 FETCHCONTENT_SOURCE_DIR_GLFW:PATH=
 
-//When not empty, overrides where to find pre-populated content
-// for glm
-FETCHCONTENT_SOURCE_DIR_GLM:PATH=
-
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
@@ -284,9 +280,6 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GLEW:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of glfw
 FETCHCONTENT_UPDATES_DISCONNECTED_GLFW:BOOL=OFF
-
-//Enables UPDATE_DISCONNECTED behavior just for population of glm
-FETCHCONTENT_UPDATES_DISCONNECTED_GLM:BOOL=OFF
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
@@ -332,7 +325,7 @@ GlassEnginePlugins_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPl
 GlassEnginePlugins_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-GlassEnginePlugins_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Plugins
+GlassEnginePlugins_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/src/Plugins
 
 //Value Computed by CMake
 GlassGFX.openGL_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/GlassGFXopenGL
@@ -341,7 +334,7 @@ GlassGFX.openGL_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugi
 GlassGFX.openGL_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-GlassGFX.openGL_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/Plugins/GlassGFXopenGL
+GlassGFX.openGL_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/src/Plugins/GlassGFXopenGL
 
 //OpenGL library for win32
 OPENGL_gl_LIBRARY:STRING=opengl32
@@ -369,15 +362,6 @@ glew_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 glew_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glew-src
-
-//Value Computed by CMake
-glm_BINARY_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glm-build
-
-//Value Computed by CMake
-glm_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-glm_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glm-src
 
 
 ########################
@@ -456,7 +440,7 @@ CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
 CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=D:/Docs/Code/Engines/Glass Engine 1/Plugins
+CMAKE_HOME_DIRECTORY:INTERNAL=D:/Docs/Code/Engines/Glass Engine 1/src/Plugins
 //ADVANCED property for variable: CMAKE_INSTALL_BINDIR
 CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_DATADIR

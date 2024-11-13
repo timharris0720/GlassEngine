@@ -41,7 +41,7 @@ namespace Plugin {
 
         bool loadPlugin(const std::string& pluginPath, PluginType type);
         void cleanup();
-        void pluginUpdate();
+        GLASS_ENGINE_API void pluginUpdate();
     private:
         Logger logger = Logger("Core.PluginLoader", "Log.txt");
         void* libraryHandle = nullptr; 

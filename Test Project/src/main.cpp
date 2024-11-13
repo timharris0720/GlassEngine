@@ -8,15 +8,12 @@ int main() {
     appSpec.name = "Application";
     appSpec.width = 600;
     appSpec.height = 480;
-    App::Application app(appSpec, Core::App::OPENGL);
-    
-    std::cout << "HIII" << std::endl;
-    
-    logger.InfoLog("Current Version: %i . %i", CORE_VERSION_MAJOR,CORE_VERSION_MINOR);
-
-    
-    while(true){
-
+    App::Application app(appSpec, Core::App::OPENGL);   
+    logger.InfoLog("Current Version: %s", Core::VERSION);
+    logger.InfoLog("Current API: %i", app.GetAPI());
+   
+    while(app.isRunning()){
+        app.pluginLoader.pluginUpdate();
     }
     return 0;
 }

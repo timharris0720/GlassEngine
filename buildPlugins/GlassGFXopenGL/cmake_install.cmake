@@ -1,4 +1,4 @@
-# Install script for directory: D:/Docs/Code/Engines/Glass Engine 1/Plugins/GlassGFXopenGL
+# Install script for directory: D:/Docs/Code/Engines/Glass Engine 1/src/Plugins/GlassGFXopenGL
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -41,7 +41,7 @@ private:
     std::string ErroLogTitle;
 public:
     Logger() = default;
-    Logger(std::string loggerName, std::string pathLogFile) {LoggerName = loggerName;LogFile=pathLogFile; InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";writeFile("", pathLogFile, Overwrite);}
+    Logger(std::string loggerName, std::string pathLogFile) {LoggerName = loggerName;LogFile=pathLogFile; InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";writeFile("------- NEW LOG FILE -------", pathLogFile, Append);}
     void ToggleFileLogging(){
         LogToFile = !LogToFile;
     }

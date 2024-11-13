@@ -17,10 +17,12 @@ namespace Core {
 			pluginLoader.pRenderingBackend.apiInstance->createRenderContext(winProp);
 			
 
-			while(pluginLoader.pRenderingBackend.apiInstance->shouldWindowClose() == false){
-				pluginLoader.pluginUpdate();
-			}
+			
 
+		}
+
+		bool Application::isRunning(){
+			return !pluginLoader.pRenderingBackend.apiInstance->shouldWindowClose();
 		}
 	}
 	namespace Scripting {

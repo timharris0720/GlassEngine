@@ -1,4 +1,4 @@
-# Install script for directory: D:/Docs/Code/Engines/Glass Engine 1/Plugins
+# Install script for directory: D:/Docs/Code/Engines/Glass Engine 1/src/Plugins
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

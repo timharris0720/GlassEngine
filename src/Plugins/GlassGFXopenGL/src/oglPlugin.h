@@ -11,7 +11,7 @@
 
 #include <GL/glew.h>
 #include "GLFW/glfw3.h"
-#include "GlassEngine/Logger.h"
+#include "GlassEngine/GlassEngine.h"
 
 class OpenGLRenderAPI : public GlassPlugin_GFX {
 private:
@@ -30,4 +30,9 @@ public:
     OPENGL_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
+    OPENGL_PLUGIN_API void Clear();
+    OPENGL_PLUGIN_API void BeginScene(Cameras::PerspectiveCamera camera);
+    OPENGL_PLUGIN_API void BeginScene(Cameras::Camera camera);
+    OPENGL_PLUGIN_API void DrawVertexArray();
+
 };

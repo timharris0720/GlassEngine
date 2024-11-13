@@ -1,6 +1,7 @@
 #pragma once
 #define CORE_VERSION_MAJOR 1
 #define CORE_VERSION_MINOR 0
+
 #ifdef _WIN32
 #ifdef GLASS_ENGINE_EXPORTS_CORE
 #define GLASS_ENGINE_API __declspec(dllexport)
@@ -14,6 +15,9 @@
 #include "pluginLoader.h"
 #include "glm/glm.hpp"
 #include "Logger.h"
+typedef glm::vec3 Vector3;
+typedef glm::vec2 Vector2;
+typedef glm::vec4 Vector4;
 
 /*
 	TODO:
@@ -30,6 +34,7 @@
 
 
 namespace Core {
+	std::string VERSION = std::string(CORE_VERSION_MAJOR+ "." + CORE_VERSION_MINOR);
 	namespace App {
 		enum ErrorCode {
 			GLFW_CANT_INIT = 32,
@@ -52,12 +57,14 @@ namespace Core {
 		private:
 			RenderBackend api;
 			Logger logger = Logger("Core","Log.txt");
+			
 		public:
 			Application() = default;
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
-			
+			GLASS_ENGINE_API bool isRunning();
+			GLASS_ENGINE_API void run();
 			Plugin::PluginLoader pluginLoader;
 		};
 	}

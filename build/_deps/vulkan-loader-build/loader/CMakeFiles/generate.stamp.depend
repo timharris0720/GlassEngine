@@ -1,8 +1,0 @@
-# CMake generation dependency list for this directory.
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeASMInformation.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/CMakeASM_MASMInformation.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageMessage.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindPkgConfig.cmake
-D:/Docs/Code/Engines/Glass Engine 1/build/CMakeFiles/3.30.1/CMakeASM_MASMCompiler.cmake
-D:/Docs/Code/Engines/Glass Engine 1/build/_deps/vulkan-loader-src/loader/CMakeLists.txt

@@ -417,7 +417,9 @@ D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/gtx/vector_ang
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/gtx/vector_query.inl
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/gtx/wrap.inl
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/Logger.h
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/camera.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/graphicsPlugin.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/plugin.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/pluginLoader.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/GlassEngine.h
