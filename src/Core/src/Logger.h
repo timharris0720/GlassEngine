@@ -13,7 +13,6 @@
 
 class Logger {
 private:
-    std::string LoggerName;
     std::string LogFile;
     bool LogToFile = false;
     enum WriteType {
@@ -40,6 +39,7 @@ private:
     std::string DebuLogTitle;
     std::string ErroLogTitle;
 public:
+	std::string LoggerName;
     Logger() = default;
     Logger(std::string loggerName, std::string pathLogFile) {LoggerName = loggerName;LogFile=pathLogFile; InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";writeFile("------- NEW LOG FILE -------", pathLogFile, Append);}
     void ToggleFileLogging(){
@@ -48,6 +48,10 @@ public:
     void ToggleFileLogging(bool decider){
         LogToFile = decider;
     }
+	void setLoggerName(std::string name_){
+		LoggerName = name_;
+		InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";
+	}
     void DebugLog(const char* fmt, ...) {
 #ifndef NDEBUG
 #ifdef WIN32

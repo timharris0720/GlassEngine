@@ -1,0 +1,19 @@
+#include "GlassEngine/GlassEngine.h"
+
+
+class GameManager : public Core::Scripting::Script {
+    public:
+    virtual void Start() override {
+        logger.InfoLog("Hello WOrlddd");
+        logger.InfoLog("logger name %s", logger.LoggerName.c_str());
+    }
+};
+
+
+
+class GameManager_Componenet : public Core::Scripting::Component {
+public:
+    GameManager_Componenet() : Component("GameManager"){
+        SetScript<GameManager>();
+    }
+};

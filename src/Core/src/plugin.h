@@ -3,6 +3,7 @@
 #include <string>
 #include <any>
 
+
 struct WindowProperties {
     std::string name;
     int width;
@@ -10,8 +11,6 @@ struct WindowProperties {
     bool vsync;
     WindowProperties(std::string name = "Window",int width = 600, int height = 480, bool vsync = false) : name(name), width(width), height(height), vsync(vsync) {}
 };
-
-
 
 
 class GlassPlugin {

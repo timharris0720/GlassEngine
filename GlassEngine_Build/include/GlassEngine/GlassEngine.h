@@ -4,4 +4,5 @@
 //#include "runtime.h"
 #include "Logger.h"
 #include "camera.h"
+#include "ErrorCodes.h"
 using namespace Core;
