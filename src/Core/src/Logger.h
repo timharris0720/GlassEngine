@@ -38,8 +38,8 @@ private:
     std::string InfoLogTitle;
     std::string DebuLogTitle;
     std::string ErroLogTitle;
-public:
 	std::string LoggerName;
+public:
     Logger() = default;
     Logger(std::string loggerName, std::string pathLogFile) {LoggerName = loggerName;LogFile=pathLogFile; InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";writeFile("------- NEW LOG FILE -------", pathLogFile, Append);}
     void ToggleFileLogging(){
@@ -51,6 +51,9 @@ public:
 	void setLoggerName(std::string name_){
 		LoggerName = name_;
 		InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";
+	}
+	std::string getLoggerName(){
+		return LoggerName;
 	}
     void DebugLog(const char* fmt, ...) {
 #ifndef NDEBUG

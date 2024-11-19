@@ -20,6 +20,8 @@ bool OpenGLRenderAPI::onLoad() {
 void OpenGLRenderAPI::createRenderContext(WindowProperties winProps){
     winData = winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
+    glfwSwapInterval(0);
+
 }
 
 void OpenGLRenderAPI::Update() {
@@ -28,6 +30,14 @@ void OpenGLRenderAPI::Update() {
     glClearColor(0,0,0,1);
     glfwSwapBuffers(window);
 }
+
+Shader* OpenGLRenderAPI::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
+    logger.InfoLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
+    logger.InfoLog("Vertex shader path: %s ", vertexShaderPath.c_str());
+    OpenGLShader shader;
+    return &shader;
+}
+
 
 
 // Plugin Registration

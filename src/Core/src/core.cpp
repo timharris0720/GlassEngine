@@ -1,4 +1,5 @@
 #include "core.h"
+#include "pluginLoader.h"
 namespace Core {
 	namespace App {
 		bool Application::loadPlugin(std::string pluginPath, Plugin::PluginType type) {
@@ -14,14 +15,16 @@ namespace Core {
 			winProp.name = appSpec.name;
 			winProp.height = appSpec.height;
 			winProp.width = appSpec.width;
-			pluginLoader.pRenderingBackend.apiInstance->createRenderContext(winProp);
+			s_instance = this;
+			renderAPI = new Renderer::RendererAPI();
+			renderAPI->GetBackend()->apiInstance->createRenderContext(winProp);
 		}
 		void Application::PushGameObject(Object::GameObject GO){
 			gameObjects.push_back(GO);
 			logger.InfoLog("Added Gameobject: %s to stack", GO.name.c_str());
 		}
 		bool Application::isRunning(){
-			return !pluginLoader.pRenderingBackend.apiInstance->shouldWindowClose();
+			return !renderAPI->GetBackend()->apiInstance->shouldWindowClose();
 		}
 		void Application::run(){
 			while (isRunning() == true)
@@ -84,6 +87,9 @@ namespace Core {
 					break;
 			}
 			
+		}
+		void GameObject::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
+			App::Application::GetRenderer().CreateShader(fragmentShaderPath, vertexShaderPath);
 		}
 	}
 }

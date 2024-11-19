@@ -1,12 +1,6 @@
 #include "GlassEngine/entrypoint.h"
 #include "GameManager.h"
 
-
-
-
-
-
-
 class TestProject : public Core::App::Application {
 public:
     TestProject(Core::App::AppSpec specification, Core::App::RenderBackend RB) : Core::App::Application(specification, RB) {

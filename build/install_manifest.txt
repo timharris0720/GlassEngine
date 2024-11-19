@@ -418,6 +418,8 @@ D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/gtx/vector_que
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/glm/gtx/wrap.inl
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/ErrorCodes.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/Logger.h
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/RendererAPI.h
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/Shader.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/camera.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/core.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GlassEngine/entrypoint.h

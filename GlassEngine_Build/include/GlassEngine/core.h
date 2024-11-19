@@ -16,7 +16,7 @@
 #include "glm/glm.hpp"
 #include "Logger.h"
 #include "ErrorCodes.h"
-
+#include "RendererAPI.h"
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
 typedef glm::vec4 Vector4;
@@ -123,6 +123,7 @@ namespace Core {
 							break;
 					}
 				}
+				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Scripting::Component>& component);
 				std::vector<std::shared_ptr<Scripting::Component>> GetComponenets() {
 					return componenets;
@@ -150,7 +151,10 @@ namespace Core {
 			RenderBackend api;
 			Logger logger = Logger("Application","Log.txt");
 			std::vector<Core::Object::GameObject> gameObjects;
+			static  Application* s_instance;
+			static Renderer::Renderer* renderAPI;
 		public:
+			
 			Application() = default;
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
@@ -158,7 +162,10 @@ namespace Core {
 			GLASS_ENGINE_API void PushGameObject(Object::GameObject GO);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
+			static Application& GetInstance(){ return *s_instance; }
+			static Renderer::Renderer& GetRenderer(){ return *renderAPI; }
 			Logger getLogger() { return logger;}
+			
 			Plugin::PluginLoader pluginLoader;
 		};
 	}

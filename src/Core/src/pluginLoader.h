@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef _WIN32
 #ifdef GLASS_ENGINE_EXPORTS_CORE
 #define GLASS_ENGINE_API __declspec(dllexport)
@@ -14,7 +16,8 @@
 #include <memory>
 #include "plugin.h"
 #include "Logger.h"
-namespace Plugin {
+#include "core.h"
+namespace Plugin{
     enum PluginType {
         GFX_PLUGIN = 0,
         OTHER,
@@ -36,7 +39,7 @@ namespace Plugin {
     class PluginLoader {
     public:
 
-        PluginStruct_GFX pRenderingBackend;
+        
         std::vector<PluginStruct> loadedPlugins;
 
         bool loadPlugin(const std::string& pluginPath, PluginType type);

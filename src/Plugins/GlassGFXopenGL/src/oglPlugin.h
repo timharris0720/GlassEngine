@@ -13,6 +13,12 @@
 #include "GLFW/glfw3.h"
 #include "GlassEngine/GlassEngine.h"
 
+class OpenGLShader : public Shader {
+public:
+    OPENGL_PLUGIN_API Shader* Create(std::string fragmentShaderPath, std::string vertexShaderPath) override;
+};
+
+
 class OpenGLRenderAPI : public GlassPlugin_GFX {
 private:
     GLFWwindow* window;
@@ -31,8 +37,7 @@ public:
         glfwSwapInterval(winData.vsync);
     }
     OPENGL_PLUGIN_API void Clear();
-    OPENGL_PLUGIN_API void BeginScene(Cameras::PerspectiveCamera camera);
-    OPENGL_PLUGIN_API void BeginScene(Cameras::Camera camera);
+    OPENGL_PLUGIN_API void BeginScene(std::shared_ptr<Cameras::Camera> camera);
     OPENGL_PLUGIN_API void DrawVertexArray();
-
+    OPENGL_PLUGIN_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 };

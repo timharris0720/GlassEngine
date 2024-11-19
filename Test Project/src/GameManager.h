@@ -5,7 +5,7 @@ class GameManager : public Core::Scripting::Script {
     public:
     virtual void Start() override {
         logger.InfoLog("Hello WOrlddd");
-        logger.InfoLog("logger name %s", logger.LoggerName.c_str());
+        logger.InfoLog("logger name %s", logger.getLoggerName().c_str());
     }
 };
 

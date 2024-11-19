@@ -5,4 +5,5 @@
 #include "Logger.h"
 #include "camera.h"
 #include "ErrorCodes.h"
+#include "Shader.h"
 using namespace Core;

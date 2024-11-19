@@ -14,7 +14,7 @@ std::wstring stringToWString(const std::string& str) {
 #include <dlfcn.h>
 #endif
 
-#include "PluginLoader.h"
+#include "pluginLoader.h"
 #include <iostream>
 #include <string>
 
@@ -29,8 +29,7 @@ std::wstring stringToWString(const std::string& str) {
     #define GET_SYMBOL(handle, symbol) dlsym(handle, symbol)
     #define CLOSE_LIBRARY(handle) dlclose(handle)
 #endif
-
-namespace Plugin{
+namespace Plugin {
     bool PluginLoader::loadPlugin(const std::string& pluginName, PluginType type) {
         
         #ifdef _WIN32
@@ -129,12 +128,13 @@ namespace Plugin{
             PluginStruct_GFX plugin;
             plugin.apiInstance = std::move(apiInstance);
             plugin.libraryHandle = libraryHandle;
-            pRenderingBackend = std::move(plugin);
+            Core::App::Application::GetRenderer().SetBackend(&std::move(plugin));
         }
         
         return true;
     }
     void PluginLoader::cleanup() {
+        Core::App::Application::GetRenderer().GetBackend()->apiInstance->cleanup();
         for (auto& plugin : loadedPlugins) {
             if (plugin.apiInstance) {
                 plugin.apiInstance->cleanup();
@@ -146,7 +146,7 @@ namespace Plugin{
         loadedPlugins.clear();
     }
     void PluginLoader::pluginUpdate(){
-        pRenderingBackend.apiInstance->Update();
+        Core::App::Application::GetRenderer().GetBackend()->apiInstance->Update();
         for (const auto& plugin : loadedPlugins) {
             if (plugin.apiInstance) {
                 plugin.apiInstance->Update();
