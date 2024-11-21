@@ -15,7 +15,7 @@ namespace Cameras{
         GLASS_ENGINE_API const Mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		GLASS_ENGINE_API const Mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		GLASS_ENGINE_API const Mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
-        private:
+
         GLASS_ENGINE_API void RecalculateViewMatrix();
 
         Mat4 m_ProjectionMatrix;
@@ -23,6 +23,7 @@ namespace Cameras{
 		Mat4 m_ViewProjectionMatrix;
 
         Core::Object::Transform transform;
+        
     };
 
     class PerspectiveCamera : public Camera {

@@ -7,10 +7,10 @@ private:
     std::string FragShader;
 
 public:
-    virtual Shader* Create(std::string fragmentShaderPath, std::string vertexShaderPath);
+    virtual void Create(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     virtual ~Shader() {};
-    virtual void Bind();
-    virtual void Unbind();
+    virtual void Bind() {};
+    virtual void Unbind() {};
     Shader() = default;
 };
 

@@ -6,7 +6,7 @@
 #define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
 #else
-#define OPENGL_PLUGIN_API
+#define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
 
 #include <GL/glew.h>
@@ -14,8 +14,10 @@
 #include "GlassEngine/GlassEngine.h"
 
 class OpenGLShader : public Shader {
+private:
+    Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "log.txt");
 public:
-    OPENGL_PLUGIN_API Shader* Create(std::string fragmentShaderPath, std::string vertexShaderPath) override;
+    OPENGL_PLUGIN_API void Create(std::string fragmentShaderPath, std::string vertexShaderPath) override;
 };
 
 
@@ -26,7 +28,7 @@ private:
 public:
 
     OPENGL_PLUGIN_API bool onLoad() override;
-    OPENGL_PLUGIN_API void createRenderContext(WindowProperties winProps) override;
+    OPENGL_PLUGIN_API void createRenderContext(WindowProperties* winProps) override;
     OPENGL_PLUGIN_API void* GetNativeWindow() const {return window;}
     
     OPENGL_PLUGIN_API void Update() override;

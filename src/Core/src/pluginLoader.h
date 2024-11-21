@@ -16,7 +16,6 @@
 #include <memory>
 #include "plugin.h"
 #include "Logger.h"
-#include "core.h"
 namespace Plugin{
     enum PluginType {
         GFX_PLUGIN = 0,

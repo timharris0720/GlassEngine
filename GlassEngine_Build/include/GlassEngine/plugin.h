@@ -31,7 +31,7 @@ class GlassPlugin {
 class GlassPlugin_GFX : public GlassPlugin {
 public:
     WindowProperties winData;
-    virtual void createRenderContext(WindowProperties winProps) = 0;
+    virtual void createRenderContext(WindowProperties* winProps) = 0;
     virtual bool shouldWindowClose() { return true;}
     virtual int GetWidth() {return winData.width;};
     virtual int GetHeight() {return winData.height;};

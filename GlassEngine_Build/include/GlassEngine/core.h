@@ -151,8 +151,8 @@ namespace Core {
 			RenderBackend api;
 			Logger logger = Logger("Application","Log.txt");
 			std::vector<Core::Object::GameObject> gameObjects;
-			static  Application* s_instance;
-			static Renderer::Renderer* renderAPI;
+			static Application* s_instance;
+			static Renderer::RendererAPI* renderAPI;
 		public:
 			
 			Application() = default;
@@ -162,8 +162,8 @@ namespace Core {
 			GLASS_ENGINE_API void PushGameObject(Object::GameObject GO);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
-			static Application& GetInstance(){ return *s_instance; }
-			static Renderer::Renderer& GetRenderer(){ return *renderAPI; }
+			static Application& GetInstance() { return *s_instance; }
+			static Renderer::RendererAPI& GetRenderer() { return *renderAPI; }
 			Logger getLogger() { return logger;}
 			
 			Plugin::PluginLoader pluginLoader;

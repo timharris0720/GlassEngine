@@ -4,11 +4,11 @@ D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GLFW/glfw3native.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glfw3/glfw3Config.cmake
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glfw3/glfw3ConfigVersion.cmake
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glfw3/glfw3Targets.cmake
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glfw3/glfw3Targets-release.cmake
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glfw3/glfw3Targets-debug.cmake
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/pkgconfig/glfw3.pc
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/glew.lib
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/glewd.lib
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glew/glewConfig.cmake
-D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glew/glewConfig-release.cmake
+D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/lib/cmake/glew/glewConfig-debug.cmake
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/eglew.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/glew.h
 D:/Docs/Code/Engines/Glass Engine 1/GlassEngine_Build/include/GL/glxew.h

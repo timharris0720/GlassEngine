@@ -2,22 +2,28 @@
 #include "pluginLoader.h"
 namespace Core {
 	namespace App {
+		Application* Application::s_instance = nullptr;
+		Renderer::RendererAPI* Application::renderAPI = nullptr;
 		bool Application::loadPlugin(std::string pluginPath, Plugin::PluginType type) {
 			bool loaded = pluginLoader.loadPlugin(pluginPath, type);
 			//pluginLoader.getLoadedPlugins().back().apiInstance->onLoad();
 			return loaded;
 		}
 		Application::Application(App::AppSpec appSpec, RenderBackend backend){
+			renderAPI = &Renderer::RendererAPI();
+
 			if(backend == App::RenderBackend::OPENGL){
-				loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
+				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
 			}
 			WindowProperties winProp;
 			winProp.name = appSpec.name;
 			winProp.height = appSpec.height;
 			winProp.width = appSpec.width;
 			s_instance = this;
-			renderAPI = new Renderer::RendererAPI();
-			renderAPI->GetBackend()->apiInstance->createRenderContext(winProp);
+			logger.InfoLog("Backend ADDY: %lx", renderAPI->GetBackend());
+			
+			GetRenderer().GetBackend()->apiInstance->createRenderContext(&winProp);
 		}
 		void Application::PushGameObject(Object::GameObject GO){
 			gameObjects.push_back(GO);
@@ -27,7 +33,7 @@ namespace Core {
 			return !renderAPI->GetBackend()->apiInstance->shouldWindowClose();
 		}
 		void Application::run(){
-			while (isRunning() == true)
+			while (this->isRunning() == true)
 			{
 				pluginLoader.pluginUpdate();
 				for(Core::Object::GameObject go : gameObjects){

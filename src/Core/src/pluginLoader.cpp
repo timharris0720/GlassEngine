@@ -15,6 +15,7 @@ std::wstring stringToWString(const std::string& str) {
 #endif
 
 #include "pluginLoader.h"
+#include "core.h"
 #include <iostream>
 #include <string>
 
@@ -128,7 +129,8 @@ namespace Plugin {
             PluginStruct_GFX plugin;
             plugin.apiInstance = std::move(apiInstance);
             plugin.libraryHandle = libraryHandle;
-            Core::App::Application::GetRenderer().SetBackend(&std::move(plugin));
+
+            Core::App::Application::GetRenderer().pRenderingBackend = std::move(plugin);
         }
         
         return true;

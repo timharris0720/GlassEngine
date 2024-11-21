@@ -1,6 +1,15 @@
 #pragma once
-#include "core.h"
-#include "Shader.h"
+#ifdef _WIN32
+#ifdef GLASS_ENGINE_EXPORTS_CORE
+#define GLASS_ENGINE_API __declspec(dllexport)
+#else
+#define GLASS_ENGINE_API __declspec(dllimport)
+#endif
+#else
+#define GLASS_ENGINE_API
+#endif
+#include <glm/glm.hpp>
+#include "pluginLoader.h"
 
 namespace Renderer {
     
@@ -39,10 +48,17 @@ namespace Renderer {
         
     };
 
-    class Renderer {
+    class RendererAPI {
+        private:
+        
         public:
-            Renderer() = default;
+            RendererAPI() = default;
+            Plugin::PluginStruct_GFX pRenderingBackend;
+            void SetBackend(Plugin::PluginStruct_GFX backend) {pRenderingBackend = std::move(backend);}
+            Plugin::PluginStruct_GFX* GetBackend() {return &pRenderingBackend;}
+            
+            GLASS_ENGINE_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
+        public:
             std::vector<RenderData> renderData;
-            Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
     };
 };
