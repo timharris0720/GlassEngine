@@ -126,3 +126,51 @@
 ------- NEW LOG FILE -------
 ------- NEW LOG FILE -------
 ------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Beasdasdasd
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps
+[ INFO | GlassGFX.OpenGL.Plugin] : ---------------------------
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Height: 480
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Width : 600
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Name  : Application
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Vysnc : 0
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Fragment shader path: Hello  
+[ INFO | GlassGFX.OpenGL.Plugin] : Vertex shader path: Helslo 
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Beasdasdasd
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps
+[ INFO | GlassGFX.OpenGL.Plugin] : ---------------------------
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Height: 480
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Width : 600
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Name  : Application
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Vysnc : 0
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Fragment shader path: Hello  
+[ INFO | GlassGFX.OpenGL.Plugin] : Vertex shader path: Helslo 
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Beasdasdasd
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps
+[ INFO | GlassGFX.OpenGL.Plugin] : ---------------------------
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Height: 480
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Width : 600
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Name  : Application
+[ INFO | GlassGFX.OpenGL.Plugin] : WinProps Vysnc : 0
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+------- NEW LOG FILE -------
+[ INFO | GlassGFX.OpenGL.Plugin] : Fragment shader path: Hello  
+[ INFO | GlassGFX.OpenGL.Plugin] : Vertex shader path: Helslo 
+------- NEW LOG FILE -------

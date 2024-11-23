@@ -6,6 +6,7 @@ class GameManager : public Core::Scripting::Script {
     virtual void Start() override {
         logger.InfoLog("Hello WOrlddd");
         logger.InfoLog("logger name %s", logger.getLoggerName().c_str());
+        gameObject->CreateShader("Hello ", "Helslo");
     }
 };
 

@@ -7,7 +7,7 @@ public:
         getLogger().InfoLog("Application is running : %i", this->isRunning());
         Core::Object::GameObject GO =  Core::Object::GameObject("GameManager");
         GO.AddComponent<GameManager_Componenet>();
-        PushGameObject(GO);
+        //PushGameObject(GO);
     }
 };
 

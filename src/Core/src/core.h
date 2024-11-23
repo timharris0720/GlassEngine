@@ -34,17 +34,32 @@ typedef glm::mat4 Mat4;
 
 
 */
-
-
-
 namespace Core {
-		namespace Scripting {
+	namespace Scripting {
+		class Script;
+		class Component;
+	}
+	namespace Object{
+		class Object;
+		struct Transform;
+		struct Mesh;
+		class GameObject;
+	}
+	namespace App {
+		struct AppSpec;
+		class Application;
+	}
+}
+namespace Core {
+	namespace Scripting {
 		class Script {
 			public:
+			Core::Object::GameObject* gameObject;
 			Logger logger = Logger("TempName", "log.txt");
 			virtual ~Script() = default;
 			virtual void Start() {}
 			virtual void Update() {}
+			GLASS_ENGINE_API void PushGameObject(Core::Object::GameObject* GO);
 		};
 
 		class Component {
@@ -56,16 +71,14 @@ namespace Core {
 				std::string name;
 				Component() = default;
 				GLASS_ENGINE_API Component(std::string _name);
-				GLASS_ENGINE_API std::shared_ptr<Scripting::Script> GetScript();
+				GLASS_ENGINE_API Scripting::Script* GetScript();
 				template<typename T>
 				void SetScript(){
-					static_assert(std::is_base_of<Script, T>::value, "Pushed type is not subclass of Layer!");
+					static_assert(std::is_base_of<Scripting::Script, T>::value, "Pushed type is not subclass of Layer!");
 					script = std::make_shared<T>();	
 					script->logger.setLoggerName(name + "_script");
-					script->Start();
 				}
 				GLASS_ENGINE_API void SetScript(const std::shared_ptr<Scripting::Script>& script);
-
 
 				GLASS_ENGINE_API ErrorCode validateComponent();
 		};
@@ -83,7 +96,12 @@ namespace Core {
 			std::vector<Vector3> normals;
 		};
 
-
+		/*
+		
+		Remove shared ptr components and scripts
+		make them new objects
+		GetScript returns ptr to the script in the class
+		*/
 
 		class Object {
 			public:
@@ -94,15 +112,17 @@ namespace Core {
 
 		class GameObject : public Object {
 			private:
-				std::vector<std::shared_ptr<Scripting::Component>> componenets;
+				
+				Shader* shader;
 			public:
+				std::vector<std::shared_ptr<Scripting::Component>> componenets;
 				Logger logger;
 				GameObject() = default;
 				GLASS_ENGINE_API GameObject(std::string name);
 				std::string name;
 				Transform transform;
 				Mesh mesh;
-				std::vector<GameObject> children;
+				std::vector<GameObject*> children;
 				template<typename T>
 				void AddComponent(){
 					static_assert(std::is_base_of<Scripting::Component, T>::value, "Pushed type is not subclass of Script!");
@@ -113,7 +133,9 @@ namespace Core {
 					switch (COMP_CODE)
 					{
 						case ErrorCode::COMP_VALID:
-							componenets.emplace_back(comp);	
+							componenets.emplace_back(&comp);
+							comp->GetScript()->gameObject = this;
+							comp->GetScript()->Start();
 							break;
 						case ErrorCode::COMP_NO_NAME:
 							logger.ErrorLog("NO NAME ADDED TO COMPONENT THATS PART OF GAMEOBJECT %s", name.c_str());
@@ -125,8 +147,8 @@ namespace Core {
 				}
 				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Scripting::Component>& component);
-				std::vector<std::shared_ptr<Scripting::Component>> GetComponenets() {
-					return componenets;
+				std::vector<std::shared_ptr<Scripting::Component>>* GetComponenets() {
+					return &componenets;
 				}
 		};
 	}
@@ -150,7 +172,7 @@ namespace Core {
 		private:
 			RenderBackend api;
 			Logger logger = Logger("Application","Log.txt");
-			std::vector<Core::Object::GameObject> gameObjects;
+			std::vector<Core::Object::GameObject*> gameObjects;
 			static Application* s_instance;
 			static Renderer::RendererAPI* renderAPI;
 		public:
@@ -159,7 +181,7 @@ namespace Core {
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
-			GLASS_ENGINE_API void PushGameObject(Object::GameObject GO);
+			GLASS_ENGINE_API void PushGameObject(Core::Object::GameObject* GO);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
 			static Application& GetInstance() { return *s_instance; }
