@@ -55,7 +55,7 @@ namespace Renderer {
             RendererAPI() = default;
             Plugin::PluginStruct_GFX pRenderingBackend;
             void SetBackend(Plugin::PluginStruct_GFX backend) {pRenderingBackend = std::move(backend);}
-            Plugin::PluginStruct_GFX* GetBackend() {return &pRenderingBackend;}
+            Plugin::PluginStruct_GFX& GetBackend() {return pRenderingBackend;}
             
             GLASS_ENGINE_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
         public:

@@ -4,7 +4,7 @@
 class TestProject : public Core::App::Application {
 public:
     TestProject(Core::App::AppSpec specification, Core::App::RenderBackend RB) : Core::App::Application(specification, RB) {
-        getLogger().InfoLog("Application is running : %i", isRunning());
+        getLogger().InfoLog("Application is running : %i", this->isRunning());
         Core::Object::GameObject GO =  Core::Object::GameObject("GameManager");
         GO.AddComponent<GameManager_Componenet>();
         PushGameObject(GO);

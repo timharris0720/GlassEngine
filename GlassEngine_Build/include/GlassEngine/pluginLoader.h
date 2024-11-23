@@ -27,12 +27,12 @@ namespace Plugin{
     };
 
     struct PluginStruct {
-        std::unique_ptr<GlassPlugin> apiInstance;
+        std::shared_ptr<GlassPlugin> apiInstance = nullptr;
         void* libraryHandle;  // Library handle for the plugin
     };
 
     struct PluginStruct_GFX {
-        std::unique_ptr<GlassPlugin_GFX> apiInstance;
+        std::shared_ptr<GlassPlugin_GFX> apiInstance;
         void* libraryHandle;  // Library handle for the plugin
     };
     class PluginLoader {

@@ -6,7 +6,8 @@
 #define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
 #else
-#define OPENGL_PLUGIN_API __declspec(dllimport)
+#define OPENGL_PLUGIN_API
+//#define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
 
 #include <GL/glew.h>
@@ -32,9 +33,7 @@ public:
     OPENGL_PLUGIN_API void* GetNativeWindow() const {return window;}
     
     OPENGL_PLUGIN_API void Update() override;
-    OPENGL_PLUGIN_API bool shouldWindowClose() override{
-        return glfwWindowShouldClose(window);
-    }
+    OPENGL_PLUGIN_API bool shouldWindowClose() override;
     OPENGL_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }

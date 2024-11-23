@@ -10,30 +10,28 @@ namespace Core {
 			return loaded;
 		}
 		Application::Application(App::AppSpec appSpec, RenderBackend backend){
-			renderAPI = &Renderer::RendererAPI();
-
-			if(backend == App::RenderBackend::OPENGL){
-				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
-				logger.InfoLog("GLASS LOADED %i",ld);
-			}
+			s_instance = this;
+			renderAPI = new Renderer::RendererAPI();
 			WindowProperties winProp;
 			winProp.name = appSpec.name;
 			winProp.height = appSpec.height;
 			winProp.width = appSpec.width;
-			s_instance = this;
-			logger.InfoLog("Backend ADDY: %lx", renderAPI->GetBackend());
+			if(backend == App::RenderBackend::OPENGL){
+				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
+			}
 			
-			GetRenderer().GetBackend()->apiInstance->createRenderContext(&winProp);
+			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
 		void Application::PushGameObject(Object::GameObject GO){
 			gameObjects.push_back(GO);
 			logger.InfoLog("Added Gameobject: %s to stack", GO.name.c_str());
 		}
 		bool Application::isRunning(){
-			return !renderAPI->GetBackend()->apiInstance->shouldWindowClose();
+			return GetRenderer().GetBackend().apiInstance->shouldWindowClose();
 		}
 		void Application::run(){
-			while (this->isRunning() == true)
+			while (GetRenderer().GetBackend().apiInstance->shouldWindowClose())
 			{
 				pluginLoader.pluginUpdate();
 				for(Core::Object::GameObject go : gameObjects){
@@ -47,7 +45,7 @@ namespace Core {
 	namespace Scripting {
 		Component::Component(std::string _name) {
 			name = _name;
-			logger = Logger(_name, "log.txt");
+			logger = Logger(_name, "Log.txt");
 		}
 		std::shared_ptr<Script> Component::GetScript(){
 			return this->script;

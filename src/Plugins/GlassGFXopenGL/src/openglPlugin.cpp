@@ -16,17 +16,19 @@ bool OpenGLRenderAPI::onLoad() {
     
     return true;
 }
-
+bool OpenGLRenderAPI::shouldWindowClose(){
+    return !glfwWindowShouldClose(window);
+}
 void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
     logger.InfoLog("WinProps");
     logger.InfoLog("---------------------------");
     logger.InfoLog("WinProps Height: %i", winProps->height);
     logger.InfoLog("WinProps Width : %i", winProps->width);
-    logger.InfoLog("WinProps Name  : %s", winProps->name);
+    logger.InfoLog("WinProps Name  : %s", winProps->name.c_str());
     logger.InfoLog("WinProps Vysnc : %i", winProps->vsync);
     winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
-    glfwSwapInterval(0);
+    glfwSwapInterval(winData.vsync);
 
 }
 

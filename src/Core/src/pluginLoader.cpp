@@ -67,16 +67,16 @@ namespace Plugin {
                 return false;
             }
 
-            std::unique_ptr<GlassPlugin> apiInstance(createGlassPlugin());
-            if (!apiInstance) {
-                    logger.ErrorLog("Plugin: %s : Failed to create GlassPlugin instance : Code, %i", pluginName.c_str(), PluginErrorCode::CANNOT_CREATE_INSTANCE);
+            std::unique_ptr<GlassPlugin> api(createGlassPlugin());
+            if (!api) {
+                logger.ErrorLog("Plugin: %s : Failed to create GlassPlugin instance : Code, %i", pluginName.c_str(), PluginErrorCode::CANNOT_CREATE_INSTANCE);
 
                 CLOSE_LIBRARY(libraryHandle);
                 return false;
             }
 
             // Attempt to call the onLoad function on the instance
-            if (!apiInstance->onLoad()) {
+            if (!api->onLoad()) {
                 logger.ErrorLog("Plugin: %s :  onLoad failed : Code, %i", pluginName.c_str(), PluginErrorCode::ONLOAD_FAILED);
 
                 CLOSE_LIBRARY(libraryHandle);
@@ -85,9 +85,14 @@ namespace Plugin {
             logger.InfoLog("Plugin: %s, Loaded", pluginName.c_str());
             
             PluginStruct plugin;
-            plugin.apiInstance = std::move(apiInstance);
+            plugin.apiInstance = std::move(api);
             plugin.libraryHandle = libraryHandle;
             loadedPlugins.push_back(std::move(plugin));
+            /*
+            
+                PluginBackend = std::move(plugon);
+                PluginBackend = std::move(plugon);
+            */
         }
         else {
             using GlassPluginCreate = GlassPlugin_GFX* (*)();
@@ -106,8 +111,8 @@ namespace Plugin {
                 return false;
             }
 
-            std::unique_ptr<GlassPlugin_GFX> apiInstance(createGlassPlugin());
-            if (!apiInstance) {
+            std::unique_ptr<GlassPlugin_GFX> api(createGlassPlugin());
+            if (!api) {
                 logger.ErrorLog("Plugin: %s : Failed to create GlassPlugin_GFX instance : Code, %i", pluginName.c_str(), PluginErrorCode::CANNOT_CREATE_INSTANCE);
 
                 CLOSE_LIBRARY(libraryHandle);
@@ -115,7 +120,7 @@ namespace Plugin {
             }
 
             // Attempt to call the onLoad function on the instance
-            if (!apiInstance->onLoad()) {
+            if (!api->onLoad()) {
                 std::cerr << pluginName << ": onLoad failed." << std::endl;
                 logger.ErrorLog("Plugin: %s : onLoadFailed , GraphicsPlugin : Code, %i", pluginName.c_str(), PluginErrorCode::ONLOAD_FAILED);
 
@@ -127,16 +132,15 @@ namespace Plugin {
 
             
             PluginStruct_GFX plugin;
-            plugin.apiInstance = std::move(apiInstance);
+            plugin.apiInstance = std::move(api);
             plugin.libraryHandle = libraryHandle;
-
             Core::App::Application::GetRenderer().pRenderingBackend = std::move(plugin);
         }
         
         return true;
     }
     void PluginLoader::cleanup() {
-        Core::App::Application::GetRenderer().GetBackend()->apiInstance->cleanup();
+        Core::App::Application::GetRenderer().GetBackend().apiInstance->cleanup();
         for (auto& plugin : loadedPlugins) {
             if (plugin.apiInstance) {
                 plugin.apiInstance->cleanup();
@@ -148,7 +152,7 @@ namespace Plugin {
         loadedPlugins.clear();
     }
     void PluginLoader::pluginUpdate(){
-        Core::App::Application::GetRenderer().GetBackend()->apiInstance->Update();
+        Core::App::Application::GetRenderer().GetBackend().apiInstance->Update();
         for (const auto& plugin : loadedPlugins) {
             if (plugin.apiInstance) {
                 plugin.apiInstance->Update();
