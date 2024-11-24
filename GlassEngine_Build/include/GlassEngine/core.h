@@ -35,7 +35,11 @@ typedef glm::mat4 Mat4;
 
 
 */
+
+
+
 namespace Core {
+<<<<<<< HEAD
 	namespace Scripting {
 		class Script;
 	}
@@ -57,16 +61,48 @@ namespace Core {
 		class Script {
 			public:
 			Core::Entity::GameObject* parent;
+=======
+		namespace Scripting {
+		class Script {
+			public:
+>>>>>>> parent of e981af5 (smt fucky uppy)
 			Logger logger = Logger("TempName", "log.txt");
 			virtual ~Script() = default;
 			virtual void Start() {}
 			virtual void Update() {}
+<<<<<<< HEAD
 			GLASS_ENGINE_API void PushGameObject(Core::Entity::GameObject GO);
 		};
 
 		
 
 		
+=======
+		};
+
+		class Component {
+			private:
+				std::shared_ptr<Scripting::Script> script;
+				
+			public:
+				Logger logger;
+				std::string name;
+				Component() = default;
+				GLASS_ENGINE_API Component(std::string _name);
+				GLASS_ENGINE_API std::shared_ptr<Scripting::Script> GetScript();
+				template<typename T>
+				void SetScript(){
+					static_assert(std::is_base_of<Script, T>::value, "Pushed type is not subclass of Layer!");
+					script = std::make_shared<T>();	
+					script->logger.setLoggerName(name + "_script");
+					script->Start();
+				}
+				GLASS_ENGINE_API void SetScript(const std::shared_ptr<Scripting::Script>& script);
+
+
+				GLASS_ENGINE_API ErrorCode validateComponent();
+		};
+>>>>>>> parent of e981af5 (smt fucky uppy)
 	}
 	namespace Entity {
 		struct Transform {
@@ -126,16 +162,22 @@ namespace Core {
 
 		class GameObject : public Object {
 			private:
+<<<<<<< HEAD
 				std::vector<Component> componenets;
 				Shader* shader;
 			public:
 				
+=======
+				std::vector<std::shared_ptr<Scripting::Component>> componenets;
+			public:
+>>>>>>> parent of e981af5 (smt fucky uppy)
 				Logger logger;
 				
 				std::string name;
 				Transform transform;
 				Mesh mesh;
 				std::vector<GameObject> children;
+<<<<<<< HEAD
 			public:
 				GameObject() = default;
 				GameObject(std::string name) {};
@@ -147,6 +189,31 @@ namespace Core {
 					return componenets;
 				}
 				std::vector<Component> GetComponenets() {
+=======
+				template<typename T>
+				void AddComponent(){
+					static_assert(std::is_base_of<Scripting::Component, T>::value, "Pushed type is not subclass of Script!");
+					std::shared_ptr<Scripting::Component> comp = std::make_shared<T>();
+					ErrorCode COMP_CODE = comp->validateComponent();
+					
+					
+					switch (COMP_CODE)
+					{
+						case ErrorCode::COMP_VALID:
+							componenets.emplace_back(comp);	
+							break;
+						case ErrorCode::COMP_NO_NAME:
+							logger.ErrorLog("NO NAME ADDED TO COMPONENT THATS PART OF GAMEOBJECT %s", name.c_str());
+							break;
+						case ErrorCode::COMP_NO_SCRIPT:
+							logger.ErrorLog("NO SCRIPT ADDED TO COMPONENT: %s", comp->name.c_str());
+							break;
+					}
+				}
+				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
+				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Scripting::Component>& component);
+				std::vector<std::shared_ptr<Scripting::Component>> GetComponenets() {
+>>>>>>> parent of e981af5 (smt fucky uppy)
 					return componenets;
 				}
 		};
@@ -172,7 +239,11 @@ namespace Core {
 		private:
 			RenderBackend api;
 			Logger logger = Logger("Application","Log.txt");
+<<<<<<< HEAD
 			std::vector<Core::Entity::GameObject> gameObjects;
+=======
+			std::vector<Core::Object::GameObject> gameObjects;
+>>>>>>> parent of e981af5 (smt fucky uppy)
 			static Application* s_instance;
 			static Renderer::RendererAPI* renderAPI;
 		public:
@@ -181,7 +252,11 @@ namespace Core {
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
+<<<<<<< HEAD
 			void PushGameObject(Core::Entity::GameObject GO) {gameObjects.push_back(std::move(GO));}
+=======
+			GLASS_ENGINE_API void PushGameObject(Object::GameObject GO);
+>>>>>>> parent of e981af5 (smt fucky uppy)
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
 			static Application& GetInstance() { return *s_instance; }

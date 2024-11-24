@@ -3,3 +3,7 @@
 /build
 /build
 /build/_deps
+/buildPlugins/_deps
+/buildPlugins
+/GlassEngine_Build
+/buildPlugins
