@@ -1,6 +1,0 @@
-# CMake generation dependency list for this directory.
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindOpenGL.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
-D:/Apps/Cmake/share/cmake-3.30/Modules/FindPackageMessage.cmake
-D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glew-src/CMakeLists.txt
-D:/Docs/Code/Engines/Glass Engine 1/buildPlugins/_deps/glew-src/GeneratePkgConfig.cmake
