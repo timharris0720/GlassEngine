@@ -13,7 +13,6 @@ class GameManager : public Core::Scripting::Script {
 
 class GameManager_Componenet : public Core::Entity::Component {
 public:
-    GameManager_Componenet() : Component("GameManager", std::make_unique<GameManager>()){
-        
+    GameManager_Componenet() : Component("GameManager"){
     }
 };

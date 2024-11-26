@@ -22,7 +22,7 @@ namespace Cameras{
 		Mat4 m_ViewMatrix;
 		Mat4 m_ViewProjectionMatrix;
 
-        Core::Object::Transform transform;
+        Core::Entity::Transform transform;
         
     };
 

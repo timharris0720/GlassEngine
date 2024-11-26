@@ -23,7 +23,7 @@ namespace Core {
 			
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
-		void Application::PushGameObject(Core::Object::GameObject* GO){
+		void Application::PushGameObject(Core::Entity::GameObject* GO){
 			gameObjects.push_back(GO);
 			logger.InfoLog("Added Gameobject: %s to stack", GO->name.c_str());
 		}
@@ -34,7 +34,7 @@ namespace Core {
 			while (GetRenderer().GetBackend().apiInstance->shouldWindowClose())
 			{
 				pluginLoader.pluginUpdate();
-				for(Core::Object::GameObject* go : gameObjects){
+				for(Core::Entity::GameObject* go : gameObjects){
 					for(const auto& comp : go->componenets){
 						comp->GetScript();
 					}
@@ -43,41 +43,19 @@ namespace Core {
 		}
 	}
 	namespace Scripting {
-		void Script::PushGameObject(Core::Object::GameObject* GO){
+		void Script::PushGameObject(Core::Entity::GameObject* GO){
 			Core::App::Application::GetInstance().PushGameObject(GO);
 		}
-		Component::Component(std::string _name) {
-			name = _name;
-			logger = Logger(_name, "Log.txt");
-		}
-		Script* Component::GetScript(){
-			return script.get();
-		}
-
-		void Component::SetScript(const std::shared_ptr<Scripting::Script>& _script){
-			script = _script;
-			
-			script->logger.setLoggerName(name + "_script");
-		}
-		ErrorCode Component::validateComponent() {
-			if(script.get() == nullptr){
-				return COMP_NO_SCRIPT;
-			}
-			else if (name == ""){
-				return COMP_NO_NAME;
-			}
-			else return COMP_VALID;
-		}
-
+		
 		
 	}
-	namespace Object{
+	namespace Entity{
 		GameObject::GameObject(std::string name_){
 			name = name_;
 			logger = Logger(name, "log.txt");
 			App::Application::GetInstance().PushGameObject(this);
 		}
-		void GameObject::AddComponent(const std::shared_ptr<Scripting::Component>& component){
+		void GameObject::AddComponent(const std::shared_ptr<Component>& component){
 			ErrorCode COMP_CODE = component->validateComponent();
 			switch (COMP_CODE)
 			{
@@ -98,5 +76,30 @@ namespace Core {
 		void GameObject::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
 			App::Application::GetRenderer().CreateShader(fragmentShaderPath, vertexShaderPath);
 		}
+
+
+		Component::Component(std::string _name) {
+			name = _name;
+			logger = Logger(_name, "Log.txt");
+		}
+		Scripting::Script* Component::GetScript(){
+			return script.get();
+		}
+
+		void Component::SetScript(const std::shared_ptr<Scripting::Script>& _script){
+			script = _script;
+			
+			script->logger.setLoggerName(name + "_script");
+		}
+		ErrorCode Component::validateComponent() {
+			if(script.get() == nullptr){
+				return COMP_NO_SCRIPT;
+			}
+			else if (name == ""){
+				return COMP_NO_NAME;
+			}
+			else return COMP_VALID;
+		}
+
 	}
 }
