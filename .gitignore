@@ -1,9 +1,9 @@
 
 /build/.cmake
 /build
-/build
 /build/_deps
 /buildPlugins/_deps
 /buildPlugins
 /GlassEngine_Build
 /buildPlugins
+"/Test Project/testProj"

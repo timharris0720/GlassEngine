@@ -48,7 +48,7 @@ add_library(GlassEngineCore SHARED ${SRC_FILES} ${HEAD_FILES})
 
 target_compile_definitions(GlassEngineCore PUBLIC GLASS_ENGINE_EXPORTS_CORE)
 target_include_directories(GlassEngineCore PUBLIC "${OutputIncDir}")
-
+target_include_directories(GlassEngineCore PUBLIC ${glm_SOURCE_DIR}/glm)
 
 
 file(GLOB GLM_INCLUDES_glm  ${glm_SOURCE_DIR}/glm/*.hpp)
