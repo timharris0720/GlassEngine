@@ -78,28 +78,6 @@ namespace Core {
 		}
 
 
-		Component::Component(std::string _name) {
-			name = _name;
-			logger = Logger(_name, "Log.txt");
-		}
-		Scripting::Script* Component::GetScript(){
-			return script.get();
-		}
-
-		void Component::SetScript(const std::shared_ptr<Scripting::Script>& _script){
-			script = _script;
-			
-			script->logger.setLoggerName(name + "_script");
-		}
-		ErrorCode Component::validateComponent() {
-			if(script.get() == nullptr){
-				return COMP_NO_SCRIPT;
-			}
-			else if (name == ""){
-				return COMP_NO_NAME;
-			}
-			else return COMP_VALID;
-		}
 
 	}
 }

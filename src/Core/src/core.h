@@ -181,6 +181,7 @@ namespace Core {
 				std::shared_ptr<Core::Scripting::Script> script;
 				
 			public:
+				GameObject* parent;
 				Logger logger;
 				std::string name;
 				Component() = default;
@@ -211,28 +212,12 @@ namespace Core {
 				Transform transform;
 				Mesh mesh;
 				std::vector<GameObject*> children;
-				template<typename T>
-				void AddComponent(){
-					static_assert(std::is_base_of<Component, T>::value, "Pushed type is not subclass of Script!");
-					std::shared_ptr<Component> comp = std::make_shared<T>();
-					ErrorCode COMP_CODE = comp->validateComponent();
+				template <typename T, typename... Args>
+				void addComponent(Args&&... args) {
+					//componenets.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
 					
-					
-					switch (COMP_CODE)
-					{
-						case ErrorCode::COMP_VALID:
-							componenets.emplace_back(&comp);
-							comp->GetScript()->gameObject = this;
-							comp->GetScript()->Start();
-							break;
-						case ErrorCode::COMP_NO_NAME:
-							logger.ErrorLog("NO NAME ADDED TO COMPONENT THATS PART OF GAMEOBJECT %s", name.c_str());
-							break;
-						case ErrorCode::COMP_NO_SCRIPT:
-							logger.ErrorLog("NO SCRIPT ADDED TO COMPONENT: %s", comp->name.c_str());
-							break;
-					}
 				}
+				
 				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Component>& component);
 				std::vector<std::shared_ptr<Component>>* GetComponenets() {
