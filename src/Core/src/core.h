@@ -148,6 +148,7 @@ namespace Core {
             
                 Core::Entity::GameObject* gameObject;
                 Logger logger = Logger("TempName", "log.txt");
+
                 virtual ~Script() = default;
                 virtual void Start() {}
                 virtual void Update() {}
@@ -156,6 +157,12 @@ namespace Core {
     } // namespace Scripting
 
 	namespace Entity {
+
+		class ECS {
+
+		};
+
+
         struct Transform {
 			Vector3 position;
 			Vector3 rotation;
@@ -179,23 +186,19 @@ namespace Core {
         class Component {
 			private:
 				std::shared_ptr<Core::Scripting::Script> script;
-				
+				//
 			public:
 				GameObject* parent;
 				Logger logger;
 				std::string name;
 				Component() = default;
-				GLASS_ENGINE_API Component(std::string _name);
-				GLASS_ENGINE_API Core::Scripting::Script* GetScript();
-				template<typename T>
-				void SetScript(){
-					static_assert(std::is_base_of<Scripting::Script, T>::value, "Pushed type is not subclass of Layer!");
-					script = std::make_shared<T>();	
-					script->logger.setLoggerName(name + "_script");
+				explicit Component(std::string _name, std::shared_ptr<Scripting::Script> attachedScript) : script(std::move(attachedScript)) {script->logger.setLoggerName(name + "_script"); script->gameObject = parent;}
+				Core::Scripting::Script* GetScript(){
+					return script.get();
 				}
-				GLASS_ENGINE_API void SetScript(const std::shared_ptr<Core::Scripting::Script>& script);
-
-				GLASS_ENGINE_API ErrorCode validateComponent();
+				void update(){
+					if(script) script->Update();
+				}
 		};
 
 
@@ -212,17 +215,8 @@ namespace Core {
 				Transform transform;
 				Mesh mesh;
 				std::vector<GameObject*> children;
-				template <typename T, typename... Args>
-				void addComponent(Args&&... args) {
-					//componenets.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
-					
-				}
 				
 				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
-				GLASS_ENGINE_API void AddComponent(const std::shared_ptr<Component>& component);
-				std::vector<std::shared_ptr<Component>>* GetComponenets() {
-					return &componenets;
-				}
 		};
 
     }
