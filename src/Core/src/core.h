@@ -43,6 +43,7 @@ namespace Core{
 		class Object;
 		class GameObject;
 		class Component;
+		class ECS;
 	}
 
 	namespace Scripting {
@@ -145,21 +146,21 @@ namespace Core {
     {
         class Script {
             public:
-            
+				Entity::ECS* ECSWorld;
                 Core::Entity::GameObject* gameObject;
                 Logger logger = Logger("TempName", "log.txt");
 
                 virtual ~Script() = default;
                 virtual void Start() {}
                 virtual void Update() {}
-                GLASS_ENGINE_API void PushGameObject(Core::Entity::GameObject* GO);
             };
     } // namespace Scripting
 
 	namespace Entity {
 
 		class ECS {
-
+			public:
+			GameObject& createGameObject();
 		};
 
 
@@ -215,7 +216,6 @@ namespace Core {
 				Transform transform;
 				Mesh mesh;
 				std::vector<GameObject*> children;
-				
 				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 		};
 

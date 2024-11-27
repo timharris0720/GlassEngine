@@ -42,36 +42,11 @@ namespace Core {
 			}
 		}
 	}
-	namespace Scripting {
-		void Script::PushGameObject(Core::Entity::GameObject* GO){
-			Core::App::Application::GetInstance().PushGameObject(GO);
-		}
-		
-		
-	}
 	namespace Entity{
 		GameObject::GameObject(std::string name_){
 			name = name_;
 			logger = Logger(name, "log.txt");
 			App::Application::GetInstance().PushGameObject(this);
-		}
-		void GameObject::AddComponent(const std::shared_ptr<Component>& component){
-			ErrorCode COMP_CODE = component->validateComponent();
-			switch (COMP_CODE)
-			{
-				case ErrorCode::COMP_VALID:
-					component->GetScript()->gameObject = this;
-					component->GetScript()->Start();
-					this->componenets.emplace_back(component);
-					break;
-				case ErrorCode::COMP_NO_NAME:
-					logger.ErrorLog("NO NAME ADDED TO COMPONENT THATS PART OF GAMEOBJECT %s", name.c_str());
-					break;
-				case ErrorCode::COMP_NO_SCRIPT:
-					logger.ErrorLog("NO SCRIPT ADDED TO COMPONENT: %s", component->name.c_str());
-					break;
-			}
-			
 		}
 		void GameObject::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
 			App::Application::GetRenderer().CreateShader(fragmentShaderPath, vertexShaderPath);
