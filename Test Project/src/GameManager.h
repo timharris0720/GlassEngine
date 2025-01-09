@@ -1,18 +1,15 @@
 #include "GlassEngine/GlassEngine.h"
 
 
-class GameManager : public Core::Scripting::Script {
-    public:
-    virtual void Start() override {
-        logger.InfoLog("Hello WOrlddd");
-        logger.InfoLog("logger name %s", logger.getLoggerName().c_str());
-    }
-};
 
 
-
-class GameManager_Componenet : public Core::Entity::Component {
+class GameManager : public GoCS::GameComponent {
 public:
-    GameManager_Componenet() : Component("GameManager"){
+    GameManager() : GoCS::GameComponent("Hello World"){
+    
+    }
+
+    void Start() override {
+        this->parent->logger.InfoLog("hello world");
     }
 };

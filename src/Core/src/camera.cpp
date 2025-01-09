@@ -1,11 +1,4 @@
 #include "camera.h"
 void Cameras::Camera::RecalculateViewMatrix() {
-    
+    parent->logger.InfoLog("Recalc Vie Matrix");
 } 
-void Cameras::OrthoCamera::SetProjection(float left, float right, float bottom, float top){
-
-}
-
-Cameras::OrthoCamera::OrthoCamera(float left, float right, float bottom, float top){
-
-}

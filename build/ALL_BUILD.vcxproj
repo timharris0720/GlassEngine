@@ -182,10 +182,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{F9621146-EED8-3B68-A581-21ABCD6DECD9}</Project>
       <Name>GlassEngineCore</Name>
     </ProjectReference>
-    <ProjectReference Include="E:\TIM USAGE 2024\GlassEngine\build\src\Runtime\GlassEngineRuntime.vcxproj">
-      <Project>{F2030622-A170-32AF-BFFE-5E99569F00A1}</Project>
-      <Name>GlassEngineRuntime</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

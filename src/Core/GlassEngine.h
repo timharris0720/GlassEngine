@@ -6,4 +6,5 @@
 #include "camera.h"
 #include "ErrorCodes.h"
 #include "Shader.h"
+#include "GoCS.h"
 using namespace Core;

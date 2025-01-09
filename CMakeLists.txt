@@ -46,7 +46,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${OUTPUT_BASE_DIR}/Release/lib")
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 
 add_subdirectory(src/Core)
-add_subdirectory(src/Runtime)
 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/bin\")") 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/lib\")")

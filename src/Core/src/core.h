@@ -17,6 +17,7 @@
 #include "Logger.h"
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
+#include "GoCS.h"
 
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
@@ -37,14 +38,6 @@ typedef glm::mat4 Mat4;
 */
 
 namespace Core{
-	namespace Entity {
-		struct Mesh;
-		struct Transform;
-		class Object;
-		class GameObject;
-		class Component;
-		class ECS;
-	}
 
 	namespace Scripting {
 		class Script;
@@ -142,84 +135,7 @@ namespace Core {
 				}
 		};
 	}*/
-	namespace Scripting
-    {
-        class Script {
-            public:
-				Entity::ECS* ECSWorld;
-                Core::Entity::GameObject* gameObject;
-                Logger logger = Logger("TempName", "log.txt");
 
-                virtual ~Script() = default;
-                virtual void Start() {}
-                virtual void Update() {}
-            };
-    } // namespace Scripting
-
-	namespace Entity {
-
-		class ECS {
-			public:
-			GameObject& createGameObject();
-		};
-
-
-        struct Transform {
-			Vector3 position;
-			Vector3 rotation;
-			Vector3 scale;
-			
-		};
-
-		struct Mesh {
-			std::vector<Vector3> vertices;
-			std::vector<Vector3> normals;
-		};
-
-
-        class Object {
-			public:
-
-				void SetActive(bool active);
-				bool isActive = true;
-		};
-
-        class Component {
-			private:
-				std::shared_ptr<Core::Scripting::Script> script;
-				//
-			public:
-				GameObject* parent;
-				Logger logger;
-				std::string name;
-				Component() = default;
-				explicit Component(std::string _name, std::shared_ptr<Scripting::Script> attachedScript) : script(std::move(attachedScript)) {script->logger.setLoggerName(name + "_script"); script->gameObject = parent;}
-				Core::Scripting::Script* GetScript(){
-					return script.get();
-				}
-				void update(){
-					if(script) script->Update();
-				}
-		};
-
-
-        class GameObject : public Object {
-			private:
-				
-				Shader* shader;
-			public:
-				std::vector<std::shared_ptr<Component>> componenets;
-				Logger logger;
-				GameObject() = default;
-				GLASS_ENGINE_API GameObject(std::string name);
-				std::string name;
-				Transform transform;
-				Mesh mesh;
-				std::vector<GameObject*> children;
-				GLASS_ENGINE_API void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
-		};
-
-    }
 
 	namespace App {
 		
@@ -240,7 +156,8 @@ namespace Core {
 		private:
 			RenderBackend api;
 			Logger logger = Logger("Application","Log.txt");
-			std::vector<Core::Entity::GameObject*> gameObjects;
+			//std::vector<Core::Entity::GameObject*> gameObjects;
+			GoCS::GameObject Root;
 			static Application* s_instance;
 			static Renderer::RendererAPI* renderAPI;
 		public:
@@ -249,7 +166,7 @@ namespace Core {
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
-			GLASS_ENGINE_API void PushGameObject(Core::Entity::GameObject* GO);
+			GLASS_ENGINE_API void PushGameObject(GoCS::GameObject* gameObject);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
 			static Application& GetInstance() { return *s_instance; }
