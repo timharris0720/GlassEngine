@@ -1,9 +1,21 @@
 #pragma once
+
+#ifdef _WIN32
+#ifdef GLASS_ENGINE_EXPORTS_CORE
+#define GLASS_ENGINE_API __declspec(dllexport)
+#else
+#define GLASS_ENGINE_API __declspec(dllimport)
+#endif
+#else
+#define GLASS_ENGINE_API
+#endif
+
 #include <iostream>
 #include "glm/glm.hpp"
 #include "Logger.h"
 #include "ErrorCodes.h"
-#include "core.h"
+#include "Logger.h"
+#include "RendererAPI.h"
 #include <string>
 
 namespace GoCS {
@@ -18,12 +30,13 @@ namespace GoCS {
     class GameComponent {
         public:
         std::string name;
+        Logger logger = Logger("TempName", "log.txt");
         GameObject* parent;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
-        virtual void Start();
-        virtual void Update();
-        virtual void Draw(Renderer::RendererAPI* renderer);
+        virtual void Start() {};
+        virtual void Update() {};
+        virtual void Draw(Renderer::RendererAPI* renderer) {};
     };
 
     class Transform : GameComponent {
@@ -44,22 +57,29 @@ namespace GoCS {
             bool isActive;
             bool isAlive;
 
-            void Start();
+            void Start() {};
             void Update() {
+                if(children.size() > 0){
+                    for(GameObject* child : children){
+                        child->Update();
+                    }
+                }
                 for(int i = 0; i < components.size(); i++){
                     components[i]->Update();
                 }
             }
             GameObject* getRootGameObject();
-            template<typename T>
-            void AddGameComponent(std::string name) {
-                
-                static_assert(std::is_base_of<GameComponent, T>::value, "Pushed type is not subclass of Script!");
-				std::shared_ptr<GameComponent> comp = std::make_shared<T>();
-                comp->name = name;
-                comp->parent = this;
-                comp->Start();
-                componenets.emplace_back(&comp);
+            template<class T>
+            T* AddGameComponent(std::string name) {
+                if (std::is_base_of<GameComponent, T>()) {
+                    GameComponent* tmp = new T();
+                    tmp->parent = this;
+                    tmp->name = name;
+                    tmp->logger.setLoggerName(name + "_component");
+                    tmp->Start();
+                    components.push_back(tmp);
+                //return static_cast<T*>(tmp);
+                }
             }
 
             GameObject() = default;

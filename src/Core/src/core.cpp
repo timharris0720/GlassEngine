@@ -37,9 +37,7 @@ namespace Core {
 			{
 				
 				for(GoCS::GameObject* go : Root.children){
-					for(const auto& comp : go->components){
-						comp->Update();
-					}
+					go->Update();
 				}
 				pluginLoader.pluginUpdate();
 			}

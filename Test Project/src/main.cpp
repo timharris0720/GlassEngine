@@ -8,6 +8,9 @@ public:
         //Core::Entity::GameObject* GO = new Core::Entity::GameObject("GameManager");
         //GO->AddComponent<GameManager_Componenet>();
         //PushGameObject(GO);
+
+        GoCS::GameObject* GO = new GoCS::GameObject("GameManager");
+        GO->AddGameComponent<GameManager>("GameManager");
     }
 };
 

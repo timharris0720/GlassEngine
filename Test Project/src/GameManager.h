@@ -10,6 +10,9 @@ public:
     }
 
     void Start() override {
-        this->parent->logger.InfoLog("hello world");
+        logger.InfoLog("hello world");
+    }
+    void Update() override {
+        logger.InfoLog("hewo");
     }
 };
