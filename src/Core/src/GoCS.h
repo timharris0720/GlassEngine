@@ -78,8 +78,9 @@ namespace GoCS {
                     tmp->logger.setLoggerName(name + "_component");
                     tmp->Start();
                     components.push_back(tmp);
-                //return static_cast<T*>(tmp);
+                    return static_cast<T*>(tmp);
                 }
+                return NULL;
             }
 
             GameObject() = default;
