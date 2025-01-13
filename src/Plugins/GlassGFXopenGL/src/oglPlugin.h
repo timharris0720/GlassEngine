@@ -16,7 +16,7 @@
 
 class OpenGLShader : public Shader {
 private:
-    Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "log.txt");
+    Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "Log.txt");
 public:
     OPENGL_PLUGIN_API void Create(std::string fragmentShaderPath, std::string vertexShaderPath) override;
 };

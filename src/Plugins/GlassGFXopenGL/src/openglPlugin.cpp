@@ -1,13 +1,11 @@
 #include "oglPlugin.h"
 
 bool OpenGLRenderAPI::onLoad() {
-    logger.ToggleFileLogging();
+    
     if(!glfwInit()){
         logger.ErrorLog("GLFW Failed To INIT");
         return false;
     }
-    
-    logger.InfoLog("Beasdasdasd");
     // OpenGL initialization code
     if(!glewInit()){
         logger.ErrorLog("GLEW Failed To INIT");

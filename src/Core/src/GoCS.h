@@ -16,6 +16,7 @@
 #include "ErrorCodes.h"
 #include "Logger.h"
 #include "RendererAPI.h"
+#include "ImageUtils.h"
 #include <string>
 
 namespace GoCS {
@@ -24,13 +25,39 @@ namespace GoCS {
     class GameObject;
 }
 
+namespace Components {
+    class Transform : public GoCS::GameComponent {
+        public:
+            glm::vec3 Position;
+            glm::vec3 Rotation;
+    };
+    class Sprite : public GoCS::GameComponent{
+        public:
+            ImageUtils::Image sprite;
+            Sprite() = default;
+            Sprite(std::string imagePath) : GameComponent("sprite2D") {
+                sprite = ImageUtils::Image(imagePath);
+
+                for (int i = 0; i < 10 && i < sprite.width * sprite.height * sprite.channels; i++) {
+                    for (int j = 0; j < sprite.channels; j++) {
+                        logger.InfoLog("Pixel %i , Channel: %i, Data: %i", i, j, (int)sprite.imageData[i * sprite.channels + j]);
+                    }
+                    
+                }
+
+                
+            } 
+
+    };
+}
+
 
 
 namespace GoCS {
     class GameComponent {
         public:
         std::string name;
-        Logger logger = Logger("TempName", "log.txt");
+        Logger logger = Logger("TempName", "Log.txt");
         GameObject* parent;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
@@ -39,15 +66,11 @@ namespace GoCS {
         virtual void Draw(Renderer::RendererAPI* renderer) {};
     };
 
-    class Transform : GameComponent {
-        public:
-            glm::vec3 Position;
-            glm::vec3 Rotation;
-    };
+    
 
     class GameObject {
         public: 
-            Logger logger = Logger("TempName", "log.txt");
+            Logger logger = Logger("TempName", "Log.txt");
             std::string name;
             std::vector<GameObject*> children;
             std::vector<GameComponent*> components;
@@ -68,7 +91,9 @@ namespace GoCS {
                     components[i]->Update();
                 }
             }
-            GameObject* getRootGameObject();
+            GameObject* getRootGameObject() {
+                return root;
+            }
             template<class T>
             T* AddGameComponent(std::string name) {
                 if (std::is_base_of<GameComponent, T>()) {
@@ -78,12 +103,18 @@ namespace GoCS {
                     tmp->logger.setLoggerName(name + "_component");
                     tmp->Start();
                     components.push_back(tmp);
+                    logger.InfoLog("Added Component: %s_component to %s GameComponents", name.c_str(), this->name.c_str());
                     return static_cast<T*>(tmp);
                 }
                 return NULL;
             }
-
+            GameObject* CreateChild(std::string name){
+                GameObject* GO = new GameObject(name,  this);
+                logger.InfoLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
+                return GO;
+            }
             GameObject() = default;
             GLASS_ENGINE_API GameObject(std::string name);
+            GLASS_ENGINE_API GameObject(std::string name, GameObject* parent);
     };
 }

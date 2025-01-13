@@ -10,4 +10,10 @@ namespace GoCS {
         logger.setLoggerName(name);
         Core::App::Application::GetInstance().PushGameObject(this);
     }
+    GameObject::GameObject(std::string name, GameObject* parent){
+        this->name = name;
+        logger.setLoggerName(name);
+        parent->children.push_back(this);
+    }
+
 }
