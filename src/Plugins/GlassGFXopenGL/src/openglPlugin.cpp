@@ -53,6 +53,6 @@ void OpenGLShader::Create(std::string fragmentShaderPath, std::string vertexShad
 
 
 // Plugin Registration
-extern "C" OPENGL_PLUGIN_API GlassPlugin* create() {
+extern "C" GLASS_PLUGIN_API GlassPlugin* create() {
     return new OpenGLRenderAPI();
 }

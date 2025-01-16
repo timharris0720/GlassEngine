@@ -1,4 +1,5 @@
-#include "GlassEngine/entrypoint.h"
+#define GLASS_ENTRY_INCLUDE
+#include "GlassEngine/GlassEngine.h"
 #include "GameManager.h"
 
 class TestProject : public Core::App::Application {
@@ -9,7 +10,7 @@ public:
         //GO->AddComponent<GameManager_Componenet>();
         //PushGameObject(GO);
 
-        GoCS::GameObject* GO = new GoCS::GameObject("GameManager");
+        GameObject* GO = new GameObject("GameManager");
         GO->AddGameComponent<GameManager>("GameManager");
     }
 };

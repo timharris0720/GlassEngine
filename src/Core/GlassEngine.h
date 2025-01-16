@@ -7,4 +7,9 @@
 #include "ErrorCodes.h"
 #include "Shader.h"
 #include "GoCS.h"
+#ifdef GLASS_ENTRY_INCLUDE
+#include "entrypoint.h"
+#endif
 using namespace Core;
+using namespace GoCS;
+

@@ -48,5 +48,6 @@ add_executable(testingProj src/main.cpp)
 
 
 target_link_libraries(testingProj GlassEngineCore)
-
+file(GLOB TEST_ASSETS ../TestAssets/*)
 install(TARGETS testingProj)
+install(FILES     ${TEST_ASSETS}    DESTINATION  	${USING_RUNTIME}/Assets)

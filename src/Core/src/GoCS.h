@@ -24,31 +24,9 @@ namespace GoCS {
     class Transform;
     class GameObject;
 }
-
 namespace Components {
-    class Transform : public GoCS::GameComponent {
-        public:
-            glm::vec3 Position;
-            glm::vec3 Rotation;
-    };
-    class Sprite : public GoCS::GameComponent{
-        public:
-            ImageUtils::Image sprite;
-            Sprite() = default;
-            Sprite(std::string imagePath) : GameComponent("sprite2D") {
-                sprite = ImageUtils::Image(imagePath);
-
-                for (int i = 0; i < 10 && i < sprite.width * sprite.height * sprite.channels; i++) {
-                    for (int j = 0; j < sprite.channels; j++) {
-                        logger.InfoLog("Pixel %i , Channel: %i, Data: %i", i, j, (int)sprite.imageData[i * sprite.channels + j]);
-                    }
-                    
-                }
-
-                
-            } 
-
-    };
+    class Transform;
+    class Sprite;
 }
 
 
@@ -76,7 +54,7 @@ namespace GoCS {
             std::vector<GameComponent*> components;
             GameObject* parent;
             GameObject* root;
-            Transform* transform;
+            Components::Transform* transform;
             bool isActive;
             bool isAlive;
 
@@ -94,10 +72,10 @@ namespace GoCS {
             GameObject* getRootGameObject() {
                 return root;
             }
-            template<class T>
-            T* AddGameComponent(std::string name) {
+            template<class T, typename... Args>
+            T* AddGameComponent(std::string name, Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
-                    GameComponent* tmp = new T();
+                    GameComponent* tmp = new T(std::forward<Args>(args)...);
                     tmp->parent = this;
                     tmp->name = name;
                     tmp->logger.setLoggerName(name + "_component");
@@ -118,3 +96,30 @@ namespace GoCS {
             GLASS_ENGINE_API GameObject(std::string name, GameObject* parent);
     };
 }
+
+namespace Components {
+    class Transform : public GoCS::GameComponent {
+        public:
+            glm::vec3 Position;
+            glm::vec3 Rotation;
+    };
+    class Sprite : public GoCS::GameComponent{
+        public:
+            ImageUtils::Image sprite;
+            Sprite() = default;
+            Sprite(std::string imagePath) : GameComponent("sprite2D") {
+                sprite = ImageUtils::Image(imagePath);
+
+                for (int i = 0; i < 10 && i < sprite.width * sprite.height * sprite.channels; i++) {
+                    for (int j = 0; j < sprite.channels; j++) {
+                        logger.InfoLog("Pixel %i , Channel: %i, Data: %i", i, j, (int)sprite.imageData[i * sprite.channels + j]);
+                    }
+                    
+                }
+
+                
+            } 
+
+    };
+}
+

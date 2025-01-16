@@ -42,7 +42,7 @@ file(GLOB HEAD_FILES  src/*.h )
 file(GLOB SRC_FILES  src/*.cpp)
 
 add_library(GlassGFX.openGL SHARED ${SRC_FILES} ${HEAD_FILES})
-target_compile_definitions(GlassGFX.openGL PUBLIC OPENGL_PLUGIN)
+target_compile_definitions(GlassGFX.openGL PUBLIC GLASS_PLUGIN_EXPORTS)
 target_include_directories(GlassGFX.openGL PUBLIC ${glfw_SOURCE_DIR}/include)
 target_include_directories(GlassGFX.openGL PUBLIC ${glew_SOURCE_DIR}/include)
 target_include_directories(GlassGFX.openGL PUBLIC "${OutputIncDir}")
