@@ -38,7 +38,7 @@ public:
     virtual void* GetNativeWindow() const = 0;
     virtual bool isVsyncEnabled() {return winData.vsync;};
     virtual void VsyncCallback() = 0;
-    virtual Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) = 0 ;
+    virtual Shader CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}
     void toggleVsync(bool choice){winData.vsync = choice; VsyncCallback();};

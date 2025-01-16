@@ -17,3 +17,10 @@ namespace GoCS {
     }
 
 }
+namespace Components {
+    Sprite::Sprite(std::string imagePath) : GameComponent("sprite2D") {
+        sprite = ImageUtils::Image(imagePath);
+        parent->objectShader = &Core::App::Application::GetInstance().GetRenderer().CreateShader("Assets/Shaders/2D/frag.glsl","Assets/Shaders/2D/vert.glsl");
+        
+    } 
+}

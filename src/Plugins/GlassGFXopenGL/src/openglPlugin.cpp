@@ -37,12 +37,12 @@ void OpenGLRenderAPI::Update() {
     glfwSwapBuffers(window);
 }
 
-Shader* OpenGLRenderAPI::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
+Shader OpenGLRenderAPI::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
     logger.InfoLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
     logger.InfoLog("Vertex shader path: %s ", vertexShaderPath.c_str());
     OpenGLShader shader;
     shader.Create(fragmentShaderPath, vertexShaderPath);
-    return &shader;
+    return shader;
 }
 
 

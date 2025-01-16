@@ -48,6 +48,8 @@ add_executable(testingProj src/main.cpp)
 
 
 target_link_libraries(testingProj GlassEngineCore)
-file(GLOB TEST_ASSETS ../TestAssets/*)
+file(GLOB TEST_ASSETS ../TestAssets/*.*)
+file(GLOB TEST_ASSETS_2D_SHADERS ../TestAssets/Shaders/2D/*)
 install(TARGETS testingProj)
 install(FILES     ${TEST_ASSETS}    DESTINATION  	${USING_RUNTIME}/Assets)
+install(FILES     ${TEST_ASSETS_2D_SHADERS}    DESTINATION  	${USING_RUNTIME}/Assets/Shaders/2D)

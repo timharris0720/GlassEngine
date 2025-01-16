@@ -40,5 +40,5 @@ public:
     GLASS_PLUGIN_API void Clear();
     GLASS_PLUGIN_API void BeginScene(std::shared_ptr<Cameras::Camera> camera);
     GLASS_PLUGIN_API void DrawVertexArray();
-    GLASS_PLUGIN_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
+    GLASS_PLUGIN_API Shader CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
 };

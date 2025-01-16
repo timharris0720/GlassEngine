@@ -18,7 +18,6 @@
 #include "RendererAPI.h"
 #include "ImageUtils.h"
 #include <string>
-
 namespace GoCS {
     class GameComponent;
     class Transform;
@@ -55,6 +54,7 @@ namespace GoCS {
             GameObject* parent;
             GameObject* root;
             Components::Transform* transform;
+            Shader* objectShader;
             bool isActive;
             bool isAlive;
 
@@ -106,19 +106,8 @@ namespace Components {
     class Sprite : public GoCS::GameComponent{
         public:
             ImageUtils::Image sprite;
-            Sprite() = default;
-            Sprite(std::string imagePath) : GameComponent("sprite2D") {
-                sprite = ImageUtils::Image(imagePath);
-
-                for (int i = 0; i < 10 && i < sprite.width * sprite.height * sprite.channels; i++) {
-                    for (int j = 0; j < sprite.channels; j++) {
-                        logger.InfoLog("Pixel %i , Channel: %i, Data: %i", i, j, (int)sprite.imageData[i * sprite.channels + j]);
-                    }
-                    
-                }
-
-                
-            } 
+            GLASS_ENGINE_API Sprite() = default;
+            GLASS_ENGINE_API Sprite(std::string imagePath);
 
     };
 }
