@@ -11,7 +11,7 @@ public:
         //PushGameObject(GO);
 
         GameObject* GO = new GameObject("GameManager");
-        GO->AddGameComponent<GameManager>("GameManager");
+        GO->AddGameComponent<GameManager>();
     }
 };
 

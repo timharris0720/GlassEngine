@@ -36,7 +36,7 @@ namespace Renderer {
     struct RenObject {
       // Vertex - Color, textCoord, Pos / vector
       std::vector<Vertex> ObjectVertices;
-      Shader ObjectsShader;
+      Shader* ObjectsShader;
       // Shader
 
 
@@ -57,7 +57,7 @@ namespace Renderer {
             void SetBackend(Plugin::PluginStruct_GFX backend) {pRenderingBackend = std::move(backend);}
             Plugin::PluginStruct_GFX& GetBackend() {return pRenderingBackend;}
             
-            GLASS_ENGINE_API Shader CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
+            GLASS_ENGINE_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
         public:
             std::vector<RenderData> renderData;
     };

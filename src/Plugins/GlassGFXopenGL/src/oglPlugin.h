@@ -18,7 +18,8 @@ class OpenGLShader : public Shader {
 private:
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "Log.txt");
 public:
-    GLASS_PLUGIN_API void Create(std::string fragmentShaderPath, std::string vertexShaderPath) override;
+    GLASS_PLUGIN_API void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) override;
+
 };
 
 
@@ -40,5 +41,5 @@ public:
     GLASS_PLUGIN_API void Clear();
     GLASS_PLUGIN_API void BeginScene(std::shared_ptr<Cameras::Camera> camera);
     GLASS_PLUGIN_API void DrawVertexArray();
-    GLASS_PLUGIN_API Shader CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
+    GLASS_PLUGIN_API Shader* CreateShader();
 };

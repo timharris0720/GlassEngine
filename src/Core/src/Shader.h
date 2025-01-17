@@ -2,12 +2,10 @@
 #include <string>
 
 class Shader {
-private:
+public:
     std::string VertShader;
     std::string FragShader;
-
-public:
-    virtual void Create(std::string fragmentShaderPath, std::string vertexShaderPath) {};
+    virtual void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     virtual ~Shader() {};
     virtual void Bind() {};
     virtual void Unbind() {};

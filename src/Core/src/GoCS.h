@@ -38,6 +38,7 @@ namespace GoCS {
         GameObject* parent;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
+        virtual void Init() {};
         virtual void Start() {};
         virtual void Update() {};
         virtual void Draw(Renderer::RendererAPI* renderer) {};
@@ -73,15 +74,15 @@ namespace GoCS {
                 return root;
             }
             template<class T, typename... Args>
-            T* AddGameComponent(std::string name, Args&&... args) {
+            T* AddGameComponent(Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
                     GameComponent* tmp = new T(std::forward<Args>(args)...);
                     tmp->parent = this;
-                    tmp->name = name;
-                    tmp->logger.setLoggerName(name + "_component");
+                    
+                    //tmp->Init();
                     tmp->Start();
                     components.push_back(tmp);
-                    logger.InfoLog("Added Component: %s_component to %s GameComponents", name.c_str(), this->name.c_str());
+                    logger.InfoLog("Added Component: %s_component to %s GameComponents", tmp->name.c_str(), this->name.c_str());
                     return static_cast<T*>(tmp);
                 }
                 return NULL;
@@ -108,7 +109,7 @@ namespace Components {
             ImageUtils::Image sprite;
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath);
-
+            GLASS_ENGINE_API void Start() override;
     };
 }
 
