@@ -14,7 +14,7 @@
 #include <cstdarg>
 #include <vector>
 #include <string>
-#include <fstream> 
+#include <fstream>
 #ifdef WIN32
 #include <Windows.h>
 #endif
@@ -25,30 +25,18 @@ class Logger {
 private:
     std::string LogFile;
     bool LogToFile = false;
-    enum WriteType {
-		Append = 0,
-		Overwrite = 1,
-	};
-    void writeFile(std::string fileData, std::string path, WriteType type) {
-		
-		
-		if (type == WriteType::Append) {
-			std::ofstream file(path, std::ios::app);
-
-			file << fileData + "\n";
-			file.close();
-		}
-		else if(type == WriteType::Overwrite) { // Overwrite the file
-			std::ofstream file(path);
-			file << fileData;
-			file.close();
-		}
-		
-	}
     std::string InfoLogTitle;
     std::string DebuLogTitle;
     std::string ErroLogTitle;
 	std::string LoggerName;
+	void writeFile(std::string fileData, std::string path) {			
+    
+        std::ofstream file(path, std::ios::app);
+
+        file << fileData + "\n";
+        file.close();
+	}
+
 public:
     Logger() = default;
     Logger(std::string loggerName, std::string pathLogFile, bool fileLogging = true) {LoggerName = loggerName;LogFile=pathLogFile; InfoLogTitle = "[ INFO | " + LoggerName + "] : "; DebuLogTitle = "[ DEBUG | " + LoggerName + "] : "; ErroLogTitle = "[ ERROR | " + LoggerName + "] : ";LogToFile = fileLogging;}
@@ -105,7 +93,7 @@ public:
 			std::vsnprintf(buffer.data(), size, fmt, args);  // Format the string into the buffer
 			va_end(args);
 
-			writeFile(DebuLogTitle + std::string(buffer.data()), LogFile, WriteType::Append);
+			writeFile(DebuLogTitle + std::string(buffer.data()), LogFile);
 		}
 	
 #endif // DEBUG
@@ -148,7 +136,7 @@ public:
 			std::vsnprintf(buffer.data(), size, fmt, args);  // Format the string into the buffer
 			va_end(args);
 
-			writeFile(ErroLogTitle + std::string(buffer.data()), LogFile, WriteType::Append);
+			writeFile(ErroLogTitle + std::string(buffer.data()), LogFile);
 		}
 	}
 	void InfoLog(const char* fmt, ...) {
@@ -172,24 +160,19 @@ public:
 		va_start(args, fmt);
 		vprintf(fmt, args);
 		va_end(args);
-
 		std::cout << std::endl;
 
 		if (LogToFile == true) {
 			va_list args;
 			va_start(args, fmt);
-
-			// Determine the size of the formatted string
-			size_t size = std::vsnprintf(nullptr, 0, fmt, args) + 1;  // Include space for '\0'
-			va_end(args);  // Reset va_list for the second use
-
-			// Allocate the necessary buffer in a C++ std::string
+			size_t size = std::vsnprintf(nullptr, 0, fmt, args) + 1;
+			va_end(args);
 			std::vector<char> buffer(size);
-			va_start(args, fmt);  // Restart the variadic argument list
-			std::vsnprintf(buffer.data(), size, fmt, args);  // Format the string into the buffer
+			va_start(args, fmt);
+			std::vsnprintf(buffer.data(), size, fmt, args); 
 			va_end(args);
 
-			writeFile(InfoLogTitle + std::string(buffer.data()), LogFile, WriteType::Append);
+			writeFile(InfoLogTitle + std::string(buffer.data()), LogFile);
 		}
 	}
 };

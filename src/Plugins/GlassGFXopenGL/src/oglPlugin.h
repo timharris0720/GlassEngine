@@ -16,10 +16,13 @@
 
 class OpenGLShader : public Shader {
 private:
+    unsigned int ShaderID;
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "Log.txt");
 public:
     GLASS_PLUGIN_API void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) override;
-
+    GLASS_PLUGIN_API void Bind() override;
+    GLASS_PLUGIN_API void Unbind() override;
+    void checkCompileErrors(GLuint shader, std::string type);
 };
 
 
@@ -32,7 +35,7 @@ public:
     GLASS_PLUGIN_API bool onLoad() override;
     GLASS_PLUGIN_API void createRenderContext(WindowProperties* winProps) override;
     GLASS_PLUGIN_API void* GetNativeWindow() const {return window;}
-    
+    void GlfwErrorCB(int error, const char* description);
     GLASS_PLUGIN_API void Update() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
     GLASS_PLUGIN_API void VsyncCallback() override {

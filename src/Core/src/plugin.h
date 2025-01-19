@@ -4,6 +4,7 @@
 #include <any>
 #include <vector>
 #include "Shader.h"
+
 struct WindowProperties {
     std::string name;
     int width;

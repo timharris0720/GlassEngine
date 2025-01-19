@@ -14,7 +14,6 @@
 #include "glm/glm.hpp"
 #include "Logger.h"
 #include "ErrorCodes.h"
-#include "Logger.h"
 #include "RendererAPI.h"
 #include "ImageUtils.h"
 #include <string>
