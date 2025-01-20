@@ -113,12 +113,56 @@ void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexSha
     
     
 void OpenGLShader::Bind(){
-    
+    logger.InfoLog("Binded");
 }
 void OpenGLShader::Unbind(){
     
 }
 
+VertexArray* OpenGLRenderAPI::CreateVAO(){
+    logger.InfoLog("Vertex Array Created");
+    return new OGLVertexArray();
+}
+void OpenGLRenderAPI::DrawVertexArray(VertexArray* vert,Shader* objShader){
+    objShader->Bind();
+    vert->Bind();
+}
+void OGLVertexArray::Create(std::vector<Vertex>* verts,std::vector<unsigned int>* inds){
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, verts->size() * sizeof(Vertex), verts->data(), GL_STATIC_DRAW);
+
+    // Position attribute (location = 0)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, vertices));
+    glEnableVertexAttribArray(0);
+
+    // UV attribute (location = 1)
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, UV));
+    glEnableVertexAttribArray(1);
+
+    // Color attribute (location = 2)
+    glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+    glEnableVertexAttribArray(2);
+
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, inds->size() * sizeof(unsigned int), inds->data(), GL_STATIC_DRAW);
+    glBindVertexArray(0); // Unbind
+    logger.InfoLog("Created VBO EBO VAO");
+}
+void OGLVertexArray::Bind(){
+    // TODO ERROR - VAO maybe not got data???
+    logger.InfoLog("Bind VAO");
+    glBindVertexArray(VAO);
+}
+void OGLVertexArray::Unbind(){
+    glBindVertexArray(0);
+}
 // Plugin Registration
 extern "C" GLASS_PLUGIN_API GlassPlugin* create() {
     return new OpenGLRenderAPI();

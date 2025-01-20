@@ -16,7 +16,9 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "ImageUtils.h"
+#include "defaults.h"
 #include <string>
+
 namespace GoCS {
     class GameComponent;
     class Transform;
@@ -55,20 +57,13 @@ namespace GoCS {
             GameObject* root;
             Components::Transform* transform;
             Shader* objectShader;
+            VertexArray* vertexArray;
             bool isActive;
             bool isAlive;
 
             void Start() {};
-            void Update() {
-                if(children.size() > 0){
-                    for(GameObject* child : children){
-                        child->Update();
-                    }
-                }
-                for(int i = 0; i < components.size(); i++){
-                    components[i]->Update();
-                }
-            }
+            GLASS_ENGINE_API void Update();
+                
             GameObject* getRootGameObject() {
                 return root;
             }
@@ -106,6 +101,7 @@ namespace Components {
     class Sprite : public GoCS::GameComponent{
         public:
             ImageUtils::Image sprite;
+            
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath);
             GLASS_ENGINE_API void Start() override;

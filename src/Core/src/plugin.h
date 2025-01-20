@@ -4,7 +4,7 @@
 #include <any>
 #include <vector>
 #include "Shader.h"
-
+#include "VertexArray.h"
 struct WindowProperties {
     std::string name;
     int width;
@@ -40,6 +40,9 @@ public:
     virtual bool isVsyncEnabled() {return winData.vsync;};
     virtual void VsyncCallback() = 0;
     virtual Shader* CreateShader() = 0 ;
+    virtual VertexArray* CreateVAO() = 0 ;
+    virtual void DrawVertexArray(VertexArray* vert, Shader* objShader) {};
+    //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}
     void toggleVsync(bool choice){winData.vsync = choice; VsyncCallback();};

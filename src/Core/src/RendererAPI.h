@@ -10,7 +10,7 @@
 #endif
 #include <glm/glm.hpp>
 #include "pluginLoader.h"
-
+#include "VertexArray.h"
 namespace Renderer {
     
     /*
@@ -28,25 +28,7 @@ namespace Renderer {
     }
     
     */
-    struct Vertex {
-        glm::vec2 textureCoord;
-        glm::vec3 color = glm::vec3(1);
-        glm::vec3 position;
-    };
-    struct RenObject {
-      // Vertex - Color, textCoord, Pos / vector
-      std::vector<Vertex> ObjectVertices;
-      Shader* ObjectsShader;
-      // Shader
-
-
-    };
-
-    struct RenderData {
-        // Vector Object 
-        std::vector<RenObject> RenderObjects;
-        
-    };
+    
 
     class RendererAPI {
         private:
@@ -56,9 +38,8 @@ namespace Renderer {
             Plugin::PluginStruct_GFX pRenderingBackend;
             void SetBackend(Plugin::PluginStruct_GFX backend) {pRenderingBackend = std::move(backend);}
             Plugin::PluginStruct_GFX& GetBackend() {return pRenderingBackend;}
-            
             GLASS_ENGINE_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
-        public:
-            std::vector<RenderData> renderData;
+            GLASS_ENGINE_API VertexArray* CreateVertexArray(std::vector<Vertex>* verts,std::vector<unsigned int>* inds);
+            GLASS_ENGINE_API void DrawIndexed(VertexArray* vertArray, Shader* objShader);
     };
 };

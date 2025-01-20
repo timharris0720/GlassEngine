@@ -41,8 +41,16 @@ public:
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
-    GLASS_PLUGIN_API void Clear();
-    GLASS_PLUGIN_API void BeginScene(std::shared_ptr<Cameras::Camera> camera);
-    GLASS_PLUGIN_API void DrawVertexArray();
     GLASS_PLUGIN_API Shader* CreateShader();
+    GLASS_PLUGIN_API VertexArray* CreateVAO();
+    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vert, Shader* objShader) override;
+};
+//void DrawVertexArray(Renderer::VertexArray* vert) {}
+class OGLVertexArray : public VertexArray {
+    private:
+    Logger logger = Logger("GlassGFX.OpenGL.Plugin.OGLVertexArray", "Log.txt");
+    public:
+    GLASS_PLUGIN_API void Create(std::vector<Vertex>* verts,std::vector<unsigned int>* inds) override;
+    GLASS_PLUGIN_API void Bind();
+    GLASS_PLUGIN_API void Unbind();
 };
