@@ -25,7 +25,8 @@ namespace GoCS {
         for(int i = 0; i < components.size(); i++){
             components[i]->Update();
         }
-        Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+        if(objectShader)
+            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
     
     }
 }

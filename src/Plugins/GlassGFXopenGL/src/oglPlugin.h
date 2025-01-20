@@ -16,7 +16,6 @@
 
 class OpenGLShader : public Shader {
 private:
-    unsigned int ShaderID;
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "Log.txt");
 public:
     GLASS_PLUGIN_API void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) override;
@@ -48,9 +47,12 @@ public:
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
 class OGLVertexArray : public VertexArray {
     private:
+
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OGLVertexArray", "Log.txt");
     public:
-    GLASS_PLUGIN_API void Create(std::vector<Vertex>* verts,std::vector<unsigned int>* inds) override;
+    unsigned int VAO, VBO, EBO;
+    unsigned int IndiciesCount;
+    GLASS_PLUGIN_API void Create(std::vector<Vertex>* vertices,std::vector<unsigned int>* indices) override;
     GLASS_PLUGIN_API void Bind();
     GLASS_PLUGIN_API void Unbind();
 };

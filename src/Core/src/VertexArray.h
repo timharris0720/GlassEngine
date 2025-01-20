@@ -10,7 +10,8 @@ struct Vertex {
 // TODO add Layouts
 class VertexArray{
     public:
-    unsigned int VBO, VAO, EBO;
+    unsigned int VAO, VBO, EBO;
+    unsigned int IndiciesCount;
     VertexArray() = default;
     virtual void Bind(){};
     virtual void Unbind(){};

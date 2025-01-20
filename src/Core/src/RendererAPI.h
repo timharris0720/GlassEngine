@@ -32,7 +32,8 @@ namespace Renderer {
 
     class RendererAPI {
         private:
-        
+            Logger logger = Logger("Core.RenderAPI", "Log.txt");
+
         public:
             RendererAPI() = default;
             Plugin::PluginStruct_GFX pRenderingBackend;
