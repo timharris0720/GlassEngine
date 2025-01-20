@@ -11,8 +11,9 @@ namespace GoCS {
         logger.setLoggerName(name);
         Core::App::Application::GetInstance().PushGameObject(this);
     }
-    GameObject::GameObject(std::string name, GameObject* parent){
+    GameObject::GameObject(std::string name, GameObject* pParent){
         this->name = name;
+        this->parent = pParent;
         logger.setLoggerName(name);
         parent->children.push_back(this);
     }
@@ -25,8 +26,9 @@ namespace GoCS {
         for(int i = 0; i < components.size(); i++){
             components[i]->Update();
         }
-        if(objectShader)
-            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+        logger.InfoLog("OBJ AND VA");
+        Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+        
     
     }
 }

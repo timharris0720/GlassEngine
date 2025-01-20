@@ -117,25 +117,25 @@ void OpenGLShader::Bind(){
 void OpenGLShader::Unbind(){
     logger.InfoLog("Unbind Shader %u", ShaderID);
     glUseProgram(0);
+    logger.InfoLog("Unbind Shader %u", ShaderID);
 }
 
 VertexArray* OpenGLRenderAPI::CreateVAO(){
     logger.InfoLog("Vertex Array Created");
     return new OGLVertexArray();
 }
-void OpenGLRenderAPI::DrawVertexArray(VertexArray* vert,Shader* objShader){
-    logger.InfoLog("OBJ Shader: %u", objShader);
-    OpenGLShader* sha = (OpenGLShader*)objShader;
+void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader){
+    logger.InfoLog("OBJ Shader: %u", objShader->ShaderID);
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0,0,0,1);
-    sha->Bind();
-    vert->Bind();
+    objShader->Bind();
+    vertArray->Bind();
     logger.InfoLog("Draw Step 1");
-    glDrawElements(GL_TRIANGLES, vert->IndiciesCount, GL_UNSIGNED_INT, 0);
-    sha->Unbind();
-    vert->Unbind();
-    logger.InfoLog("Bind and unbind");
+    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
+    objShader->Unbind();
+    vertArray->Unbind();
+    
 
 
     

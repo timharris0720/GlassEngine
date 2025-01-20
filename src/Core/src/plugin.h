@@ -41,7 +41,7 @@ public:
     virtual void VsyncCallback() = 0;
     virtual Shader* CreateShader() = 0 ;
     virtual VertexArray* CreateVAO() = 0 ;
-    virtual void DrawVertexArray(VertexArray* vert, Shader* objShader) {};
+    virtual void DrawVertexArray(VertexArray* vertArray, Shader* objShader) {};
     //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}

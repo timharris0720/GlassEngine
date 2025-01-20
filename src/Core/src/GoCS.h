@@ -56,8 +56,8 @@ namespace GoCS {
             GameObject* parent;
             GameObject* root;
             Components::Transform* transform;
-            Shader* objectShader;
-            VertexArray* vertexArray;
+            Shader* objectShader = nullptr;
+            VertexArray* vertexArray = nullptr;
             bool isActive;
             bool isAlive;
 
@@ -72,7 +72,7 @@ namespace GoCS {
                 if (std::is_base_of<GameComponent, T>()) {
                     GameComponent* tmp = new T(std::forward<Args>(args)...);
                     tmp->parent = this;
-                    
+                    //tmp->root = root;
                     //tmp->Init();
                     tmp->Start();
                     components.push_back(tmp);
@@ -88,7 +88,7 @@ namespace GoCS {
             }
             GameObject() = default;
             GLASS_ENGINE_API GameObject(std::string name);
-            GLASS_ENGINE_API GameObject(std::string name, GameObject* parent);
+            GLASS_ENGINE_API GameObject(std::string name, GameObject* pParent);
     };
 }
 

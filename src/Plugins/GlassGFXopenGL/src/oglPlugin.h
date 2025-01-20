@@ -42,7 +42,7 @@ public:
     }
     GLASS_PLUGIN_API Shader* CreateShader();
     GLASS_PLUGIN_API VertexArray* CreateVAO();
-    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vert, Shader* objShader) override;
+    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vertArray, Shader* objShader) override;
 };
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
 class OGLVertexArray : public VertexArray {
