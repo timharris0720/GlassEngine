@@ -1,4 +1,4 @@
-E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/bin/testingProj.exe
-E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/testImage.jpg
-E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/frag.glsl
-E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/vert.glsl
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/bin/testingProj.exe
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl

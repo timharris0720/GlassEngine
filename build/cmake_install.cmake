@@ -1,8 +1,8 @@
-# Install script for directory: E:/TIM USAGE 2024/GlassEngine
+# Install script for directory: E:/TIM USAGE 2024/Code/GlassEngine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build")
+  set(CMAKE_INSTALL_PREFIX "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,15 +34,15 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/TIM USAGE 2024/GlassEngine/build/src/Core/cmake_install.cmake")
+  include("E:/TIM USAGE 2024/Code/GlassEngine/build/src/Core/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(REMOVE_RECURSE "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/bin")
+  file(REMOVE_RECURSE "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/bin")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(REMOVE_RECURSE "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/lib")
+  file(REMOVE_RECURSE "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/lib")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -52,7 +52,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/GlassEngine/build/install_local_manifest.txt"
+  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -68,6 +68,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/GlassEngine/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

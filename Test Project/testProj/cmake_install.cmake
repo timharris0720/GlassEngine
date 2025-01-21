@@ -1,8 +1,8 @@
-# Install script for directory: E:/TIM USAGE 2024/GlassEngine/Test Project
+# Install script for directory: E:/TIM USAGE 2024/Code/GlassEngine/Test Project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build")
+  set(CMAKE_INSTALL_PREFIX "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,112 +34,112 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/testingProj.exe")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/testingProj.exe")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/testingProj.exe")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/testingProj.exe")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/MinSizeRel/testingProj.exe")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/MinSizeRel/testingProj.exe")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/RelWithDebInfo/testingProj.exe")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/RelWithDebInfo/testingProj.exe")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/testImage.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/frag.glsl;E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/vert.glsl")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderFrag.glsl;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderVert.glsl")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D" TYPE FILE FILES
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/frag.glsl"
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/vert.glsl"
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderFrag.glsl"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderVert.glsl"
       )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/frag.glsl;E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/vert.glsl")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/frag.glsl"
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/vert.glsl"
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderFrag.glsl"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderVert.glsl"
       )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/frag.glsl;E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/vert.glsl")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/frag.glsl"
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/vert.glsl"
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderFrag.glsl"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderVert.glsl"
       )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/frag.glsl;E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/vert.glsl")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/frag.glsl"
-      "E:/TIM USAGE 2024/GlassEngine/Test Project/../TestAssets/Shaders/2D/vert.glsl"
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderFrag.glsl"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Shaders/2D/defaultShaderVert.glsl"
       )
   endif()
 endif()
@@ -147,7 +147,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/install_local_manifest.txt"
+  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -163,6 +163,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -152,7 +152,7 @@ namespace Plugin {
         loadedPlugins.clear();
     }
     void PluginLoader::pluginUpdate(){
-        //Core::App::Application::GetRenderer().GetBackend().apiInstance->Update();
+        Core::App::Application::GetRenderer().GetBackend().apiInstance->Update();
         for (const auto& plugin : loadedPlugins) {
             if (plugin.apiInstance) {
                 plugin.apiInstance->Update();

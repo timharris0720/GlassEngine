@@ -25,8 +25,8 @@ class GlassPlugin {
     virtual std::any execute(const std::string& command, const std::any& data = {}) {
         return {}; // Default empty return for unsupported commands
     }
-    virtual void setTexture(const std::string& texturePath) {};
-    virtual void setShader(const std::string& shaderPath) {};
+    //virtual void setTexture(const std::string& texturePath) {};
+    //virtual void setShader(const std::string& shaderPath) {};
 };
 
 class GlassPlugin_GFX : public GlassPlugin {
@@ -47,3 +47,4 @@ public:
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}
     void toggleVsync(bool choice){winData.vsync = choice; VsyncCallback();};
 };
+ 

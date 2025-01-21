@@ -24,9 +24,9 @@ events:
       The output was:
       0
       MSBuild version 17.11.2+c078802d4 for .NET Framework
-      Build started 26/11/2024 22:10:39.
+      Build started 21/01/2025 21:45:19.
       
-      Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -34,12 +34,21 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
         CMakeCCompilerId.c
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.exe
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        'pwsh.exe' is not recognized as an internal or external command,
+        operable program or batch file.
+        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -47,13 +56,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.95
+      Time Elapsed 00:00:01.34
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -61,7 +70,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/3.31.1/CompilerIdC/CompilerIdC.exe
+        E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/3.31.1/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "message-v1"
@@ -79,9 +88,9 @@ events:
       The output was:
       0
       MSBuild version 17.11.2+c078802d4 for .NET Framework
-      Build started 26/11/2024 22:10:40.
+      Build started 21/01/2025 21:45:20.
       
-      Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -89,12 +98,21 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.exe
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        'pwsh.exe' is not recognized as an internal or external command,
+        operable program or batch file.
+        The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"" exited with code 9009.
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -102,13 +120,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\3.31.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.94
+      Time Elapsed 00:00:01.36
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -116,7 +134,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/3.31.1/CompilerIdCXX/CompilerIdCXX.exe
+        E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/3.31.1/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
@@ -127,8 +145,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-yqkizw"
-      binary: "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-yqkizw"
+      source: "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-npvqug"
+      binary: "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-npvqug"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -138,40 +156,49 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-yqkizw'
+        Change Dir: 'E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-npvqug'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_9b903.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1a6c5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.11.2+c078802d4 for .NET Framework
-        Build started 26/11/2024 22:10:41.
+        Build started 21/01/2025 21:45:22.
         
-        Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-yqkizw\\cmTC_9b903.vcxproj" on node 1 (default targets).
+        Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\cmTC_1a6c5.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_9b903.dir\\Debug\\".
+          Creating directory "cmTC_1a6c5.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-yqkizw\\Debug\\".
-          Creating directory "cmTC_9b903.dir\\Debug\\cmTC_9b903.tlog\\".
+          Creating directory "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\".
+          Creating directory "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_9b903.dir\\Debug\\cmTC_9b903.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_9b903.dir\\Debug\\cmTC_9b903.tlog\\unsuccessfulbuild".
+          Creating "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9b903.dir\\Debug\\\\" /Fd"cmTC_9b903.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a6c5.dir\\Debug\\\\" /Fd"cmTC_1a6c5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9b903.dir\\Debug\\\\" /Fd"cmTC_9b903.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          cl /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a6c5.dir\\Debug\\\\" /Fd"cmTC_1a6c5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-yqkizw\\Debug\\cmTC_9b903.exe" /INCREMENTAL /ILK:"cmTC_9b903.dir\\Debug\\cmTC_9b903.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-yqkizw/Debug/cmTC_9b903.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-yqkizw/Debug/cmTC_9b903.lib" /MACHINE:X64  /machine:x64 cmTC_9b903.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_9b903.vcxproj -> E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-yqkizw\\Debug\\cmTC_9b903.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\cmTC_1a6c5.exe" /INCREMENTAL /ILK:"cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.ilk" /NOLOGO /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-npvqug/Debug/cmTC_1a6c5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-npvqug/Debug/cmTC_1a6c5.lib" /MACHINE:X64  /machine:x64 cmTC_1a6c5.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_1a6c5.vcxproj -> E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\cmTC_1a6c5.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\cmTC_1a6c5.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\cmTC_1a6c5.write.1u.tlog" "cmTC_1a6c5.dir\\Debug\\vcpkg.applocal.log"
+          'pwsh.exe' is not recognized as an internal or external command,
+          operable program or batch file.
+          The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\cmTC_1a6c5.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\cmTC_1a6c5.write.1u.tlog" "cmTC_1a6c5.dir\\Debug\\vcpkg.applocal.log"" exited with code 9009.
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\Debug\\cmTC_1a6c5.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\cmTC_1a6c5.write.1u.tlog" "cmTC_1a6c5.dir\\Debug\\vcpkg.applocal.log"
         FinalizeBuildStatus:
-          Deleting file "cmTC_9b903.dir\\Debug\\cmTC_9b903.tlog\\unsuccessfulbuild".
-          Touching "cmTC_9b903.dir\\Debug\\cmTC_9b903.tlog\\cmTC_9b903.lastbuildstate".
-        Done Building Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-yqkizw\\cmTC_9b903.vcxproj" (default targets).
+          Deleting file "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\unsuccessfulbuild".
+          Touching "cmTC_1a6c5.dir\\Debug\\cmTC_1a6c5.tlog\\cmTC_1a6c5.lastbuildstate".
+        Done Building Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-npvqug\\cmTC_1a6c5.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.90
+        Time Elapsed 00:00:01.39
         
       exitCode: 0
   -
@@ -211,8 +238,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-wje88p"
-      binary: "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-wje88p"
+      source: "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-nrea4x"
+      binary: "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-nrea4x"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -223,40 +250,49 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-wje88p'
+        Change Dir: 'E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-nrea4x'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_946ad.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2b224.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.11.2+c078802d4 for .NET Framework
-        Build started 26/11/2024 22:10:42.
+        Build started 21/01/2025 21:45:24.
         
-        Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-wje88p\\cmTC_946ad.vcxproj" on node 1 (default targets).
+        Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\cmTC_2b224.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_946ad.dir\\Debug\\".
+          Creating directory "cmTC_2b224.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-wje88p\\Debug\\".
-          Creating directory "cmTC_946ad.dir\\Debug\\cmTC_946ad.tlog\\".
+          Creating directory "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\".
+          Creating directory "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_946ad.dir\\Debug\\cmTC_946ad.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_946ad.dir\\Debug\\cmTC_946ad.tlog\\unsuccessfulbuild".
+          Creating "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_946ad.dir\\Debug\\\\" /Fd"cmTC_946ad.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2b224.dir\\Debug\\\\" /Fd"cmTC_2b224.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_946ad.dir\\Debug\\\\" /Fd"cmTC_946ad.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /I"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2b224.dir\\Debug\\\\" /Fd"cmTC_2b224.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-wje88p\\Debug\\cmTC_946ad.exe" /INCREMENTAL /ILK:"cmTC_946ad.dir\\Debug\\cmTC_946ad.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-wje88p/Debug/cmTC_946ad.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-wje88p/Debug/cmTC_946ad.lib" /MACHINE:X64  /machine:x64 cmTC_946ad.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_946ad.vcxproj -> E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-wje88p\\Debug\\cmTC_946ad.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\cmTC_2b224.exe" /INCREMENTAL /ILK:"cmTC_2b224.dir\\Debug\\cmTC_2b224.ilk" /NOLOGO /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-nrea4x/Debug/cmTC_2b224.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/CMakeScratch/TryCompile-nrea4x/Debug/cmTC_2b224.lib" /MACHINE:X64  /machine:x64 cmTC_2b224.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_2b224.vcxproj -> E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\cmTC_2b224.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\cmTC_2b224.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\cmTC_2b224.write.1u.tlog" "cmTC_2b224.dir\\Debug\\vcpkg.applocal.log"
+          'pwsh.exe' is not recognized as an internal or external command,
+          operable program or batch file.
+          The command "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\cmTC_2b224.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\cmTC_2b224.write.1u.tlog" "cmTC_2b224.dir\\Debug\\vcpkg.applocal.log"" exited with code 9009.
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "E:\\TIM USAGE 2024\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\Debug\\cmTC_2b224.exe" "E:\\TIM USAGE 2024\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\cmTC_2b224.write.1u.tlog" "cmTC_2b224.dir\\Debug\\vcpkg.applocal.log"
         FinalizeBuildStatus:
-          Deleting file "cmTC_946ad.dir\\Debug\\cmTC_946ad.tlog\\unsuccessfulbuild".
-          Touching "cmTC_946ad.dir\\Debug\\cmTC_946ad.tlog\\cmTC_946ad.lastbuildstate".
-        Done Building Project "E:\\TIM USAGE 2024\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-wje88p\\cmTC_946ad.vcxproj" (default targets).
+          Deleting file "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2b224.dir\\Debug\\cmTC_2b224.tlog\\cmTC_2b224.lastbuildstate".
+        Done Building Project "E:\\TIM USAGE 2024\\Code\\GlassEngine\\Test Project\\testProj\\CMakeFiles\\CMakeScratch\\TryCompile-nrea4x\\cmTC_2b224.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.91
+        Time Elapsed 00:00:01.29
         
       exitCode: 0
   -

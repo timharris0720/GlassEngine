@@ -50,8 +50,6 @@ class OGLVertexArray : public VertexArray {
 
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OGLVertexArray", "Log.txt");
     public:
-    unsigned int VAO, VBO, EBO;
-    unsigned int IndiciesCount;
     GLASS_PLUGIN_API void Create(std::vector<Vertex>* vertices,std::vector<unsigned int>* indices) override;
     GLASS_PLUGIN_API void Bind();
     GLASS_PLUGIN_API void Unbind();

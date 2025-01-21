@@ -26,8 +26,10 @@ namespace GoCS {
         for(int i = 0; i < components.size(); i++){
             components[i]->Update();
         }
-        logger.InfoLog("OBJ AND VA");
-        Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+        if(vertexArray && objectShader){
+            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+        }
+        
         
     
     }
@@ -40,31 +42,9 @@ namespace Components {
         
     } 
     void Sprite::Start() {
-        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/frag.glsl","Assets/Shaders/2D/vert.glsl");
-        Vertex Vertex1;
-        Vertex1.vertices = glm::vec3(-0.5f, -0.5f,0.0f);
-        Vertex1.color = glm::vec3(1,1,1);
-        Vertex Vertex2;
-        Vertex2.vertices = glm::vec3(0.5f, -0.5f,0.0f);
-        Vertex2.color = glm::vec3(1,1,1);
-        Vertex Vertex3;
-        Vertex3.vertices = glm::vec3(0.5f,  0.5f,0.0f);
-        Vertex3.color = glm::vec3(1,1,1);
-        Vertex Vertex4;
-        Vertex4.vertices = glm::vec3( -0.5f,  0.5f ,0.0f);
-        Vertex4.color = glm::vec3(1,1,1);
-        std::vector<Vertex> vertices = {
-            Vertex1,Vertex2,Vertex3,Vertex4
-        };
-        std::vector<unsigned int> indices = {
-            0, 1, 2, 
-            2, 3, 0  
-        };
-        VertexArray* v = Core::App::Application::GetRenderer().CreateVertexArray(&vertices,&indices);
+        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
+        VertexArray* v = Defaults::SquareSprite();
         parent->objectShader = std::move(shader);
-        logger.InfoLog("Parent VA: %i", parent->vertexArray);
-        logger.InfoLog("Parent   : %i", parent);
-        
         this->parent->vertexArray = std::move(v);
     }
 }

@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\TIM USAGE 2024\GlassEngine\Test Project\testProj\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>E:\TIM USAGE 2024\Code\GlassEngine\Test Project\testProj\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\TIM USAGE 2024\GlassEngine\GlassEngine_Build\win64\Debug\bin\testingProj.exe</FullPath>
+      <FullPath>E:\TIM USAGE 2024\Code\GlassEngine\GlassEngine_Build\win64\Debug\bin\testingProj.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

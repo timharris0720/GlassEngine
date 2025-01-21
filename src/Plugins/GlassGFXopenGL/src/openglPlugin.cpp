@@ -46,7 +46,7 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
 }
 
 void OpenGLRenderAPI::Update() {
-    
+   
     
 }
 
@@ -111,81 +111,96 @@ void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexSha
     
     
 void OpenGLShader::Bind(){
-    logger.InfoLog("Bind Shader %u", ShaderID);
     glUseProgram(ShaderID);
 }
 void OpenGLShader::Unbind(){
-    logger.InfoLog("Unbind Shader %u", ShaderID);
     glUseProgram(0);
-    logger.InfoLog("Unbind Shader %u", ShaderID);
 }
 
 VertexArray* OpenGLRenderAPI::CreateVAO(){
-    logger.InfoLog("Vertex Array Created");
     return new OGLVertexArray();
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader){
-    logger.InfoLog("OBJ Shader: %u", objShader->ShaderID);
+
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(0,0,0,1);
+    //glClearColor(0,0,0,1);
     objShader->Bind();
     vertArray->Bind();
-    logger.InfoLog("Draw Step 1");
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
-    vertArray->Unbind();
-    
-
-
-    
+    int display_w, display_h;
+    glfwGetFramebufferSize(window, &display_w, &display_h);
+    glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
-    
+    glfwPollEvents();
 }
 void OGLVertexArray::Create(std::vector<Vertex>* vertices,std::vector<unsigned int>* indices){
     IndiciesCount = indices->size();
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    // Generate VBO
 
-    // Bind VAO
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices->size() * sizeof(Vertex), vertices->data(), GL_STATIC_DRAW);
+
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, IndiciesCount * sizeof(unsigned int), indices->data(), GL_STATIC_DRAW);
+
+    glGenVertexArrays(1 , &VAO);
     glBindVertexArray(VAO);
 
-    // Bind and upload data to VBO
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices->size(), vertices->data(), GL_STATIC_DRAW);
-
-    // Bind and upload data to EBO
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned int), indices->data(), GL_STATIC_DRAW);
 
-    // Specify the layout of the vertex data
-    // Position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex,vertices));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, vertices));
     glEnableVertexAttribArray(0);
 
-    // Color attribute
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
     glEnableVertexAttribArray(1);
 
-    // UV attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, UV));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
     glEnableVertexAttribArray(2);
 
-    // Unbind VAO (optional)
-    glBindVertexArray(0); // Unbind
-    logger.InfoLog("Created VBO EBO VAO");
+    glBindVertexArray(0);
+    //glGenVertexArrays(1, &VAO);
+    //glGenBuffers(1, &VBO);
+    //glGenBuffers(1, &EBO);
+
+    //// Bind VAO
+    //glBindVertexArray(VAO);
+
+    //// Bind and upload data to VBO
+    //glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    //glBufferData(GL_ARRAY_BUFFER, vertices->size(), vertices->data(), GL_STATIC_DRAW);
+
+    //// Bind and upload data to EBO
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned int), indices->data(), GL_STATIC_DRAW);
+
+    //// Specify the layout of the vertex data
+    //// Position attribute
+    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex,vertices));
+    //glEnableVertexAttribArray(0);
+
+    //// Color attribute
+    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+    //glEnableVertexAttribArray(1);
+
+    //// UV attribute
+    //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, UV));
+    //glEnableVertexAttribArray(2);
+
+    //// Unbind VAO (optional)
+    //glBindVertexArray(0); // Unbind
+    //logger.InfoLog("Created VBO EBO VAO");
 }
 void OGLVertexArray::Bind(){
-    // TODO ERROR - VAO maybe not got data???
     glBindVertexArray(VAO);
-    logger.InfoLog("Bind VAO ID: %u", VAO);
 
 }
 void OGLVertexArray::Unbind(){
-    glBindVertexArray(0);
-    logger.InfoLog("Unbind VAO");
-
+    
 }
 // Plugin Registration
 extern "C" GLASS_PLUGIN_API GlassPlugin* create() {

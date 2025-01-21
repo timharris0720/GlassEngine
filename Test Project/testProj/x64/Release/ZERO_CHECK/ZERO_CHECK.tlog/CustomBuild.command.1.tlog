@@ -1,6 +1,6 @@
-^E:\TIM USAGE 2024\GLASSENGINE\TEST PROJECT\TESTPROJ\CMAKEFILES\BB751DE0F65858346FB0D703C014453A\GENERATE.STAMP.RULE
+^E:\TIM USAGE 2024\CODE\GLASSENGINE\TEST PROJECT\TESTPROJ\CMAKEFILES\502AE45B18B62F92C82D22F990C3890F\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SE:/TIM USAGE 2024/GlassEngine/Test Project" "-BE:/TIM USAGE 2024/GlassEngine/Test Project/testProj" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/testingProj.sln"
+"C:\Program Files\CMake\bin\cmake.exe" "-SE:/TIM USAGE 2024/Code/GlassEngine/Test Project" "-BE:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/testingProj.sln"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

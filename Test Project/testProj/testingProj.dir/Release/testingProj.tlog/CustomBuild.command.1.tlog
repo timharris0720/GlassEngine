@@ -1,6 +1,6 @@
-^E:\TIM USAGE 2024\GLASSENGINE\TEST PROJECT\CMAKELISTS.TXT
+^E:\TIM USAGE 2024\CODE\GLASSENGINE\TEST PROJECT\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SE:/TIM USAGE 2024/GlassEngine/Test Project" "-BE:/TIM USAGE 2024/GlassEngine/Test Project/testProj" --check-stamp-file "E:/TIM USAGE 2024/GlassEngine/Test Project/testProj/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SE:/TIM USAGE 2024/Code/GlassEngine/Test Project" "-BE:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj" --check-stamp-file "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/testProj/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
