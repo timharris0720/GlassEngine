@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include "pluginLoader.h"
 #include "VertexArray.h"
+#include "texture.h"
 namespace Renderer {
     
     /*
@@ -35,12 +36,14 @@ namespace Renderer {
             Logger logger = Logger("Core.RenderAPI", "Log.txt");
 
         public:
+
             RendererAPI() = default;
             Plugin::PluginStruct_GFX pRenderingBackend;
             void SetBackend(Plugin::PluginStruct_GFX backend) {pRenderingBackend = std::move(backend);}
             Plugin::PluginStruct_GFX& GetBackend() {return pRenderingBackend;}
             GLASS_ENGINE_API Shader* CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath);
             GLASS_ENGINE_API VertexArray* CreateVertexArray(std::vector<Vertex>* verts,std::vector<unsigned int>* inds);
-            GLASS_ENGINE_API void DrawIndexed(VertexArray* vertArray, Shader* objShader);
+            GLASS_ENGINE_API texture::Texture* CreateTexture(std::string path);
+            GLASS_ENGINE_API void DrawIndexed(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture = nullptr);
     };
 };

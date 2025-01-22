@@ -1,42 +1,91 @@
 #pragma once
 #include "core.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 namespace Cameras{
 
-    class Camera : GoCS::GameObject{
-        public:
-        glm::mat4 m_ProjectionMatrix;
-		glm::mat4 m_ViewMatrix;
-		glm::mat4 m_ViewProjectionMatrix;
-
+    class Camera : GoCS::GameObject {
+    public:
         Camera() = default;
-        Camera(std::string name) : GoCS::GameObject(name) {
-            
+        Camera(std::string name) : GoCS::GameObject(name){}
+        virtual ~Camera() = default;
+
+        // Pure virtual methods for projection matrix
+        virtual void setProjection(float width, float height) = 0;
+        virtual void updateProjectionMatrix() = 0;
+
+        // Convenience methods for setting and getting position and rotation
+        void setPosition(const glm::vec3& newPosition) { transform->Position = newPosition; }
+        void setRotation(const glm::vec3& newRotation) { transform->Rotation = newRotation; }
+
+        glm::vec3 getPosition() const { return transform->Position; }
+        glm::vec3 getRotation() const { return transform->Rotation; }
+
+        glm::mat4 getViewMatrix() const {
+            glm::vec3 position = getPosition();
+            glm::vec3 rotation = getRotation();
+
+            // Calculate forward, right, and up vectors from the rotation
+            glm::vec3 forward = glm::normalize(glm::vec3(
+                cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
+                sin(glm::radians(rotation.x)),
+                sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x))
+            ));
+            glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+            glm::vec3 right = glm::normalize(glm::cross(up, forward));
+            up = glm::normalize(glm::cross(forward, right));
+
+            return glm::lookAt(position, position + forward, up);
         }
-        GLASS_ENGINE_API Vector3 GetPosition() const { return transform->Position; }
-		GLASS_ENGINE_API void SetPosition(const glm::vec3& position) { transform->Position = position; RecalculateViewMatrix(); }
-		GLASS_ENGINE_API Vector3 GetRotation() const {return transform->Rotation;}
-		GLASS_ENGINE_API void SetRotation(Vector3 Rotation) {transform->Rotation = Rotation; RecalculateViewMatrix();}
-		GLASS_ENGINE_API void SetRotation(float rotation) { transform->Rotation.y = rotation; RecalculateViewMatrix(); }
 
-        GLASS_ENGINE_API const Mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
-		GLASS_ENGINE_API const Mat4& GetViewMatrix() const { return m_ViewMatrix; }
-		GLASS_ENGINE_API const Mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
-
-        GLASS_ENGINE_API void RecalculateViewMatrix();
+    protected:
+        glm::mat4 projectionMatrix{1.0f};
 
     };
-
     class PerspectiveCamera : public Camera {
-        public:
-        float FOV;
-        float aspectRatio;
-        PerspectiveCamera() = default;
-        PerspectiveCamera(std::string name): Camera(name) {}
-    };
+    public:
+        PerspectiveCamera(std::string name,float fov, float aspectRatio, float near, float far) : fov(fov), aspectRatio(aspectRatio), near(near), far(far), Camera(name) {
+            updateProjectionMatrix();
+        }
 
+        void setProjection(float width, float height) override {
+            aspectRatio = width / height;
+            updateProjectionMatrix();
+        }
+
+        void updateProjectionMatrix() override {
+            projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, near, far);
+        }
+
+        void setFOV(float newFov) {
+            fov = newFov;
+            updateProjectionMatrix();
+        }
+
+    private:
+        float fov; // Field of View in degrees
+        float aspectRatio;
+        float near, far;
+    };
     class OrthoCamera : public Camera {
-        public:
-        GLASS_ENGINE_API OrthoCamera(float left, float right, float bottom, float top);
-        GLASS_ENGINE_API void SetProjection(float left, float right, float bottom, float top);
+    public:
+        OrthoCamera(std::string name,float left, float right, float bottom, float top, float near, float far) : Camera(name),left(left), right(right), bottom(bottom), top(top), near(near), far(far) {
+            updateProjectionMatrix();
+        }
+
+        void setProjection(float width, float height) override {
+            left = -width / 2.0f;
+            right = width / 2.0f;
+            bottom = -height / 2.0f;
+            top = height / 2.0f;
+            updateProjectionMatrix();
+        }
+
+        void updateProjectionMatrix() override {
+            projectionMatrix = glm::ortho(left, right, bottom, top, near, far);
+        }
+
+    private:
+        float left, right, bottom, top, near, far;
     };
 }

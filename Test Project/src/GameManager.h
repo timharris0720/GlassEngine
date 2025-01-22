@@ -8,5 +8,6 @@ public:
     void Start() override {
         GameObject* testChild = new GameObject("testChild", parent);
         testChild->AddGameComponent<Components::Sprite>("Assets/testImage.jpg");
+        Cameras
     }   
 };

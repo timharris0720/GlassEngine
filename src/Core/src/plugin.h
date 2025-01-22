@@ -5,6 +5,7 @@
 #include <vector>
 #include "Shader.h"
 #include "VertexArray.h"
+#include "texture.h"
 struct WindowProperties {
     std::string name;
     int width;
@@ -41,7 +42,8 @@ public:
     virtual void VsyncCallback() = 0;
     virtual Shader* CreateShader() = 0 ;
     virtual VertexArray* CreateVAO() = 0 ;
-    virtual void DrawVertexArray(VertexArray* vertArray, Shader* objShader) {};
+    virtual texture::Texture* CreateTexture(std::string path) = 0 ;
+    virtual void DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr) {};
     //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}

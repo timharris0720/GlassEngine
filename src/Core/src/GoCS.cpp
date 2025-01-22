@@ -36,15 +36,14 @@ namespace GoCS {
 }
 namespace Components {
     Sprite::Sprite(std::string imagePath) : GameComponent("sprite2D") {
-        sprite = ImageUtils::Image(imagePath);
-
-        
-        
+        path = imagePath;
     } 
     void Sprite::Start() {
+        texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
         VertexArray* v = Defaults::SquareSprite();
         parent->objectShader = std::move(shader);
-        this->parent->vertexArray = std::move(v);
+        parent->vertexArray = std::move(v);
+        parent->texture = std::move(texu);
     }
 }

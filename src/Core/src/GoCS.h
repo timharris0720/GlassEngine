@@ -15,8 +15,8 @@
 #include "Logger.h"
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
-#include "ImageUtils.h"
 #include "defaults.h"
+
 #include <string>
 
 namespace GoCS {
@@ -55,9 +55,13 @@ namespace GoCS {
             std::vector<GameComponent*> components;
             GameObject* parent;
             GameObject* root;
+            
             Components::Transform* transform;
+
             Shader* objectShader = nullptr;
             VertexArray* vertexArray = nullptr;
+            texture::Texture* texture = nullptr;
+            
             bool isActive;
             bool isAlive;
 
@@ -83,6 +87,7 @@ namespace GoCS {
             }
             GameObject* CreateChild(std::string name){
                 GameObject* GO = new GameObject(name,  this);
+                GO->transform = new Components::Transform();
                 logger.InfoLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
                 return GO;
             }
@@ -99,12 +104,14 @@ namespace Components {
             glm::vec3 Rotation;
     };
     class Sprite : public GoCS::GameComponent{
+        private:
+        std::string path;
         public:
-            ImageUtils::Image sprite;
-            
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath);
             GLASS_ENGINE_API void Start() override;
     };
+
+    
 }
 

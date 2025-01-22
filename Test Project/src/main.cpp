@@ -22,6 +22,7 @@ Core::App::Application* CreateApplication(){
     appSpec.name = "Application";
     appSpec.width = 600;
     appSpec.height = 480;
+    appSpec.sceneType = 1;
     return new TestProject(appSpec, Core::App::RenderBackend::OPENGL);
 }
 

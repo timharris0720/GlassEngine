@@ -1,5 +1,10 @@
 #include "oglPlugin.h"
 #include "glassSTL.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
+#pragma region RenderAPI
 void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
 }
@@ -49,10 +54,36 @@ void OpenGLRenderAPI::Update() {
    
     
 }
-
 Shader* OpenGLRenderAPI::CreateShader() {
     return new OpenGLShader();
 }
+VertexArray* OpenGLRenderAPI::CreateVAO(){
+    return new OGLVertexArray();
+}
+texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path) {
+    return new OpenGLTexture(path);
+}
+void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture){
+    if(mCamera != nullptr){
+        camera = mCamera;
+    }
+    glfwPollEvents();
+    glClear(GL_COLOR_BUFFER_BIT);
+    //glClearColor(0,0,0,1);
+    objShader->Bind();
+    vertArray->Bind();
+    if(m_texture != nullptr)
+        m_texture->Bind();
+    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
+    objShader->Unbind();
+    int display_w, display_h;
+    glfwGetFramebufferSize(window, &display_w, &display_h);
+    glViewport(0, 0, display_w, display_h);
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+#pragma endregion
+#pragma region OpenGLShader
 void OpenGLShader::checkCompileErrors(GLuint shader, std::string type) {
     GLint success;
     GLchar infoLog[1024];
@@ -107,34 +138,15 @@ void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexSha
     // delete the shaders as they're linked into our program now and no longer necessary
     glDeleteShader(vertex);
     glDeleteShader(fragment);
-} 
-    
-    
+}  
 void OpenGLShader::Bind(){
     glUseProgram(ShaderID);
 }
 void OpenGLShader::Unbind(){
     glUseProgram(0);
 }
-
-VertexArray* OpenGLRenderAPI::CreateVAO(){
-    return new OGLVertexArray();
-}
-void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader){
-
-    glfwPollEvents();
-    glClear(GL_COLOR_BUFFER_BIT);
-    //glClearColor(0,0,0,1);
-    objShader->Bind();
-    vertArray->Bind();
-    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
-    objShader->Unbind();
-    int display_w, display_h;
-    glfwGetFramebufferSize(window, &display_w, &display_h);
-    glViewport(0, 0, display_w, display_h);
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-}
+#pragma endregion
+#pragma region OpenGLVertexArray
 void OGLVertexArray::Create(std::vector<Vertex>* vertices,std::vector<unsigned int>* indices){
     IndiciesCount = indices->size();
     // Generate VBO
@@ -202,6 +214,38 @@ void OGLVertexArray::Bind(){
 void OGLVertexArray::Unbind(){
     
 }
+#pragma endregion
+#pragma region OpenGLTexture
+OpenGLTexture::OpenGLTexture(std::string name){
+    unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load and generate the texture
+    if (imageData)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        logger.InfoLog("Failed to load texture");
+    }
+    stbi_image_free(imageData);
+}
+void OpenGLTexture::Bind(){
+    glBindTexture(GL_TEXTURE_2D, textureID);
+}
+#pragma endregion
+
+void Components::Camera::RecalculateViewMatrix(){
+    logger.InfoLog("Recalc idfk");
+}
+
 // Plugin Registration
 extern "C" GLASS_PLUGIN_API GlassPlugin* create() {
     return new OpenGLRenderAPI();

@@ -6,5 +6,5 @@ out vec4 FragOutput; // the input variable from the vertex shader (same name and
 
 void main()
 {
-    FragOutput = vec4(FragOutput,1.0);
+    FragOutput = vec4(FragColor,1.0);
 } 

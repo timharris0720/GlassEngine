@@ -146,10 +146,15 @@ namespace Core {
 			DX11,
 			DX12
 		};
+		enum SceneType {
+			DIM_2 = 0,
+			DIM_3,
+		};
 		struct AppSpec {
 			std::string name;
 			int height;
 			int width;
+			SceneType SceneType;
 		};
 
 
@@ -159,6 +164,7 @@ namespace Core {
 			Logger logger = Logger("Application","Log.txt");
 			//std::vector<Core::Entity::GameObject*> gameObjects;
 			GoCS::GameObject Root;
+			Cameras::Camera MainCamera;
 			static Application* s_instance;
 			static Renderer::RendererAPI* renderAPI;
 		public:
