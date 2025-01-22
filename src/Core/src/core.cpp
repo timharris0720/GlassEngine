@@ -51,3 +51,5 @@ namespace Core {
 		}
 	}
 }
+
+// TODO: finish the begin scene shit and cameras and textures
