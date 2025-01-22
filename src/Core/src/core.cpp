@@ -22,11 +22,11 @@ namespace Core {
 				logger.InfoLog("GLASS LOADED %i",ld);
 			}
 			Root = GoCS::GameObject();
-			if(appSpec.SceneType == SceneType::DIM_2){
-				MainCamera = Cameras::OrthoCamera("MainCamera",-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100.0f);
+			if(appSpec.sceneType == SceneType::DIM_2){
+				MainCamera = Cameras::OrthoCamera(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100.0f);
 			}
 			else {
-				MainCamera = Cameras::PerspectiveCamera("MainCamera",45.0f, 800.0f / 600.0f, 0.1f, 100.0f);
+				MainCamera = Cameras::PerspectiveCamera(45.0f, 800.0f / 600.0f, 0.1f, 100.0f);
 			}
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
@@ -42,7 +42,7 @@ namespace Core {
 		void Application::run(){
 			while (GetRenderer().GetBackend().apiInstance->shouldWindowClose())
 			{
-				GetRenderer().GetBackend().apiInstance->BeginScene();
+				GetRenderer().GetBackend().apiInstance->BeginScene(&MainCamera);
 				for(GoCS::GameObject* go : Root.children){
 					go->Update();
 				}

@@ -11,17 +11,16 @@
 #endif
 
 #include <iostream>
-#include "glm/glm.hpp"
 #include "Logger.h"
 #include "ErrorCodes.h"
-#include "RendererAPI.h"
 #include "defaults.h"
-
 #include <string>
+#include "texture.h"
+#include "Shader.h"
+#include "VertexArray.h"
 
 namespace GoCS {
     class GameComponent;
-    class Transform;
     class GameObject;
 }
 namespace Components {
@@ -36,13 +35,13 @@ namespace GoCS {
         public:
         std::string name;
         Logger logger = Logger("TempName", "Log.txt");
-        GameObject* parent;
+        GoCS::GameObject* parent;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
         virtual void Init() {};
         virtual void Start() {};
         virtual void Update() {};
-        virtual void Draw(Renderer::RendererAPI* renderer) {};
+        //virtual void Draw(Renderer::RendererAPI* renderer) {};
     };
 
     
@@ -55,12 +54,10 @@ namespace GoCS {
             std::vector<GameComponent*> components;
             GameObject* parent;
             GameObject* root;
-            
             Components::Transform* transform;
-
             Shader* objectShader = nullptr;
             VertexArray* vertexArray = nullptr;
-            texture::Texture* texture = nullptr;
+            texture::Texture* objectTexture = nullptr;
             
             bool isActive;
             bool isAlive;
@@ -87,7 +84,6 @@ namespace GoCS {
             }
             GameObject* CreateChild(std::string name){
                 GameObject* GO = new GameObject(name,  this);
-                GO->transform = new Components::Transform();
                 logger.InfoLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
                 return GO;
             }

@@ -28,12 +28,13 @@ private:
     GLFWwindow* window;
     Logger logger = Logger("GlassGFX.OpenGL.Plugin", "Log.txt");
 public:
-
+    
     GLASS_PLUGIN_API bool onLoad() override;
     GLASS_PLUGIN_API void createRenderContext(WindowProperties* winProps) override;
     GLASS_PLUGIN_API void* GetNativeWindow() const {return window;}
     void GlfwErrorCB(int error, const char* description);
     GLASS_PLUGIN_API void Update() override;
+    GLASS_PLUGIN_API void BeginScene(Cameras::Camera* mCamera) override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);

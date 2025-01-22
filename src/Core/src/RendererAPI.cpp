@@ -8,7 +8,7 @@ namespace Renderer{
         return shad;
     }
     void RendererAPI::DrawIndexed(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture){
-        pRenderingBackend.apiInstance->DrawVertexArray(vertArray, objShader);
+        pRenderingBackend.apiInstance->DrawVertexArray(vertArray, objShader,m_texture);
     }
     VertexArray* RendererAPI::CreateVertexArray(std::vector<Vertex>* verts,std::vector<unsigned int>* inds){
         VertexArray* v = pRenderingBackend.apiInstance->CreateVAO();
@@ -16,7 +16,7 @@ namespace Renderer{
         return v;
     }
     texture::Texture* RendererAPI::CreateTexture(std::string path){
-        texture::Texture* pTexture =  pRenderingBackend.apiInstance->CreateTexture(path);
+        texture::Texture* pTexture = pRenderingBackend.apiInstance->CreateTexture(path);
         return pTexture;
     }
     

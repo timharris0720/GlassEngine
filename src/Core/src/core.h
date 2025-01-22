@@ -13,12 +13,11 @@
 #endif
 #include <iostream>
 #include "pluginLoader.h"
-#include "glm/glm.hpp"
 #include "Logger.h"
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
-
+#include "camera.h"
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
 typedef glm::vec4 Vector4;
@@ -154,7 +153,7 @@ namespace Core {
 			std::string name;
 			int height;
 			int width;
-			SceneType SceneType;
+			App::SceneType sceneType;
 		};
 
 

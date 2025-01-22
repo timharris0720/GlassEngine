@@ -18,20 +18,19 @@ namespace GoCS {
         parent->children.push_back(this);
     }
     void GameObject::Update(){
-        if(children.size() > 0){
-            for(GameObject* child : children){
-                child->Update();
-            }
+        for(GameObject* child : children){
+                 child->Update();
         }
+        
         for(int i = 0; i < components.size(); i++){
             components[i]->Update();
         }
         if(vertexArray && objectShader){
-            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader);
+            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader, objectTexture);
         }
         
         
-    
+
     }
 }
 namespace Components {
@@ -44,6 +43,6 @@ namespace Components {
         VertexArray* v = Defaults::SquareSprite();
         parent->objectShader = std::move(shader);
         parent->vertexArray = std::move(v);
-        parent->texture = std::move(texu);
+        parent->objectTexture = std::move(texu);
     }
 }

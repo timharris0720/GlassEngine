@@ -422,6 +422,7 @@ E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/Logger.
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/RendererAPI.h
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/Shader.h
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/VertexArray.h
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/camera.h
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/core.h
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/defaults.h
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/include/GlassEngine/entrypoint.h

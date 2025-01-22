@@ -49,7 +49,9 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
     glfwSwapInterval(winData.vsync);
 
 }
-
+void OpenGLRenderAPI::BeginScene(Cameras::Camera* mCamera){
+    sceneMainCamera = mCamera;
+}
 void OpenGLRenderAPI::Update() {
    
     
@@ -64,16 +66,15 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path) {
     return new OpenGLTexture(path);
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture){
-    if(mCamera != nullptr){
-        camera = mCamera;
-    }
+    
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
     //glClearColor(0,0,0,1);
     objShader->Bind();
-    vertArray->Bind();
     if(m_texture != nullptr)
         m_texture->Bind();
+    vertArray->Bind();
+    
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
     int display_w, display_h;
@@ -217,6 +218,7 @@ void OGLVertexArray::Unbind(){
 #pragma endregion
 #pragma region OpenGLTexture
 OpenGLTexture::OpenGLTexture(std::string name){
+    stbi_set_flip_vertically_on_load(true);  
     unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
@@ -241,10 +243,6 @@ void OpenGLTexture::Bind(){
     glBindTexture(GL_TEXTURE_2D, textureID);
 }
 #pragma endregion
-
-void Components::Camera::RecalculateViewMatrix(){
-    logger.InfoLog("Recalc idfk");
-}
 
 // Plugin Registration
 extern "C" GLASS_PLUGIN_API GlassPlugin* create() {

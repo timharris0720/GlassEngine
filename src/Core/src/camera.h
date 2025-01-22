@@ -1,27 +1,37 @@
 #pragma once
-#include "core.h"
+
+#ifdef _WIN32
+#ifdef GLASS_ENGINE_EXPORTS_CORE
+#define GLASS_ENGINE_API __declspec(dllexport)
+#else
+#define GLASS_ENGINE_API __declspec(dllimport)
+#endif
+#else
+#define GLASS_ENGINE_API
+#endif
+
+#include "GoCS.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 namespace Cameras{
 
-    class Camera : GoCS::GameObject {
+    class Camera {
     public:
         Camera() = default;
-        Camera(std::string name) : GoCS::GameObject(name){}
         virtual ~Camera() = default;
 
         // Pure virtual methods for projection matrix
-        virtual void setProjection(float width, float height) = 0;
-        virtual void updateProjectionMatrix() = 0;
+        GLASS_ENGINE_API virtual void setProjection(float width, float height){};
+        GLASS_ENGINE_API virtual void updateProjectionMatrix(){};
 
         // Convenience methods for setting and getting position and rotation
-        void setPosition(const glm::vec3& newPosition) { transform->Position = newPosition; }
-        void setRotation(const glm::vec3& newRotation) { transform->Rotation = newRotation; }
+        GLASS_ENGINE_API void setPosition(const glm::vec3& newPosition) { transform.Position = newPosition; }
+        GLASS_ENGINE_API void setRotation(const glm::vec3& newRotation) { transform.Rotation = newRotation; }
 
-        glm::vec3 getPosition() const { return transform->Position; }
-        glm::vec3 getRotation() const { return transform->Rotation; }
+        GLASS_ENGINE_API glm::vec3 getPosition() const { return transform.Position; }
+        GLASS_ENGINE_API glm::vec3 getRotation() const { return transform.Rotation; }
 
-        glm::mat4 getViewMatrix() const {
+        GLASS_ENGINE_API glm::mat4 getViewMatrix() const {
             glm::vec3 position = getPosition();
             glm::vec3 rotation = getRotation();
 
@@ -40,11 +50,16 @@ namespace Cameras{
 
     protected:
         glm::mat4 projectionMatrix{1.0f};
-
+        Components::Transform transform;
     };
     class PerspectiveCamera : public Camera {
     public:
-        PerspectiveCamera(std::string name,float fov, float aspectRatio, float near, float far) : fov(fov), aspectRatio(aspectRatio), near(near), far(far), Camera(name) {
+        float fov; // Field of View in degrees
+        float aspectRatio;
+        float nearPlane;
+        float farPlane;
+        PerspectiveCamera() = default;
+        PerspectiveCamera(float fov, float aspectRatio, float nearPlane, float farPlane) : fov(fov), aspectRatio(aspectRatio), nearPlane(nearPlane), farPlane(farPlane) {
             updateProjectionMatrix();
         }
 
@@ -54,22 +69,19 @@ namespace Cameras{
         }
 
         void updateProjectionMatrix() override {
-            projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, near, far);
+            projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
         }
 
         void setFOV(float newFov) {
             fov = newFov;
             updateProjectionMatrix();
         }
-
-    private:
-        float fov; // Field of View in degrees
-        float aspectRatio;
-        float near, far;
+        
     };
     class OrthoCamera : public Camera {
     public:
-        OrthoCamera(std::string name,float left, float right, float bottom, float top, float near, float far) : Camera(name),left(left), right(right), bottom(bottom), top(top), near(near), far(far) {
+        OrthoCamera() = default;
+        OrthoCamera(float left, float right, float bottom, float top, float nearPlane, float farPlane) : left(left), right(right), bottom(bottom), top(top), nearPlane(nearPlane), farPlane(farPlane) {
             updateProjectionMatrix();
         }
 
@@ -82,10 +94,13 @@ namespace Cameras{
         }
 
         void updateProjectionMatrix() override {
-            projectionMatrix = glm::ortho(left, right, bottom, top, near, far);
+            projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
         }
-
-    private:
-        float left, right, bottom, top, near, far;
+        float left;
+        float right;
+        float bottom;   
+        float top;
+        float nearPlane;
+        float farPlane;
     };
 }

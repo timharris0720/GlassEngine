@@ -8,7 +8,6 @@
 #else
 #define GLASS_ENGINE_API
 #endif
-#include <glm/glm.hpp>
 #include "pluginLoader.h"
 #include "VertexArray.h"
 #include "texture.h"
