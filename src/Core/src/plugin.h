@@ -45,7 +45,7 @@ public:
     virtual void BeginScene(Cameras::Camera* mCamera) = 0;
     virtual Shader* CreateShader() = 0 ;
     virtual VertexArray* CreateVAO() = 0 ;
-    virtual texture::Texture* CreateTexture(std::string path) = 0 ;
+    virtual texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType) = 0 ;
     virtual void DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr) {};
     //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};

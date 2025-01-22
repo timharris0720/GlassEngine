@@ -98,13 +98,15 @@ namespace Components {
         public:
             glm::vec3 Position;
             glm::vec3 Rotation;
+            glm::vec3 Scale;
     };
     class Sprite : public GoCS::GameComponent{
         private:
         std::string path;
+        texture::ImageWrapping wrapType;
         public:
             GLASS_ENGINE_API Sprite() = default;
-            GLASS_ENGINE_API Sprite(std::string imagePath);
+            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
             GLASS_ENGINE_API void Start() override;
     };
 

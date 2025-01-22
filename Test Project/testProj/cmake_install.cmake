@@ -47,44 +47,72 @@ endif()
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg"
+      )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg"
+      )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg"
+      )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/testImage.jpg")
+     "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg;E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets" TYPE FILE FILES "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/testImage.jpg")
+    file(INSTALL DESTINATION "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100" TYPE FILE FILES
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg"
+      "E:/TIM USAGE 2024/Code/GlassEngine/Test Project/../TestAssets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg"
+      )
   endif()
 endif()
 

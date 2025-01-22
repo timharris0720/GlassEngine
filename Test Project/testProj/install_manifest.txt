@@ -1,4 +1,9 @@
 E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/bin/testingProj.exe
-E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/testImage.jpg
-E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderFrag.glsl
-E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderVert.glsl
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl
+E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl

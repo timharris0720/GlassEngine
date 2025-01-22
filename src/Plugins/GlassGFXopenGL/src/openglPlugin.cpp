@@ -62,8 +62,8 @@ Shader* OpenGLRenderAPI::CreateShader() {
 VertexArray* OpenGLRenderAPI::CreateVAO(){
     return new OGLVertexArray();
 }
-texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path) {
-    return new OpenGLTexture(path);
+texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::ImageWrapping wrapType) {
+    return new OpenGLTexture(path, wrapType);
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture){
     
@@ -217,14 +217,35 @@ void OGLVertexArray::Unbind(){
 }
 #pragma endregion
 #pragma region OpenGLTexture
-OpenGLTexture::OpenGLTexture(std::string name){
+OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
     stbi_set_flip_vertically_on_load(true);  
     unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
     // set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    switch (WrapType)
+    {
+    case texture::ImageWrapping::REPEAT:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        break;
+    case texture::ImageWrapping::MIRRORED_REPEAT:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+        break;
+    case texture::ImageWrapping::CLAMP_TO_EDGE:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        break;
+    case texture::ImageWrapping::CLAMP_TO_BORDER:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+        break;
+    
+    default:
+        break;
+    } 
+    
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load and generate the texture

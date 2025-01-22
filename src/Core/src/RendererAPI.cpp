@@ -15,8 +15,8 @@ namespace Renderer{
         v->Create(verts,inds);
         return v;
     }
-    texture::Texture* RendererAPI::CreateTexture(std::string path){
-        texture::Texture* pTexture = pRenderingBackend.apiInstance->CreateTexture(path);
+    texture::Texture* RendererAPI::CreateTexture(std::string path, texture::ImageWrapping wrapType){
+        texture::Texture* pTexture = pRenderingBackend.apiInstance->CreateTexture(path,wrapType);
         return pTexture;
     }
     

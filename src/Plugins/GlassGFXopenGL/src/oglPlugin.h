@@ -41,7 +41,7 @@ public:
     }
     GLASS_PLUGIN_API Shader* CreateShader();
     GLASS_PLUGIN_API VertexArray* CreateVAO();
-    GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path);
+    GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType);
     GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture = nullptr) override;
 };
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
@@ -60,7 +60,7 @@ class OpenGLTexture : public texture::Texture {
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLTexture", "Log.txt");
     public:
     unsigned int textureID;
-    GLASS_PLUGIN_API OpenGLTexture(std::string name);
+    GLASS_PLUGIN_API OpenGLTexture(std::string name,texture::ImageWrapping wrapType);
     GLASS_PLUGIN_API void Bind();
 };
 
