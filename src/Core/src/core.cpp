@@ -10,7 +10,8 @@ namespace Core {
 			//pluginLoader.getLoadedPlugins().back().apiInstance->onLoad();
 			return loaded;
 		}
-		Application::Application(App::AppSpec appSpec, RenderBackend backend){
+		
+		Application::Application(App::AppSpec appSpec, RenderBackend backend, std::string customRendererPath ){
 			s_instance = this;
 			renderAPI = new Renderer::RendererAPI();
 			WindowProperties winProp;
@@ -21,14 +22,22 @@ namespace Core {
 				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
 				logger.InfoLog("GLASS LOADED %i",ld);
 			}
+			if(backend == App::RenderBackend::CUSTOM) {
+				bool ld = loadPlugin(customRendererPath, Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
+			}
 			Root = GoCS::GameObject();
 			if(appSpec.sceneType == SceneType::DIM_2){
-				MainCamera = Cameras::OrthoCamera(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100.0f);
+				MainCamera = Cameras::OrthoCamera(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100000.0f);
+				MainCamera.transform = Components::Transform();
 			}
 			else {
-				MainCamera = Cameras::PerspectiveCamera(45.0f, 800.0f / 600.0f, 0.1f, 100.0f);
+				MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 			}
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
+		}
+		double Application::GetTime() {
+			return GetRenderer().GetBackend().apiInstance->getTime();
 		}
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;

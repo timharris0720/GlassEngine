@@ -21,17 +21,16 @@ namespace Cameras{
         virtual ~Camera() = default;
 
         // Pure virtual methods for projection matrix
-        GLASS_ENGINE_API virtual void setProjection(float width, float height){};
-        GLASS_ENGINE_API virtual void updateProjectionMatrix(){};
+        virtual void setProjection(float width, float height){};
+        virtual void updateProjectionMatrix(){};
 
         // Convenience methods for setting and getting position and rotation
-        GLASS_ENGINE_API void setPosition(const glm::vec3& newPosition) { transform.Position = newPosition; }
-        GLASS_ENGINE_API void setRotation(const glm::vec3& newRotation) { transform.Rotation = newRotation; }
+        void setPosition(const glm::vec3& newPosition) { transform.Position = newPosition; }
+        void setRotation(const glm::vec3& newRotation) { transform.Rotation = newRotation; }
 
-        GLASS_ENGINE_API glm::vec3 getPosition() const { return transform.Position; }
-        GLASS_ENGINE_API glm::vec3 getRotation() const { return transform.Rotation; }
-
-        GLASS_ENGINE_API glm::mat4 getViewMatrix() const {
+        glm::vec3 getPosition() const { return transform.Position; }
+        glm::vec3 getRotation() const { return transform.Rotation; }
+        glm::mat4 getViewMatrix() const {
             glm::vec3 position = getPosition();
             glm::vec3 rotation = getRotation();
 
@@ -47,8 +46,7 @@ namespace Cameras{
 
             return glm::lookAt(position, position + forward, up);
         }
-
-    protected:
+        glm::mat4 getProjectionMatrix() const {return projectionMatrix;}
         glm::mat4 projectionMatrix{1.0f};
         Components::Transform transform;
     };

@@ -21,6 +21,18 @@ public:
     GLASS_PLUGIN_API void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) override;
     GLASS_PLUGIN_API void Bind() override;
     GLASS_PLUGIN_API void Unbind() override;
+    GLASS_PLUGIN_API void setBool(const std::string& name, bool value) override ;
+    GLASS_PLUGIN_API void setInt(const std::string& name, int value) override;
+    GLASS_PLUGIN_API void setFloat(const std::string& name, float value) override;
+    GLASS_PLUGIN_API void setVec2(const std::string& name, const glm::vec2& value) override;
+    GLASS_PLUGIN_API void setVec2(const std::string& name, float x, float y) override;
+    GLASS_PLUGIN_API void setVec3(const std::string& name, const glm::vec3& value) override;
+    GLASS_PLUGIN_API void setVec3(const std::string& name, float x, float y, float z) override;
+    GLASS_PLUGIN_API void setVec4(const std::string& name, const glm::vec4& value) override;
+    GLASS_PLUGIN_API void setVec4(const std::string& name, float x, float y, float z, float w) override;
+    GLASS_PLUGIN_API void setMat2(const std::string& name, const glm::mat2& mat) override;
+    GLASS_PLUGIN_API void setMat3(const std::string& name, const glm::mat3& mat) override;
+    GLASS_PLUGIN_API void setMat4(const std::string& name, const glm::mat4& mat) override;
     void checkCompileErrors(GLuint shader, std::string type);
 };
 class OpenGLRenderAPI : public GlassPlugin_GFX {
@@ -39,10 +51,13 @@ public:
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
+    GLASS_PLUGIN_API double getTime() override {
+        return glfwGetTime();
+    }
     GLASS_PLUGIN_API Shader* CreateShader();
     GLASS_PLUGIN_API VertexArray* CreateVAO();
     GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType);
-    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture = nullptr) override;
+    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr) override;
 };
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
 class OGLVertexArray : public VertexArray {

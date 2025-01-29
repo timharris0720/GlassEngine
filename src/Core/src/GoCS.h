@@ -19,6 +19,10 @@
 #include "Shader.h"
 #include "VertexArray.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace GoCS {
     class GameComponent;
     class GameObject;
@@ -27,6 +31,7 @@ namespace Components {
     class Transform;
     class Sprite;
 }
+
 
 
 
@@ -48,6 +53,7 @@ namespace GoCS {
 
     class GameObject {
         public: 
+            std::string Tag;
             Logger logger = Logger("TempName", "Log.txt");
             std::string name;
             std::vector<GameObject*> children;
@@ -96,9 +102,25 @@ namespace GoCS {
 namespace Components {
     class Transform : public GoCS::GameComponent {
         public:
-            glm::vec3 Position;
-            glm::vec3 Rotation;
-            glm::vec3 Scale;
+            glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
+            glm::vec3 Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+            glm::vec3 Scale    = glm::vec3(1.0f, 1.0f, 1.0f);
+            
+            glm::mat4 applyTransform(){
+                glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
+                model = glm::translate(model, Position);
+
+                // Apply rotation (convert degrees to radians)
+                model = glm::rotate(model, glm::radians(Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
+                model = glm::rotate(model, glm::radians(Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
+                model = glm::rotate(model, glm::radians(Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
+
+                // Apply scaling
+                model = glm::scale(model, Scale);
+                
+                return model;
+            }
+            
     };
     class Sprite : public GoCS::GameComponent{
         private:
@@ -107,9 +129,9 @@ namespace Components {
         public:
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
-            GLASS_ENGINE_API void Start() override;
+            GLASS_ENGINE_API void Start();
     };
 
-    
 }
+
 

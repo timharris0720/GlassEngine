@@ -16,9 +16,13 @@ bool OpenGLRenderAPI::onLoad() {
     }
     // OpenGL initialization code
     //glfwSetErrorCallback(GlfwErrorCB);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
     return true;
 }
 bool OpenGLRenderAPI::shouldWindowClose(){
@@ -65,20 +69,50 @@ VertexArray* OpenGLRenderAPI::CreateVAO(){
 texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::ImageWrapping wrapType) {
     return new OpenGLTexture(path, wrapType);
 }
-void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture){
+void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
     
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
     //glClearColor(0,0,0,1);
-    objShader->Bind();
+    
+
+    glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
+
+    //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
+    //logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
+    //logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
+    //model = glm::translate(model, objectTransform->Position);
+
+    //// Apply rotation (convert degrees to radians)
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
+
+    //// Apply scaling
+    model = glm::scale(model, objectTransform->Scale);
+    
+
     if(m_texture != nullptr)
         m_texture->Bind();
+    objShader->Bind();
     vertArray->Bind();
+    
+    //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * objectTransform->applyTransform();
+    glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
+    objShader->setMat4("mvp", mvp);
+    objShader->setMat4("projection", sceneMainCamera->getProjectionMatrix());
+    objShader->setMat4("view", sceneMainCamera->getViewMatrix());
+    //objShader->setMat4("model", objectTransform->applyTransform());
+    objShader->setMat4("model", model);
+
     
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
+
+    
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
+    sceneMainCamera->setProjection(display_w,display_h);
     glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -145,6 +179,42 @@ void OpenGLShader::Bind(){
 }
 void OpenGLShader::Unbind(){
     glUseProgram(0);
+}
+void OpenGLShader::setBool(const std::string& name, bool value) {
+    glUniform1i(glGetUniformLocation(ShaderID, name.c_str()), (int)value);
+}
+void OpenGLShader::setInt(const std::string& name, int value) {
+    glUniform1i(glGetUniformLocation(ShaderID, name.c_str()), value);
+}
+void OpenGLShader::setFloat(const std::string& name, float value) {
+    glUniform1f(glGetUniformLocation(ShaderID, name.c_str()), value);
+}
+void OpenGLShader::setVec2(const std::string& name, const glm::vec2& value) {
+    glUniform2fv(glGetUniformLocation(ShaderID, name.c_str()), 1, &value[0]);
+}
+void OpenGLShader::setVec2(const std::string& name, float x, float y) {
+    glUniform2f(glGetUniformLocation(ShaderID, name.c_str()), x, y);
+}
+void OpenGLShader::setVec3(const std::string& name, const glm::vec3& value) {
+    glUniform3fv(glGetUniformLocation(ShaderID, name.c_str()), 1, &value[0]);
+}
+void OpenGLShader::setVec3(const std::string& name, float x, float y, float z) {
+    glUniform3f(glGetUniformLocation(ShaderID, name.c_str()), x, y, z);
+}
+void OpenGLShader::setVec4(const std::string& name, const glm::vec4& value) {
+    glUniform4fv(glGetUniformLocation(ShaderID, name.c_str()), 1, &value[0]);
+}
+void OpenGLShader::setVec4(const std::string& name, float x, float y, float z, float w) {
+    glUniform4f(glGetUniformLocation(ShaderID, name.c_str()), x, y, z, w);
+}
+void OpenGLShader::setMat2(const std::string& name, const glm::mat2& mat) {
+    glUniformMatrix2fv(glGetUniformLocation(ShaderID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+void OpenGLShader::setMat3(const std::string& name, const glm::mat3& mat) {
+    glUniformMatrix3fv(glGetUniformLocation(ShaderID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+void OpenGLShader::setMat4(const std::string& name, const glm::mat4& mat) {
+    glUniformMatrix4fv(glGetUniformLocation(ShaderID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 #pragma endregion
 #pragma region OpenGLVertexArray

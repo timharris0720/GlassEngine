@@ -143,7 +143,8 @@ namespace Core {
 			OPENGL = 0,
 			VULKAN,
 			DX11,
-			DX12
+			DX12,
+			CUSTOM
 		};
 		enum SceneType {
 			DIM_2 = 0,
@@ -169,9 +170,10 @@ namespace Core {
 		public:
 			
 			Application() = default;
-			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend);
+			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend, std::string customRendererPath = "");
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
+			GLASS_ENGINE_API double GetTime();
 			GLASS_ENGINE_API void PushGameObject(GoCS::GameObject* gameObject);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();

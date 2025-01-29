@@ -7,8 +7,8 @@ namespace Renderer{
         shad->Compile(fragmentShaderPath,vertexShaderPath);
         return shad;
     }
-    void RendererAPI::DrawIndexed(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture){
-        pRenderingBackend.apiInstance->DrawVertexArray(vertArray, objShader,m_texture);
+    void RendererAPI::DrawIndexed(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture,Components::Transform* objectTransform){
+        pRenderingBackend.apiInstance->DrawVertexArray(vertArray, objShader,m_texture,objectTransform);
     }
     VertexArray* RendererAPI::CreateVertexArray(std::vector<Vertex>* verts,std::vector<unsigned int>* inds){
         VertexArray* v = pRenderingBackend.apiInstance->CreateVAO();
