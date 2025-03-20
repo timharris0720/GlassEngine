@@ -55,9 +55,18 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
 }
 void OpenGLRenderAPI::BeginScene(Cameras::Camera* mCamera){
     sceneMainCamera = mCamera;
+    glfwPollEvents();
+    glClear(GL_COLOR_BUFFER_BIT);
+    //glClearColor(0,0,0,1);
 }
-void OpenGLRenderAPI::Update() {
-   
+void OpenGLRenderAPI::Update(){}
+void OpenGLRenderAPI::EndScene() {
+   int display_w, display_h;
+    glfwGetFramebufferSize(window, &display_w, &display_h);
+    sceneMainCamera->setProjection(display_w,display_h);
+    glViewport(0, 0, display_w, display_h);
+    glfwSwapBuffers(window);
+    glfwPollEvents();
     
 }
 Shader* OpenGLRenderAPI::CreateShader() {
@@ -71,11 +80,7 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
     
-    glfwPollEvents();
-    glClear(GL_COLOR_BUFFER_BIT);
-    //glClearColor(0,0,0,1);
     
-
     glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
 
     //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
@@ -110,12 +115,7 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     objShader->Unbind();
 
     
-    int display_w, display_h;
-    glfwGetFramebufferSize(window, &display_w, &display_h);
-    sceneMainCamera->setProjection(display_w,display_h);
-    glViewport(0, 0, display_w, display_h);
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+    
 }
 #pragma endregion
 #pragma region OpenGLShader

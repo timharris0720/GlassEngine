@@ -1,8 +1,8 @@
-# Install script for directory: E:/TIM USAGE 2024/Code/GlassEngine
+# Install script for directory: D:/Docs/Code/Engines/GlassEngine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build")
+  set(CMAKE_INSTALL_PREFIX "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,27 +34,21 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/TIM USAGE 2024/Code/GlassEngine/build/src/Core/cmake_install.cmake")
+  include("D:/Docs/Code/Engines/GlassEngine/build/src/Core/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(REMOVE_RECURSE "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/bin")
+  file(REMOVE_RECURSE "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/bin")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(REMOVE_RECURSE "E:/TIM USAGE 2024/Code/GlassEngine/GlassEngine_Build/lib")
+  file(REMOVE_RECURSE "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   message("Deleting BIN and LIB folders as are not needed")
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/build/install_local_manifest.txt"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
-endif()
 if(CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_COMPONENT MATCHES "^[a-zA-Z0-9_.+-]+$")
     set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
@@ -68,6 +62,8 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/TIM USAGE 2024/Code/GlassEngine/build/${CMAKE_INSTALL_MANIFEST}"
+  string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
+       "${CMAKE_INSTALL_MANIFEST_FILES}")
+  file(WRITE "D:/Docs/Code/Engines/GlassEngine/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

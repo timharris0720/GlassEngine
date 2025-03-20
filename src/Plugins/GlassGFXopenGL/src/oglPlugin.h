@@ -47,6 +47,7 @@ public:
     void GlfwErrorCB(int error, const char* description);
     GLASS_PLUGIN_API void Update() override;
     GLASS_PLUGIN_API void BeginScene(Cameras::Camera* mCamera) override;
+    GLASS_PLUGIN_API void EndScene() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);

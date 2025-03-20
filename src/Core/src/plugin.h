@@ -43,6 +43,7 @@ public:
     virtual bool isVsyncEnabled() {return winData.vsync;};
     virtual void VsyncCallback() = 0;
     virtual void BeginScene(Cameras::Camera* mCamera) = 0;
+    virtual void EndScene() = 0;
     virtual Shader* CreateShader() = 0 ;
     virtual VertexArray* CreateVAO() = 0 ;
     virtual double getTime() = 0;

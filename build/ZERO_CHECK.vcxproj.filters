@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="E:\TIM USAGE 2024\Code\GlassEngine\build\CMakeFiles\2af3cdf71ebdd3aad78635978aafb490\generate.stamp.rule">
+    <CustomBuild Include="D:\Docs\Code\Engines\GlassEngine\build\CMakeFiles\fbcc4a5bbd8f5ac88e180f0c4ceb0f3e\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{4399574D-F618-33F0-BF40-4C59D9F0DEC8}</UniqueIdentifier>
+      <UniqueIdentifier>{BEFEE5B3-BFB1-37A6-BBA0-58B3B4984C73}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\TIM USAGE 2024\Code\GlassEngine\Test Project\src\main.cpp">
+    <ClCompile Include="D:\Docs\Code\Engines\GlassEngine\Test Project\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\TIM USAGE 2024\Code\GlassEngine\Test Project\CMakeLists.txt" />
+    <CustomBuild Include="D:\Docs\Code\Engines\GlassEngine\Test Project\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{1866B6DC-4B7D-3F30-BD1A-6CAD93D4FF05}</UniqueIdentifier>
+      <UniqueIdentifier>{02978921-9BD4-307D-B5F7-317C4B5572D2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

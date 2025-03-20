@@ -55,6 +55,7 @@ namespace Core {
 				for(GoCS::GameObject* go : Root.children){
 					go->Update();
 				}
+				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}
 		}
