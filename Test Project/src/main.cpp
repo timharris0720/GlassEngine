@@ -23,6 +23,6 @@ Core::App::Application* CreateApplication(){
     appSpec.width = 600;
     appSpec.height = 480;
     appSpec.sceneType = App::SceneType::DIM_2;
-    return new TestProject(appSpec, Core::App::RenderBackend::CUSTOM, "GlassGFX.openGL");
+    return new TestProject(appSpec, Core::App::RenderBackend::OPENGL, "");
 }
 

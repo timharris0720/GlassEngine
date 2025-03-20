@@ -11,7 +11,7 @@ namespace Core {
 			return loaded;
 		}
 		
-		Application::Application(App::AppSpec appSpec, RenderBackend backend, std::string customRendererPath ){
+		Application::Application(App::AppSpec appSpec, RenderBackend backend, std::string customRendererPath){
 			s_instance = this;
 			renderAPI = new Renderer::RendererAPI();
 			WindowProperties winProp;
@@ -20,6 +20,14 @@ namespace Core {
 			winProp.width = appSpec.width;
 			if(backend == App::RenderBackend::OPENGL){
 				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
+			}
+			if(backend == App::RenderBackend::DX11){
+				bool ld = loadPlugin("GlassGFX.DX11", Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
+			}
+			if(backend == App::RenderBackend::DX12){
+				bool ld = loadPlugin("GlassGFX.DX12", Plugin::GFX_PLUGIN);
 				logger.InfoLog("GLASS LOADED %i",ld);
 			}
 			if(backend == App::RenderBackend::CUSTOM) {
