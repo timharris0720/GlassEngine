@@ -420,6 +420,7 @@ D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/ErrorCode
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/GoCS.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/Logger.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/RendererAPI.h
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/SceneLoader.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/Shader.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/VertexArray.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/camera.h

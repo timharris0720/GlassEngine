@@ -81,6 +81,12 @@
         "codecvt": "cpp",
         "any": "cpp",
         "xstddef": "cpp",
-        "*.rh": "cpp"
+        "*.rh": "cpp",
+        "csignal": "cpp",
+        "filesystem": "cpp",
+        "numeric": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "variant": "cpp"
     }
 }

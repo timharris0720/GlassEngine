@@ -7,3 +7,5 @@ D:/Docs/Code/Engines/GlassEngine/build/src/Core/CMakeFiles/ALL_BUILD.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/glm-build/CMakeFiles/INSTALL.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/glm-build/CMakeFiles/ALL_BUILD.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/glm-build/glm/CMakeFiles/INSTALL.dir
+D:/Docs/Code/Engines/GlassEngine/build/_deps/json-build/CMakeFiles/INSTALL.dir
+D:/Docs/Code/Engines/GlassEngine/build/_deps/json-build/CMakeFiles/ALL_BUILD.dir

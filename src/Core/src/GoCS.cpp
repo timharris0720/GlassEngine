@@ -4,6 +4,7 @@ namespace GoCS {
     GameComponent::GameComponent(std::string name) {
         this->name = name;
         logger.setLoggerName(name + "_component");
+        
         //logger.DebugLog("Adding Component %s to GameObject %s", name.c_str(), parent->name);
     }
     GameObject::GameObject(std::string name){

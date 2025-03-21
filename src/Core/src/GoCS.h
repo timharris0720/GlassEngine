@@ -18,7 +18,6 @@
 #include "texture.h"
 #include "Shader.h"
 #include "VertexArray.h"
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -41,6 +40,7 @@ namespace GoCS {
         std::string name;
         Logger logger = Logger("TempName", "Log.txt");
         GoCS::GameObject* parent;
+        //Core::App::Application* applicationInstance;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
         virtual void Init() {};

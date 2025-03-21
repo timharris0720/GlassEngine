@@ -82,18 +82,16 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     
     
     //glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
-//
-    ////logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
-    ////logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
-    ////logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
-    ////model = glm::translate(model, objectTransform->Position);
-//
-    ////// Apply rotation (convert degrees to radians)
+    //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
+    //logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
+    //logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
+    //model = glm::translate(model, objectTransform->Position);
+    //// Apply rotation (convert degrees to radians)
     //model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
     //model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
     //model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
 
-    //// Apply scaling
+    // Apply scaling
     //model = glm::scale(model, objectTransform->Scale);
     
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
@@ -303,6 +301,7 @@ OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
     logger.InfoLog("Name: %s :    Channels: %i",name.c_str(), channels);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
+    
     // set the texture wrapping/filtering options (on the currently bound texture object)
     GLint wrapMode;
     switch (WrapType) {
@@ -312,6 +311,7 @@ OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
         case texture::ImageWrapping::CLAMP_TO_BORDER: wrapMode = GL_CLAMP_TO_BORDER; break;
         default: wrapMode = GL_REPEAT; break;
     }
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);

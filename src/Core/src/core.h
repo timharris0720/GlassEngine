@@ -17,6 +17,7 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
+#include "SceneLoader.h"
 //#include "Time.h"
 #include "camera.h"
 typedef glm::vec3 Vector3;
@@ -166,11 +167,11 @@ namespace Core {
 			//std::vector<Core::Entity::GameObject*> gameObjects;
 			GoCS::GameObject Root;
 			Cameras::Camera MainCamera;
-			static Application* s_instance;
+			
 			static Renderer::RendererAPI* renderAPI;
 			//Time timer;
 		public:
-			
+			static Application* s_instance;
 			Application() = default;
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend, std::string customRendererPath = "");
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
@@ -184,6 +185,7 @@ namespace Core {
 			Logger getLogger() { return logger;}
 			
 			Plugin::PluginLoader pluginLoader;
+			SceneNS::SceneLoader sceneLoader;
 		};
 	}
 }
