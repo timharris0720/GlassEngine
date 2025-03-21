@@ -17,6 +17,7 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
+//#include "Time.h"
 #include "camera.h"
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
@@ -167,6 +168,7 @@ namespace Core {
 			Cameras::Camera MainCamera;
 			static Application* s_instance;
 			static Renderer::RendererAPI* renderAPI;
+			//Time timer;
 		public:
 			
 			Application() = default;

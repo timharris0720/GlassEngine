@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.12.12+1cce77968 for .NET Framework
-      Build started 20/03/2025 22:38:37.
+      Build started 21/03/2025 21:14:07.
       
       Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\3.30.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -58,7 +58,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.63
+      Time Elapsed 00:00:00.71
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -84,7 +84,7 @@ events:
       The output was:
       0
       MSBuild version 17.12.12+1cce77968 for .NET Framework
-      Build started 20/03/2025 22:38:38.
+      Build started 21/03/2025 21:14:08.
       
       Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\3.30.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -118,7 +118,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.62
+      Time Elapsed 00:00:00.67
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -137,8 +137,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-d6eqjv"
-      binary: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-d6eqjv"
+      source: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-xharda"
+      binary: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-xharda"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -148,45 +148,45 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-d6eqjv'
+        Change Dir: 'D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-xharda'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f5e0e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_13fbd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 20/03/2025 22:38:39.
+        Build started 21/03/2025 21:14:09.
         
-        Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\cmTC_f5e0e.vcxproj" on node 1 (default targets).
+        Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\cmTC_13fbd.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_f5e0e.dir\\Debug\\".
+          Creating directory "cmTC_13fbd.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\Debug\\".
-          Creating directory "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\".
+          Creating directory "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\Debug\\".
+          Creating directory "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\unsuccessfulbuild".
+          Creating "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\unsuccessfulbuild".
         VcpkgTripletSelection:
           Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
           Using normalized configuration "Debug"
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f5e0e.dir\\Debug\\\\" /Fd"cmTC_f5e0e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_13fbd.dir\\Debug\\\\" /Fd"cmTC_13fbd.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34438 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f5e0e.dir\\Debug\\\\" /Fd"cmTC_f5e0e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_13fbd.dir\\Debug\\\\" /Fd"cmTC_13fbd.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\Debug\\cmTC_f5e0e.exe" /INCREMENTAL /ILK:"cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-d6eqjv/Debug/cmTC_f5e0e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-d6eqjv/Debug/cmTC_f5e0e.lib" /MACHINE:X64  /machine:x64 cmTC_f5e0e.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_f5e0e.vcxproj -> D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\Debug\\cmTC_f5e0e.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\Debug\\cmTC_13fbd.exe" /INCREMENTAL /ILK:"cmTC_13fbd.dir\\Debug\\cmTC_13fbd.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-xharda/Debug/cmTC_13fbd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-xharda/Debug/cmTC_13fbd.lib" /MACHINE:X64  /machine:x64 cmTC_13fbd.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_13fbd.vcxproj -> D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\Debug\\cmTC_13fbd.exe
         AppLocalFromInstalled:
-          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\Debug\\cmTC_f5e0e.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\cmTC_f5e0e.write.1u.tlog" "cmTC_f5e0e.dir\\Debug\\vcpkg.applocal.log"
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\Debug\\cmTC_13fbd.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\cmTC_13fbd.write.1u.tlog" "cmTC_13fbd.dir\\Debug\\vcpkg.applocal.log"
         FinalizeBuildStatus:
-          Deleting file "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\unsuccessfulbuild".
-          Touching "cmTC_f5e0e.dir\\Debug\\cmTC_f5e0e.tlog\\cmTC_f5e0e.lastbuildstate".
-        Done Building Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d6eqjv\\cmTC_f5e0e.vcxproj" (default targets).
+          Deleting file "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\unsuccessfulbuild".
+          Touching "cmTC_13fbd.dir\\Debug\\cmTC_13fbd.tlog\\cmTC_13fbd.lastbuildstate".
+        Done Building Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xharda\\cmTC_13fbd.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.62
+        Time Elapsed 00:00:00.67
         
       exitCode: 0
   -
@@ -226,8 +226,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-pdoja8"
-      binary: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-pdoja8"
+      source: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-5vdqaf"
+      binary: "D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-5vdqaf"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -238,45 +238,45 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-pdoja8'
+        Change Dir: 'D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-5vdqaf'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b51c8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2a6b6.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 20/03/2025 22:38:40.
+        Build started 21/03/2025 21:14:10.
         
-        Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\cmTC_b51c8.vcxproj" on node 1 (default targets).
+        Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\cmTC_2a6b6.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_b51c8.dir\\Debug\\".
+          Creating directory "cmTC_2a6b6.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\Debug\\".
-          Creating directory "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\".
+          Creating directory "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\Debug\\".
+          Creating directory "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\unsuccessfulbuild".
+          Creating "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\unsuccessfulbuild".
         VcpkgTripletSelection:
           Using triplet "x64-windows" from "D:\\Paths\\vcpkg\\installed\\x64-windows\\"
           Using normalized configuration "Debug"
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b51c8.dir\\Debug\\\\" /Fd"cmTC_b51c8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2a6b6.dir\\Debug\\\\" /Fd"cmTC_2a6b6.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34438 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b51c8.dir\\Debug\\\\" /Fd"cmTC_b51c8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /I"D:\\Paths\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2a6b6.dir\\Debug\\\\" /Fd"cmTC_2a6b6.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\Apps\\Cmake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\Debug\\cmTC_b51c8.exe" /INCREMENTAL /ILK:"cmTC_b51c8.dir\\Debug\\cmTC_b51c8.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-pdoja8/Debug/cmTC_b51c8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-pdoja8/Debug/cmTC_b51c8.lib" /MACHINE:X64  /machine:x64 cmTC_b51c8.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_b51c8.vcxproj -> D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\Debug\\cmTC_b51c8.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\Debug\\cmTC_2a6b6.exe" /INCREMENTAL /ILK:"cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.ilk" /NOLOGO /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-5vdqaf/Debug/cmTC_2a6b6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Docs/Code/Engines/GlassEngine/build/CMakeFiles/CMakeScratch/TryCompile-5vdqaf/Debug/cmTC_2a6b6.lib" /MACHINE:X64  /machine:x64 cmTC_2a6b6.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_2a6b6.vcxproj -> D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\Debug\\cmTC_2a6b6.exe
         AppLocalFromInstalled:
-          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\Debug\\cmTC_b51c8.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\cmTC_b51c8.write.1u.tlog" "cmTC_b51c8.dir\\Debug\\vcpkg.applocal.log"
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\Paths\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\Debug\\cmTC_2a6b6.exe" "D:\\Paths\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\cmTC_2a6b6.write.1u.tlog" "cmTC_2a6b6.dir\\Debug\\vcpkg.applocal.log"
         FinalizeBuildStatus:
-          Deleting file "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\unsuccessfulbuild".
-          Touching "cmTC_b51c8.dir\\Debug\\cmTC_b51c8.tlog\\cmTC_b51c8.lastbuildstate".
-        Done Building Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdoja8\\cmTC_b51c8.vcxproj" (default targets).
+          Deleting file "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2a6b6.dir\\Debug\\cmTC_2a6b6.tlog\\cmTC_2a6b6.lastbuildstate".
+        Done Building Project "D:\\Docs\\Code\\Engines\\GlassEngine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5vdqaf\\cmTC_2a6b6.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.61
+        Time Elapsed 00:00:00.66
         
       exitCode: 0
   -

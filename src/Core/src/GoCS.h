@@ -70,7 +70,7 @@ namespace GoCS {
 
             void Start() {};
             GLASS_ENGINE_API void Update();
-                
+            GLASS_ENGINE_API double getDeltaTime();
             GameObject* getRootGameObject() {
                 return root;
             }

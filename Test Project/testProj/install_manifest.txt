@@ -1,9 +1,9 @@
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/bin/testingProj.exe
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderFrag.glsl
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Shaders/2D/defaultShaderVert.glsl
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_AmbientOcclusion.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Displacement.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalDX.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderFrag.glsl
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Shaders/2D/defaultShaderVert.glsl

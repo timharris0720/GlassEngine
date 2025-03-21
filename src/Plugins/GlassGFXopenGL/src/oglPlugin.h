@@ -52,9 +52,6 @@ public:
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
-    GLASS_PLUGIN_API double getTime() override {
-        return glfwGetTime();
-    }
     GLASS_PLUGIN_API Shader* CreateShader();
     GLASS_PLUGIN_API VertexArray* CreateVAO();
     GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType);

@@ -45,7 +45,8 @@ namespace Core {
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
 		double Application::GetTime() {
-			return GetRenderer().GetBackend().apiInstance->getTime();
+			//return timer.GetDeltaTime();
+			return 1.0;
 		}
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;
@@ -59,6 +60,7 @@ namespace Core {
 		void Application::run(){
 			while (GetRenderer().GetBackend().apiInstance->shouldWindowClose())
 			{
+				//timer.Update();
 				GetRenderer().GetBackend().apiInstance->BeginScene(&MainCamera);
 				for(GoCS::GameObject* go : Root.children){
 					go->Update();

@@ -12,6 +12,9 @@ namespace GoCS {
         
         Core::App::Application::GetInstance().PushGameObject(this);
     }
+    double GameObject::getDeltaTime(){
+        return 1.0;
+    }
     GameObject::GameObject(std::string name, GameObject* pParent){
         this->name = name;
         this->parent = pParent;

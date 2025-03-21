@@ -1,6 +1,6 @@
 #include "oglPlugin.h"
 #include "glassSTL.h"
-
+#define __STDC_LINMIT_MACROS
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -81,21 +81,30 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
     
     
-    glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
-
-    //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
-    //logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
-    //logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
-    //model = glm::translate(model, objectTransform->Position);
-
-    //// Apply rotation (convert degrees to radians)
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
+    //glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
+//
+    ////logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
+    ////logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
+    ////logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
+    ////model = glm::translate(model, objectTransform->Position);
+//
+    ////// Apply rotation (convert degrees to radians)
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
 
     //// Apply scaling
-    model = glm::scale(model, objectTransform->Scale);
+    //model = glm::scale(model, objectTransform->Scale);
     
+    glm::mat4 model = glm::mat4(1.0f); // Identity matrix
+    model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::scale(model, objectTransform->Scale);  // Scaling last
+
+    
+
 
     if(m_texture != nullptr)
         m_texture->Bind();
@@ -103,14 +112,15 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     vertArray->Bind();
     
     //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * objectTransform->applyTransform();
-    glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
-    objShader->setMat4("mvp", mvp);
-    objShader->setMat4("projection", sceneMainCamera->getProjectionMatrix());
-    objShader->setMat4("view", sceneMainCamera->getViewMatrix());
+    //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
+    //objShader->setMat4("mvp", mvp);
+    //objShader->setMat4("projection", sceneMainCamera->getProjectionMatrix());
+    //objShader->setMat4("view", sceneMainCamera->getViewMatrix());
     //objShader->setMat4("model", objectTransform->applyTransform());
+    //objShader->setMat4("model", model);
+    glm::mat4 mvp = sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
+    objShader->setMat4("mvp", mvp);
     objShader->setMat4("model", model);
-
-    
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
 
@@ -290,43 +300,34 @@ void OGLVertexArray::Unbind(){
 OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
     stbi_set_flip_vertically_on_load(true);  
     unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
+    logger.InfoLog("Name: %s :    Channels: %i",name.c_str(), channels);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
     // set the texture wrapping/filtering options (on the currently bound texture object)
-    switch (WrapType)
-    {
-    case texture::ImageWrapping::REPEAT:
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        break;
-    case texture::ImageWrapping::MIRRORED_REPEAT:
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-        break;
-    case texture::ImageWrapping::CLAMP_TO_EDGE:
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        break;
-    case texture::ImageWrapping::CLAMP_TO_BORDER:
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-        break;
-    
-    default:
-        break;
-    } 
-    
+    GLint wrapMode;
+    switch (WrapType) {
+        case texture::ImageWrapping::REPEAT: wrapMode = GL_REPEAT; break;
+        case texture::ImageWrapping::MIRRORED_REPEAT: wrapMode = GL_MIRRORED_REPEAT; break;
+        case texture::ImageWrapping::CLAMP_TO_EDGE: wrapMode = GL_CLAMP_TO_EDGE; break;
+        case texture::ImageWrapping::CLAMP_TO_BORDER: wrapMode = GL_CLAMP_TO_BORDER; break;
+        default: wrapMode = GL_REPEAT; break;
+    }
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load and generate the texture
     if (imageData)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+        GLenum format = (channels == 1) ? GL_RED : (channels == 3) ? GL_RGB :  (channels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, imageData);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
     {
-        logger.InfoLog("Failed to load texture");
+        logger.ErrorLog("Failed to load texture");
+        logger.ErrorLog("Reasion: STB Image Error: %s", stbi_failure_reason()); 
+
     }
     stbi_image_free(imageData);
 }
