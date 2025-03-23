@@ -1,4 +1,4 @@
-# Glass Engine - WIP do not use
+# Glass Engine
 
 ## File struct
  - src
