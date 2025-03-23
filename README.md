@@ -13,6 +13,6 @@
 
 ## Third Party Libs
 
-    - [GLFW](https://github.com/glfw/glfw)
-    - [Assimp](https://github.com/assimp/assimp)
-    - [STB_Image](https://github.com/nothings/st)
+[GLFW](https://github.com/glfw/glfw)
+[Assimp](https://github.com/assimp/assimp)
+[STB_Image](https://github.com/nothings/st)
