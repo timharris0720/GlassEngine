@@ -21,7 +21,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+#include <type_traits>
+#include <memory>
+#include <functional>
 namespace GoCS {
     class GameComponent;
     class GameObject;
@@ -39,13 +41,19 @@ namespace GoCS {
         public:
         std::string name;
         Logger logger = Logger("TempName", "Log.txt");
-        GoCS::GameObject* parent;
+        GoCS::GameObject* parentObject;
+        
         //Core::App::Application* applicationInstance;
         GameComponent() = default;
         GLASS_ENGINE_API GameComponent(std::string name);
         virtual void Init() {};
         virtual void Start() {};
         virtual void Update() {};
+
+        void SetParent(GoCS::GameObject* _parentObject) {
+            parentObject = _parentObject;
+
+        }
         //virtual void Draw(Renderer::RendererAPI* renderer) {};
     };
 
@@ -57,7 +65,7 @@ namespace GoCS {
             Logger logger = Logger("TempName", "Log.txt");
             std::string name;
             std::vector<GameObject*> children;
-            std::vector<GameComponent*> components;
+            std::vector<std::unique_ptr<GameComponent>> components;
             GameObject* parent;
             GameObject* root;
             Components::Transform* transform;
@@ -74,23 +82,43 @@ namespace GoCS {
             GameObject* getRootGameObject() {
                 return root;
             }
-            template<class T, typename... Args>
-            T* AddGameComponent(Args&&... args) {
+            void SetParent(GameObject* parentObject) {
+                parent = parentObject;
+            }
+            template <typename T, typename... Args>
+            T* AddComponent(Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
-                    GameComponent* tmp = new T(std::forward<Args>(args)...);
-                    tmp->parent = this;
-                    //tmp->root = root;
-                    //tmp->Init();
-                    tmp->Start();
-                    components.push_back(tmp);
-                    logger.InfoLog("Added Component: %s_component to %s GameComponents", tmp->name.c_str(), this->name.c_str());
-                    return static_cast<T*>(tmp);
+                    auto component = std::make_unique<T>(std::forward<Args>(args)...);
+                    T* ptr = component.get();
+                    ptr->SetParent(this);
+                    logger.DebugLog("Parent Name: %s", ptr->parentObject->name.c_str());
+
+                    //ptr->root = root;
+                    //ptr->Init();
+                    ptr->Start();
+                    logger.DebugLog("parent pos x: %f", ptr->parentObject->transform->Position.x);
+                    logger.DebugLog("Added Component: %s to Objects %s GameComponents", ptr->name.c_str(), this->name.c_str());
+
+                    components.push_back(std::move(component));
+                    
+                    return ptr;
                 }
                 return NULL;
             }
+            template <typename T>
+            T* GetComponent() {
+                static_assert(std::is_base_of<GameComponent, T>::value, "T must inherit from GameComponent");
+
+                for (auto& component : components) {
+                    if (T* casted = dynamic_cast<T*>(component.get())) {
+                        return casted;
+                    }
+                }
+                return nullptr;
+            }
             GameObject* CreateChild(std::string name){
                 GameObject* GO = new GameObject(name,  this);
-                logger.InfoLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
+                logger.DebugLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
                 return GO;
             }
             GameObject() = default;
@@ -132,6 +160,158 @@ namespace Components {
             GLASS_ENGINE_API void Start();
     };
 
+
+    /*
+    class Camera : public  GoCS::GameComponent {
+    public:
+        GLASS_ENGINE_API Camera() = default;
+        GLASS_ENGINE_API Camera(std::string name);
+        virtual ~Camera() = default;
+        
+        // Pure virtual methods for projection matrix
+        virtual void setProjection(float width, float height){};
+        virtual void updateProjectionMatrix(){};
+
+        // Convenience methods for setting and getting position and rotation
+        void setPosition(const glm::vec3& newPosition) { transform.Position = newPosition; }
+        void setRotation(const glm::vec3& newRotation) { transform.Rotation = newRotation; }
+
+        glm::vec3 getPosition() const { return transform.Position; }
+        glm::vec3 getRotation() const { return transform.Rotation; }
+        glm::mat4 getViewMatrix() const {
+            glm::vec3 position = getPosition();
+            glm::vec3 rotation = getRotation();
+
+            // Calculate forward, right, and up vectors from the rotation
+            glm::vec3 forward = glm::normalize(glm::vec3(
+                cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
+                sin(glm::radians(rotation.x)),
+                sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x))
+            ));
+            glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+            glm::vec3 right = glm::normalize(glm::cross(up, forward));
+            up = glm::normalize(glm::cross(forward, right));
+
+            return glm::lookAt(position, position + forward, up);
+        }
+        glm::mat4 getProjectionMatrix() const {return projectionMatrix;}
+        glm::mat4 projectionMatrix{1.0f};
+        Components::Transform transform;
+    };
+    class PerspectiveCamera : public Camera {
+    public:
+        float fov; // Field of View in degrees
+        float aspectRatio;
+        float nearPlane;
+        float farPlane;
+        PerspectiveCamera() = default;
+        PerspectiveCamera(float fov, float aspectRatio, float nearPlane, float farPlane) : fov(fov), aspectRatio(aspectRatio), nearPlane(nearPlane), farPlane(farPlane), Camera("Camera") {
+            updateProjectionMatrix();
+        }
+
+        void setProjection(float width, float height) override {
+            aspectRatio = width / height;
+            updateProjectionMatrix();
+        }
+
+        void updateProjectionMatrix() override {
+            projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
+        }
+
+        void setFOV(float newFov) {
+            fov = newFov;
+            updateProjectionMatrix();
+        }
+        
+    };
+    class OrthoCamera : public Camera {
+    public:
+        OrthoCamera() = default;
+        OrthoCamera(float left, float right, float bottom, float top, float nearPlane, float farPlane) : left(left), right(right), bottom(bottom), top(top), nearPlane(nearPlane), farPlane(farPlane), Camera("Camera") {
+            updateProjectionMatrix();
+        }
+
+        void setProjection(float width, float height) override {
+            left = -width / 2.0f;
+            right = width / 2.0f;
+            bottom = -height / 2.0f;
+            top = height / 2.0f;
+            updateProjectionMatrix();
+        }
+
+        void updateProjectionMatrix() override {
+            projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
+        }
+        float left;
+        float right;
+        float bottom;   
+        float top;
+        float nearPlane;
+        float farPlane;
+    };
+
+    */
+    class Camera : public GoCS::GameComponent {
+        private:
+            float fov; // Field of View in degrees
+            float aspectRatio;
+
+
+            float nearPlane;
+            float farPlane;
+
+            float left;
+            float right;
+            float bottom;   
+            float top;
+
+            int sceneType;
+            glm::mat4 projectionMatrix{1.0f};
+        public:
+            GLASS_ENGINE_API Camera() = default;
+            GLASS_ENGINE_API Camera(float fov, float aspectRatio, float nearPlane, float farPlane);
+            GLASS_ENGINE_API Camera(float left, float right, float bottom, float top, float nearPlane, float farPlane);
+            void updateProjectionMatrix() {
+                if(sceneType == 3)
+                    projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
+                if(sceneType == 2)
+                    projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
+            }
+            glm::mat4 getProjectionMatrix(){
+                return projectionMatrix;
+            }
+
+            void setProjection(float width, float height) {
+                if(sceneType == 3)
+                    aspectRatio = width / height;
+                if(sceneType == 2){
+                    left = -width / 2.0f;
+                    right = width / 2.0f;
+                    bottom = -height / 2.0f;
+                    top = height / 2.0f;
+                }
+                updateProjectionMatrix();
+            }
+            glm::mat4 getViewMatrix() const {
+                glm::vec3 position = parentObject->transform->Position;
+                glm::vec3 rotation = parentObject->transform->Rotation;
+
+                // Calculate forward, right, and up vectors from the rotation
+                glm::vec3 forward = glm::normalize(glm::vec3(
+                    cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
+                    sin(glm::radians(rotation.x)),
+                    sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x))
+                ));
+                glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+                glm::vec3 right = glm::normalize(glm::cross(up, forward));
+                up = glm::normalize(glm::cross(forward, right));
+
+                return glm::lookAt(position, position + forward, up);
+            }
+        
+    };
+
+    
 }
 
 

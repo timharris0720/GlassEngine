@@ -29,6 +29,7 @@ private:
     std::string DebuLogTitle;
     std::string ErroLogTitle;
 	std::string LoggerName;
+	bool debugMode = false;
 	void writeFile(std::string fileData, std::string path) {			
     
         std::ofstream file(path, std::ios::app);
@@ -43,6 +44,9 @@ public:
     void ToggleFileLogging(){
         LogToFile = !LogToFile;
     }
+	void setDBGMode(bool de){
+		debugMode = true;
+	}
     void ToggleFileLogging(bool decider){
         LogToFile = decider;
     }
@@ -54,49 +58,51 @@ public:
 		return LoggerName;
 	}
     void DebugLog(const char* fmt, ...) {
-#ifndef NDEBUG
-#ifdef WIN32
+	#ifndef NDEBUG
+	debugMode = true;
+	#endif
+		if(debugMode == true){
+		#ifdef WIN32
 
-		CONSOLE_SCREEN_BUFFER_INFO csbi;
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		GetConsoleScreenBufferInfo(hConsole, &csbi);
-		WORD originalAttributes = csbi.wAttributes;
-		SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-		std::cout << DebuLogTitle;
-		SetConsoleTextAttribute(hConsole, originalAttributes);
-#else
+			CONSOLE_SCREEN_BUFFER_INFO csbi;
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			GetConsoleScreenBufferInfo(hConsole, &csbi);
+			WORD originalAttributes = csbi.wAttributes;
+			SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+			std::cout << DebuLogTitle;
+			SetConsoleTextAttribute(hConsole, originalAttributes);
+		#else
 
-		std::cout << "\033[32;1m" << DebuLogTitle << " \033[0m";
+			std::cout << "\033[32;1m" << DebuLogTitle << " \033[0m";
 
-#endif //_WIN32
+		#endif //_WIN32
 
-		va_list args;
-		va_start(args, fmt);
-		vprintf(fmt, args);
-		
-		va_end(args);
-		
-
-		// Return the formatted string as a std::string
-		std::cout << std::endl;
-		if (LogToFile == true) {
 			va_list args;
 			va_start(args, fmt);
-
-			// Determine the size of the formatted string
-			size_t size = std::vsnprintf(nullptr, 0, fmt, args) + 1;  // Include space for '\0'
-			va_end(args);  // Reset va_list for the second use
-
-			// Allocate the necessary buffer in a C++ std::string
-			std::vector<char> buffer(size);
-			va_start(args, fmt);  // Restart the variadic argument list
-			std::vsnprintf(buffer.data(), size, fmt, args);  // Format the string into the buffer
+			vprintf(fmt, args);
+			
 			va_end(args);
+			
 
-			writeFile(DebuLogTitle + std::string(buffer.data()), LogFile);
+			// Return the formatted string as a std::string
+			std::cout << std::endl;
+			if (LogToFile == true) {
+				va_list args;
+				va_start(args, fmt);
+
+				// Determine the size of the formatted string
+				size_t size = std::vsnprintf(nullptr, 0, fmt, args) + 1;  // Include space for '\0'
+				va_end(args);  // Reset va_list for the second use
+
+				// Allocate the necessary buffer in a C++ std::string
+				std::vector<char> buffer(size);
+				va_start(args, fmt);  // Restart the variadic argument list
+				std::vsnprintf(buffer.data(), size, fmt, args);  // Format the string into the buffer
+				va_end(args);
+
+				writeFile(DebuLogTitle + std::string(buffer.data()), LogFile);
+			}
 		}
-	
-#endif // DEBUG
 		
 
 	}

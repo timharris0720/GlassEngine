@@ -7,8 +7,6 @@ out vec2 TexCoord;  // Pass to fragment shader
 out vec3 FragColor;
 
 uniform mat4 mvp;
-uniform mat4 projection;
-uniform mat4 view;
 uniform mat4 model;
 
 void main()

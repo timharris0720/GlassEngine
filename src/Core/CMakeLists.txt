@@ -42,6 +42,12 @@ FetchContent_Declare(json
     GIT_TAG v3.11.3
 )
 FetchContent_MakeAvailable(json)
+FetchContent_Declare(
+    argparse
+    GIT_REPOSITORY https://github.com/p-ranav/argparse.git
+)
+FetchContent_MakeAvailable(argparse)
+FetchContent_MakeAvailable(json)
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 set(OutputIncDirGE  "${OutputIncDir}/GlassEngine")
 
@@ -54,7 +60,7 @@ add_library(GlassEngineCore SHARED ${SRC_FILES} ${HEAD_FILES})
 target_compile_definitions(GlassEngineCore PUBLIC GLASS_ENGINE_EXPORTS_CORE)
 target_include_directories(GlassEngineCore PUBLIC "${OutputIncDir}")
 target_include_directories(GlassEngineCore PUBLIC ${glm_SOURCE_DIR})
-target_link_libraries(GlassEngineCore PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(GlassEngineCore PRIVATE nlohmann_json::nlohmann_json argparse)
 
 file(GLOB GLM_INCLUDES_glm  ${glm_SOURCE_DIR}/glm/*.hpp)
 # DETAIL DIR

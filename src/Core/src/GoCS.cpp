@@ -9,16 +9,18 @@ namespace GoCS {
     }
     GameObject::GameObject(std::string name){
         this->name = name;
+        transform = new Components::Transform();
         logger.setLoggerName(name);
-        
         Core::App::Application::GetInstance().PushGameObject(this);
     }
     double GameObject::getDeltaTime(){
         return 1.0;
     }
+
     GameObject::GameObject(std::string name, GameObject* pParent){
         this->name = name;
         this->parent = pParent;
+        
         transform = new Components::Transform();
         logger.setLoggerName(name);
         parent->children.push_back(this);
@@ -48,8 +50,25 @@ namespace Components {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
         VertexArray* v = Defaults::SquareSprite();
-        parent->objectShader = std::move(shader);
-        parent->vertexArray = std::move(v);
-        parent->objectTexture = std::move(texu);
+        parentObject->objectShader = std::move(shader);
+        parentObject->vertexArray = std::move(v);
+        parentObject->objectTexture = std::move(texu);
+    }
+
+    Camera::Camera(float fov, float aspectRatio, float nearPlane, float farPlane) : GameComponent("Camera") {
+        this->fov = fov;
+        this->aspectRatio = aspectRatio;
+        this->nearPlane = nearPlane;
+        this->farPlane = farPlane;
+        this->sceneType = 3;
+    }
+    Camera::Camera(float left, float right, float bottom, float top, float nearPlane, float farPlane) : GameComponent("Camera"){
+        this->left  = left;
+        this->right = right;
+        this->bottom = bottom;
+        this->top = top;
+        this->nearPlane = nearPlane;
+        this->farPlane = farPlane;
+        this->sceneType = 2;
     }
 }

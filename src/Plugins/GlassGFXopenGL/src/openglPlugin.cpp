@@ -29,18 +29,18 @@ bool OpenGLRenderAPI::shouldWindowClose(){
     return !glfwWindowShouldClose(window);
 }
 void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
-    logger.InfoLog("WinProps");
-    logger.InfoLog("---------------------------");
-    logger.InfoLog("WinProps Height: %i", winProps->height);
-    logger.InfoLog("WinProps Width : %i", winProps->width);
-    logger.InfoLog("WinProps Name  : %s", winProps->name.c_str());
-    logger.InfoLog("WinProps Vysnc : %i", winProps->vsync);
+    logger.DebugLog("WinProps");
+    logger.DebugLog("---------------------------");
+    logger.DebugLog("WinProps Height: %i", winProps->height);
+    logger.DebugLog("WinProps Width : %i", winProps->width);
+    logger.DebugLog("WinProps Name  : %s", winProps->name.c_str());
+    logger.DebugLog("WinProps Vysnc : %i", winProps->vsync);
     
     winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
-    logger.InfoLog("GLEW      version: %s", glewGetString(GLEW_VERSION));
-    logger.InfoLog("GL Shader version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    logger.InfoLog("GL        version: %s", glGetString(GL_VERSION));
+    logger.DebugLog("GLEW      version: %s", glewGetString(GLEW_VERSION));
+    logger.DebugLog("GL Shader version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    logger.DebugLog("GL        version: %s", glGetString(GL_VERSION));
     glfwMakeContextCurrent(window);
 
     GLenum glI = glewInit();
@@ -53,8 +53,10 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
     glfwSwapInterval(winData.vsync);
 
 }
-void OpenGLRenderAPI::BeginScene(Cameras::Camera* mCamera){
+void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     sceneMainCamera = mCamera;
+    sceneCameraComponent = mCamera->GetComponent<Components::Camera>();
+
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
     //glClearColor(0,0,0,1);
@@ -63,7 +65,8 @@ void OpenGLRenderAPI::Update(){}
 void OpenGLRenderAPI::EndScene() {
    int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
-    sceneMainCamera->setProjection(display_w,display_h);
+    
+    //sceneMainCamera->setProjection(display_w,display_h);
     glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -80,7 +83,7 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
     
-    
+    /*
     //glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
     //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
     //logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
@@ -93,9 +96,9 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
 
     // Apply scaling
     //model = glm::scale(model, objectTransform->Scale);
-    
+    */
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-    model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
+    //model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -116,8 +119,12 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     //objShader->setMat4("view", sceneMainCamera->getViewMatrix());
     //objShader->setMat4("model", objectTransform->applyTransform());
     //objShader->setMat4("model", model);
-    glm::mat4 mvp = sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
-    objShader->setMat4("mvp", mvp);
+    
+    if(sceneCameraComponent){
+    
+        glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
+    }
+    //objShader->setMat4("mvp", mvp);
     objShader->setMat4("model", model);
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
@@ -150,8 +157,8 @@ void OpenGLShader::checkCompileErrors(GLuint shader, std::string type) {
     }
 }
 void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexShaderPath){
-    logger.InfoLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
-    logger.InfoLog("Vertex shader path: %s ", vertexShaderPath.c_str());
+    logger.DebugLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
+    logger.DebugLog("Vertex shader path: %s ", vertexShaderPath.c_str());
     VertShader = Utils::readFile(vertexShaderPath);
     FragShader = Utils::readFile(fragmentShaderPath);
     const char* vShaderCode = VertShader.c_str();
@@ -298,7 +305,7 @@ void OGLVertexArray::Unbind(){
 OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
     stbi_set_flip_vertically_on_load(true);  
     unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
-    logger.InfoLog("Name: %s :    Channels: %i",name.c_str(), channels);
+    logger.DebugLog("Name: %s :    Channels: %i",name.c_str(), channels);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
     

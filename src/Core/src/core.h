@@ -19,7 +19,6 @@
 #include "GoCS.h"
 #include "SceneLoader.h"
 //#include "Time.h"
-#include "camera.h"
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
 typedef glm::vec4 Vector4;
@@ -157,16 +156,18 @@ namespace Core {
 			int height;
 			int width;
 			App::SceneType sceneType;
+			int argc;
+			char** argv;
 		};
 
 
 		class Application {
 		private:
 			RenderBackend api;
-			Logger logger = Logger("Application","Log.txt");
+			Logger logger = Logger("Core.Application","Log.txt");
 			//std::vector<Core::Entity::GameObject*> gameObjects;
 			GoCS::GameObject Root;
-			Cameras::Camera MainCamera;
+			GoCS::GameObject* MainCamera;
 			
 			static Renderer::RendererAPI* renderAPI;
 			//Time timer;
@@ -182,6 +183,8 @@ namespace Core {
 			GLASS_ENGINE_API void run();
 			static Application& GetInstance() { return *s_instance; }
 			static Renderer::RendererAPI& GetRenderer() { return *renderAPI; }
+			GoCS::GameObject* GetRoot(){ return &Root; }
+
 			Logger getLogger() { return logger;}
 			
 			Plugin::PluginLoader pluginLoader;

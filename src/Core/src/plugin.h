@@ -6,7 +6,8 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "texture.h"
-#include "camera.h"
+#include "GoCS.h"
+//#include "camera.h"
 struct WindowProperties {
     std::string name;
     int width;
@@ -34,7 +35,7 @@ class GlassPlugin {
 class GlassPlugin_GFX : public GlassPlugin {
 public:
     WindowProperties winData;
-    Cameras::Camera* sceneMainCamera;
+    GoCS::GameObject* sceneMainCamera;
     virtual void createRenderContext(WindowProperties* winProps) = 0;
     virtual bool shouldWindowClose() { return true;}
     virtual int GetWidth() {return winData.width;};
@@ -42,7 +43,7 @@ public:
     virtual void* GetNativeWindow() const = 0;
     virtual bool isVsyncEnabled() {return winData.vsync;};
     virtual void VsyncCallback() = 0;
-    virtual void BeginScene(Cameras::Camera* mCamera) = 0;
+    virtual void BeginScene(GoCS::GameObject* mCamera) = 0;
     virtual void EndScene() = 0;
     virtual Shader* CreateShader() = 0;
     virtual VertexArray* CreateVAO() = 0;

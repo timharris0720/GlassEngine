@@ -11,18 +11,21 @@ public:
         //PushGameObject(GO);
 
         GameObject* GO = new GameObject("GameManager");
-        GO->AddGameComponent<GameManager>();
+        GO->AddComponent<GameManager>();
+
     }
 };
 
 
 
-Core::App::Application* CreateApplication(){
+Core::App::Application* CreateApplication(int argc, char** argv){
     Core::App::AppSpec appSpec;
     appSpec.name = "Application";
     appSpec.width = 600;
     appSpec.height = 480;
     appSpec.sceneType = App::SceneType::DIM_3;
+    appSpec.argc = argc;
+    appSpec.argv = argv;
     return new TestProject(appSpec, Core::App::RenderBackend::OPENGL, "");
 }
 

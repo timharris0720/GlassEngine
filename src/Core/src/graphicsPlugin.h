@@ -6,6 +6,5 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "texture.h"
-#include "camera.h"
 
 
