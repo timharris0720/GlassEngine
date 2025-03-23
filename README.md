@@ -15,4 +15,4 @@
 
 [GLFW](https://github.com/glfw/glfw)
 [Assimp](https://github.com/assimp/assimp)
-[STB_Image](https://github.com/nothings/st)
+[STB_Image](https://github.com/nothings/stb)
