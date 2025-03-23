@@ -13,6 +13,7 @@ public:
         GameObject* GO = new GameObject("GameManager");
         GO->AddComponent<GameManager>();
 
+        GetRoot()->GetChild("Main Camera")->AddComponent<CameraController>();
     }
 };
 

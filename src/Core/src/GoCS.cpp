@@ -20,14 +20,16 @@ namespace GoCS {
     GameObject::GameObject(std::string name, GameObject* pParent){
         this->name = name;
         this->parent = pParent;
-        
+        this->root =  Core::App::Application::GetInstance().GetRoot();
         transform = new Components::Transform();
         logger.setLoggerName(name);
         parent->children.push_back(this);
+		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
+
     }
     void GameObject::Update(){
         for(GameObject* child : children){
-                 child->Update();
+            child->Update();
         }
         
         for(int i = 0; i < components.size(); i++){

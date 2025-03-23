@@ -28,15 +28,7 @@ bool OpenGLRenderAPI::onLoad() {
 bool OpenGLRenderAPI::shouldWindowClose(){
     return !glfwWindowShouldClose(window);
 }
-void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
-    logger.DebugLog("WinProps");
-    logger.DebugLog("---------------------------");
-    logger.DebugLog("WinProps Height: %i", winProps->height);
-    logger.DebugLog("WinProps Width : %i", winProps->width);
-    logger.DebugLog("WinProps Name  : %s", winProps->name.c_str());
-    logger.DebugLog("WinProps Vysnc : %i", winProps->vsync);
-    
-    winData = *winProps;
+void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
     logger.DebugLog("GLEW      version: %s", glewGetString(GLEW_VERSION));
     logger.DebugLog("GL Shader version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
@@ -48,8 +40,6 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){
         logger.ErrorLog("GLEW Failed To INIT, %u code", glI);
         exit(EXIT_FAILURE);
     }
-
-    
     glfwSwapInterval(winData.vsync);
 
 }
@@ -58,7 +48,7 @@ void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     sceneCameraComponent = mCamera->GetComponent<Components::Camera>();
 
     glfwPollEvents();
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //glClearColor(0,0,0,1);
 }
 void OpenGLRenderAPI::Update(){}
@@ -66,7 +56,7 @@ void OpenGLRenderAPI::EndScene() {
    int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     
-    //sceneMainCamera->setProjection(display_w,display_h);
+    sceneCameraComponent->setProjection(display_w,display_h);
     glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -97,12 +87,12 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     // Apply scaling
     //model = glm::scale(model, objectTransform->Scale);
     */
-    glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-    //model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    model = glm::scale(model, objectTransform->Scale);  // Scaling last
+    //glm::mat4 model = glm::mat4(1.0f); // Identity matrix
+    ////model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    //model = glm::scale(model, objectTransform->Scale);  // Scaling last
 
     
 
@@ -112,7 +102,6 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     objShader->Bind();
     vertArray->Bind();
     
-    //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * objectTransform->applyTransform();
     //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
     //objShader->setMat4("mvp", mvp);
     //objShader->setMat4("projection", sceneMainCamera->getProjectionMatrix());
@@ -122,10 +111,12 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     
     if(sceneCameraComponent){
     
-        glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
+        //glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
+        glm::mat4 mvp =  sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * objectTransform->applyTransform();
+        objShader->setMat4("mvp", mvp);
+
     }
-    //objShader->setMat4("mvp", mvp);
-    objShader->setMat4("model", model);
+    objShader->setMat4("model", objectTransform->applyTransform());
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
 

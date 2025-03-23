@@ -9,3 +9,10 @@
 ## To Do
     - Model Loading
     - 3D Rendering
+
+
+## Third Party Libs
+
+    - [GLFW](https://github.com/glfw/glfw)
+    - [Assimp](https://github.com/assimp/assimp)
+    - [STB_Image](https://github.com/nothings/st)

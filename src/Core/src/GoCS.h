@@ -60,12 +60,15 @@ namespace GoCS {
     
 
     class GameObject {
-        public: 
-            std::string Tag;
+        private:
             Logger logger = Logger("TempName", "Log.txt");
-            std::string name;
+
+        public: 
             std::vector<GameObject*> children;
             std::vector<std::unique_ptr<GameComponent>> components;
+
+            std::string Tag;
+            std::string name;
             GameObject* parent;
             GameObject* root;
             Components::Transform* transform;
@@ -91,13 +94,10 @@ namespace GoCS {
                     auto component = std::make_unique<T>(std::forward<Args>(args)...);
                     T* ptr = component.get();
                     ptr->SetParent(this);
-                    logger.DebugLog("Parent Name: %s", ptr->parentObject->name.c_str());
 
                     //ptr->root = root;
                     //ptr->Init();
                     ptr->Start();
-                    logger.DebugLog("parent pos x: %f", ptr->parentObject->transform->Position.x);
-                    logger.DebugLog("Added Component: %s to Objects %s GameComponents", ptr->name.c_str(), this->name.c_str());
 
                     components.push_back(std::move(component));
                     
@@ -105,14 +105,23 @@ namespace GoCS {
                 }
                 return NULL;
             }
+            GameObject* GetChild(std::string name){
+                for(GameObject* GO : children){
+                    if(GO->name == name)
+                    {
+                        logger.InfoLog("Found %s Returning it", name.c_str()); 
+                        return GO;
+                    }
+                    
+                }
+                return nullptr;
+            }
             template <typename T>
             T* GetComponent() {
                 static_assert(std::is_base_of<GameComponent, T>::value, "T must inherit from GameComponent");
 
                 for (auto& component : components) {
-                    if (T* casted = dynamic_cast<T*>(component.get())) {
-                        return casted;
-                    }
+                    if (T* casted = dynamic_cast<T*>(component.get()))  return casted;   
                 }
                 return nullptr;
             }

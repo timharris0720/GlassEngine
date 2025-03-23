@@ -79,9 +79,9 @@ namespace Core {
 		}
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;
-			
+			GO->parent = &Root;
 			Root.children.push_back(GO);
-			logger.DebugLog("Added Gameobject: %s to stack", GO->name.c_str());
+			logger.DebugLog("Added Gameobject: %s to Root as a child", GO->name.c_str());
 		}
 		bool Application::isRunning(){
 			return GetRenderer().GetBackend().apiInstance->shouldWindowClose();
