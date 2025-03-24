@@ -16,7 +16,7 @@ public:
 
         //testChild2->transform->Position = glm::vec3(2.0f, 2.0f, -5.0f);
 
-
+        testChild->AddComponent<Components::Mesh>("Assets/Models/stanford-bunny.obj");
     }  
     void Update() override {
         frameNumber++;

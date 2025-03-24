@@ -1,5 +1,6 @@
 #include "core.h"
 #include "pluginLoader.h"
+
 #include <argparse/argparse.hpp>
 
 namespace Core {
@@ -67,7 +68,6 @@ namespace Core {
 			else {
 				logger.DebugLog("Perspective Camera");
 				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
-
 				//MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 				//MainCamera.transform = Components::Transform();
 			}

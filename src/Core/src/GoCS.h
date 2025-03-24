@@ -18,6 +18,7 @@
 #include "texture.h"
 #include "Shader.h"
 #include "VertexArray.h"
+#include "ModelLoader.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -167,8 +168,20 @@ namespace Components {
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
             GLASS_ENGINE_API void Start();
-    };
 
+    };
+    class Mesh : public GoCS::GameComponent {
+        private:
+            std::string path;
+
+            GLASS_ENGINE_API void ProcessNode(aiNode* node, const aiScene* scene);
+            GLASS_ENGINE_API void ProcessMesh(aiMesh* mesh, const aiScene* scene);
+
+        public:
+            GLASS_ENGINE_API Mesh() = default;
+            GLASS_ENGINE_API Mesh(std::string path);
+            GLASS_ENGINE_API void Start();
+    };
 
     /*
     class Camera : public  GoCS::GameComponent {

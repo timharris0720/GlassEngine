@@ -16,7 +16,7 @@ public:
             logger.InfoLog("%f", testChild->transform->Rotation.x);
         }
         if(Input::GetKeyDown(KeyCode::D)){
-            parentObject->transform->Rotation.x += 0.01;
+            testChild->transform->Rotation.x += 0.01;
             logger.InfoLog("%f", testChild->transform->Rotation.x);
         }
     }

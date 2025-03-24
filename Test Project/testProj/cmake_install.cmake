@@ -172,6 +172,62 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   endif()
 endif()
 
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Models/stanford-bunny.obj;D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Models/teapot.obj")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Debug/bin/Assets/Models" TYPE FILE FILES
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/stanford-bunny.obj"
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/teapot.obj"
+      )
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/stanford-bunny.obj;D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/teapot.obj")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models" TYPE FILE FILES
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/stanford-bunny.obj"
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/teapot.obj"
+      )
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/stanford-bunny.obj;D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/teapot.obj")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models" TYPE FILE FILES
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/stanford-bunny.obj"
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/teapot.obj"
+      )
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
+    list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+     "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/stanford-bunny.obj;D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models/teapot.obj")
+    if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+      message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+    endif()
+    file(INSTALL DESTINATION "D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/win64/Release/bin/Assets/Models" TYPE FILE FILES
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/stanford-bunny.obj"
+      "D:/Docs/Code/Engines/GlassEngine/Test Project/../TestAssets/Models/teapot.obj"
+      )
+  endif()
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_COMPONENT MATCHES "^[a-zA-Z0-9_.+-]+$")
     set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")

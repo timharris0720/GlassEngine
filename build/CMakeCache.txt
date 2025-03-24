@@ -67,8 +67,11 @@ ASSIMP_BUILD_NONFREE_C4D_IMPORTER:BOOL=OFF
 //If the official samples are built as well (needs Glut).
 ASSIMP_BUILD_SAMPLES:BOOL=OFF
 
+//Build Assimp as a static library
+ASSIMP_BUILD_SHARED_LIBS:BOOL=OFF
+
 //If the test suite for Assimp is built in addition to the library.
-ASSIMP_BUILD_TESTS:BOOL=ON
+ASSIMP_BUILD_TESTS:BOOL=OFF
 
 //Build your own zlib
 ASSIMP_BUILD_ZLIB:BOOL=OFF
@@ -96,7 +99,7 @@ ASSIMP_INCLUDE_INSTALL_DIR:STRING=include
 ASSIMP_INJECT_DEBUG_POSTFIX:BOOL=ON
 
 //Disable this if you want to use assimp as a submodule.
-ASSIMP_INSTALL:BOOL=ON
+ASSIMP_INSTALL:BOOL=OFF
 
 //Install MSVC debug files.
 ASSIMP_INSTALL_PDB:BOOL=ON
@@ -142,7 +145,7 @@ Assimp_IS_TOP_LEVEL:STATIC=OFF
 Assimp_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-src
 
 //Build package with shared libraries.
-BUILD_SHARED_LIBS:BOOL=ON
+BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/lib.exe
@@ -687,7 +690,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

@@ -17,7 +17,6 @@ D:/Docs/Code/Engines/GlassEngine/build/_deps/argparse-build/CMakeFiles/ALL_BUILD
 D:/Docs/Code/Engines/GlassEngine/build/_deps/json-build/CMakeFiles/PACKAGE.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/json-build/CMakeFiles/INSTALL.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/json-build/CMakeFiles/ALL_BUILD.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/CMakeFiles/uninstall.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/CMakeFiles/UpdateAssimpLibsDebugSymbolsAndDLLs.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/CMakeFiles/PACKAGE.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/CMakeFiles/INSTALL.dir
@@ -29,8 +28,3 @@ D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/contrib/zlib/CMakeFile
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/assimp.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/PACKAGE.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/INSTALL.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/test/CMakeFiles/unit.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/test/CMakeFiles/PACKAGE.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/test/CMakeFiles/INSTALL.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/test/headercheck/CMakeFiles/PACKAGE.dir
-D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/test/headercheck/CMakeFiles/INSTALL.dir

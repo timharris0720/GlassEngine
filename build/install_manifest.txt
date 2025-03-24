@@ -1,11 +1,9 @@
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/cmake/assimp-5.2/assimpConfig.cmake
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/cmake/assimp-5.2/assimpConfigVersion.cmake
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/cmake/assimp-5.2/assimpTargets.cmake
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/cmake/assimp-5.2/assimpTargets-release.cmake
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/pkgconfig/assimp.pc
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/zlibstatic.lib
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/assimp-vc143-mt.lib
-D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/bin/assimp-vc143-mt.dll
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/cmake/assimp-5.2/assimpTargets-debug.cmake
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/zlibstaticd.lib
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/lib/assimp-vc143-mtd.lib
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/assimp/anim.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/assimp/aabb.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/assimp/ai_assert.h
@@ -516,6 +514,7 @@ D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/ErrorCode
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/GoCS.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/InputSystem.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/Logger.h
+D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/ModelLoader.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/RendererAPI.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/SceneLoader.h
 D:/Docs/Code/Engines/GlassEngine/GlassEngine_Build/include/GlassEngine/Shader.h

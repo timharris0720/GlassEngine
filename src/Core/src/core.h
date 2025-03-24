@@ -185,7 +185,7 @@ namespace Core {
 			static Renderer::RendererAPI& GetRenderer() { return *renderAPI; }
 			GoCS::GameObject* GetRoot(){ return &Root; }
 
-			Logger getLogger() { return logger;}
+			Logger* GetLogger() { return &logger;}
 			
 			Plugin::PluginLoader pluginLoader;
 			SceneNS::SceneLoader sceneLoader;

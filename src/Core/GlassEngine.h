@@ -3,7 +3,6 @@
 #include "plugin.h"
 //#include "runtime.h"
 #include "Logger.h"
-#include "camera.h"
 #include "ErrorCodes.h"
 #include "Shader.h"
 #include "GoCS.h"

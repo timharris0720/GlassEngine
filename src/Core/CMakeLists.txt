@@ -36,8 +36,8 @@ endif()
 # )
 # FetchContent_MakeAvailable(vulkan-headers vulkan-loader)
 
-
-FetchContent_Declare(json
+FetchContent_Declare(
+    json
     GIT_REPOSITORY https://github.com/nlohmann/json
     GIT_TAG v3.11.3
 )
@@ -53,7 +53,18 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(argparse)
 FetchContent_MakeAvailable(json)
+
+#set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Assimp as a static library" FORCE)
+set(ASSIMP_BUILD_ASSIMP_TOOLS OFF CACHE BOOL "Disable Assimp tools" FORCE)
+set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "Disable Assimp tests" FORCE)
+set(ASSIMP_INSTALL OFF CACHE BOOL "Disable Assimp install" FORCE)
+set(ASSIMP_NO_EXPORT ON)
+set(ASSIMP_WARNINGS_AS_ERRORS OFF)
+set(ASSIMP_INSTALL_PDB OFF)
+set(ASSIMP_BUILD_ASSIMP_VIEW OFF)
+set(ASSIMP_INJECT_DEBUG_POSTFIX OFF)
 FetchContent_MakeAvailable(assimp)
+set(CMAKE_DEBUG_POSTFIX "") 
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 set(OutputIncDirGE  "${OutputIncDir}/GlassEngine")
 
