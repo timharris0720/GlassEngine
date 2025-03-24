@@ -33,7 +33,11 @@ namespace Components {
     class Transform;
     class Sprite;
 }
+struct MeshObject {
+    VertexArray rootMesh;
+    std::vector<GoCS::GameObject> Children;
 
+};
 
 
 
@@ -173,15 +177,17 @@ namespace Components {
     class Mesh : public GoCS::GameComponent {
         private:
             std::string path;
-
-            GLASS_ENGINE_API void ProcessNode(aiNode* node, const aiScene* scene);
-            GLASS_ENGINE_API void ProcessMesh(aiMesh* mesh, const aiScene* scene);
+            GLASS_ENGINE_API void ProcessMesh(aiMesh* mesh, GoCS::GameObject& GO);
+            GLASS_ENGINE_API void ProcessNode(aiNode* node, const aiScene* scene, GoCS::GameObject& GO);
 
         public:
             GLASS_ENGINE_API Mesh() = default;
             GLASS_ENGINE_API Mesh(std::string path);
             GLASS_ENGINE_API void Start();
     };
+
+    
+
 
     /*
     class Camera : public  GoCS::GameComponent {

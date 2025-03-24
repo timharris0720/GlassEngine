@@ -5,6 +5,7 @@
 struct Vertex {
     glm::vec3 vertices = glm::vec3(0);
     glm::vec3 color = glm::vec3(1);
+    glm::vec3 normal = glm::vec3(0);
     glm::vec2 uv = glm::vec2(0);
 };
 // TODO add Layouts

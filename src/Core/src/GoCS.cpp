@@ -28,13 +28,17 @@ namespace GoCS {
 
     }
     void GameObject::Update(){
+        if(components.size() > 0){
+            for(int i = 0; i < components.size(); i++){
+                components[i]->Update();
+            }
+        }
         for(GameObject* child : children){
+            logger.InfoLog("Child: %s", child->name);
             child->Update();
         }
         
-        for(int i = 0; i < components.size(); i++){
-            components[i]->Update();
-        }
+        
         if(vertexArray && objectShader){
             Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader, objectTexture, transform);
         }
@@ -68,50 +72,75 @@ namespace Components {
             logger.ErrorLog("Failed to load model: %s", path.c_str());
             return;
         }
-        logger.InfoLog("Parse Start, scene meshes %u", scene->mNumMeshes);
-        logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
-        ProcessNode(scene->mRootNode,scene);
-        logger.InfoLog("Parsed End");
+        //logger.InfoLog("Parse Start, scene meshes %u", scene->mNumMeshes);
+        //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
+        
+        
+        //ProcessNode(scene->mRootNode, scene, *parentObject);
+        /*
+            Create MeshObject
+            Process Root mesh
+            Process Children and create their gameobjects
+        
+        */
 
+        //ProcessNode(scene->mRootNode,scene);
     }
-    void Mesh::ProcessNode(aiNode* node, const aiScene* scene) {
+    void Mesh::ProcessNode(aiNode* node, const aiScene* scene,GoCS::GameObject& GO){
+        GoCS::GameObject temp(node->mName.C_Str());
+
         for (unsigned int i = 0; i < node->mNumMeshes; i++) {
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-            ProcessMesh(mesh, scene);
+            ProcessMesh(mesh, temp);
         }
+
+        GO.children.push_back(&temp);
 
         for (unsigned int i = 0; i < node->mNumChildren; i++) {
-            ProcessNode(node->mChildren[i], scene);
+            ProcessNode(node->mChildren[i], scene, temp);
         }
+
+
+
     }
-    void Mesh::ProcessMesh(aiMesh* mesh, const aiScene* scene){
-        logger.InfoLog("Processing mesh with %u vertices",  mesh->mNumVertices);
-        for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
-            // Extract vertex positions
-            aiVector3D vertex = mesh->mVertices[i];
-            logger.InfoLog("Vertex Position: %f %f %f ", vertex.x ,vertex.y ,vertex.z );
-            // Extract normals (if available)
+
+    void Mesh::ProcessMesh(aiMesh* mesh, GoCS::GameObject& GO){
+        std::vector<Vertex> verts;
+        std::vector<unsigned int> faceIndices;
+
+        for(int i = 0 ; i < mesh->mNumVertices; i++){
+            Vertex v;
+            aiVector3D vert = mesh->mVertices[i];
+            aiVector3D* uvs = mesh->mTextureCoords[0];
+            aiVector3D normals = mesh->mNormals[i];
+            
+            v.vertices = glm::vec3(vert.x,vert.y,vert.z);
+
+            //Vertex Color
+            if(mesh->HasVertexColors(0)){
+                v.color = glm::vec3(mesh->mColors[0][i].r, mesh->mColors[0][i].g, mesh->mColors[0][i].b);
+            }
+            // Vertex Normal
             if (mesh->HasNormals()) {
-                aiVector3D normal = mesh->mNormals[i];
-                //std::cout << "Normal: " << normal.x << ", " << normal.y << ", " << normal.z << std::endl;
+                v.normal = glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
             }
-
-            // Extract texture coordinates (if available)
-            if (mesh->mTextureCoords[0]) { // Only 1 set of UVs is considered here
-                aiVector3D texCoord = mesh->mTextureCoords[0][i];
-               // std::cout << "TexCoord: " << texCoord.x << ", " << texCoord.y << std::endl;
+            // Texture Coords (UV)
+            if(mesh->HasTextureCoords(0)){
+                v.uv = glm::vec2(uvs[i].x,uvs[i].y);
             }
+            verts.push_back(v);
         }
-
-        // Extract indices
+        //Process face indicies
         for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
             aiFace face = mesh->mFaces[i];
-            std::cout << "Face Indices: ";
             for (unsigned int j = 0; j < face.mNumIndices; j++) {
-                std::cout << face.mIndices[j] << " ";
+                faceIndices.push_back(face.mIndices[j]);
             }
-            std::cout << std::endl;
+
         }
+        VertexArray* v  = Core::App::Application::GetRenderer().CreateVertexArray(&verts,&faceIndices);
+
+        GO.vertexArray = std::move(v);
     }
 
 
