@@ -121,7 +121,6 @@ namespace Plugin {
 
             // Attempt to call the onLoad function on the instance
             if (!api->onLoad()) {
-                std::cerr << pluginName << ": onLoad failed." << std::endl;
                 logger.ErrorLog("Plugin: %s : onLoadFailed , GraphicsPlugin : Code, %i", pluginName.c_str(), PluginErrorCode::ONLOAD_FAILED);
 
                 CLOSE_LIBRARY(libraryHandle);

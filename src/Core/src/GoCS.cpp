@@ -76,7 +76,7 @@ namespace Components {
         //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
         
         
-        //ProcessNode(scene->mRootNode, scene, *parentObject);
+        ProcessNode(scene->mRootNode, scene, *parentObject);
         /*
             Create MeshObject
             Process Root mesh
@@ -139,8 +139,9 @@ namespace Components {
 
         }
         VertexArray* v  = Core::App::Application::GetRenderer().CreateVertexArray(&verts,&faceIndices);
-
+        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
         GO.vertexArray = std::move(v);
+        GO.objectShader = std::move(shader);
     }
 
 
