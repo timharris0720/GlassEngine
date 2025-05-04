@@ -9,7 +9,7 @@
 #else
 #define GLASS_ENGINE_API
 #endif
-
+//#define UseLoggerNonUt
 #include <iostream>
 #include "Logger.h"
 #include "ErrorCodes.h"
@@ -54,7 +54,7 @@ namespace GoCS {
         virtual void Init() {};
         virtual void Start() {};
         virtual void Update() {};
-
+        GLASS_ENGINE_API double getDeltaTime();
         void SetParent(GoCS::GameObject* _parentObject) {
             parentObject = _parentObject;
 
@@ -146,6 +146,7 @@ namespace Components {
         public:
             glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
             glm::vec3 Rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+            glm::vec3 LocalRotation = glm::vec3(0.0f, 0.0f, 0.0f);
             glm::vec3 Scale    = glm::vec3(1.0f, 1.0f, 1.0f);
             
             glm::mat4 applyTransform(){
@@ -280,61 +281,56 @@ namespace Components {
 
     */
     class Camera : public GoCS::GameComponent {
-        private:
-            float fov; // Field of View in degrees
-            float aspectRatio;
-
-
-            float nearPlane;
-            float farPlane;
-
-            float left;
-            float right;
-            float bottom;   
-            float top;
-
-            int sceneType;
-            glm::mat4 projectionMatrix{1.0f};
         public:
+            enum class ProjectionType { Perspective, Orthographic };
+        private:
+            ProjectionType projectionType;
+            float fov, aspectRatio, nearPlane, farPlane;
+            float orthoLeft, orthoRight, orthoBottom, orthoTop;
+            glm::mat4 projectionMatrix;
+            float orthoSize = 10.0f;
+            Components::Transform* transform = nullptr;            
+
+        public:
+            GLASS_ENGINE_API void Start();
             GLASS_ENGINE_API Camera() = default;
-            GLASS_ENGINE_API Camera(float fov, float aspectRatio, float nearPlane, float farPlane);
-            GLASS_ENGINE_API Camera(float left, float right, float bottom, float top, float nearPlane, float farPlane);
+            GLASS_ENGINE_API Camera(float fov, float aspect, float near, float far);
+            GLASS_ENGINE_API Camera(float left, float right, float bottom, float top, float near, float far);
             void updateProjectionMatrix() {
-                if(sceneType == 3)
+                if (projectionType == ProjectionType::Perspective) {
                     projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
-                if(sceneType == 2)
-                    projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
+                } else {
+                    projectionMatrix = glm::ortho(orthoLeft, orthoRight, orthoBottom, orthoTop, nearPlane, farPlane);
+                }
             }
             glm::mat4 getProjectionMatrix(){
                 return projectionMatrix;
             }
 
             void setProjection(float width, float height) {
-                if(sceneType == 3)
+                if (projectionType == ProjectionType::Perspective) {  // Perspective
                     aspectRatio = width / height;
-                if(sceneType == 2){
-                    left = -width / 2.0f;
-                    right = width / 2.0f;
-                    bottom = -height / 2.0f;
-                    top = height / 2.0f;
+                } else if (projectionType == ProjectionType::Orthographic) {  // Orthographic
+                    orthoLeft = -width / 2.0f;
+                    orthoRight = width / 2.0f;
+                    orthoBottom = -height / 2.0f;
+                    orthoTop = height / 2.0f;
                 }
                 updateProjectionMatrix();
             }
-            glm::mat4 getViewMatrix() const {
-                glm::vec3 position = parentObject->transform->Position;
-                glm::vec3 rotation = parentObject->transform->Rotation;
 
-                // Calculate forward, right, and up vectors from the rotation
-                glm::vec3 forward = glm::normalize(glm::vec3(
-                    cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
-                    sin(glm::radians(rotation.x)),
-                    sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x))
-                ));
-                glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-                glm::vec3 right = glm::normalize(glm::cross(up, forward));
-                up = glm::normalize(glm::cross(forward, right));
 
-                return glm::lookAt(position, position + forward, up);
+            glm::mat4 getViewMatrix() {
+                glm::vec3 front;
+                front.x = cos(transform->Rotation.y) * cos(transform->Rotation.x);
+                front.y = sin(transform->Rotation.x);
+                front.z = sin(transform->Rotation.y) * cos(transform->Rotation.x);
+                front = glm::normalize(front);
+
+                glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
+                glm::vec3 up = glm::normalize(glm::cross(right, front));
+
+                return glm::lookAt(transform->Position, transform->Position + front, up);
             }
         
     };

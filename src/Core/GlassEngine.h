@@ -2,11 +2,9 @@
 #include "core.h"
 #include "plugin.h"
 //#include "runtime.h"
-#include "Logger.h"
 #include "ErrorCodes.h"
 #include "Shader.h"
 #include "GoCS.h"
-#include "glassSTL.h"
 #ifdef GLASS_ENTRY_INCLUDE
 #include "entrypoint.h"
 #endif

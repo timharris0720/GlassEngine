@@ -7,6 +7,10 @@ namespace GoCS {
         
         //logger.DebugLog("Adding Component %s to GameObject %s", name.c_str(), parent->name);
     }
+    double GameComponent::getDeltaTime(){
+        return parentObject->getDeltaTime();
+    }
+
     GameObject::GameObject(std::string name){
         this->name = name;
         transform = new Components::Transform();
@@ -14,7 +18,7 @@ namespace GoCS {
         Core::App::Application::GetInstance().PushGameObject(this);
     }
     double GameObject::getDeltaTime(){
-        return 1.0;
+        return Core::App::Application::GetInstance().GetDeltaTime();
     }
 
     GameObject::GameObject(std::string name, GameObject* pParent){
@@ -150,21 +154,27 @@ namespace Components {
     #pragma region Camera
 
 
-    Camera::Camera(float fov, float aspectRatio, float nearPlane, float farPlane) : GameComponent("Camera") {
+    Camera::Camera(float fov, float aspect, float near, float far) : GameComponent("Camera") {
         this->fov = fov;
         this->aspectRatio = aspectRatio;
         this->nearPlane = nearPlane;
         this->farPlane = farPlane;
-        this->sceneType = 3;
+        this->projectionType = ProjectionType::Perspective;
+        updateProjectionMatrix();
     }
-    Camera::Camera(float left, float right, float bottom, float top, float nearPlane, float farPlane) : GameComponent("Camera"){
-        this->left  = left;
-        this->right = right;
-        this->bottom = bottom;
-        this->top = top;
+    Camera::Camera(float left, float right, float bottom, float top, float near, float far) : GameComponent("Camera"){
+        this->orthoLeft  = left;
+        this->orthoRight = right;
+        this->orthoBottom = bottom;
+        this->orthoTop = top;
         this->nearPlane = nearPlane;
         this->farPlane = farPlane;
-        this->sceneType = 2;
+        this->projectionType = ProjectionType::Orthographic;
+        updateProjectionMatrix();
+
+    }
+    void Camera::Start(){
+        this->transform = parentObject->transform;
     }
     #pragma endregion
 }

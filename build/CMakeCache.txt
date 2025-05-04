@@ -35,9 +35,6 @@ ASSIMP_ASAN:BOOL=OFF
 //Path the tool executables are installed to.
 ASSIMP_BIN_INSTALL_DIR:STRING=bin
 
-//default value of all ASSIMP_BUILD_XXX_EXPORTER values
-ASSIMP_BUILD_ALL_EXPORTERS_BY_DEFAULT:BOOL=ON
-
 //default value of all ASSIMP_BUILD_XXX_IMPORTER values
 ASSIMP_BUILD_ALL_IMPORTERS_BY_DEFAULT:BOOL=ON
 
@@ -67,9 +64,6 @@ ASSIMP_BUILD_NONFREE_C4D_IMPORTER:BOOL=OFF
 //If the official samples are built as well (needs Glut).
 ASSIMP_BUILD_SAMPLES:BOOL=OFF
 
-//Build Assimp as a static library
-ASSIMP_BUILD_SHARED_LIBS:BOOL=OFF
-
 //If the test suite for Assimp is built in addition to the library.
 ASSIMP_BUILD_TESTS:BOOL=OFF
 
@@ -82,15 +76,13 @@ ASSIMP_COVERALLS:BOOL=OFF
 //Set to ON to enable double precision processing
 ASSIMP_DOUBLE_PRECISION:BOOL=OFF
 
-//adds the target headercheck which compiles every header file,
-// default disabled because it adds many targets
-ASSIMP_HEADERCHECK:BOOL=OFF
-
 //Enable Hunter package manager support
 ASSIMP_HUNTER_ENABLED:BOOL=OFF
 
 //Don't call git to get the hash.
 ASSIMP_IGNORE_GIT_HASH:BOOL=OFF
+
+ASSIMP_INCLUDE_DIR_GLMC:PATH=D:/Docs/Code/Engines/GlassEngine/build/_deps/glm-src
 
 //Path the header files are installed to.
 ASSIMP_INCLUDE_INSTALL_DIR:STRING=include
@@ -114,7 +106,7 @@ ASSIMP_LIBRARY_SUFFIX:STRING=
 ASSIMP_LIB_INSTALL_DIR:STRING=lib
 
 //Disable Assimp's export functionality.
-ASSIMP_NO_EXPORT:BOOL=OFF
+ASSIMP_NO_EXPORT:BOOL=ON
 
 //Set to ON to generate CPack configuration files and packaging
 // targets
@@ -132,6 +124,8 @@ ASSIMP_RUNTIME_OUTPUT_DIRECTORY:STRING=D:/Docs/Code/Engines/GlassEngine/build/_d
 //Enable Undefined Behavior sanitizer.
 ASSIMP_UBSAN:BOOL=OFF
 
+ASSIMP_USE_EXTERNAL_GLFW:BOOL=ON
+
 //Treat all warnings as errors.
 ASSIMP_WARNINGS_AS_ERRORS:BOOL=ON
 
@@ -148,7 +142,7 @@ Assimp_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-src
 BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
-CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/lib.exe
+CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lib.exe
 
 //Semicolon separated list of supported configuration types, only
 // supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything
@@ -264,7 +258,7 @@ CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
 CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/link.exe
+CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/link.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -411,6 +405,27 @@ CPACK_SOURCE_7Z:BOOL=ON
 //Enable to build ZIP source packages
 CPACK_SOURCE_ZIP:BOOL=ON
 
+//Value Computed by CMake
+CppUtils_BINARY_DIR:STATIC=D:/Docs/Code/Engines/GlassEngine/build/_deps/cpputils-build
+
+//Value Computed by CMake
+CppUtils_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+CppUtils_SOURCE_DIR:STATIC=D:/Docs/Code/Engines/GlassEngine/build/_deps/cpputils-src
+
+//Enable Argparse Integration in utils library
+ENABLE_ARGUMENT_PARSER:BOOL=ON
+
+//Enable JSON in utils library
+ENABLE_JSON:BOOL=ON
+
+//Enable SOCKETS in utils library
+ENABLE_SOCKETS:BOOL=ON
+
+//Enable web requests in utils library
+ENABLE_WEB_REQUESTS:BOOL=OFF
+
 //Directory under which to collect all populated content
 FETCHCONTENT_BASE_DIR:PATH=D:/Docs/Code/Engines/GlassEngine/build/_deps
 
@@ -430,6 +445,10 @@ FETCHCONTENT_SOURCE_DIR_ARGPARSE:PATH=
 FETCHCONTENT_SOURCE_DIR_ASSIMP:PATH=
 
 //When not empty, overrides where to find pre-populated content
+// for CppUtils
+FETCHCONTENT_SOURCE_DIR_CPPUTILS:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for glm
 FETCHCONTENT_SOURCE_DIR_GLM:PATH=
 
@@ -445,6 +464,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED_ARGPARSE:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of assimp
 FETCHCONTENT_UPDATES_DISCONNECTED_ASSIMP:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of CppUtils
+FETCHCONTENT_UPDATES_DISCONNECTED_CPPUTILS:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of glm
 FETCHCONTENT_UPDATES_DISCONNECTED_GLM:BOOL=OFF
@@ -511,6 +533,8 @@ PKG_CONFIG_ARGN:STRING=
 
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
+
+SYSTEM_GLMC_INCLUDE_DIR:PATH=D:/Docs/Code/Engines/GlassEngine/build/_deps/glm-src
 
 //Link against the static runtime libraries.
 USE_STATIC_CRT:BOOL=OFF
@@ -690,7 +714,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

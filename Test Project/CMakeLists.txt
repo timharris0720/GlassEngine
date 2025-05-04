@@ -44,7 +44,11 @@ set(USING_LIB $<IF:$<CONFIG:Debug>,${CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG},${CMA
 include_directories(${INCLUDE_DIRR})
 link_directories(${USING_RUNTIME})
 link_directories(${USING_LIB})
-add_executable(testingProj src/main.cpp)
+
+
+
+
+add_executable(testingProj src/main.cpp src/CameraController.cpp src/GameManager.cpp)
 
 
 target_link_libraries(testingProj GlassEngineCore)

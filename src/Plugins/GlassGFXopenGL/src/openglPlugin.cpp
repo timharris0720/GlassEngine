@@ -1,5 +1,5 @@
 #include "oglPlugin.h"
-#include "glassSTL.h"
+#include <Utils/FileIO.h>
 #define __STDC_LINMIT_MACROS
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -8,6 +8,11 @@
 void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
 }
+double OpenGLRenderAPI::GetTime(){
+    //logger.InfoLog("%f", glfwGetTime());
+    return glfwGetTime();
+}
+
 bool OpenGLRenderAPI::onLoad() {
     
     if(!glfwInit()){
@@ -49,7 +54,7 @@ void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
 
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //glClearColor(0,0,0,1);
+    glClearColor(0,0,0,1);
 }
 void OpenGLRenderAPI::Update(){}
 void OpenGLRenderAPI::EndScene() {
@@ -59,7 +64,6 @@ void OpenGLRenderAPI::EndScene() {
     sceneCameraComponent->setProjection(display_w,display_h);
     glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
-    glfwPollEvents();
     
 }
 Shader* OpenGLRenderAPI::CreateShader() {
@@ -87,12 +91,12 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     // Apply scaling
     //model = glm::scale(model, objectTransform->Scale);
     */
-    //glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-    ////model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    //model = glm::scale(model, objectTransform->Scale);  // Scaling last
+    glm::mat4 model = glm::mat4(1.0f); // Identity matrix
+    model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::scale(model, objectTransform->Scale);  // Scaling last
 
     
 
@@ -112,11 +116,18 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     if(sceneCameraComponent){
     
         //glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
-        glm::mat4 mvp =  sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * objectTransform->applyTransform();
+        glm::mat4 viewMatrix = sceneCameraComponent->getViewMatrix();
+        glm::mat4 trans = model;
+        glm::mat4 proj = sceneCameraComponent->getProjectionMatrix();
+
+        glm::mat4 mvp =  proj *  viewMatrix * trans;
         objShader->setMat4("mvp", mvp);
+        
+        objShader->setMat4("view", viewMatrix);
+        objShader->setMat4("projection",  proj);
 
     }
-    objShader->setMat4("model", objectTransform->applyTransform());
+    objShader->setMat4("model", model);
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
 
@@ -150,8 +161,8 @@ void OpenGLShader::checkCompileErrors(GLuint shader, std::string type) {
 void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexShaderPath){
     logger.DebugLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
     logger.DebugLog("Vertex shader path: %s ", vertexShaderPath.c_str());
-    VertShader = Utils::readFile(vertexShaderPath);
-    FragShader = Utils::readFile(fragmentShaderPath);
+    VertShader = FileIO::readFile(vertexShaderPath);
+    FragShader = FileIO::readFile(fragmentShaderPath);
     const char* vShaderCode = VertShader.c_str();
     const char* fShaderCode = FragShader.c_str();
     // 2. compile shaders

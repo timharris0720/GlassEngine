@@ -4,6 +4,12 @@
     <ClCompile Include="D:\Docs\Code\Engines\GlassEngine\Test Project\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\GlassEngine\Test Project\src\CameraController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Docs\Code\Engines\GlassEngine\Test Project\src\GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Docs\Code\Engines\GlassEngine\Test Project\CMakeLists.txt" />

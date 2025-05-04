@@ -33,6 +33,8 @@ class GlassPlugin {
 };
 
 class GlassPlugin_GFX : public GlassPlugin {
+private:
+    double previousFT;
 public:
     WindowProperties winData;
     GoCS::GameObject* sceneMainCamera;
@@ -45,6 +47,7 @@ public:
     virtual void VsyncCallback() = 0;
     virtual void BeginScene(GoCS::GameObject* mCamera) = 0;
     virtual void EndScene() = 0;
+    virtual double GetTime() = 0;
     virtual Shader* CreateShader() = 0;
     virtual VertexArray* CreateVAO() = 0;
     virtual texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType) = 0 ;

@@ -41,6 +41,8 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/nlohmann/json
     GIT_TAG v3.11.3
 )
+
+
 FetchContent_Declare(
     argparse
     GIT_REPOSITORY https://github.com/p-ranav/argparse.git
@@ -54,15 +56,25 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(argparse)
 FetchContent_MakeAvailable(json)
 
-#set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Assimp as a static library" FORCE)
+
+
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Assimp as a static library" FORCE)
 set(ASSIMP_BUILD_ASSIMP_TOOLS OFF CACHE BOOL "Disable Assimp tools" FORCE)
-set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "Disable Assimp tests" FORCE)
 set(ASSIMP_INSTALL OFF CACHE BOOL "Disable Assimp install" FORCE)
-set(ASSIMP_NO_EXPORT ON)
+set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "Disable Assimp tests" FORCE)
+set(ASSIMP_NO_EXPORT ON CACHE BOOL "" FORCE)
 set(ASSIMP_WARNINGS_AS_ERRORS OFF)
 set(ASSIMP_INSTALL_PDB OFF)
 set(ASSIMP_BUILD_ASSIMP_VIEW OFF)
+#set(BUILD_SHARED_LIBS OFF)
 set(ASSIMP_INJECT_DEBUG_POSTFIX OFF)
+set(ASSIMP_USE_EXTERNAL_GLFW ON CACHE BOOL "" FORCE)
+
+# Tell assimp not to fetch its own copy of glm
+set(SYSTEM_GLMC_INCLUDE_DIR "${glm_SOURCE_DIR}" CACHE PATH "")
+set(ASSIMP_INCLUDE_DIR_GLMC "${glm_SOURCE_DIR}" CACHE PATH "")
+
+
 FetchContent_MakeAvailable(assimp)
 set(CMAKE_DEBUG_POSTFIX "") 
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
@@ -74,10 +86,18 @@ file(GLOB SRC_FILES  src/*.cpp)
 
 add_library(GlassEngineCore SHARED ${SRC_FILES} ${HEAD_FILES})
 
+FetchContent_Declare(
+    CppUtils
+    GIT_REPOSITORY https://github.com/timharris0720/Cpp_Utils.git
+    GIT_TAG main
+)
+FetchContent_MakeAvailable(CppUtils)
+
 target_compile_definitions(GlassEngineCore PUBLIC GLASS_ENGINE_EXPORTS_CORE)
 target_include_directories(GlassEngineCore PUBLIC "${OutputIncDir}")
 target_include_directories(GlassEngineCore PUBLIC ${glm_SOURCE_DIR})
 target_link_libraries(GlassEngineCore PRIVATE nlohmann_json::nlohmann_json argparse assimp)
+target_link_libraries(GlassEngineCore PRIVATE CppUtils)
 
 file(GLOB GLM_INCLUDES_glm  ${glm_SOURCE_DIR}/glm/*.hpp)
 # DETAIL DIR
@@ -94,6 +114,8 @@ file(GLOB GLM_INCLUDES_gtx  ${glm_SOURCE_DIR}/glm/gtx/*.hpp)
 file(GLOB GLM_INCLUDES_gtx_inl  ${glm_SOURCE_DIR}/glm/gtx/*.inl)
 # SIMD DIR
 file(GLOB GLM_INCLUDES_simd  ${glm_SOURCE_DIR}/glm/simd/*.h)
+file(GLOB GLM_INCLUDES_simd  ${glm_SOURCE_DIR}/glm/simd/*.h)
+
 
 install(FILES     ${GLM_INCLUDES_glm}    DESTINATION  	${OutputIncDir}/glm)
 install(FILES     ${GLM_INCLUDES_detail}    DESTINATION  	${OutputIncDir}/glm/detail)

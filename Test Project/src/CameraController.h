@@ -7,17 +7,9 @@ class CameraController : public GameComponent {
 public:
     CameraController() : GameComponent("CameraController"){}
     GameObject* testChild = nullptr;
-    void Start() override {
-        testChild = parentObject->root->GetChild("testChild");
-    }
-    void Update() override {
-        if(Input::GetKeyDown(KeyCode::A)){
-            testChild->transform->Rotation.x -= 0.01;
-            logger.InfoLog("%f", testChild->transform->Rotation.x);
-        }
-        if(Input::GetKeyDown(KeyCode::D)){
-            testChild->transform->Rotation.x += 0.01;
-            logger.InfoLog("%f", testChild->transform->Rotation.x);
-        }
-    }
+    int pmx, pmy;
+
+    void Start();
+    void Update();
+    
 };

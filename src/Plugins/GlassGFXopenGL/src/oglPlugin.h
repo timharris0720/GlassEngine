@@ -9,7 +9,6 @@
 #define GLASS_PLUGIN_API
 //#define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
-
 #include <GL/glew.h>
 #include "GLFW/glfw3.h"
 #include "GlassEngine/GlassEngine.h"
@@ -49,6 +48,7 @@ public:
     GLASS_PLUGIN_API void Update() override;
     GLASS_PLUGIN_API void BeginScene(GoCS::GameObject* mCamera) override;
     GLASS_PLUGIN_API void EndScene() override;
+    GLASS_PLUGIN_API double GetTime() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);

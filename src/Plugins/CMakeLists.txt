@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 project(GlassEnginePlugins VERSION 1.0)
 set(CMAKE_MESSAGE_LOG_LEVEL STATUS)
-
+include(FetchContent)
 set(INSTALL_PARALLEL ON)
 add_library(CompilerFlags INTERFACE)
 target_compile_features(CompilerFlags INTERFACE cxx_std_17)
@@ -18,6 +18,12 @@ target_compile_options(CompilerFlags INTERFACE
 )
 
 
+FetchContent_Declare(
+    CppUtils
+    GIT_REPOSITORY https://github.com/timharris0720/Cpp_Utils.git
+    GIT_TAG main
+)
+FetchContent_MakeAvailable(CppUtils)
 
 
 

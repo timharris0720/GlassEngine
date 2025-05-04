@@ -28,3 +28,6 @@ D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/contrib/zlib/CMakeFile
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/assimp.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/PACKAGE.dir
 D:/Docs/Code/Engines/GlassEngine/build/_deps/assimp-build/code/CMakeFiles/INSTALL.dir
+D:/Docs/Code/Engines/GlassEngine/build/_deps/cpputils-build/CMakeFiles/PACKAGE.dir
+D:/Docs/Code/Engines/GlassEngine/build/_deps/cpputils-build/CMakeFiles/INSTALL.dir
+D:/Docs/Code/Engines/GlassEngine/build/_deps/cpputils-build/CMakeFiles/ALL_BUILD.dir

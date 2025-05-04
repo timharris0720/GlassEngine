@@ -168,7 +168,8 @@ namespace Core {
 			//std::vector<Core::Entity::GameObject*> gameObjects;
 			GoCS::GameObject Root;
 			GoCS::GameObject* MainCamera;
-			
+			float m_lastFrameTime;
+			float deltaTime;
 			static Renderer::RendererAPI* renderAPI;
 			//Time timer;
 		public:
@@ -177,7 +178,7 @@ namespace Core {
 			GLASS_ENGINE_API Application(AppSpec appSpec, RenderBackend backend, std::string customRendererPath = "");
 			GLASS_ENGINE_API bool loadPlugin(std::string pluginPath, Plugin::PluginType type);
 			RenderBackend GetAPI() {return api;}
-			GLASS_ENGINE_API double GetTime();
+			GLASS_ENGINE_API double GetDeltaTime();
 			GLASS_ENGINE_API void PushGameObject(GoCS::GameObject* gameObject);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();

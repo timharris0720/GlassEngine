@@ -16,12 +16,11 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/glfw/glfw.git
   GIT_TAG        latest
 )
-FetchContent_MakeAvailable(glfw)
-set(GLFW_LIBRARY_TYPE SHARED)
+set(GLFW_LIBRARY_TYPE STATIC)
 set(GLFW_BUILD_DOCS  OFF)
 set(GLFW_BUILD_TESTS  OFF)
 set(GLFW_BUILD_EXAMPLES   OFF)
-set(GLFW_BUILD_WIN32    OFF)
+FetchContent_MakeAvailable(glfw)
 
 
 set(ONLY_LIBS ON)
@@ -52,7 +51,7 @@ glfw
 libglew_static
 OpenGL::GL  
 )
-
+target_link_libraries(GlassGFX.openGL PRIVATE CppUtils)
 
 
 

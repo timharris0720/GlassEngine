@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-
+include(FetchContent)
 
 
 project(GlassEngine VERSION 1.0)
@@ -19,8 +19,6 @@ target_compile_options(CompilerFlags INTERFACE
   "$<$<AND:$<CONFIG:Release>,$<BOOL:${gcc_like_cxx}>>:$<BUILD_INTERFACE:-DNDEBUG;>>"
   "$<${msvc_cxx}:$<BUILD_INTERFACE:/Wall>>"
 )
-
-
 
 
 
@@ -48,5 +46,6 @@ set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 add_subdirectory(src/Core)
 
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/bin\")") 
+# install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/share\")")
 install(CODE "file(REMOVE_RECURSE \"${CMAKE_INSTALL_PREFIX}/lib\")")
 install(CODE "message(\"Deleting BIN and LIB folders as are not needed\")")

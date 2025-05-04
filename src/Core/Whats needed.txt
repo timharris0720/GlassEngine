@@ -1,4 +1,4 @@
-renderer
-input
+renderer - done
+input - done
 audio
-game object system
+game object system - done

@@ -1,6 +1,6 @@
 #include "core.h"
 #include "pluginLoader.h"
-
+#include "timestep.h"
 #include <argparse/argparse.hpp>
 
 namespace Core {
@@ -73,10 +73,6 @@ namespace Core {
 			}
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
-		double Application::GetTime() {
-			//return timer.GetDeltaTime();
-			return 1.0;
-		}
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;
 			GO->parent = &Root;
@@ -87,8 +83,14 @@ namespace Core {
 			return GetRenderer().GetBackend().apiInstance->shouldWindowClose();
 		}
 		void Application::run(){
+
+			
 			while (GetRenderer().GetBackend().apiInstance->shouldWindowClose())
 			{
+				float time = GetRenderer().GetBackend().apiInstance->GetTime();
+				GlassEngine::Timestep timestep = time - m_lastFrameTime;
+				m_lastFrameTime = time;
+				deltaTime = timestep;
 				//timer.Update();
 				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
 				for(GoCS::GameObject* go : Root.children){
@@ -97,6 +99,9 @@ namespace Core {
 				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}
+		}
+		double Application::GetDeltaTime(){
+			return deltaTime;
 		}
 	}
 }
