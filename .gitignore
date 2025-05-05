@@ -1,9 +1,7 @@
 .vscode
-build/.cmake
-build
-build/_deps
+build/*
 buildPlugins/_deps
 buildPlugins
 GlassEngine_Build
-buildPlugins
 Test_project/testProj
+/build
