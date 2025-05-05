@@ -55,6 +55,7 @@ namespace GoCS {
         virtual void Start() {};
         virtual void Update() {};
         GLASS_ENGINE_API double getDeltaTime();
+        GLASS_ENGINE_API void CloseApplication();
         void SetParent(GoCS::GameObject* _parentObject) {
             parentObject = _parentObject;
 
@@ -178,12 +179,15 @@ namespace Components {
     class Mesh : public GoCS::GameComponent {
         private:
             std::string path;
+            bool PrimativeMesh;
+            Defaults::PrimativeType PrimType;
             GLASS_ENGINE_API void ProcessMesh(aiMesh* mesh, GoCS::GameObject& GO);
             GLASS_ENGINE_API void ProcessNode(aiNode* node, const aiScene* scene, GoCS::GameObject& GO);
 
         public:
             GLASS_ENGINE_API Mesh() = default;
             GLASS_ENGINE_API Mesh(std::string path);
+            GLASS_ENGINE_API Mesh(Defaults::PrimativeType type);
             GLASS_ENGINE_API void Start();
     };
 

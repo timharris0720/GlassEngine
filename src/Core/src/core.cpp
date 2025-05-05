@@ -82,6 +82,9 @@ namespace Core {
 		bool Application::isRunning(){
 			return GetRenderer().GetBackend().apiInstance->shouldWindowClose();
 		}
+		void Application::shutdown(){
+			GetRenderer().GetBackend().apiInstance->Shutdown();
+		}
 		void Application::run(){
 
 			

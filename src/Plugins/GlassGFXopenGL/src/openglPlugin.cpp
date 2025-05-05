@@ -33,6 +33,11 @@ bool OpenGLRenderAPI::onLoad() {
 bool OpenGLRenderAPI::shouldWindowClose(){
     return !glfwWindowShouldClose(window);
 }
+
+void OpenGLRenderAPI::Shutdown(){
+    glfwSetWindowShouldClose(window, true);
+    glfwTerminate();
+}
 void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
     logger.DebugLog("GLEW      version: %s", glewGetString(GLEW_VERSION));
@@ -92,7 +97,7 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     //model = glm::scale(model, objectTransform->Scale);
     */
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-    model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
+    //model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));

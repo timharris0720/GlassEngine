@@ -39,7 +39,9 @@ public:
     WindowProperties winData;
     GoCS::GameObject* sceneMainCamera;
     virtual void createRenderContext(WindowProperties* winProps) = 0;
-    virtual bool shouldWindowClose() { return true;}
+    virtual bool shouldWindowClose() = 0;
+    virtual void Shutdown() = 0;
+    virtual void Cleanup() {};
     virtual int GetWidth() {return winData.width;};
     virtual int GetHeight() {return winData.height;};
     virtual void* GetNativeWindow() const = 0;

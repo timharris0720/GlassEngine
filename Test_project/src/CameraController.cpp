@@ -22,6 +22,13 @@ void CameraController::Update() {
 
         logger.InfoLog("FPS: %f, Frame time: %f", fps, this->getDeltaTime());
     }
+    if(Input::GetKeyDown(KeyCode::Escape)){
+        
+        logger.InfoLog("Shutting down");
+        this->CloseApplication();
+        
+        
+    }
     
 }
 

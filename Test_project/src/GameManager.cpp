@@ -4,14 +4,17 @@
 void GameManager::Start(){
     testChild = new GameObject("testChild"); 
     testChild2 = new GameObject("testChild2");
+    //testChild3d = new GameObject("testChild2");
     testChild->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT);
     testChild2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT);
     testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
     
+    
+    //testChild3d->AddComponent<Components::Mesh>(Defaults::CUBE);
 }
 void GameManager::Update() {
     
-    testChild->transform->Position.x += playerSpeed;
-    testChild2->transform->Position.y += playerSpeed;
+    //testChild->transform->Position.x += playerSpeed;
+    //testChild2->transform->Position.y += playerSpeed;
   
 }

@@ -182,6 +182,7 @@ namespace Core {
 			GLASS_ENGINE_API void PushGameObject(GoCS::GameObject* gameObject);
 			GLASS_ENGINE_API bool isRunning();
 			GLASS_ENGINE_API void run();
+			GLASS_ENGINE_API void shutdown();
 			static Application& GetInstance() { return *s_instance; }
 			static Renderer::RendererAPI& GetRenderer() { return *renderAPI; }
 			GoCS::GameObject* GetRoot(){ return &Root; }

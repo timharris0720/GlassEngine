@@ -10,6 +10,11 @@ namespace GoCS {
     double GameComponent::getDeltaTime(){
         return parentObject->getDeltaTime();
     }
+    void GameComponent::CloseApplication(){
+        Core::App::Application::GetInstance().shutdown();
+        exit(0);
+    }
+
 
     GameObject::GameObject(std::string name){
         this->name = name;
@@ -66,29 +71,53 @@ namespace Components {
     }
 
     #pragma region Mesh
-    Mesh::Mesh(std::string path): GameComponent("Mesh") {
+    Mesh::Mesh(std::string path): GameComponent("Mesh") { // add material aswell (at later date)
         this->path = path;
+        PrimativeMesh = false;
+    }
+    Mesh::Mesh(Defaults::PrimativeType type){
+        PrimativeMesh = true;
+        PrimType = type;
     }
     void Mesh::Start(){
-        Assimp::Importer importer;
-        const aiScene* scene = OpenModel(path, importer);
-        if (!scene) {
-            logger.ErrorLog("Failed to load model: %s", path.c_str());
-            return;
-        }
-        //logger.InfoLog("Parse Start, scene meshes %u", scene->mNumMeshes);
-        //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
-        
-        
-        ProcessNode(scene->mRootNode, scene, *parentObject);
-        /*
-            Create MeshObject
-            Process Root mesh
-            Process Children and create their gameobjects
-        
-        */
+        if(PrimativeMesh == false){
+            Assimp::Importer importer;
+            const aiScene* scene = OpenModel(path, importer);
+            if (!scene) {
+                logger.ErrorLog("Failed to load model: %s", path.c_str());
+                return;
+            }
+            //logger.InfoLog("Parse Start, scene meshes %u", scene->mNumMeshes);
+            //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
+            
+            
+            ProcessNode(scene->mRootNode, scene, *parentObject);
+            /*
+                Create MeshObject
+                Process Root mesh
+                Process Children and create their gameobjects
+            
+            */
 
-        //ProcessNode(scene->mRootNode,scene);
+            //ProcessNode(scene->mRootNode,scene);
+        }
+        else{
+            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
+            
+            VertexArray* v;
+            switch(PrimType) {
+                case Defaults::CUBE:
+                  v = Defaults::Cube();
+                  logger.InfoLog("Cube Mesh");
+                  break;
+                case Defaults::SPHERE:
+                  logger.InfoLog("Spehere Mesh");
+                  break;
+            }
+            parentObject->objectShader = std::move(shader);
+            parentObject->vertexArray = std::move(v);
+            //parentObject->objectTexture = std::move(texu);
+        }
     }
     void Mesh::ProcessNode(aiNode* node, const aiScene* scene,GoCS::GameObject& GO){
         GoCS::GameObject temp(node->mName.C_Str());

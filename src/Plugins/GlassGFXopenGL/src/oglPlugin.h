@@ -50,6 +50,7 @@ public:
     GLASS_PLUGIN_API void EndScene() override;
     GLASS_PLUGIN_API double GetTime() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
+    GLASS_PLUGIN_API void Shutdown() override;
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
