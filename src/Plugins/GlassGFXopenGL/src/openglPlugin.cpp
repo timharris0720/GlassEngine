@@ -25,9 +25,13 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+    glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);  
     glEnable(GL_CULL_FACE);
+    glDepthMask(GL_FALSE);  
+    glDepthFunc(GL_LESS);
+    
     return true;
 }
 bool OpenGLRenderAPI::shouldWindowClose(){
@@ -56,17 +60,16 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winDat
 void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     sceneMainCamera = mCamera;
     sceneCameraComponent = mCamera->GetComponent<Components::Camera>();
-
+    scenecamtrans = mCamera->transform;
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0,0,0,1);
+
 }
 void OpenGLRenderAPI::Update(){}
 void OpenGLRenderAPI::EndScene() {
    int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
-    
-    sceneCameraComponent->setProjection(display_w,display_h);
     glViewport(0, 0, display_w, display_h);
     glfwSwapBuffers(window);
     
@@ -82,27 +85,16 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
 
-    /*
-    //glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
-    //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
-    //logger.InfoLog("Rotation: %f %f %f", objectTransform->Rotation.x, objectTransform->Rotation.y, objectTransform->Rotation.z);
-    //logger.InfoLog("Scale   : %f %f %f", objectTransform->Scale.x, objectTransform->Scale.y, objectTransform->Scale.z);
-    //model = glm::translate(model, objectTransform->Position);
-    //// Apply rotation (convert degrees to radians)
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f)); // Rotate around X-axis
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotate around Y-axis
-    //model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
-
-    // Apply scaling
-    //model = glm::scale(model, objectTransform->Scale);
-    */
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-    //model = glm::translate(model, objectTransform->Position);  // <-- Apply translation first
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-    model = glm::scale(model, objectTransform->Scale);  // Scaling last
+    glm::vec3 objPos = glm::vec3(objectTransform->Position.x,objectTransform->Position.y,objectTransform->Position.z);
+    glm::vec3 objRot = glm::vec3(objectTransform->Rotation.x,objectTransform->Rotation.y,objectTransform->Rotation.z);
+    glm::vec3 objScl = glm::vec3(objectTransform->Scale.x,objectTransform->Scale.y,objectTransform->Scale.z);
+    model = glm::translate(model, objPos);  // <-- Apply translation first
+    model = glm::rotate(model, glm::radians(objRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(objRot.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::scale(model, objScl);  // Scaling last
 
     
 
@@ -112,40 +104,27 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     objShader->Bind();
     vertArray->Bind();
     
-    //glm::mat4 mvp =  sceneMainCamera->getProjectionMatrix() * sceneMainCamera->getViewMatrix() * model;
-    //objShader->setMat4("mvp", mvp);
-    //objShader->setMat4("projection", sceneMainCamera->getProjectionMatrix());
-    //objShader->setMat4("view", sceneMainCamera->getViewMatrix());
-    //objShader->setMat4("model", objectTransform->applyTransform());
-    //objShader->setMat4("model", model);
-    
     if(sceneCameraComponent){
-    
-        //glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
-        //glm::mat4 viewMatrix = sceneCameraComponent->getViewMatrix();
+        //glm::mat4 projection = sceneCameraComponent->GetProjectionMatrix();
+        //glm::mat4 view = sceneCameraComponent->GetViewMatrix();
+        
+        //glm::mat4 camModel = view; // Identity matrix
 
-        //glm::mat4 trans = model;
-        //glm::mat4 proj = sceneCameraComponent->getProjectionMatrix();
+        //glm::vec3 objPos = glm::vec3(scenecamtrans->Position.x,scenecamtrans->Position.y,scenecamtrans->Position.z);
+        //glm::vec3 objRot = glm::vec3(scenecamtrans->Rotation.x,scenecamtrans->Rotation.y,scenecamtrans->Rotation.z);
+        //camModel = glm::translate(camModel, objPos);  // <-- Apply translation first
+        //camModel = glm::rotate(camModel, glm::radians(objRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+        //camModel = glm::rotate(camModel, glm::radians(objRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
+        //camModel = glm::rotate(camModel, glm::radians(objRot.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-        //glm::mat4 mvp = proj * viewMatrix * trans;
 
-        //objShader->setMat4("mvp", mvp);
-        glm::mat4 view = glm::mat4(1.0f);
-        // note that we're translating the scene in the reverse direction of where we want to move
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
-        glm::mat4 proj;
-        proj = glm::perspective(glm::radians(90.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-        objShader->setMat4("view", view);
-        objShader->setMat4("projection",  proj);
-
+        objShader->setMat4("projection", projection);
+        objShader->setMat4("view", camModel);
     }
-    glm::mat4 aModel = glm::mat4(1.0f);
-    aModel = glm::translate(aModel, glm::vec3(1,2,0));
-    aModel = glm::rotate(aModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    objShader->setMat4("model", aModel);
-    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
+    //logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
+
+    objShader->setMat4("model", model);
+    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0); 
     objShader->Unbind();
 
     

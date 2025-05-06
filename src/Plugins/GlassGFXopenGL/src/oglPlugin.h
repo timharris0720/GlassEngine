@@ -1,4 +1,4 @@
-#include "GlassEngine/plugin.h"
+#pragma once
 #ifdef _WIN32
 #ifdef GLASS_PLUGIN_EXPORTS
 #define GLASS_PLUGIN_API __declspec(dllexport)
@@ -9,6 +9,7 @@
 #define GLASS_PLUGIN_API
 //#define OPENGL_PLUGIN_API __declspec(dllimport)
 #endif
+#include "GlassEngine/plugin.h"
 #include <GL/glew.h>
 #include "GLFW/glfw3.h"
 #include "GlassEngine/GlassEngine.h"
@@ -39,6 +40,7 @@ private:
     GLFWwindow* window;
     Logger logger = Logger("GlassGFX.OpenGL.Plugin", "Log.txt");
     Components::Camera* sceneCameraComponent;
+    Components::Transform* scenecamtrans;
 public:
     
     GLASS_PLUGIN_API bool onLoad() override;

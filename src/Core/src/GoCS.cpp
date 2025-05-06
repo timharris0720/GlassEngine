@@ -1,5 +1,6 @@
 #include "GoCS.h"
 #include "core.h"
+
 namespace GoCS {
     GameComponent::GameComponent(std::string name) {
         this->name = name;
@@ -56,6 +57,8 @@ namespace GoCS {
 
     }
 }
+
+
 namespace Components {
     Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType) : GameComponent("Sprite2D") {
         path = imagePath;
@@ -68,6 +71,9 @@ namespace Components {
         parentObject->objectShader = std::move(shader);
         parentObject->vertexArray = std::move(v);
         parentObject->objectTexture = std::move(texu);
+    }
+    void Sprite::Hello() {
+        logger.InfoLog("Hello World");
     }
 
     #pragma region Mesh
@@ -181,29 +187,6 @@ namespace Components {
 
     #pragma endregion
     #pragma region Camera
-
-
-    Camera::Camera(float fov, float aspect, float near, float far) : GameComponent("Camera") {
-        this->fov = fov;
-        this->aspectRatio = aspectRatio;
-        this->nearPlane = nearPlane;
-        this->farPlane = farPlane;
-        this->projectionType = ProjectionType::Perspective;
-        updateProjectionMatrix();
-    }
-    Camera::Camera(float left, float right, float bottom, float top, float near, float far) : GameComponent("Camera"){
-        this->orthoLeft  = left;
-        this->orthoRight = right;
-        this->orthoBottom = bottom;
-        this->orthoTop = top;
-        this->nearPlane = nearPlane;
-        this->farPlane = farPlane;
-        this->projectionType = ProjectionType::Orthographic;
-        updateProjectionMatrix();
-
-    }
-    void Camera::Start(){
-        this->transform = parentObject->transform;
-    }
+    
     #pragma endregion
 }

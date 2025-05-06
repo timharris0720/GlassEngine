@@ -22,9 +22,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
 #include <type_traits>
 #include <memory>
 #include <functional>
+
+
 namespace GoCS {
     class GameComponent;
     class GameObject;
@@ -32,6 +35,7 @@ namespace GoCS {
 namespace Components {
     class Transform;
     class Sprite;
+    class Mesh;
 }
 struct MeshObject {
     VertexArray rootMesh;
@@ -175,6 +179,7 @@ namespace Components {
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
             GLASS_ENGINE_API void Start();
+            GLASS_ENGINE_API void Hello();
 
     };
     class Mesh : public GoCS::GameComponent {
@@ -286,31 +291,6 @@ namespace Components {
 
     */
     class Camera : public GoCS::GameComponent {
-        public:
-            enum class ProjectionType { Perspective, Orthographic };
-        private:
-            ProjectionType projectionType;
-            float fov, aspectRatio, nearPlane, farPlane;
-            float orthoLeft, orthoRight, orthoBottom, orthoTop;
-            glm::mat4 projectionMatrix;
-            float orthoSize = 10.0f;
-            Components::Transform* transform = nullptr;            
-
-        public:
-            GLASS_ENGINE_API void Start();
-            GLASS_ENGINE_API Camera() = default;
-            GLASS_ENGINE_API Camera(float fov, float aspect, float near, float far);
-            GLASS_ENGINE_API Camera(float left, float right, float bottom, float top, float near, float far);
-            void updateProjectionMatrix(){}
-            glm::mat4 getProjectionMatrix(){
-                return projectionMatrix;
-            }
-
-            void setProjection(float width, float height){}
-
-
-            //GLASS_ENGINE_API  glm::mat4 getViewMatrix();
-        
     };
 
     

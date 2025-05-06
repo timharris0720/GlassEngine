@@ -1,22 +1,21 @@
 #include "CameraController.h"
+#include <glm/gtx/quaternion.hpp>
+
 void CameraController::Update() {
-    if(Input::GetKeyDown(KeyCode::LeftArrow)){
-        parentObject->transform->Position.x -= 0.01;
-        logger.InfoLog("%f %f %f", parentObject->transform->Position.x, parentObject->transform->Position.y, parentObject->transform->Position.z);
-    }
-    if(Input::GetKeyDown(KeyCode::RightArrow)){
-        parentObject->transform->Position.x += 0.01;
-        logger.InfoLog("%f %f %f", parentObject->transform->Position.x, parentObject->transform->Position.y, parentObject->transform->Position.z);
+    ProcessKeyboardInput();
+
+    if (glm::length(movementInput) > 0.0f) {
+        glm::vec3 forward = glm::rotate(glm::quat(parentObject->transform->Rotation.x,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z, 0), glm::vec3(0, 0, -1));
+        glm::vec3 right   = glm::rotate(glm::quat(parentObject->transform->Rotation.x,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z, 0), glm::vec3(1, 0,  0));
+        glm::vec3 up      = glm::vec3(0, 1, 0);
+
+        glm::vec3 movement = (movementInput.x * right +
+                              movementInput.y * up +
+                              movementInput.z * forward);
+
+        parentObject->transform->Position += glm::normalize(movement) * moveSpeed *  (float)this->getDeltaTime();
     }
 
-    if(Input::GetKeyDown(KeyCode::UpArrow)){
-        parentObject->transform->Position.z -= 0.01;
-        logger.InfoLog("%f %f %f", parentObject->transform->Position.x, parentObject->transform->Position.y, parentObject->transform->Position.z);
-    }
-    if(Input::GetKeyDown(KeyCode::DownArrow)){
-        parentObject->transform->Position.z += 0.01;
-        logger.InfoLog("%f %f %f", parentObject->transform->Position.x, parentObject->transform->Position.y, parentObject->transform->Position.z);
-    }
     if(Input::GetKeyDown(KeyCode::Enter)){
         double fps = 1.0 / this->getDeltaTime();
 
@@ -33,7 +32,6 @@ void CameraController::Update() {
 }
 
 void CameraController::Start() {
-    testChild = parentObject;
-    parentObject->transform->Position.z = -3.0f;
-    logger.InfoLog("%f", this->getDeltaTime());
+    testChild = parentObject->root->GetChild("testChild2");;
+    camera = parentObject->GetComponent<Components::Camera>();
 }
