@@ -3,7 +3,7 @@
 #define __STDC_LINMIT_MACROS
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-
+#include <signal.h>
 #pragma region RenderAPI
 void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
@@ -81,7 +81,7 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
     return new OpenGLTexture(path, wrapType);
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
-    
+
     /*
     //glm::mat4 model = glm::mat4(1.0f); // Start with an identity matrix
     //logger.InfoLog("Position: %f %f %f", objectTransform->Position.x, objectTransform->Position.y, objectTransform->Position.z);
@@ -101,6 +101,7 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objectTransform->Rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
     model = glm::scale(model, objectTransform->Scale);  // Scaling last
 
     
@@ -121,18 +122,29 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     if(sceneCameraComponent){
     
         //glm::mat4 mvp = sceneCameraComponent->getProjectionMatrix() * sceneCameraComponent->getViewMatrix() * model;
-        glm::mat4 viewMatrix = sceneCameraComponent->getViewMatrix();
-        glm::mat4 trans = model;
-        glm::mat4 proj = sceneCameraComponent->getProjectionMatrix();
+        //glm::mat4 viewMatrix = sceneCameraComponent->getViewMatrix();
 
-        glm::mat4 mvp =  proj *  viewMatrix * trans;
-        objShader->setMat4("mvp", mvp);
-        
-        objShader->setMat4("view", viewMatrix);
+        //glm::mat4 trans = model;
+        //glm::mat4 proj = sceneCameraComponent->getProjectionMatrix();
+
+        //glm::mat4 mvp = proj * viewMatrix * trans;
+
+        //objShader->setMat4("mvp", mvp);
+        glm::mat4 view = glm::mat4(1.0f);
+        // note that we're translating the scene in the reverse direction of where we want to move
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+        glm::mat4 proj;
+        proj = glm::perspective(glm::radians(90.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+        objShader->setMat4("view", view);
         objShader->setMat4("projection",  proj);
 
     }
-    objShader->setMat4("model", model);
+    glm::mat4 aModel = glm::mat4(1.0f);
+    aModel = glm::translate(aModel, glm::vec3(1,2,0));
+    aModel = glm::rotate(aModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    objShader->setMat4("model", aModel);
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0);
     objShader->Unbind();
 

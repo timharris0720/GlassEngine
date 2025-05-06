@@ -94,6 +94,7 @@ namespace GoCS {
             void SetParent(GameObject* parentObject) {
                 parent = parentObject;
             }
+
             template <typename T, typename... Args>
             T* AddComponent(Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
@@ -300,42 +301,15 @@ namespace Components {
             GLASS_ENGINE_API Camera() = default;
             GLASS_ENGINE_API Camera(float fov, float aspect, float near, float far);
             GLASS_ENGINE_API Camera(float left, float right, float bottom, float top, float near, float far);
-            void updateProjectionMatrix() {
-                if (projectionType == ProjectionType::Perspective) {
-                    projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
-                } else {
-                    projectionMatrix = glm::ortho(orthoLeft, orthoRight, orthoBottom, orthoTop, nearPlane, farPlane);
-                }
-            }
+            void updateProjectionMatrix(){}
             glm::mat4 getProjectionMatrix(){
                 return projectionMatrix;
             }
 
-            void setProjection(float width, float height) {
-                if (projectionType == ProjectionType::Perspective) {  // Perspective
-                    aspectRatio = width / height;
-                } else if (projectionType == ProjectionType::Orthographic) {  // Orthographic
-                    orthoLeft = -width / 2.0f;
-                    orthoRight = width / 2.0f;
-                    orthoBottom = -height / 2.0f;
-                    orthoTop = height / 2.0f;
-                }
-                updateProjectionMatrix();
-            }
+            void setProjection(float width, float height){}
 
 
-            glm::mat4 getViewMatrix() {
-                glm::vec3 front;
-                front.x = cos(transform->Rotation.y) * cos(transform->Rotation.x);
-                front.y = sin(transform->Rotation.x);
-                front.z = sin(transform->Rotation.y) * cos(transform->Rotation.x);
-                front = glm::normalize(front);
-
-                glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
-                glm::vec3 up = glm::normalize(glm::cross(right, front));
-
-                return glm::lookAt(transform->Position, transform->Position + front, up);
-            }
+            //GLASS_ENGINE_API  glm::mat4 getViewMatrix();
         
     };
 

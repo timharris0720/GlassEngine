@@ -9,7 +9,6 @@ void GameManager::Start(){
     testChild2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT);
     testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
     
-    
     //testChild3d->AddComponent<Components::Mesh>(Defaults::CUBE);
 }
 void GameManager::Update() {

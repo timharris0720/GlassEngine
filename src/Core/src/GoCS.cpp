@@ -63,7 +63,7 @@ namespace Components {
     } 
     void Sprite::Start() {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
-        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
+        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
         VertexArray* v = Defaults::SquareSprite();
         parentObject->objectShader = std::move(shader);
         parentObject->vertexArray = std::move(v);
@@ -71,7 +71,7 @@ namespace Components {
     }
 
     #pragma region Mesh
-    Mesh::Mesh(std::string path): GameComponent("Mesh") { // add material aswell (at later date)
+    Mesh::Mesh(std::string path): GameComponent("MeshRenderer") { // add material aswell (at later date)
         this->path = path;
         PrimativeMesh = false;
     }
@@ -102,7 +102,7 @@ namespace Components {
             //ProcessNode(scene->mRootNode,scene);
         }
         else{
-            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
+            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
             
             VertexArray* v;
             switch(PrimType) {
