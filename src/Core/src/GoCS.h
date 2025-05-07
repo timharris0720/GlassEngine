@@ -64,6 +64,9 @@ namespace GoCS {
             parentObject = _parentObject;
 
         }
+        Components::Transform* GetTransform(){
+            return parentObject->transform;
+        }
         //virtual void Draw(Renderer::RendererAPI* renderer) {};
     };
 
@@ -291,6 +294,33 @@ namespace Components {
 
     */
     class Camera : public GoCS::GameComponent {
+        private:
+        float FarClip;
+        float NearClip;
+        float Fov;
+        float AspectRatio;
+        glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
+        glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
+        glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
+        public:
+
+
+        GLASS_ENGINE_API Camera(float fov = 90.0, float aspectRatio = 1.7, float nearClippingPlane= 0.1, float farClippingPlane = 100.0); // Perspective camera Constructor
+        GLASS_ENGINE_API Camera(); // Orthographic camera Constructor
+        const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
+		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
+
+        // use https://github.com/VictorGordan/opengl-tutorials/blob/main/YoutubeOpenGL%208%20-%20Camera/Camera.h for camera code
+
+        private:
+        void RecaculateMatrices(){
+            //calc Projection
+            m_ViewMatrix = glm::lookAt(GetTransform()->Position, GetTransform()->Position + GetTransform()->Rotation, Up);
+            //calc view
+            m_ProjectionMatrix = glm::perspective(glm::radians(Fov), AspectRatio, NearClip, FarClip);
+        }
+
+
     };
 
     

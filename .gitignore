@@ -1,5 +1,5 @@
 .vscode
-build/*
+build/
 buildPlugins/_deps
 buildPlugins
 GlassEngine_Build
