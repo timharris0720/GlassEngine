@@ -4,18 +4,7 @@
 void CameraController::Update() {
     ProcessKeyboardInput();
 
-    if (glm::length(movementInput) > 0.0f) {
-        glm::vec3 forward = glm::rotate(glm::quat(parentObject->transform->Rotation.x,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z, 0), glm::vec3(0, 0, -1));
-        glm::vec3 right   = glm::rotate(glm::quat(parentObject->transform->Rotation.x,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z, 0), glm::vec3(1, 0,  0));
-        glm::vec3 up      = glm::vec3(0, 1, 0);
-
-        glm::vec3 movement = (movementInput.x * right +
-                              movementInput.y * up +
-                              movementInput.z * forward);
-
-        parentObject->transform->Position += glm::normalize(movement) * moveSpeed *  (float)this->getDeltaTime();
-    }
-
+    
     if(Input::GetKeyDown(KeyCode::Enter)){
         double fps = 1.0 / this->getDeltaTime();
 
@@ -30,7 +19,45 @@ void CameraController::Update() {
     }
     
 }
+void CameraController::ProcessKeyboardInput(){
+    // Handles key inputs
+	if (Input::GetKeyDown(KeyCode::W))
+	{
+		parentObject->transform->Position += moveSpeed * parentObject->transform->Rotation;
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
 
+	}
+	if (Input::GetKeyDown(KeyCode::A))
+	{
+		parentObject->transform->Position += moveSpeed * -glm::normalize(glm::cross(parentObject->transform->Rotation, camera->Up));
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
+
+	}
+	if (Input::GetKeyDown(KeyCode::S))
+	{
+		parentObject->transform->Position += moveSpeed * -parentObject->transform->Rotation;
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
+
+	}
+	if (Input::GetKeyDown(KeyCode::D))
+	{
+		parentObject->transform->Position += moveSpeed * glm::normalize(glm::cross(parentObject->transform->Rotation, camera->Up));
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
+
+	}
+	if (Input::GetKeyDown(KeyCode::Q))
+	{
+		parentObject->transform->Position += moveSpeed * camera->Up  ;
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
+
+	}
+	if (Input::GetKeyDown(KeyCode::E))
+	{
+		parentObject->transform->Position += moveSpeed * -camera->Up ;
+        logger.InfoLog("POS: X: %f Y: %f Z: %f     ROT: X: %f Y: %f Z: %f ", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
+
+	}
+}
 void CameraController::Start() {
     testChild = parentObject->root->GetChild("testChild2");;
     camera = parentObject->GetComponent<Components::Camera>();

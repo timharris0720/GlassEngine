@@ -105,11 +105,13 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     vertArray->Bind();
     
     if(sceneCameraComponent){
-        //glm::mat4 projection = sceneCameraComponent->GetProjectionMatrix();
-        //glm::mat4 view = sceneCameraComponent->GetViewMatrix();
-        
+        //logger.InfoLog("Camera Comp Exists");
+        glm::mat4 projection = glm::mat4(1.0f);
+        //projection = sceneCameraComponent->GetProjectionMatrix();
+        glm::mat4 view = glm::mat4(1.0f);
+        //view = sceneCameraComponent->GetViewMatrix();
+        view = glm::translate(view, glm::vec3(0,0,-3.0f));
         //glm::mat4 camModel = view; // Identity matrix
-
         //glm::vec3 objPos = glm::vec3(scenecamtrans->Position.x,scenecamtrans->Position.y,scenecamtrans->Position.z);
         //glm::vec3 objRot = glm::vec3(scenecamtrans->Rotation.x,scenecamtrans->Rotation.y,scenecamtrans->Rotation.z);
         //camModel = glm::translate(camModel, objPos);  // <-- Apply translation first
@@ -119,12 +121,13 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
 
 
         objShader->setMat4("projection", projection);
-        objShader->setMat4("view", camModel);
+        objShader->setMat4("view", view);
+        objShader->setVec3("camPos", sceneMainCamera->transform->Position);
     }
     //logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
-
+    
     objShader->setMat4("model", model);
-    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0); 
+    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, nullptr); 
     objShader->Unbind();
 
     

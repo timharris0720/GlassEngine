@@ -15,6 +15,9 @@ namespace GoCS {
         Core::App::Application::GetInstance().shutdown();
         exit(0);
     }
+    Components::Transform* GameComponent::GetTransform(){
+        return parentObject->transform;
+    }
 
 
     GameObject::GameObject(std::string name){
@@ -187,6 +190,19 @@ namespace Components {
 
     #pragma endregion
     #pragma region Camera
-    
+    Camera::Camera(float fov, float aspectRatio, float nearClippingPlane, float farClippingPlane) :  GameComponent("Camera"){
+        Fov = fov;
+        AspectRatio = aspectRatio;
+        NearClip = nearClippingPlane;
+        FarClip = farClippingPlane;
+        
+    }
+    void Camera::Start(){
+        RecaculateMatrices();
+    }
+
+    void Camera::Update(){
+        RecaculateMatrices();
+    }
     #pragma endregion
 }

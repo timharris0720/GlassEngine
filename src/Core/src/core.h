@@ -171,6 +171,7 @@ namespace Core {
 			float m_lastFrameTime;
 			float deltaTime;
 			static Renderer::RendererAPI* renderAPI;
+			WindowProperties winProp;
 			//Time timer;
 		public:
 			static Application* s_instance;

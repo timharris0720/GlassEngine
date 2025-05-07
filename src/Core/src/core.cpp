@@ -23,7 +23,6 @@ namespace Core {
 			
 			s_instance = this;
 			renderAPI = new Renderer::RendererAPI();
-			WindowProperties winProp;
 			winProp.name = appSpec.name;
 			winProp.height = appSpec.height;
 			winProp.width = appSpec.width;
@@ -67,7 +66,8 @@ namespace Core {
 			}
 			else {
 				logger.DebugLog("Perspective Camera");
-				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
+				logger.InfoLog("Aspect ratio: %f, WIDTH %f HEIGHT %f", winProp.width / winProp.height,  winProp.width ,winProp.height);
+				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width / winProp.height, 0.1f, 100.0f);
 				
 				//MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 				//MainCamera.transform = Components::Transform();

@@ -94,6 +94,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(CppUtils)
 
 target_compile_definitions(GlassEngineCore PUBLIC GLASS_ENGINE_EXPORTS_CORE)
+target_compile_definitions(GlassEngineCore PUBLIC NOMINMAX)
 target_include_directories(GlassEngineCore PUBLIC "${OutputIncDir}")
 target_include_directories(GlassEngineCore PUBLIC ${glm_SOURCE_DIR})
 target_link_libraries(GlassEngineCore PRIVATE nlohmann_json::nlohmann_json argparse assimp)

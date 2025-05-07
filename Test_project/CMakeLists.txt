@@ -49,6 +49,7 @@ link_directories(${USING_LIB})
 
 
 add_executable(testingProj src/main.cpp src/CameraController.cpp src/GameManager.cpp)
+target_compile_definitions(testingProj PUBLIC NOMINMAX)
 
 
 target_link_libraries(testingProj GlassEngineCore)

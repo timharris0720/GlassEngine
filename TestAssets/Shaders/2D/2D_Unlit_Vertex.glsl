@@ -14,6 +14,7 @@ uniform mat4 mvp;
 uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 model;
+uniform vec3 camPos;
 
 void main()
 {
@@ -22,15 +23,15 @@ void main()
     // Normal = FragPos + vertexNormal;  
 	vec4 tempPos = projection * view * vec4(FragPos, 1.0);
     //gl_Position =   model * vec4(vertexPos, 1.0); 
-    gl_Position = tempPos; //woeld space
-    // gl_Position = vec4(FragPos,1.0);   //MODEL SPACE out
+    //gl_Position = tempPos; //woeld space
+    gl_Position = vec4(FragPos,1.0);   //MODEL SPACE out
 
 
     //FragPos = vec3(model * vec4(vertexPos, 1.0));
     //vec4 worldPos = projection * view * vec4(FragPos, 1.0);
     ////gl_Position = mvp * vec4(vertexPos, 1.0);  
     
-    FragColor = vertexColorIN;
+    FragColor = camPos;
     TexCoord = vertexUV;
     Normal = vertexNormal;
 }

@@ -18,7 +18,7 @@ float LinearizeDepth(float depth)
 }
 void main()
 {
-    //FragOutput = vec4(FragColor, 1.0);
+    FragOutput = vec4(FragColor, 1.0);
 
     //visual depth buff
     
@@ -26,5 +26,5 @@ void main()
     //FragOutput = vec4(vec3(depth), 1.0);
     
     //Default draw
-    FragOutput = texture(ourTexture, TexCoord) * vec4(FragColor, 1.0);
+    //FragOutput = texture(ourTexture, TexCoord) * vec4(FragColor, 1.0);
 } 

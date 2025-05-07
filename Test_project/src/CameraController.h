@@ -7,11 +7,11 @@
 class CameraController : public GameComponent {
 private:
 
-float moveSpeed;
-float mouseSensitivity;
-
-float yaw;
-float pitch;
+float moveSpeed = 1;
+//float mouseSensitivity;
+//
+//float yaw;
+//float pitch;
 
 glm::vec3 movementInput;
 public:
