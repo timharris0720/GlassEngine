@@ -14,6 +14,9 @@ float moveSpeed = 1;
 //float pitch;
 
 glm::vec3 movementInput;
+glm::vec3 prevPosition;
+glm::vec3 prevRotation;
+bool isDirty = true;
 public:
     CameraController() : GameComponent("CameraController"){}
     GameObject* testChild = nullptr;

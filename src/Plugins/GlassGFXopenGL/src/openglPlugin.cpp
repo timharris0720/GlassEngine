@@ -27,10 +27,10 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);  
-    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST); 
     glDepthMask(GL_FALSE);  
     glDepthFunc(GL_LESS);
+    glEnable(GL_CULL_FACE);
     
     return true;
 }
@@ -44,9 +44,9 @@ void OpenGLRenderAPI::Shutdown(){
 }
 void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
-    logger.DebugLog("GLEW      version: %s", glewGetString(GLEW_VERSION));
-    logger.DebugLog("GL Shader version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    logger.DebugLog("GL        version: %s", glGetString(GL_VERSION));
+    logger.DebugLog("GLEW      Version: %s", glewGetString(GLEW_VERSION));
+    logger.DebugLog("GLFW      Version: %s", glfwGetVersionString());
+    logger.DebugLog("GL        Version: %s", glewGetString(GL_SHADING_LANGUAGE_VERSION));
     glfwMakeContextCurrent(window);
 
     GLenum glI = glewInit();
@@ -106,11 +106,8 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     
     if(sceneCameraComponent){
         //logger.InfoLog("Camera Comp Exists");
-        glm::mat4 projection = glm::mat4(1.0f);
-        //projection = sceneCameraComponent->GetProjectionMatrix();
-        glm::mat4 view = glm::mat4(1.0f);
-        //view = sceneCameraComponent->GetViewMatrix();
-        view = glm::translate(view, glm::vec3(0,0,-3.0f));
+        glm::mat4 projection = sceneCameraComponent->GetProjectionMatrix();
+        glm::mat4 view = sceneCameraComponent->GetViewMatrix();
         //glm::mat4 camModel = view; // Identity matrix
         //glm::vec3 objPos = glm::vec3(scenecamtrans->Position.x,scenecamtrans->Position.y,scenecamtrans->Position.z);
         //glm::vec3 objRot = glm::vec3(scenecamtrans->Rotation.x,scenecamtrans->Rotation.y,scenecamtrans->Rotation.z);

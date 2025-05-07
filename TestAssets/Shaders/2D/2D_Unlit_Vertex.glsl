@@ -19,19 +19,14 @@ uniform vec3 camPos;
 void main()
 {
 
-    FragPos = vec3(model * vec4(vertexPos, 1.0));
-    // Normal = FragPos + vertexNormal;  
-	vec4 tempPos = projection * view * vec4(FragPos, 1.0);
-    //gl_Position =   model * vec4(vertexPos, 1.0); 
-    //gl_Position = tempPos; //woeld space
-    gl_Position = vec4(FragPos,1.0);   //MODEL SPACE out
-
+    
+    //gl_Position =   model * vec4(vertexPos, 1.0);  // MODEL SPACE
+   
 
     //FragPos = vec3(model * vec4(vertexPos, 1.0));
-    //vec4 worldPos = projection * view * vec4(FragPos, 1.0);
-    ////gl_Position = mvp * vec4(vertexPos, 1.0);  
+    gl_Position =  projection * view * model * vec4(vertexPos, 1.0);  // WORLD SPACE
     
-    FragColor = camPos;
+    FragColor = vertexColorIN;
     TexCoord = vertexUV;
     Normal = vertexNormal;
 }

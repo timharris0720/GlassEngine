@@ -10,4 +10,3 @@
 #endif
 using namespace Core;
 using namespace GoCS;
-

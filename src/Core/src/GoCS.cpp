@@ -190,9 +190,12 @@ namespace Components {
 
     #pragma endregion
     #pragma region Camera
-    Camera::Camera(float fov, float aspectRatio, float nearClippingPlane, float farClippingPlane) :  GameComponent("Camera"){
+    Camera::Camera(float fov, int width, int height, float nearClippingPlane, float farClippingPlane) :  GameComponent("Camera"){
         Fov = fov;
-        AspectRatio = aspectRatio;
+        AspectRatio = width / height;
+        if(nearClippingPlane <= 0.0f){
+            logger.ErrorLog("Near Clip is less than 0 breaking");
+        }
         NearClip = nearClippingPlane;
         FarClip = farClippingPlane;
         

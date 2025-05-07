@@ -303,7 +303,7 @@ namespace Components {
         public:
         glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
         GLASS_ENGINE_API Camera() = default; // Orthographic camera Constructor
-        GLASS_ENGINE_API Camera(float fov, float aspectRatio, float nearClippingPlane, float farClippingPlane); // Perspective camera Constructor
+        GLASS_ENGINE_API Camera(float fov, int width, int height, float nearClippingPlane, float farClippingPlane); // Perspective camera Constructor
         const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 
@@ -314,9 +314,20 @@ namespace Components {
         private:
         void RecaculateMatrices(){
             //calc Projection
-            m_ViewMatrix = glm::lookAt(parentObject->transform->Position, parentObject->transform->Position + parentObject->transform->Rotation, Up);
-            //calc view
             m_ProjectionMatrix = glm::perspective(glm::radians(Fov), AspectRatio, NearClip, FarClip);
+            float pitch = glm::radians(parentObject->transform->Rotation.x);
+            float yaw   = glm::radians(parentObject->transform->Rotation.y);
+
+            glm::vec3 front;
+            front.x = cos(pitch) * cos(yaw);
+            front.y = sin(pitch);
+            front.z = cos(pitch) * sin(yaw);
+            front = glm::normalize(front);
+
+            glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0, 1, 0)));
+            glm::vec3 up    = glm::normalize(glm::cross(right, front));
+            m_ViewMatrix = glm::lookAt(parentObject->transform->Position, parentObject->transform->Position + front, up);;
+            //calc view
         }
 
 

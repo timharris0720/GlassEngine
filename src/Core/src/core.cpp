@@ -66,8 +66,9 @@ namespace Core {
 			}
 			else {
 				logger.DebugLog("Perspective Camera");
-				logger.InfoLog("Aspect ratio: %f, WIDTH %f HEIGHT %f", winProp.width / winProp.height,  winProp.width ,winProp.height);
-				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width / winProp.height, 0.1f, 100.0f);
+				float ar = winProp.width / winProp.height;
+				logger.InfoLog("Aspect ratio: %f, WIDTH %f HEIGHT %f", ar,  winProp.width ,winProp.height);
+				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width , winProp.height, 0.1f, 100.0f);
 				
 				//MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 				//MainCamera.transform = Components::Transform();
