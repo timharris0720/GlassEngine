@@ -8,6 +8,7 @@ class CameraController : public GameComponent {
 private:
 
 float moveSpeed = 1;
+float rotSpeed = 90;
 //float mouseSensitivity;
 //
 //float yaw;
