@@ -23,44 +23,34 @@ void CameraController::Update() {
 
     if (Input::GetKeyDown(KeyCode::LeftArrow)) {
         parentObject->transform->Rotation.y -= rotateSpeed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::RightArrow)) {
         parentObject->transform->Rotation.y += rotateSpeed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::UpArrow)) {
         parentObject->transform->Rotation.x += rotateSpeed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::DownArrow)) {
         parentObject->transform->Rotation.x -= rotateSpeed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     
     if (Input::GetKeyDown(KeyCode::W)) {
         parentObject->transform->Position += front * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::S)) {
         parentObject->transform->Position -= front * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::A)) {
         parentObject->transform->Position -= right * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::D)) {
         parentObject->transform->Position += right * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::Q)) {
         parentObject->transform->Position -= up * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     if (Input::GetKeyDown(KeyCode::E)) {
         parentObject->transform->Position += up * speed;
-        logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     
     #pragma region Mouse_looking
@@ -91,11 +81,10 @@ void CameraController::Update() {
 
     if(Input::GetKeyDown(KeyCode::Enter)){
         double fps = 1.0 / this->getDeltaTime();
-
         logger.InfoLog("FPS: %f, Frame time: %f", fps, this->getDeltaTime());
     }
     if(Input::GetKeyDown(KeyCode::Escape)){
-        
+          
         logger.InfoLog("Shutting down");
         this->CloseApplication();
         
