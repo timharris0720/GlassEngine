@@ -14,6 +14,7 @@
 #include "GLFW/glfw3.h"
 #include "GlassEngine/GlassEngine.h"
 #include "texture.h"
+#include "version_opengl.h"
 class OpenGLShader : public Shader {
 private:
     Logger logger = Logger("GlassGFX.OpenGL.Plugin.OpenGLShader", "Log.txt");

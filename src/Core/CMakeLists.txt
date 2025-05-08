@@ -10,9 +10,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glm)
 set(PROJECT_NAME "GlassEngineCore")
-set(CORE_VERSION_MAJOR 1)
-set(CORE_VERSION_MINOR 0)
-set(CORE_VERSION_PATCH 0)
+set(PROJECT_VERSION_MAJOR 1)
+set(PROJECT_VERSION_MINOR 0)
+set(PROJECT_VERSION_PATCH 0)
 set(RELEASE_CHANNEL "a")
 # Generate the Config.h file
 
