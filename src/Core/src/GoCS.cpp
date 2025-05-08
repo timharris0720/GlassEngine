@@ -198,6 +198,21 @@ namespace Components {
         }
         NearClip = nearClippingPlane;
         FarClip = farClippingPlane;
+        windowWidth = width;
+        windowHeight =  height; 
+        projection = ProjectionType::Perspective;
+    }
+    Camera::Camera(int width, int height, float nearClippingPlane, float farClippingPlane) :  GameComponent("Camera"){
+        
+        AspectRatio = width / height;
+        if(nearClippingPlane <= 0.0f){
+            logger.ErrorLog("Near Clip is less than 0 breaking");
+        }
+        NearClip = nearClippingPlane;
+        FarClip = farClippingPlane;
+        windowWidth = width;
+        windowHeight =  height;
+        projection = ProjectionType::Orthographic;
         
     }
     void Camera::Start(){

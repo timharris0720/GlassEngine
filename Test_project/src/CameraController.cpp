@@ -91,6 +91,6 @@ void CameraController::Start() {
     testChild = parentObject->root->GetChild("testChild2");;
     camera = parentObject->GetComponent<Components::Camera>();
 
-    prevPosition = parentObject->transform->Position;
-    prevRotation = parentObject->transform->Rotation;
+    parentObject->transform->Position = glm::vec3(0,0,-3);
+    parentObject->transform->Rotation = glm::vec3(0,90,0);
 }
