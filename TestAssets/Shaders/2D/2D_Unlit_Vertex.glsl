@@ -10,11 +10,9 @@ out vec3 FragColor;
 out vec3 FragPos;
 out vec3 Normal;  
 
-uniform mat4 mvp;
 uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 model;
-uniform vec3 camPos;
 
 void main()
 {
