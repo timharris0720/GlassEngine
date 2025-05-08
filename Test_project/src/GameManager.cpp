@@ -14,6 +14,8 @@ void GameManager::Start(){
     Components::Camera* camera = parentObject->root->GetChild("Main Camera")->GetComponent<Components::Camera>();
     camera->FarClip = 10.0f;
     camera->NearClip = 0.0001f;
+
+    //testChild->objectShader->AddShaderCommand(glm::vec3(1,0,0), "testColor");
 }
 void GameManager::Update() {
     

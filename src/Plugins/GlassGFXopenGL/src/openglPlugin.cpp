@@ -10,7 +10,7 @@ void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
 }
 double OpenGLRenderAPI::GetTime(){
     //logger.InfoLog("%f", glfwGetTime());
-    return glfwGetTime();
+    return glfwGetTime();   
 }
 
 bool OpenGLRenderAPI::onLoad() {
@@ -85,6 +85,13 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
 }
 void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
 
+    if(m_texture != nullptr)
+        m_texture->Bind();
+    objShader->Bind();
+    vertArray->Bind();
+
+    objShader->RunShaderCommands();
+
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
 
     glm::vec3 objPos = glm::vec3(objectTransform->Position.x,objectTransform->Position.y,objectTransform->Position.z);
@@ -99,27 +106,14 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     
 
 
-    if(m_texture != nullptr)
-        m_texture->Bind();
-    objShader->Bind();
-    vertArray->Bind();
     
+
     if(sceneCameraComponent){
         //logger.InfoLog("Camera Comp Exists");
         glm::mat4 projection = sceneCameraComponent->GetProjectionMatrix();
-        glm::mat4 view = sceneCameraComponent->GetViewMatrix();
-        //glm::mat4 camModel = view; // Identity matrix
-        //glm::vec3 objPos = glm::vec3(scenecamtrans->Position.x,scenecamtrans->Position.y,scenecamtrans->Position.z);
-        //glm::vec3 objRot = glm::vec3(scenecamtrans->Rotation.x,scenecamtrans->Rotation.y,scenecamtrans->Rotation.z);
-        //camModel = glm::translate(camModel, objPos);  // <-- Apply translation first
-        //camModel = glm::rotate(camModel, glm::radians(objRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        //camModel = glm::rotate(camModel, glm::radians(objRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
-        //camModel = glm::rotate(camModel, glm::radians(objRot.z), glm::vec3(0.0f, 0.0f, 1.0f));
-
-
+        glm::mat4 view = sceneCameraComponent->GetViewMatrix();        
         objShader->setMat4("projection", projection);
         objShader->setMat4("view", view);
-        objShader->setVec3("camPos", sceneMainCamera->transform->Position);
     }
     //logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
     
