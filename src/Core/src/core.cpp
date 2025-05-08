@@ -2,7 +2,7 @@
 #include "pluginLoader.h"
 #include "timestep.h"
 #include <argparse/argparse.hpp>
-
+#include "core_version.h"
 namespace Core {
 	namespace App {
 		Application* Application::s_instance = nullptr;
@@ -37,7 +37,7 @@ namespace Core {
 			if (program["--debug"] == true) {
 				logger.setDBGMode(true);
 			}
-
+			//logger.InfoLog("Glass Engine Core Version: %s" GLASSENGINECORE_VERSION);
 			Root = GoCS::GameObject();
 			Root.transform = new Components::Transform();
 			MainCamera = new GoCS::GameObject("Main Camera");
@@ -73,6 +73,7 @@ namespace Core {
 				//MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 				//MainCamera.transform = Components::Transform();
 			}
+			logger.InfoLog("Core Version: %s", CORE_VERSION_STRING);
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
 		}
 		void Application::PushGameObject(GoCS::GameObject* GO){

@@ -5,6 +5,7 @@
 #include "ErrorCodes.h"
 #include "Shader.h"
 #include "GoCS.h"
+//#include "Math.h"
 #ifdef GLASS_ENTRY_INCLUDE
 #include "entrypoint.h"
 #endif

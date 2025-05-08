@@ -63,7 +63,7 @@ void CameraController::Update() {
         logger.InfoLog("POS: (X: %f Y: %f Z: %f) ROT:(X: %f Y: %f Z: %f)", parentObject->transform->Position.x,parentObject->transform->Position.y,parentObject->transform->Position.z,parentObject->transform->Rotation.z,parentObject->transform->Rotation.y,parentObject->transform->Rotation.z);
     }
     
-    
+    #pragma region Mouse_looking
     
     int mouseX, mouseY;
     Input::GetMousePosition(mouseX, mouseY);
@@ -85,13 +85,8 @@ void CameraController::Update() {
 
     parentObject->transform->Rotation.y += xOffset; // yaw
     parentObject->transform->Rotation.x += yOffset; // pitch
-
-    if (parentObject->transform->Rotation.x > 89.0f){
-        parentObject->transform->Rotation.x = 89.0f;
-    }
-    if (parentObject->transform->Rotation.x < -89.0f){
-        parentObject->transform->Rotation.x = -89.0f;
-    }
+    #pragma endregion Mouse_looking
+    //parentObject->transform->Rotation.x = Maths::Clamp(parentObject->transform->Rotation.x, 89.0f, -89.0f);
 
 
     if(Input::GetKeyDown(KeyCode::Enter)){

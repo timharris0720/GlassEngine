@@ -1,4 +1,5 @@
 #include "oglPlugin.h"
+#include <cmath>
 #include <Utils/FileIO.h>
 #define __STDC_LINMIT_MACROS
 #define STB_IMAGE_IMPLEMENTATION
@@ -9,7 +10,7 @@ void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
 }
 double OpenGLRenderAPI::GetTime(){
-    //logger.InfoLog("%f", glfwGetTime());
+    //logger.InfoLog("%f", glfwGetTime()); 
     return glfwGetTime();   
 }
 

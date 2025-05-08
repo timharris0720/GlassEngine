@@ -1,6 +1,4 @@
 #pragma once
-#define CORE_VERSION_MAJOR 1
-#define CORE_VERSION_MINOR 0
 
 #ifdef _WIN32
 #ifdef GLASS_ENGINE_EXPORTS_CORE
@@ -17,6 +15,7 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
+//#include "version.h"
 //#include "SceneLoader.h"
 //#include "Time.h"
 typedef glm::vec3 Vector3;
