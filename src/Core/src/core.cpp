@@ -60,7 +60,7 @@ namespace Core {
 			if(appSpec.sceneType == SceneType::DIM_2){
 				logger.DebugLog("Ortho Camera");
 				//MainCamera = Cameras::OrthoCamera(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100000.0f);
-				//MainCamera->AddComponent<Components::Camera>(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100000.0f);
+				MainCamera->AddComponent<Components::Camera>(winProp.width, winProp.height, 0.1f, 100.0f);
 
 				//MainCamera.transform = Components::Transform();
 			}

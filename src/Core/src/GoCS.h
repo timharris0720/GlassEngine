@@ -294,16 +294,22 @@ namespace Components {
     */
     class Camera : public GoCS::GameComponent {
         private:
+        
+        glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
+        glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
+        enum ProjectionType {Perspective, Orthographic};
+        ProjectionType projection;
+        int windowWidth = 800, windowHeight = 600;
+        public:
         float FarClip = 100;
         float NearClip = 0.1f;
         float Fov = 90.0f;
         float AspectRatio = 1.7f;
-        glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
-        glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
-        public:
+
         glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
         GLASS_ENGINE_API Camera() = default; // Orthographic camera Constructor
         GLASS_ENGINE_API Camera(float fov, int width, int height, float nearClippingPlane, float farClippingPlane); // Perspective camera Constructor
+        GLASS_ENGINE_API Camera(int width, int height, float nearClippingPlane, float farClippingPlane); // Perspective camera Constructor
         const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 
@@ -314,7 +320,20 @@ namespace Components {
         private:
         void RecaculateMatrices(){
             //calc Projection
-            m_ProjectionMatrix = glm::perspective(glm::radians(Fov), AspectRatio, NearClip, FarClip);
+            switch (projection)
+            {
+            case ProjectionType::Perspective:
+                /* code */
+                m_ProjectionMatrix = glm::perspective(glm::radians(Fov), AspectRatio, NearClip, FarClip);
+
+                break;
+            case ProjectionType::Orthographic:
+                m_ProjectionMatrix = glm::ortho(0.0f,(float)windowWidth,0.0f,(float)windowHeight, NearClip, FarClip);
+                break;
+            default:
+                logger.ErrorLog("ProjectionTypeFuckeddd");
+                break;
+            }
             float pitch = glm::radians(parentObject->transform->Rotation.x);
             float yaw   = glm::radians(parentObject->transform->Rotation.y);
 

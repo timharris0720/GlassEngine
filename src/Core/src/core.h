@@ -17,7 +17,7 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
-#include "SceneLoader.h"
+//#include "SceneLoader.h"
 //#include "Time.h"
 typedef glm::vec3 Vector3;
 typedef glm::vec2 Vector2;
@@ -191,7 +191,7 @@ namespace Core {
 			Logger* GetLogger() { return &logger;}
 			
 			Plugin::PluginLoader pluginLoader;
-			SceneNS::SceneLoader sceneLoader;
+			//SceneNS::SceneLoader sceneLoader;
 		};
 	}
 }
