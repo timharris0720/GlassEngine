@@ -174,10 +174,15 @@ struct KeyCode {
 };
 
 class Input {
+private:
+static bool mouseLocked;
 public:
     // Check if a keyboard key is currently down
     static bool GetKeyDown(int key) {
         return isKeyPressed(key);
+    }
+    static void LockMouseToCenter(bool hideCursor = false) {
+        lockCenter(hideCursor);
     }
 
     // Check if a mouse button is pressed
@@ -195,6 +200,21 @@ private:
     // Windows Implementation
     // ------------------------
 #ifdef _WIN32
+    static void lockCenter(bool hideCursor){
+        HWND hwnd = GetActiveWindow();
+        if (!hwnd) return;
+
+        RECT rect;
+        GetClientRect(hwnd, &rect);
+        ShowCursor(!hideCursor);
+        POINT center;
+        center.x = (rect.right - rect.left) / 2;
+        center.y = (rect.bottom - rect.top) / 2;
+
+        ClientToScreen(hwnd, &center);
+        SetCursorPos(center.x, center.y);
+    }
+
     static bool isKeyPressed(int key) {
         return GetAsyncKeyState(key) & 0x8000;
     }
@@ -215,6 +235,22 @@ private:
     // Linux (X11) Implementation
     // ------------------------
 #elif __linux__
+    static void lockCenter(bool hideCursor){
+        Display* display = XOpenDisplay(nullptr);
+        if (!display) return;
+
+        Window root = DefaultRootWindow(display);
+        int screen = DefaultScreen(display);
+        int width = DisplayWidth(display, screen);
+        int height = DisplayHeight(display, screen);
+
+        int centerX = width / 2;
+        int centerY = height / 2;
+
+        XWarpPointer(display, None, root, 0, 0, 0, 0, centerX, centerY);
+        XFlush(display);
+        XCloseDisplay(display);
+    }
     static bool isKeyPressed(KeyCode key) {
         Display* display = XOpenDisplay(nullptr);
         if (!display) return false;
@@ -265,6 +301,18 @@ private:
     // macOS Implementation
     // ------------------------
 #elif __APPLE__
+    static void lockCenter(bool hideCursor){
+        CGSize screenSize = CGDisplayBounds(CGMainDisplayID()).size;
+        CGPoint center = CGPointMake(screenSize.width / 2, screenSize.height / 2);
+
+        if (hideCursor)
+            CGDisplayHideCursor(kCGDirectMainDisplay);
+        else
+            CGDisplayShowCursor(kCGDirectMainDisplay);
+
+        CGWarpMouseCursorPosition(center);
+        CGAssociateMouseAndMouseCursorPosition(true);
+    }
     static bool isKeyPressed(KeyCode key) {
         CGEventFlags flags = CGEventSourceFlagsState(kCGEventSourceStateHIDSystemState);
         return (flags & key) != 0;

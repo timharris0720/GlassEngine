@@ -1,4 +1,5 @@
 #include "oglPlugin.h"
+#include <cmath>
 #include <Utils/FileIO.h>
 #define __STDC_LINMIT_MACROS
 #define STB_IMAGE_IMPLEMENTATION
@@ -9,7 +10,7 @@ void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
 }
 double OpenGLRenderAPI::GetTime(){
-    //logger.InfoLog("%f", glfwGetTime());
+    //logger.InfoLog("%f", glfwGetTime()); 
     return glfwGetTime();   
 }
 
@@ -44,9 +45,10 @@ void OpenGLRenderAPI::Shutdown(){
 }
 void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winData = *winProps;
     window = glfwCreateWindow(winData.width,winData.height, winData.name.c_str(), NULL,NULL);
-    logger.DebugLog("GLEW      Version: %s", glewGetString(GLEW_VERSION));
-    logger.DebugLog("GLFW      Version: %s", glfwGetVersionString());
-    logger.DebugLog("GL        Version: %s", glewGetString(GL_SHADING_LANGUAGE_VERSION));
+    logger.DebugLog("OPENGL PLUGIN Version: %s",OPENGL_PLUGIN_VERSION_STRING);
+    logger.DebugLog("GLEW          Version: %s", glewGetString(GLEW_VERSION));
+    logger.DebugLog("GLFW          Version: %s", glfwGetVersionString());
+    logger.DebugLog("GL            Version: %s", glewGetString(GL_SHADING_LANGUAGE_VERSION));
     glfwMakeContextCurrent(window);
 
     GLenum glI = glewInit();

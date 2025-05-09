@@ -7,17 +7,17 @@
 class CameraController : public GameComponent {
 private:
 
-float moveSpeed = 1;
-float rotSpeed = 90;
-//float mouseSensitivity;
-//
-//float yaw;
-//float pitch;
-
-glm::vec3 movementInput;
-glm::vec3 prevPosition;
-glm::vec3 prevRotation;
-bool isDirty = true;
+    float moveSpeed = 1;
+    float rotSpeed = 90;
+    float mouseSensitivity = 0.01;
+    //
+    float lastMouseX = 0.0f;
+    float lastMouseY = 0.0f;
+    bool firstMouse = true;
+    glm::vec3 movementInput;
+    glm::vec3 prevPosition;
+    glm::vec3 prevRotation;
+    bool isDirty = true;
 public:
     CameraController() : GameComponent("CameraController"){}
     GameObject* testChild = nullptr;
@@ -26,6 +26,4 @@ public:
 
     void Start();
     void Update();
-    
-    void ProcessKeyboardInput();
 };

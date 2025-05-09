@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(GlassEngineCore VERSION 1.0)
+project(GlassEngineCore VERSION 1.0.0)
 set(CMAKE_MESSAGE_LOG_LEVEL STATUS)
 include(FetchContent)
 set(GLM_ENABLE_CXX_17 ON)
@@ -9,11 +9,12 @@ FetchContent_Declare(
 	GIT_TAG 	bf71a834948186f4097caa076cd2663c69a10e1e
 )
 FetchContent_MakeAvailable(glm)
-set(Version_Major 1)
-set(Version_Minor 0)
-
+set(PROJECT_NAME "GlassEngineCore")
+set(PROJECT_VERSION_MAJOR 1)
+set(PROJECT_VERSION_MINOR 0)
+set(PROJECT_VERSION_PATCH 0)
+set(RELEASE_CHANNEL "a")
 # Generate the Config.h file
-configure_file(src/version.h.in src/version.h)
 
 if(WIN32)
 set(SYSTEM_USING "win64")
@@ -79,6 +80,13 @@ FetchContent_MakeAvailable(assimp)
 set(CMAKE_DEBUG_POSTFIX "") 
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 set(OutputIncDirGE  "${OutputIncDir}/GlassEngine")
+configure_file(src/version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/core_version.h)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/version.h.in")
+    message(STATUS "Found version.h.in")
+else()
+    message(FATAL_ERROR "version.h.in not found at expected path!")
+endif()
 
 
 file(GLOB HEAD_FILES  src/*.h )

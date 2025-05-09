@@ -6,8 +6,12 @@ find_package(OpenGL REQUIRED)
 
 set(OutputIncDir  "${CMAKE_INSTALL_PREFIX}/include")
 set(OutputIncDirGE  "${OutputIncDir}/GlassEngine")
-
-
+set(PROJECT_NAME "OPENGL_Plugin")
+set(PROJECT_VERSION_MAJOR 1)
+set(PROJECT_VERSION_MINOR 0)
+set(PROJECT_VERSION_PATCH 0)
+set(RELEASE_CHANNEL "a")
+configure_file(src/version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/version_opengl.h)
 
 
 
