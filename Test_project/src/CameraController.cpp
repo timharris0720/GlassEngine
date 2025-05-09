@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/vector_angle.hpp>
 #include <glm/gtc/constants.hpp>
-
+#include "GlassEngine/Mathematics.h"
 void CameraController::Update() {
     
     float speed = moveSpeed * getDeltaTime();
@@ -76,7 +76,7 @@ void CameraController::Update() {
     parentObject->transform->Rotation.y += xOffset; // yaw
     parentObject->transform->Rotation.x += yOffset; // pitch
     #pragma endregion Mouse_looking
-    //parentObject->transform->Rotation.x = Maths::Clamp(parentObject->transform->Rotation.x, 89.0f, -89.0f);
+    parentObject->transform->Rotation.x = Maths::Clamp(parentObject->transform->Rotation.x, 89.0f, -89.0f);
 
 
     if(Input::GetKeyDown(KeyCode::Enter)){
