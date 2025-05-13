@@ -40,7 +40,7 @@ namespace GoCS {
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
-    void GameObject::Update(){
+    void GameObject::   Update(){
         if(components.size() > 0){
             for(int i = 0; i < components.size(); i++){
                 components[i]->Update();

@@ -99,6 +99,7 @@ namespace Core {
 				deltaTime = timestep;
 				//timer.Update();
 				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
+				Root.Update();
 				for(GoCS::GameObject* go : Root.children){
 					go->Update();
 				}
