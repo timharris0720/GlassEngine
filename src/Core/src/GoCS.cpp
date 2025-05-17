@@ -1,22 +1,21 @@
 #include "GoCS.h"
 #include "core.h"
+#include "BinarySearching.h"
 
 namespace GoCS {
     GameComponent::GameComponent(std::string name) {
         this->name = name;
         logger.setLoggerName(name + "_component");
-        
-        //logger.DebugLog("Adding Component %s to GameObject %s", name.c_str(), parent->name);
     }
     double GameComponent::getDeltaTime(){
-        return parentObject->getDeltaTime();
+        return parent->getDeltaTime();
     }
     void GameComponent::CloseApplication(){
         Core::App::Application::GetInstance().shutdown();
         exit(0);
     }
     Components::Transform* GameComponent::GetTransform(){
-        return parentObject->transform;
+        return parent->transform;
     }
 
 
@@ -36,18 +35,19 @@ namespace GoCS {
         this->root =  Core::App::Application::GetInstance().GetRoot();
         transform = new Components::Transform();
         logger.setLoggerName(name);
+        int ind = Sorting::binary_search_recursive_gameobject_array( parent->children, this->transform->Position.z);
+		
         parent->children.push_back(this);
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
-    void GameObject::   Update(){
+    void GameObject::Update(){
         if(components.size() > 0){
             for(int i = 0; i < components.size(); i++){
                 components[i]->Update();
             }
         }
         for(GameObject* child : children){
-            logger.InfoLog("Child: %s", child->name);
             child->Update();
         }
         
@@ -55,10 +55,14 @@ namespace GoCS {
         if(vertexArray && objectShader){
             Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader, objectTexture, transform);
         }
-        
-        
-
     }
+    
+    GameObject* GameObject::getRootGameObject() {
+        return root;
+    }
+    
+    
+    
 }
 
 
@@ -71,12 +75,9 @@ namespace Components {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
         VertexArray* v = Defaults::SquareSprite();
-        parentObject->objectShader = std::move(shader);
-        parentObject->vertexArray = std::move(v);
-        parentObject->objectTexture = std::move(texu);
-    }
-    void Sprite::Hello() {
-        logger.InfoLog("Hello World");
+        parent->objectShader = std::move(shader);
+        parent->vertexArray = std::move(v);
+        parent->objectTexture = std::move(texu);
     }
 
     #pragma region Mesh
@@ -100,7 +101,7 @@ namespace Components {
             //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
             
             
-            ProcessNode(scene->mRootNode, scene, *parentObject);
+            ProcessNode(scene->mRootNode, scene, *parent);
             /*
                 Create MeshObject
                 Process Root mesh
@@ -111,8 +112,9 @@ namespace Components {
             //ProcessNode(scene->mRootNode,scene);
         }
         else{
-            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
-            
+            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg",texture::REPEAT);
+
+            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
             VertexArray* v;
             switch(PrimType) {
                 case Defaults::CUBE:
@@ -123,9 +125,10 @@ namespace Components {
                   logger.InfoLog("Spehere Mesh");
                   break;
             }
-            parentObject->objectShader = std::move(shader);
-            parentObject->vertexArray = std::move(v);
-            //parentObject->objectTexture = std::move(texu);
+            gameObject->objectShader = std::move(shader);
+            gameObject->vertexArray = std::move(v);
+
+            //parent->objectTexture = std::move(texu);
         }
     }
     void Mesh::ProcessNode(aiNode* node, const aiScene* scene,GoCS::GameObject& GO){
@@ -181,7 +184,7 @@ namespace Components {
 
         }
         VertexArray* v  = Core::App::Application::GetRenderer().CreateVertexArray(&verts,&faceIndices);
-        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
+        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
         GO.vertexArray = std::move(v);
         GO.objectShader = std::move(shader);
     }

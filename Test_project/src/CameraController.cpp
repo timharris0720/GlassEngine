@@ -9,8 +9,8 @@ void CameraController::Update() {
     float speed = moveSpeed * getDeltaTime();
     float rotateSpeed = rotSpeed * getDeltaTime();
 
-    float pitch = glm::radians(parentObject->transform->Rotation.x);
-    float yaw   = glm::radians(parentObject->transform->Rotation.y);
+    float pitch = glm::radians(gameObject->transform->Rotation.x);
+    float yaw   = glm::radians(gameObject->transform->Rotation.y);
 
     glm::vec3 front;
     front.x = cos(pitch) * cos(yaw);
@@ -22,35 +22,35 @@ void CameraController::Update() {
     glm::vec3 up    = glm::normalize(glm::cross(right, front));
 
     if (Input::GetKeyDown(KeyCode::LeftArrow)) {
-        parentObject->transform->Rotation.y -= rotateSpeed;
+        gameObject->transform->Rotation.y -= rotateSpeed;
     }
     if (Input::GetKeyDown(KeyCode::RightArrow)) {
-        parentObject->transform->Rotation.y += rotateSpeed;
+        gameObject->transform->Rotation.y += rotateSpeed;
     }
     if (Input::GetKeyDown(KeyCode::UpArrow)) {
-        parentObject->transform->Rotation.x += rotateSpeed;
+        gameObject->transform->Rotation.x += rotateSpeed;
     }
     if (Input::GetKeyDown(KeyCode::DownArrow)) {
-        parentObject->transform->Rotation.x -= rotateSpeed;
+        gameObject->transform->Rotation.x -= rotateSpeed;
     }
     
     if (Input::GetKeyDown(KeyCode::W)) {
-        parentObject->transform->Position += front * speed;
+        gameObject->transform->Position += front * speed;
     }
     if (Input::GetKeyDown(KeyCode::S)) {
-        parentObject->transform->Position -= front * speed;
+        gameObject->transform->Position -= front * speed;
     }
     if (Input::GetKeyDown(KeyCode::A)) {
-        parentObject->transform->Position -= right * speed;
+        gameObject->transform->Position -= right * speed;
     }
     if (Input::GetKeyDown(KeyCode::D)) {
-        parentObject->transform->Position += right * speed;
+        gameObject->transform->Position += right * speed;
     }
     if (Input::GetKeyDown(KeyCode::Q)) {
-        parentObject->transform->Position -= up * speed;
+        gameObject->transform->Position -= up * speed;
     }
     if (Input::GetKeyDown(KeyCode::E)) {
-        parentObject->transform->Position += up * speed;
+        gameObject->transform->Position += up * speed;
     }
     
     #pragma region Mouse_looking
@@ -73,10 +73,10 @@ void CameraController::Update() {
     xOffset *= mouseSensitivity;
     yOffset *= mouseSensitivity;
 
-    parentObject->transform->Rotation.y += xOffset; // yaw
-    parentObject->transform->Rotation.x += yOffset; // pitch
+    gameObject->transform->Rotation.y += xOffset; // yaw
+    gameObject->transform->Rotation.x += yOffset; // pitch
     #pragma endregion Mouse_looking
-    parentObject->transform->Rotation.x = Maths::Clamp(parentObject->transform->Rotation.x, 89.0f, -89.0f);
+    gameObject->transform->Rotation.x = Maths::Clamp(gameObject->transform->Rotation.x, 89.0f, -89.0f);
 
 
     if(Input::GetKeyDown(KeyCode::Enter)){
@@ -93,9 +93,9 @@ void CameraController::Update() {
     
 }
 void CameraController::Start() {
-    testChild = parentObject->root->GetChild("testChild2");;
-    camera = parentObject->GetComponent<Components::Camera>();
+    testChild = gameObject->root->GetChild("testChild2");;
+    camera = gameObject->GetComponent<Components::Camera>();
 
-    parentObject->transform->Position = glm::vec3(0,0,3);
-    parentObject->transform->Rotation = glm::vec3(0,-90,0);
+    gameObject->transform->Position = glm::vec3(0,0,3);
+    gameObject->transform->Rotation = glm::vec3(0,-90,0);
 }

@@ -28,10 +28,7 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST); 
-    glDepthMask(GL_FALSE);  
-    glDepthFunc(GL_LESS);
-    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
     
     return true;
 }
@@ -92,18 +89,18 @@ void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,
     objShader->Bind();
     vertArray->Bind();
 
-    objShader->RunShaderCommands();
+    //objShader->RunShaderCommands();
 
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
 
     glm::vec3 objPos = glm::vec3(objectTransform->Position.x,objectTransform->Position.y,objectTransform->Position.z);
     glm::vec3 objRot = glm::vec3(objectTransform->Rotation.x,objectTransform->Rotation.y,objectTransform->Rotation.z);
     glm::vec3 objScl = glm::vec3(objectTransform->Scale.x,objectTransform->Scale.y,objectTransform->Scale.z);
-    model = glm::translate(model, objPos);  // <-- Apply translation first
+    model = glm::translate(model, objPos);
     model = glm::rotate(model, glm::radians(objRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objRot.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    model = glm::scale(model, objScl);  // Scaling last
+    model = glm::scale(model, objScl); 
 
     
 

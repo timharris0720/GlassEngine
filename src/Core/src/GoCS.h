@@ -50,7 +50,8 @@ namespace GoCS {
         public:
         std::string name;
         Logger logger = Logger("TempName", "Log.txt");
-        GoCS::GameObject* parentObject;
+        GoCS::GameObject* parent;
+        GoCS::GameObject* gameObject;
         
         //Core::App::Application* applicationInstance;
         GameComponent() = default;
@@ -61,8 +62,12 @@ namespace GoCS {
         GLASS_ENGINE_API double getDeltaTime();
         GLASS_ENGINE_API void CloseApplication();
         void SetParent(GoCS::GameObject* _parentObject) {
-            parentObject = _parentObject;
-
+            parent = _parentObject;
+            //logger.InfoLog("Comp: Parent name: %s, %s", _parentObject->name.c_str(), parent->name.c_str());
+        }
+        void SetGameObject(GoCS::GameObject* _parentObject) {
+            gameObject = _parentObject;
+            //logger.InfoLog("Comp: Parent name: %s, %s", _parentObject->name.c_str(), parent->name.c_str());
         }
         GLASS_ENGINE_API Components::Transform* GetTransform(); 
             
@@ -90,24 +95,37 @@ namespace GoCS {
             
             bool isActive;
             bool isAlive;
-
+            GameObject() = default;
             void Start() {};
+
             GLASS_ENGINE_API void Update();
-            GLASS_ENGINE_API double getDeltaTime();
-            GameObject* getRootGameObject() {
-                return root;
+            GameObject* GetChild(std::string m_name){
+                logger.InfoLog("Size of Children of gameobject: %s %i",this->name.c_str(), children.size());
+                
+                for(GameObject* GO : children){
+                    if(GO->name == m_name)
+                    {
+                        logger.InfoLog("Found %s Returning it", m_name.c_str()); 
+                        return GO;
+                    }
+                    
+                }
+                return nullptr;
             }
+            GLASS_ENGINE_API double getDeltaTime();
+            GLASS_ENGINE_API GameObject* getRootGameObject();
             void SetParent(GameObject* parentObject) {
                 parent = parentObject;
             }
-
             template <typename T, typename... Args>
             T* AddComponent(Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
                     auto component = std::make_unique<T>(std::forward<Args>(args)...);
                     T* ptr = component.get();
-                    ptr->SetParent(this);
-
+                    ptr->SetParent(parent);
+                    ptr->SetGameObject(this);
+                    logger.DebugLog("Adding Component %s to GameObject-Parent %s, Componenets GameObject Name: %s", component->name.c_str(), component->parent->name.c_str(),component->gameObject->name.c_str());
+                    
                     //ptr->root = root;
                     //ptr->Init();
                     ptr->Start();
@@ -118,17 +136,6 @@ namespace GoCS {
                 }
                 return NULL;
             }
-            GameObject* GetChild(std::string name){
-                for(GameObject* GO : children){
-                    if(GO->name == name)
-                    {
-                        logger.InfoLog("Found %s Returning it", name.c_str()); 
-                        return GO;
-                    }
-                    
-                }
-                return nullptr;
-            }
             template <typename T>
             T* GetComponent() {
                 static_assert(std::is_base_of<GameComponent, T>::value, "T must inherit from GameComponent");
@@ -138,12 +145,7 @@ namespace GoCS {
                 }
                 return nullptr;
             }
-            GameObject* CreateChild(std::string name){
-                GameObject* GO = new GameObject(name,  this);
-                logger.DebugLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
-                return GO;
-            }
-            GameObject() = default;
+            GLASS_ENGINE_API GameObject* CreateChild(std::string name);
             GLASS_ENGINE_API GameObject(std::string name);
             GLASS_ENGINE_API GameObject(std::string name, GameObject* pParent);
     };
@@ -334,8 +336,8 @@ namespace Components {
                 logger.ErrorLog("ProjectionTypeFuckeddd");
                 break;
             }
-            float pitch = glm::radians(parentObject->transform->Rotation.x);
-            float yaw   = glm::radians(parentObject->transform->Rotation.y);
+            float pitch = glm::radians(gameObject->transform->Rotation.x);
+            float yaw   = glm::radians(gameObject->transform->Rotation.y);
 
             glm::vec3 front;
             front.x = cos(pitch) * cos(yaw);
@@ -345,7 +347,7 @@ namespace Components {
 
             glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0, 1, 0)));
             glm::vec3 up    = glm::normalize(glm::cross(right, front));
-            m_ViewMatrix = glm::lookAt(parentObject->transform->Position, parentObject->transform->Position + front, up);;
+            m_ViewMatrix = glm::lookAt(gameObject->transform->Position, gameObject->transform->Position + front, up);;
             //calc view
         }
 
