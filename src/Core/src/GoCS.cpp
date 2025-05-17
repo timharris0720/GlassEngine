@@ -36,8 +36,19 @@ namespace GoCS {
         transform = new Components::Transform();
         logger.setLoggerName(name);
         int ind = Sorting::binary_search_recursive_gameobject_array( parent->children, this->transform->Position.z);
-		
-        parent->children.push_back(this);
+		logger.InfoLog("(None PushObject) Inseting Object name: %s at index %i of parent: %s", name.c_str(), ind,parent->name.c_str());
+        logger.InfoLog("BEFORE INSERTION GAMEOBJECT ARRAY");
+        for(int i = 0; i < parent->children.size(); i++)
+            logger.InfoLog("    Name: %s Position: %f %f %f", parent->children[i]->name.c_str(),parent->children[i]->transform->Position.x,parent->children[i]->transform->Position.y,parent->children[i]->transform->Position.z);
+        
+        if (ind != -1)
+            parent->children.insert(parent->children.begin() + ind, this);
+        else
+            parent->children.push_back(this);
+        logger.InfoLog("AFTER INSERTION GAMEOBJECT ARRAY");
+        for(int i = 0; i < parent->children.size(); i++)
+            logger.InfoLog("    Name: %s Position: %f %f %f", parent->children[i]->name.c_str(),parent->children[i]->transform->Position.x,parent->children[i]->transform->Position.y,parent->children[i]->transform->Position.z);
+            
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
@@ -112,7 +123,7 @@ namespace Components {
             //ProcessNode(scene->mRootNode,scene);
         }
         else{
-            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg",texture::REPEAT);
+            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg",texture::REPEAT);
 
             Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
             VertexArray* v;

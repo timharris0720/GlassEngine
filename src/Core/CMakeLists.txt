@@ -91,8 +91,9 @@ endif()
 
 file(GLOB HEAD_FILES  src/*.h )
 file(GLOB SRC_FILES  src/*.cpp)
-
-add_library(GlassEngineCore SHARED ${SRC_FILES} ${HEAD_FILES})
+file(GLOB HEAD_FILES_Testing  src/ModelLoading/*.h )
+file(GLOB SRC_FILES_Testing  src/ModelLoading/*.cpp)
+add_library(GlassEngineCore SHARED ${SRC_FILES} ${SRC_FILES_Testing} ${HEAD_FILES} ${HEAD_FILES_Testing})
 
 FetchContent_Declare(
     CppUtils
@@ -150,6 +151,7 @@ install(FILES     ${GLM_INCLUDES_gtx_inl}    DESTINATION  	${OutputIncDir}/glm/g
 install(TARGETS  GlassEngineCore RUNTIME DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG},${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}> LIBRARY DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG},${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE}>  ARCHIVE DESTINATION $<IF:$<CONFIG:Debug>,${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG},${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE}>)
 #install(TARGETS GlassEngineCore)
 install(FILES     ${HEAD_FILES}  DESTINATION  	${OutputIncDirGE}/)
+install(FILES     ${HEAD_FILES_Testing}  DESTINATION  	${OutputIncDirGE}/ModelLoading)
 install(FILES     "GlassEngine.h" DESTINATION  	${OutputIncDirGE}/)
 
 

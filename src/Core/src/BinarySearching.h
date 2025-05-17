@@ -8,7 +8,7 @@ namespace Sorting {
         if(high == NULL){
             high = arr.size() - 1;
         }
-        if (low > high){
+        if (low > high ){
             return -1;
         }
         int mid = Maths::floor_div((low + high),  2);

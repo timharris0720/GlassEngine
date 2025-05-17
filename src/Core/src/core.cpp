@@ -89,7 +89,20 @@ namespace Core {
 			GO->root = &Root;
 			GO->parent = &Root;
 			int ind = Sorting::binary_search_recursive_gameobject_array(Root.children, GO->transform->Position.z);
-			Root.children.push_back(GO);
+			logger.InfoLog("Inseting Object name: %s at index %i of parent: %s", GO->name.c_str(), ind,Root.name.c_str());
+			logger.InfoLog("BEFORE INSERTION GAMEOBJECT ARRAY");
+        	for(int i = 0; i < Root.children.size(); i++)
+            	logger.InfoLog("    Name: %s Position: %f %f %f", Root.children[i]->name.c_str(),Root.children[i]->transform->Position.x,Root.children[i]->transform->Position.y,Root.children[i]->transform->Position.z);
+        
+			if (ind != -1)
+				Root.children.insert(Root.children.begin() + ind, GO);
+			else
+				Root.children.push_back(GO);
+			
+			logger.InfoLog("AFTER INSERTION GAMEOBJECT ARRAY");
+			for(int i = 0; i < Root.children.size(); i++)
+				logger.InfoLog("    Name: %s Position: %f %f %f", Root.children[i]->name.c_str(),Root.children[i]->transform->Position.x,Root.children[i]->transform->Position.y,Root.children[i]->transform->Position.z);
+				
 			logger.DebugLog("Added Gameobject: %s to Root as a child", GO->name.c_str());
 		}
 		bool Application::isRunning(){
