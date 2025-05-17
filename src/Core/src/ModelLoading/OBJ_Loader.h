@@ -7,7 +7,8 @@ namespace OBJ {
     class OBJLoader {
         public:
         OBJLoader() = default;
-        ModelMesh ReadOBJ_File(std::string path);
-
+        static ModelMesh ReadOBJ_File(std::string path);
+        private:
+        void ParseMaterials();
     };
 }

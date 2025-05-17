@@ -191,6 +191,14 @@ namespace Core {
 			Material* GetMaterialByID(int id){
 				return &Materials[id];
 			}
+			Material* GetMaterialByName(std::string name){
+				for(Material mat : Materials){
+					if(mat.name == name){
+						return &mat;
+					}
+				}
+				return NULL;
+			}
 			int AddMaterial(Material mat){
 				Materials.push_back(mat);
 				return Materials.size();

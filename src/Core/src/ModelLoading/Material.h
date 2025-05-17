@@ -1,5 +1,6 @@
 #pragma once 
 #include <glm/glm.hpp>
+#include <string>
 struct MaterialProperties {
 	glm::vec3 specularColor;
 	float specularStrength;
@@ -12,6 +13,7 @@ struct MaterialProperties {
 
 };
 struct Material {
+    std::string name;
 	glm::vec3 diffuseColor;
 	glm::vec3 ambientColor;
 	MaterialProperties properties;

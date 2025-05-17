@@ -17,5 +17,5 @@ class ModelMesh {
     VertexArray* VA;
     
     GLASS_ENGINE_API ModelMesh();
-    void ParseMaterials();
+    
 };
