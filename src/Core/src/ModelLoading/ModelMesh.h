@@ -12,9 +12,10 @@
 #include "Material.h"
 class ModelMesh {
     public:
+    ModelMesh* rootModelMesh;
     ModelMesh* parent;
     VertexArray* VA;
-
+    
     GLASS_ENGINE_API ModelMesh();
-
+    void ParseMaterials();
 };
