@@ -22,8 +22,8 @@ public:
 Core::App::Application* CreateApplication(int argc, char** argv){
     Core::App::AppSpec appSpec;
     appSpec.name = "Application";
-    appSpec.width = 600;
-    appSpec.height = 480;
+    appSpec.width = 1280;
+    appSpec.height = 720;
     appSpec.sceneType = App::SceneType::DIM_3;
     appSpec.argc = argc;
     appSpec.argv = argv;

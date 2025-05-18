@@ -76,8 +76,7 @@ void CameraController::Update() {
     gameObject->transform->Rotation.y += xOffset; // yaw
     gameObject->transform->Rotation.x += yOffset; // pitch
     #pragma endregion Mouse_looking
-    gameObject->transform->Rotation.x = Maths::Clamp(gameObject->transform->Rotation.x, 89.0f, -89.0f);
-
+    gameObject->transform->Rotation.x = Maths::Clamp(gameObject->transform->Rotation.x, 89.9f, -89.9f);
 
     if(Input::GetKeyDown(KeyCode::Enter)){
         double fps = 1.0 / this->getDeltaTime();
@@ -96,6 +95,6 @@ void CameraController::Start() {
     testChild = gameObject->root->GetChild("testChild2");;
     camera = gameObject->GetComponent<Components::Camera>();
 
-    gameObject->transform->Position = glm::vec3(0,0,3);
+    gameObject->transform->Position = glm::vec3(0,0,-5);
     gameObject->transform->Rotation = glm::vec3(0,-90,0);
 }

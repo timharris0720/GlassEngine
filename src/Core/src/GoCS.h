@@ -117,6 +117,9 @@ namespace GoCS {
             void SetParent(GameObject* parentObject) {
                 parent = parentObject;
             }
+            void setLN(std::string n){
+                logger.setLoggerName(n);
+            }
             template <typename T, typename... Args>
             T* AddComponent(Args&&... args) {
                 if (std::is_base_of<GameComponent, T>()) {
@@ -129,7 +132,7 @@ namespace GoCS {
                     //ptr->root = root;
                     //ptr->Init();
                     ptr->Start();
-
+                    
                     components.push_back(std::move(component));
                     
                     return ptr;

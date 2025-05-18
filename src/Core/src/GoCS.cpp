@@ -52,7 +52,8 @@ namespace GoCS {
         }
         
         
-        if(vertexArray && objectShader){
+        if(vertexArray != nullptr && objectShader != nullptr){
+            logger.InfoLog("Added Object %s to render queue, indicies cout %u", this->name.c_str(), vertexArray->IndiciesCount);
             Core::App::Application::GetRenderer().AddToRenderQueue(vertexArray, objectShader, objectTexture, transform);
         }
     }

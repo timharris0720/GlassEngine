@@ -43,6 +43,7 @@ namespace Core {
 			Root.transform = new Components::Transform();
 			Root.name = "Root";
 			Root.Tag = "RootTag";
+			Root.setLN("Root");
 			Root.root = &Root;
 			MainCamera = new GoCS::GameObject("Main Camera");
 			MainCamera->Tag = "Camera";
@@ -109,10 +110,11 @@ namespace Core {
 				//timer.Update();
 				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
 				Root.Update();
-				for(GoCS::GameObject* go : Root.children){
-					go->Update();
+				for(GoCS::GameObject* child : Root.children){
+					child->Update();
 				}
-				GetRenderer().GetBackend().apiInstance->Render();
+				GetRenderer().Draw();
+				cout << "Render Queue Size: " << GetRenderer().GetBackend().apiInstance->RenderQueue.size() << std::endl;
 				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}

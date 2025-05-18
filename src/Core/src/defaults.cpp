@@ -4,14 +4,15 @@ VertexArray* Defaults::SquareSprite(){
     
     std::vector<Vertex> vertices = {
         //           POSITION                       COLOR              UV COORD
-        {glm::vec3( 0.5f,  0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,1)}, // Top-right
-        {glm::vec3( 0.5f, -0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,0)}, // Bottom-right
-        {glm::vec3(-0.5f,  0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0,1)}, // Top-left
-        {glm::vec3(-0.5f, -0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0)}, // Bottom-left
+        {glm::vec3( 0.5f,  0.5f, 0.0f),  0, glm::vec3(0.5, 0.123, 0.4), glm::vec3(0), glm::vec2(1,1)}, // Top-right color: rgb: 128 31 102 
+        {glm::vec3( 0.5f, -0.5f, 0.0f),  0, glm::vec3(0.25, 0.9, 0.4), glm::vec3(0), glm::vec2(1,0)}, // Bottom-right 63, 229, 102
+        {glm::vec3(-0.5f,  0.5f, 0.0f),  0, glm::vec3(0.15, 0.2, 0.4), glm::vec3(0), glm::vec2(0,1)}, // Top-left  38, 51, 102
+        {glm::vec3(-0.5f, -0.5f, 0.0f),  0, glm::vec3(0.23, 0.1, 0.4), glm::vec3(0), glm::vec2(0)}, // Bottom-left 
     };
     std::vector<unsigned int> indices = {
-        0, 1, 2, 
-        2, 3, 0  
+        2, 1, 0,   // First triangle: top-left, bottom-right, top-right
+        2, 3, 1
+        
     };
     VertexArray* v = Core::App::Application::GetRenderer().CreateVertexArray(&vertices,&indices);
     //return std::move(v);

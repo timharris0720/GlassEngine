@@ -96,19 +96,27 @@ void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader
     int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue,objectTransform->Position.z);
     if(ind == -1)
         RenderQueue.push_back(rendercmd);
-    else
+    else{
         RenderQueue.insert(RenderQueue.begin() + ind,rendercmd);
+    }
+
 }
 void OpenGLRenderAPI::Render(){
+    std::cout << "aaaa Render Queue Size: " << RenderQueue.size();
     for(int i = 0; i < RenderQueue.size(); i++){
         DrawVertexArray(&RenderQueue[i]);
     }
 }
 void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
+    
+    //Unpack RenderCommand
+
     texture::Texture* m_texture = renderCMD->renderTexture;
     Components::Transform* objectTransform = renderCMD->transform;
     Shader* objShader = renderCMD->shader;
     VertexArray* vertArray = renderCMD->va;
+
+
     if(m_texture != nullptr)
         m_texture->Bind();
     objShader->Bind();
@@ -139,7 +147,7 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
         objShader->setMat4("projection", projection);
         objShader->setMat4("view", view);
     }
-    //logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
+    logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
     
     objShader->setMat4("model", model);
     glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, nullptr); 
