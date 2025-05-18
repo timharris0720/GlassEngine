@@ -36,20 +36,8 @@ namespace GoCS {
         this->root =  Core::App::Application::GetInstance().GetRoot();
         transform = new Components::Transform();
         logger.setLoggerName(name);
-        int ind = Sorting::binary_search_recursive_gameobject_array( parent->children, this->transform->Position.z);
-		logger.InfoLog("(None PushObject) Inseting Object name: %s at index %i of parent: %s", name.c_str(), ind,parent->name.c_str());
-        logger.InfoLog("BEFORE INSERTION GAMEOBJECT ARRAY");
-        for(int i = 0; i < parent->children.size(); i++)
-            logger.InfoLog("    Name: %s Position: %f %f %f", parent->children[i]->name.c_str(),parent->children[i]->transform->Position.x,parent->children[i]->transform->Position.y,parent->children[i]->transform->Position.z);
         
-        if (ind != -1)
-            parent->children.insert(parent->children.begin() + ind, this);
-        else
-            parent->children.push_back(this);
-        logger.InfoLog("AFTER INSERTION GAMEOBJECT ARRAY");
-        for(int i = 0; i < parent->children.size(); i++)
-            logger.InfoLog("    Name: %s Position: %f %f %f", parent->children[i]->name.c_str(),parent->children[i]->transform->Position.x,parent->children[i]->transform->Position.y,parent->children[i]->transform->Position.z);
-            
+        parent->children.push_back(this);
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
@@ -65,7 +53,7 @@ namespace GoCS {
         
         
         if(vertexArray && objectShader){
-            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader, objectTexture, transform);
+            Core::App::Application::GetRenderer().AddToRenderQueue(vertexArray, objectShader, objectTexture, transform);
         }
     }
     

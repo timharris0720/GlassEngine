@@ -12,9 +12,10 @@
 
 namespace OBJ {
     ModelMesh OBJLoader::ReadOBJ_File(std::string path){
-
+        ModelMesh mesh;
+        return mesh;
         
         
-        VertexArray* v = Core::App::Application::GetRenderer().CreateVertexArray(&vertices,&indices);
+        //VertexArray* v = Core::App::Application::GetRenderer().CreateVertexArray(&vertices,&indices);
     }
 }

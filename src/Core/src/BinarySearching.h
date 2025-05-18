@@ -1,10 +1,11 @@
 #pragma once
 #include <vector>
 #include "GoCS.h"
+
 #include "Mathematics.h"
 using namespace std;
 namespace Sorting {
-    inline int binary_search_recursive_gameobject_array(std::vector<GoCS::GameObject*> arr, float zPosition, int low = 0, int high = NULL){
+    inline int binary_search_recursive_gameobject_array(std::vector<RenderCommand> arr, float zPosition, int low = 0, int high = NULL){
         if(high == NULL){
             high = arr.size() - 1;
         }
@@ -12,7 +13,7 @@ namespace Sorting {
             return -1;
         }
         int mid = Maths::floor_div((low + high),  2);
-        float val = arr[mid]->transform->Position.z;
+        float val = arr[mid].transform->Position.z;
         if(val == zPosition){
             return mid;
         }

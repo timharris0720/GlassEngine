@@ -4,10 +4,10 @@ VertexArray* Defaults::SquareSprite(){
     
     std::vector<Vertex> vertices = {
         //           POSITION                       COLOR              UV COORD
-        {glm::vec3( 0.5f,  0.5f, 0.0f),  glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,1)}, // Top-right
-        {glm::vec3( 0.5f, -0.5f, 0.0f),  glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,0)}, // Bottom-right
-        {glm::vec3(-0.5f, -0.5f, 0.0f),  glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0)}, // Bottom-left
-        {glm::vec3(-0.5f,  0.5f, 0.0f),  glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0,1)}, // Top-left
+        {glm::vec3( 0.5f,  0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,1)}, // Top-right
+        {glm::vec3( 0.5f, -0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(1,0)}, // Bottom-right
+        {glm::vec3(-0.5f,  0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0,1)}, // Top-left
+        {glm::vec3(-0.5f, -0.5f, 0.0f),  0, glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0), glm::vec2(0)}, // Bottom-left
     };
     std::vector<unsigned int> indices = {
         0, 1, 2, 
@@ -22,16 +22,16 @@ VertexArray* Defaults::SquareSprite(){
 VertexArray* Defaults::Cube(){
     std::vector<Vertex> vertices = {
         // Front face
-        {glm::vec3( 0.5f,  0.5f,  0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 0
-        {glm::vec3( 0.5f, -0.5f,  0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 1
-        {glm::vec3(-0.5f, -0.5f,  0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 2
-        {glm::vec3(-0.5f,  0.5f,  0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 3
+        {glm::vec3( 0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 0
+        {glm::vec3( 0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 1
+        {glm::vec3(-0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 2
+        {glm::vec3(-0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 3
     
         // Back face
-        {glm::vec3( 0.5f,  0.5f, -0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 4
-        {glm::vec3( 0.5f, -0.5f, -0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 5
-        {glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 6
-        {glm::vec3(-0.5f,  0.5f, -0.5f), glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 7
+        {glm::vec3( 0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 4
+        {glm::vec3( 0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 5
+        {glm::vec3(-0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 6
+        {glm::vec3(-0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 7
     };
 
     std::vector<unsigned int> indices = {

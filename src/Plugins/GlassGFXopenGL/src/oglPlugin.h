@@ -42,6 +42,7 @@ private:
     Logger logger = Logger("GlassGFX.OpenGL.Plugin", "Log.txt");
     Components::Camera* sceneCameraComponent;
     Components::Transform* scenecamtrans;
+    
 public:
     
     GLASS_PLUGIN_API bool onLoad() override;
@@ -54,13 +55,15 @@ public:
     GLASS_PLUGIN_API double GetTime() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;
     GLASS_PLUGIN_API void Shutdown() override;
+    GLASS_PLUGIN_API void Render() override;
     GLASS_PLUGIN_API void VsyncCallback() override {
         glfwSwapInterval(winData.vsync);
     }
     GLASS_PLUGIN_API Shader* CreateShader();
     GLASS_PLUGIN_API VertexArray* CreateVAO();
     GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType);
-    GLASS_PLUGIN_API void DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr) override;
+    GLASS_PLUGIN_API void DrawVertexArray(RenderCommand* renderCMD) override;
+    GLASS_PLUGIN_API void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr) override;
 };
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
 class OGLVertexArray : public VertexArray {

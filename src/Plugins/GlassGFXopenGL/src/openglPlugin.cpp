@@ -5,6 +5,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include <signal.h>
+#include "GlassEngine/BinarySearching.h"
 #pragma region RenderAPI
 void OpenGLRenderAPI::GlfwErrorCB(int error, const char* description){
     logger.ErrorLog("GLFW ERROR: %s", description);
@@ -29,6 +30,7 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_EQUAL);
     
     return true;
 }
@@ -60,6 +62,7 @@ void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     sceneMainCamera = mCamera;
     sceneCameraComponent = mCamera->GetComponent<Components::Camera>();
     scenecamtrans = mCamera->transform;
+    RenderQueue.clear();
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0,0,0,1);
@@ -82,8 +85,27 @@ VertexArray* OpenGLRenderAPI::CreateVAO(){
 texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::ImageWrapping wrapType) {
     return new OpenGLTexture(path, wrapType);
 }
-void OpenGLRenderAPI::DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
 
+void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
+    RenderCommand rendercmd;
+    rendercmd.renderTexture = m_texture;
+    rendercmd.va = vertArray;
+    rendercmd.shader = objShader;
+    rendercmd.transform = objectTransform;
+
+    int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue,objectTransform->Position.z);
+    RenderQueue.insert(RenderQueue.begin() + ind,rendercmd);
+}
+void OpenGLRenderAPI::Render(){
+    for(int i = 0; i < RenderQueue.size(); i++){
+        DrawVertexArray(&RenderQueue[i]);
+    }
+}
+void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
+    texture::Texture* m_texture = renderCMD->renderTexture;
+    Components::Transform* objectTransform = renderCMD->transform;
+    Shader* objShader = renderCMD->shader;
+    VertexArray* vertArray = renderCMD->va;
     if(m_texture != nullptr)
         m_texture->Bind();
     objShader->Bind();

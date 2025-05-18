@@ -16,6 +16,7 @@ class ModelMesh {
     ModelMesh* parent;
     VertexArray* VA;
     
-    GLASS_ENGINE_API ModelMesh();
+    GLASS_ENGINE_API ModelMesh(std::string r);
+    ModelMesh() = default;
     
 };

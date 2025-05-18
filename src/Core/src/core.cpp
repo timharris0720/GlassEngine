@@ -88,21 +88,7 @@ namespace Core {
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;
 			GO->parent = &Root;
-			int ind = Sorting::binary_search_recursive_gameobject_array(Root.children, GO->transform->Position.z);
-			logger.InfoLog("Inseting Object name: %s at index %i of parent: %s", GO->name.c_str(), ind,Root.name.c_str());
-			logger.InfoLog("BEFORE INSERTION GAMEOBJECT ARRAY");
-        	for(int i = 0; i < Root.children.size(); i++)
-            	logger.InfoLog("    Name: %s Position: %f %f %f", Root.children[i]->name.c_str(),Root.children[i]->transform->Position.x,Root.children[i]->transform->Position.y,Root.children[i]->transform->Position.z);
-        
-			if (ind != -1)
-				Root.children.insert(Root.children.begin() + ind, GO);
-			else
-				Root.children.push_back(GO);
-			
-			logger.InfoLog("AFTER INSERTION GAMEOBJECT ARRAY");
-			for(int i = 0; i < Root.children.size(); i++)
-				logger.InfoLog("    Name: %s Position: %f %f %f", Root.children[i]->name.c_str(),Root.children[i]->transform->Position.x,Root.children[i]->transform->Position.y,Root.children[i]->transform->Position.z);
-				
+			Root.children.push_back(GO);	
 			logger.DebugLog("Added Gameobject: %s to Root as a child", GO->name.c_str());
 		}
 		bool Application::isRunning(){
@@ -126,6 +112,7 @@ namespace Core {
 				for(GoCS::GameObject* go : Root.children){
 					go->Update();
 				}
+				GetRenderer().GetBackend().apiInstance->Render();
 				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}
