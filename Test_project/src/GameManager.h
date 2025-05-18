@@ -6,7 +6,7 @@ public:
     GameManager() : GameComponent("GameManager"){}
     GameObject* testChild;
     GameObject* testChild2;
-    GameObject* testChild3d;
+    GameObject* GRID;
     float playerSpeed = 10;
     void Start();
     void Update();

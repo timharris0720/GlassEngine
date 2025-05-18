@@ -79,7 +79,9 @@ namespace GoCS {
     class GameObject {
         private:
             Logger logger = Logger("TempName", "Log.txt");
-
+            GLASS_ENGINE_API void updateChildren();
+            GLASS_ENGINE_API void updateComponents();
+            GLASS_ENGINE_API void Draw();
         public: 
             std::vector<GameObject*> children;
             std::vector<std::unique_ptr<GameComponent>> components;

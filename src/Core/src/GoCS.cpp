@@ -41,21 +41,35 @@ namespace GoCS {
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
-    void GameObject::Update(){
-        if(components.size() > 0){
-            for(int i = 0; i < components.size(); i++){
-                components[i]->Update();
-            }
+
+    void GameObject::updateChildren(){
+        for(auto c : children){
+            c->Update();
         }
-        for(GameObject* child : children){
-            child->Update();
+    }
+    void GameObject::updateComponents(){
+         for(int i =0; i < components.size(); i++){
+            components[i]->Update();
         }
-        
-        
+    }
+    void GameObject::Draw(){
         if(vertexArray != nullptr && objectShader != nullptr){
-            logger.InfoLog("Added Object %s to render queue, indicies cout %u", this->name.c_str(), vertexArray->IndiciesCount);
+            //logger.InfoLog("Added Object %s to render queue, indicies cout %u, PTRS: trans %p VA %p Shader %p TEXU %p ", this->name.c_str(), vertexArray->IndiciesCount,transform,vertexArray,objectShader,objectTexture);
             Core::App::Application::GetRenderer().AddToRenderQueue(vertexArray, objectShader, objectTexture, transform);
         }
+    }
+
+
+    void GameObject::Update(){
+        logger.InfoLog("Update Called On Object: %s", name.c_str());
+        Draw();
+        if(components.size() > 0){
+            updateComponents();
+        }
+        updateChildren();
+        
+        
+        
     }
     
     GameObject* GameObject::getRootGameObject() {
@@ -76,9 +90,9 @@ namespace Components {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
         VertexArray* v = Defaults::SquareSprite();
-        parent->objectShader = std::move(shader);
-        parent->vertexArray = std::move(v);
-        parent->objectTexture = std::move(texu);
+        gameObject->objectShader = std::move(shader);
+        gameObject->vertexArray = std::move(v);
+        gameObject->objectTexture = std::move(texu);
     }
 
     #pragma region Mesh
@@ -111,7 +125,7 @@ namespace Components {
             gameObject->objectShader = std::move(shader);
             gameObject->vertexArray = std::move(v);
 
-            parent->objectTexture = std::move(texu);
+            gameObject->objectTexture = std::move(texu);
         }
     }
 

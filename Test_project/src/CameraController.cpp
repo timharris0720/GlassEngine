@@ -52,6 +52,19 @@ void CameraController::Update() {
     if (Input::GetKeyDown(KeyCode::E)) {
         gameObject->transform->Position += up * speed;
     }
+
+    if (Input::GetKeyDown(KeyCode::Z)) {
+        testChild->transform->Position.x += 20 * speed;
+    }
+    if (Input::GetKeyDown(KeyCode::X)) {
+        testChild->transform->Position.x -= 20 * speed;
+    }
+    if (Input::GetKeyDown(KeyCode::C)) {
+        testChild->transform->Position.y += 20 * speed;
+    }
+    if (Input::GetKeyDown(KeyCode::V)) {
+        testChild->transform->Position.y -= 20 * speed;
+    }
     
     #pragma region Mouse_looking
     
