@@ -94,7 +94,10 @@ void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader
     rendercmd.transform = objectTransform;
 
     int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue,objectTransform->Position.z);
-    RenderQueue.insert(RenderQueue.begin() + ind,rendercmd);
+    if(ind == -1)
+        RenderQueue.push_back(rendercmd);
+    else
+        RenderQueue.insert(RenderQueue.begin() + ind,rendercmd);
 }
 void OpenGLRenderAPI::Render(){
     for(int i = 0; i < RenderQueue.size(); i++){
