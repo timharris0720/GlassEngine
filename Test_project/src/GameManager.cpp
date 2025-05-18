@@ -5,7 +5,6 @@ void GameManager::Start(){
     GRID = new GameObject("Grid",gameObject);
     testChild = new GameObject("testChild"); 
     testChild2 = new GameObject("testChild2");
-    
     //testChild3d = new GameObject("testChild2");
     
     testChild->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT);
@@ -14,7 +13,7 @@ void GameManager::Start(){
 
 
     //testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
-    GRID->transform->Scale = glm::vec3(10,10,1);
+    GRID->transform->Scale = glm::vec3(100,100,1);
     GRID->transform->Rotation = glm::vec3(90,0,0);
 
 

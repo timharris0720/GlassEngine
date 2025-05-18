@@ -3,7 +3,7 @@
 #include <vector>
 #include "VertexArray.h"
 namespace Defaults {
-    VertexArray* SquareSprite();
+    VertexArray* SquareSprite(glm::vec2 scalingWidth = glm::vec2(1));
     VertexArray* Cube();
 
     enum PrimativeType{

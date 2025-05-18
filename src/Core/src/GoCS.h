@@ -186,7 +186,7 @@ namespace Components {
         texture::ImageWrapping wrapType;
         public:
             GLASS_ENGINE_API Sprite() = default;
-            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
+            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType, glm::vec2 scalingWidth = glm::vec2(1));
             GLASS_ENGINE_API void Start();
             GLASS_ENGINE_API void Hello();
 

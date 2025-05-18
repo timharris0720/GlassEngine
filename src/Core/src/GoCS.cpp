@@ -61,7 +61,6 @@ namespace GoCS {
 
 
     void GameObject::Update(){
-        logger.InfoLog("Update Called On Object: %s", name.c_str());
         Draw();
         if(components.size() > 0){
             updateComponents();
@@ -82,7 +81,7 @@ namespace GoCS {
 
 
 namespace Components {
-    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType) : GameComponent("Sprite2D") {
+    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
         path = imagePath;
         wrapType= wrapType;
     } 

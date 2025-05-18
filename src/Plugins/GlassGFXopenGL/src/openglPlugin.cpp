@@ -30,7 +30,7 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_EQUAL);
+    glDepthFunc(GL_LESS);
     
     return true;
 }
@@ -65,7 +65,7 @@ void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     RenderQueue.clear();
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0,0,0,1);
+    glClearColor(0,0,1,1);
 
 }
 void OpenGLRenderAPI::Update(){}
@@ -93,7 +93,7 @@ void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader
     rendercmd.shader = objShader;
     rendercmd.transform = objectTransform;
 
-    int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue,objectTransform->Position.z);
+    int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue, objectTransform->Position,scenecamtrans->Position);
     if(ind == -1)
         RenderQueue.push_back(rendercmd);
     else{
