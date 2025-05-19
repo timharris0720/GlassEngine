@@ -7,13 +7,13 @@ void GameManager::Start(){
     testChild2 = new GameObject("testChild2");
     //testChild3d = new GameObject("testChild2");
     
-    testChild->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT);
-    testChild2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT);
-    GRID->AddComponent<Components::Sprite>("Assets/Textures/Prototype/Orange/texture_08.png", texture::REPEAT);
+    testChild->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT, Primitives::SQUARE);
+    testChild2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT,Primitives::SQUARE);
+    GRID->AddComponent<Components::Sprite>("Assets/Textures/Prototype/Orange/texture_08.png", texture::REPEAT,Primitives::CIRCLE, 64, 5.0f);
 
 
     //testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
-    GRID->transform->Scale = glm::vec3(100,100,1);
+    GRID->transform->Scale = glm::vec3(1,1,1);
     GRID->transform->Rotation = glm::vec3(90,0,0);
 
 

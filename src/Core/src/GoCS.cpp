@@ -81,14 +81,30 @@ namespace GoCS {
 
 
 namespace Components {
-    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
+    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type,glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
         path = imagePath;
         wrapType= wrapType;
+        CurrentSpriteType = type;
+        textueScalingWidth = scalingWidth;
+    } 
+    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type, int Segments, float Radius,glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
+        path = imagePath;
+        wrapType= wrapType;
+        CurrentSpriteType = type;
+        textueScalingWidth = scalingWidth;
+        radius = Radius;
+        segments = Segments;
     } 
     void Sprite::Start() {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
-        VertexArray* v = Defaults::SquareSprite();
+        VertexArray* v;
+        if(CurrentSpriteType == Primitives::PrimitiveType_2D::SQUARE){
+            v = Defaults::SquareSprite(textueScalingWidth);
+        }
+        else if(CurrentSpriteType == Primitives::PrimitiveType_2D::CIRCLE){
+            v = Defaults::Circle(radius,segments,textueScalingWidth);
+        }
         gameObject->objectShader = std::move(shader);
         gameObject->vertexArray = std::move(v);
         gameObject->objectTexture = std::move(texu);

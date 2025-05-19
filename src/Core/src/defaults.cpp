@@ -18,7 +18,46 @@ VertexArray* Defaults::SquareSprite(glm::vec2 scalingWidth){
     //return std::move(v);
     return v;
 }
+VertexArray* Defaults::Circle(float radius, int segments, glm::vec2 scalingWidth){
+    std::vector<Vertex> vertices;
+    std::vector<unsigned int> indices;
+    glm::vec3 color(1.0f);   // white
+    glm::vec3 normal(0.0f, 0.0f, 0.0f); // facing out of screen (Z+)
 
+    vertices.push_back({
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        0,
+        color,
+        normal,
+        glm::vec2(0.5f * scalingWidth.x, 0.5f * scalingWidth.y) // center of texture
+    });
+    for (int i = 0; i <= segments; ++i) {
+        float angle = 2.0f * glm::pi<float>() * i / segments;
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+    
+        // UV from [-0.5, 0.5] mapped to [0,1]
+        float u = (x + 0.5f) * scalingWidth.x;
+        float v = (y + 0.5f) * scalingWidth.y;
+    
+        vertices.push_back({
+            glm::vec3(x, y, 0.0f),
+            0,
+            color,
+            normal,
+            glm::vec2(u, v)
+        });
+    
+        // Indices for triangle fan
+        if (i > 0) {
+            indices.push_back(0);        // center
+            indices.push_back(i);
+            indices.push_back(i + 1);
+        }
+    }
+    VertexArray* v = Core::App::Application::GetRenderer().CreateVertexArray(&vertices,&indices);
+    return v;
+}
 
 VertexArray* Defaults::Cube(){
     std::vector<Vertex> vertices = {

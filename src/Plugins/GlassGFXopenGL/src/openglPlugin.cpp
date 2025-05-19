@@ -30,10 +30,10 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     //glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    glDepthMask(GL_TRUE);
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK);
+    glDepthMask(GL_FALSE);  
+    //glDepthMask(GL_TRUE);
+    //glEnable(GL_CULL_FACE);
+    //glCullFace(GL_BACK);
     
     return true;
 }
@@ -96,11 +96,11 @@ void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader
     rendercmd.shader = objShader;
     rendercmd.transform = objectTransform;
     rendercmd.type = type;
+    rendercmd.mode = RenderMode::TRIANGLES;
     RenderQueue.push_back(rendercmd);
 
 }
 void OpenGLRenderAPI::Render(){
-    std::cout << "aaaa Render Queue Size: " << RenderQueue.size();
     for(int i = 0; i < RenderQueue.size(); i++){
         switch (RenderQueue[i].type)
         {
@@ -121,7 +121,7 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
     Components::Transform* objectTransform = renderCMD->transform;
     Shader* objShader = renderCMD->shader;
     VertexArray* vertArray = renderCMD->va;
-
+    RenderMode mode = renderCMD->mode;
 
     if(m_texture != nullptr)
         m_texture->Bind();
@@ -156,7 +156,33 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
     logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
     
     objShader->setMat4("model", model);
-    glDrawElements(GL_TRIANGLES, vertArray->IndiciesCount, GL_UNSIGNED_INT, nullptr); 
+/*
+    GL_POINTS 0x0000
+    GL_LINES 0x0001
+    GL_TRIANGLES 0x0004
+    GL_TRIANGLE_STRIP 0x0005
+*/
+    GLenum renderMode;
+    switch (mode)
+    {
+        case RenderMode::TRIANGLES:
+            renderMode = GL_TRIANGLES;
+            break;
+        case RenderMode::TRIANGLES_STRIP:
+            renderMode = GL_TRIANGLE_STRIP;
+            break;
+        case RenderMode::WIREFRAME:
+            renderMode = GL_LINES;
+            break;
+        case RenderMode::RENDER_POINTS:
+            renderMode = GL_POINTS;
+            break;
+    
+    default:
+        break;
+    }
+
+    glDrawElements(renderMode, vertArray->IndiciesCount, GL_UNSIGNED_INT, 0); 
     objShader->Unbind();
 
     
@@ -294,51 +320,20 @@ void OGLVertexArray::Create(std::vector<Vertex>* vertices,std::vector<unsigned i
     glEnableVertexAttribArray(3);
 
     glBindVertexArray(0);
-    //glGenVertexArrays(1, &VAO);
-    //glGenBuffers(1, &VBO);
-    //glGenBuffers(1, &EBO);
-
-    //// Bind VAO
-    //glBindVertexArray(VAO);
-
-    //// Bind and upload data to VBO
-    //glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    //glBufferData(GL_ARRAY_BUFFER, vertices->size(), vertices->data(), GL_STATIC_DRAW);
-
-    //// Bind and upload data to EBO
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned int), indices->data(), GL_STATIC_DRAW);
-
-    //// Specify the layout of the vertex data
-    //// Position attribute
-    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex,vertices));
-    //glEnableVertexAttribArray(0);
-
-    //// Color attribute
-    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
-    //glEnableVertexAttribArray(1);
-
-    //// UV attribute
-    //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, UV));
-    //glEnableVertexAttribArray(2);
-
-    //// Unbind VAO (optional)
-    //glBindVertexArray(0); // Unbind
-    //logger.InfoLog("Created VBO EBO VAO");
 }
 void OGLVertexArray::Bind(){
     glBindVertexArray(VAO);
 
 }
 void OGLVertexArray::Unbind(){
-    
+    glBindVertexArray(0);
 }
 #pragma endregion
 #pragma region OpenGLTexture
 OpenGLTexture::OpenGLTexture(std::string name, texture::ImageWrapping WrapType){
     stbi_set_flip_vertically_on_load(true);  
     unsigned char* imageData = stbi_load(name.c_str(), &width, &height, &channels, 0);
-    logger.DebugLog("Name: %s :    Channels: %i",name.c_str(), channels);
+    logger.DebugLog("Name: %s : Channels: %i",name.c_str(), channels);
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
     

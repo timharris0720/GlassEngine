@@ -19,6 +19,7 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "ModelLoader.h"
+#include "PrimitiveTypes.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -184,9 +185,15 @@ namespace Components {
         private:
         std::string path;
         texture::ImageWrapping wrapType;
+        Primitives::PrimitiveType_2D CurrentSpriteType;
+        glm::vec2 textueScalingWidth;
+        float radius = 0.5f;
+        float segments = 64;
+        
         public:
             GLASS_ENGINE_API Sprite() = default;
-            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType, glm::vec2 scalingWidth = glm::vec2(1));
+            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType,Primitives::PrimitiveType_2D type, glm::vec2 scalingWidth = glm::vec2(1));
+            GLASS_ENGINE_API Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type, int Segments, float Radius,glm::vec2 scalingWidth = glm::vec2(1));
             GLASS_ENGINE_API void Start();
             GLASS_ENGINE_API void Hello();
 
