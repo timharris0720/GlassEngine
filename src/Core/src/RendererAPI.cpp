@@ -7,8 +7,8 @@ namespace Renderer{
         shad->Compile(fragmentShaderPath,vertexShaderPath);
         return shad;
     }
-    void RendererAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture,Components::Transform* objectTransform){
-        pRenderingBackend.apiInstance->AddToRenderQueue(vertArray, objShader,m_texture,objectTransform);
+    void RendererAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader, texture::Texture* m_texture,Components::Transform* objectTransform, RenderType type){
+        pRenderingBackend.apiInstance->AddToRenderQueue(vertArray, objShader,m_texture,objectTransform,type);
     }
     void RendererAPI::Draw(){
         pRenderingBackend.apiInstance->Render();

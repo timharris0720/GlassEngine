@@ -28,9 +28,12 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
-    glEnable(GL_BLEND);
+    //glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    glDepthMask(GL_TRUE);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
     
     return true;
 }
@@ -86,29 +89,32 @@ texture::Texture* OpenGLRenderAPI::CreateTexture(std::string path, texture::Imag
     return new OpenGLTexture(path, wrapType);
 }
 
-void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform){
+void OpenGLRenderAPI::AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform, RenderType type){
     RenderCommand rendercmd;
     rendercmd.renderTexture = m_texture;
     rendercmd.va = vertArray;
     rendercmd.shader = objShader;
     rendercmd.transform = objectTransform;
-
-    int ind = Sorting::binary_search_recursive_gameobject_array(RenderQueue, objectTransform->Position,scenecamtrans->Position);
-    if(ind == -1)
-        RenderQueue.push_back(rendercmd);
-    else{
-        RenderQueue.insert(RenderQueue.begin() + ind,rendercmd);
-    }
+    rendercmd.type = type;
+    RenderQueue.push_back(rendercmd);
 
 }
 void OpenGLRenderAPI::Render(){
     std::cout << "aaaa Render Queue Size: " << RenderQueue.size();
     for(int i = 0; i < RenderQueue.size(); i++){
-        DrawVertexArray(&RenderQueue[i]);
+        switch (RenderQueue[i].type)
+        {
+        case RenderType::INDEXED:
+            DrawVertexArray(&RenderQueue[i]);
+            break;
+        
+        default:
+            break;
+        }
     }
 }
 void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
-    
+     
     //Unpack RenderCommand
 
     texture::Texture* m_texture = renderCMD->renderTexture;

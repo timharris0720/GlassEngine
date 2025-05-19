@@ -63,7 +63,7 @@ public:
     GLASS_PLUGIN_API VertexArray* CreateVAO();
     GLASS_PLUGIN_API texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType);
     GLASS_PLUGIN_API void DrawVertexArray(RenderCommand* renderCMD) override;
-    GLASS_PLUGIN_API void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr) override;
+    GLASS_PLUGIN_API void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr, RenderType type = RenderType::INDEXED) override;
 };
 //void DrawVertexArray(Renderer::VertexArray* vert) {}
 class OGLVertexArray : public VertexArray {

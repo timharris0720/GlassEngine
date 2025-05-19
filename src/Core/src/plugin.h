@@ -55,7 +55,7 @@ public:
     virtual Shader* CreateShader() = 0;
     virtual VertexArray* CreateVAO() = 0;
     virtual texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType) = 0 ;
-    virtual void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform) = 0;
+    virtual void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform, RenderType type) = 0;
     virtual void DrawVertexArray(RenderCommand* renderCMD) = 0;
     virtual void Render() = 0;
     //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
