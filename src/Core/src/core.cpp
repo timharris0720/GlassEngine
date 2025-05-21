@@ -114,7 +114,6 @@ namespace Core {
 					child->Update();
 				}
 				GetRenderer().Draw();
-				cout << "Render Queue Size: " << GetRenderer().GetBackend().apiInstance->RenderQueue.size() << std::endl;
 				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}

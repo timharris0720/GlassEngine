@@ -30,11 +30,16 @@ bool OpenGLRenderAPI::onLoad() {
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
     //glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
-    glDepthMask(GL_FALSE);  
-    //glDepthMask(GL_TRUE);
-    //glEnable(GL_CULL_FACE);
-    //glCullFace(GL_BACK);
-    
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+
+    glDepthRange (0.0f, 1.0f);
+
+
+    GLint isWriteMaskEnabled;
+    glGetIntegerv(GL_DEPTH_WRITEMASK, &isWriteMaskEnabled);
+    logger.InfoLog("GL Depth Write Mask: %s", isWriteMaskEnabled ? "true" : "false");
     return true;
 }
 bool OpenGLRenderAPI::shouldWindowClose(){
@@ -69,6 +74,8 @@ void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0,0,1,1);
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
 
 }
 void OpenGLRenderAPI::Update(){}
@@ -153,7 +160,6 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
         objShader->setMat4("projection", projection);
         objShader->setMat4("view", view);
     }
-    logger.InfoLog("Renderer: %f %f %f", objPos.x, objPos.y, objPos.z);
     
     objShader->setMat4("model", model);
 /*

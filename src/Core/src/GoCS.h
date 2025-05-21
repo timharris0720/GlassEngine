@@ -202,11 +202,11 @@ namespace Components {
         private:
             std::string path;
             bool PrimativeMesh;
-            Defaults::PrimativeType PrimType;
+            Primitives::PrimitiveType_3D PrimType;
         public:
             GLASS_ENGINE_API Mesh() = default;
             GLASS_ENGINE_API Mesh(std::string path);
-            GLASS_ENGINE_API Mesh(Defaults::PrimativeType type);
+            GLASS_ENGINE_API Mesh(Primitives::PrimitiveType_3D type);
             GLASS_ENGINE_API void Start();
     };
 

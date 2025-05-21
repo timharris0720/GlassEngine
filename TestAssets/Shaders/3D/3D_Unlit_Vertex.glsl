@@ -19,7 +19,7 @@ void main()
 {
 
     FragPos = vec3(model * vec4(vertexPos, 1.0));
-	vec4 tempPos = projection * view * vec4(FragPos, 1.0);
+	vec4 tempPos = projection * view * model * vec4(vertexPos, 1.0);
     gl_Position = tempPos;
     FragColor = vertexColorIN;
     TexCoord = vertexUV;

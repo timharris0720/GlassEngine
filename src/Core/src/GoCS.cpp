@@ -115,7 +115,7 @@ namespace Components {
         this->path = path;
         PrimativeMesh = false;
     }
-    Mesh::Mesh(Defaults::PrimativeType type){
+    Mesh::Mesh(Primitives::PrimitiveType_3D type){
         PrimativeMesh = true;
         PrimType = type;
     }
@@ -124,17 +124,20 @@ namespace Components {
             ModelMesh mesh = OBJ::OBJLoader::ReadOBJ_File(path);
         }
         else{
-            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Assets/Textures/Brick100/Bricks100_1K-JPG_Roughness.jpg",texture::REPEAT);
+            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Assets/Textures/Prototype/Purple/texture_02.png",texture::REPEAT);
 
             Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
             VertexArray* v;
             switch(PrimType) {
-                case Defaults::CUBE:
+                case Primitives::PrimitiveType_3D::CUBE:
                     v = Defaults::Cube();
                     logger.InfoLog("Cube Mesh");
                     break;
-                case Defaults::SPHERE:
+                case Primitives::PrimitiveType_3D::SPHERE:
                     logger.InfoLog("Spehere Mesh");
+                    break;
+                default:
+                    logger.ErrorLog("Invalid Primitive Type ");
                     break;
             }
             gameObject->objectShader = std::move(shader);

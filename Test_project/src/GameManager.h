@@ -4,8 +4,9 @@
 class GameManager : public GameComponent {
 public:
     GameManager() : GameComponent("GameManager"){}
-    GameObject* testChild;
-    GameObject* testChild2;
+    GameObject* square1;
+    GameObject* square2;
+    GameObject* cube;
     GameObject* GRID;
     float playerSpeed = 10;
     void Start();

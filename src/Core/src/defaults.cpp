@@ -59,19 +59,19 @@ VertexArray* Defaults::Circle(float radius, int segments, glm::vec2 scalingWidth
     return v;
 }
 
-VertexArray* Defaults::Cube(){
+VertexArray* Defaults::Cube(glm::vec2 scalingWidth){
     std::vector<Vertex> vertices = {
         // Front face
-        {glm::vec3( 0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 0
-        {glm::vec3( 0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 1
-        {glm::vec3(-0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 2
-        {glm::vec3(-0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 3
+        {glm::vec3( 0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1*scalingWidth.x,1*scalingWidth.y)}, // 0
+        {glm::vec3( 0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0*scalingWidth.x,0*scalingWidth.y)}, // 1
+        {glm::vec3(-0.5f, -0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1*scalingWidth.x,0*scalingWidth.y)}, // 2
+        {glm::vec3(-0.5f,  0.5f,  0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0*scalingWidth.x,1*scalingWidth.y)}, // 3
     
         // Back face
-        {glm::vec3( 0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,1)}, // 4
-        {glm::vec3( 0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0,0)}, // 5
-        {glm::vec3(-0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,0)}, // 6
-        {glm::vec3(-0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1,1)}, // 7
+        {glm::vec3( 0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1*scalingWidth.x,1*scalingWidth.y)}, // 4
+        {glm::vec3( 0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0*scalingWidth.x,0*scalingWidth.y)}, // 5
+        {glm::vec3(-0.5f, -0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(1*scalingWidth.x,0*scalingWidth.y)}, // 6
+        {glm::vec3(-0.5f,  0.5f, -0.5f),  0,glm::vec3(1,1,1), glm::vec3(0), glm::vec2(0*scalingWidth.x,1*scalingWidth.y)}, // 7
     };
 
     std::vector<unsigned int> indices = {
