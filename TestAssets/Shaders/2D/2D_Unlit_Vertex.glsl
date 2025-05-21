@@ -10,6 +10,7 @@ out vec3 FragColor;
 out vec3 FragPos;
 out vec3 Normal;  
 
+uniform mat4 mvp;
 uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 model;
@@ -17,12 +18,9 @@ uniform mat4 model;
 void main()
 {
 
-    
-    //gl_Position =   model * vec4(vertexPos, 1.0);  // MODEL SPACE
-   
-
-    //FragPos = vec3(model * vec4(vertexPos, 1.0));
-    gl_Position =  projection * view * model * vec4(vertexPos, 1.0);  // WORLD SPACE
+    FragPos = vec3(model * vec4(vertexPos, 1.0));
+	vec4 tempPos = projection * view * vec4(FragPos, 1.0);
+    gl_Position = tempPos;
     
     FragColor = vertexColorIN;
     TexCoord = vertexUV;

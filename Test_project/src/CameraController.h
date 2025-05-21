@@ -9,7 +9,7 @@ private:
 
     float moveSpeed = 1;
     float rotSpeed = 90;
-    float mouseSensitivity = 0.01;
+    float mouseSensitivity = 0.05;
     //
     float lastMouseX = 0.0f;
     float lastMouseY = 0.0f;

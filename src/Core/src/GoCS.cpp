@@ -1,22 +1,22 @@
 #include "GoCS.h"
 #include "core.h"
+#include "BinarySearching.h"
+#include "ModelLoading/OBJ_Loader.h"
 
 namespace GoCS {
     GameComponent::GameComponent(std::string name) {
         this->name = name;
         logger.setLoggerName(name + "_component");
-        
-        //logger.DebugLog("Adding Component %s to GameObject %s", name.c_str(), parent->name);
     }
     double GameComponent::getDeltaTime(){
-        return parentObject->getDeltaTime();
+        return parent->getDeltaTime();
     }
     void GameComponent::CloseApplication(){
         Core::App::Application::GetInstance().shutdown();
         exit(0);
     }
     Components::Transform* GameComponent::GetTransform(){
-        return parentObject->transform;
+        return parent->transform;
     }
 
 
@@ -36,47 +36,78 @@ namespace GoCS {
         this->root =  Core::App::Application::GetInstance().GetRoot();
         transform = new Components::Transform();
         logger.setLoggerName(name);
+        
         parent->children.push_back(this);
 		logger.DebugLog("Added Gameobject: %s to %s as a child", name.c_str(), pParent->name.c_str());
 
     }
-    void GameObject::Update(){
-        if(components.size() > 0){
-            for(int i = 0; i < components.size(); i++){
-                components[i]->Update();
-            }
-        }
-        for(GameObject* child : children){
-            logger.InfoLog("Child: %s", child->name);
-            child->Update();
-        }
-        
-        
-        if(vertexArray && objectShader){
-            Core::App::Application::GetRenderer().DrawIndexed(vertexArray, objectShader, objectTexture, transform);
-        }
-        
-        
 
+    void GameObject::updateChildren(){
+        for(auto c : children){
+            c->Update();
+        }
     }
+    void GameObject::updateComponents(){
+         for(int i =0; i < components.size(); i++){
+            components[i]->Update();
+        }
+    }
+    void GameObject::Draw(){
+        if(vertexArray != nullptr && objectShader != nullptr){
+            //logger.InfoLog("Added Object %s to render queue, indicies cout %u, PTRS: trans %p VA %p Shader %p TEXU %p ", this->name.c_str(), vertexArray->IndiciesCount,transform,vertexArray,objectShader,objectTexture);
+            Core::App::Application::GetRenderer().AddToRenderQueue(vertexArray, objectShader, objectTexture, transform);
+        }
+    }
+
+
+    void GameObject::Update(){
+        Draw();
+        if(components.size() > 0){
+            updateComponents();
+        }
+        updateChildren();
+        
+        
+        
+    }
+    
+    GameObject* GameObject::getRootGameObject() {
+        return root;
+    }
+    
+    
+    
 }
 
 
 namespace Components {
-    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType) : GameComponent("Sprite2D") {
+    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type,glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
         path = imagePath;
         wrapType= wrapType;
+        CurrentSpriteType = type;
+        textueScalingWidth = scalingWidth;
+    } 
+    Sprite::Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type, int Segments, float Radius,glm::vec2 scalingWidth) : GameComponent("Sprite2D") {
+        path = imagePath;
+        wrapType= wrapType;
+        CurrentSpriteType = type;
+        textueScalingWidth = scalingWidth;
+        radius = Radius;
+        segments = Segments;
     } 
     void Sprite::Start() {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
         Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
-        VertexArray* v = Defaults::SquareSprite();
-        parentObject->objectShader = std::move(shader);
-        parentObject->vertexArray = std::move(v);
-        parentObject->objectTexture = std::move(texu);
-    }
-    void Sprite::Hello() {
-        logger.InfoLog("Hello World");
+        VertexArray* v;
+        if(CurrentSpriteType == Primitives::PrimitiveType_2D::SQUARE){
+            v = Defaults::SquareSprite(textueScalingWidth);
+        }
+        else if(CurrentSpriteType == Primitives::PrimitiveType_2D::CIRCLE){
+            v = Defaults::Circle(radius,segments,textueScalingWidth);
+        }
+        gameObject->objectShader = std::move(shader);
+        gameObject->vertexArray = std::move(v);
+        gameObject->objectTexture = std::move(texu);
     }
 
     #pragma region Mesh
@@ -84,108 +115,37 @@ namespace Components {
         this->path = path;
         PrimativeMesh = false;
     }
-    Mesh::Mesh(Defaults::PrimativeType type){
+    Mesh::Mesh(Primitives::PrimitiveType_3D type){
         PrimativeMesh = true;
         PrimType = type;
     }
     void Mesh::Start(){
         if(PrimativeMesh == false){
-            Assimp::Importer importer;
-            const aiScene* scene = OpenModel(path, importer);
-            if (!scene) {
-                logger.ErrorLog("Failed to load model: %s", path.c_str());
-                return;
-            }
-            //logger.InfoLog("Parse Start, scene meshes %u", scene->mNumMeshes);
-            //logger.InfoLog("Scene Root node children %u", scene->mRootNode->mNumMeshes);
-            
-            
-            ProcessNode(scene->mRootNode, scene, *parentObject);
-            /*
-                Create MeshObject
-                Process Root mesh
-                Process Children and create their gameobjects
-            
-            */
-
-            //ProcessNode(scene->mRootNode,scene);
+            ModelMesh mesh = OBJ::OBJLoader::ReadOBJ_File(path);
         }
         else{
-            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
-            
+            texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Assets/Textures/Prototype/Purple/texture_02.png",texture::REPEAT);
+
+            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
             VertexArray* v;
             switch(PrimType) {
-                case Defaults::CUBE:
-                  v = Defaults::Cube();
-                  logger.InfoLog("Cube Mesh");
-                  break;
-                case Defaults::SPHERE:
-                  logger.InfoLog("Spehere Mesh");
-                  break;
+                case Primitives::PrimitiveType_3D::CUBE:
+                    v = Defaults::Cube();
+                    logger.InfoLog("Cube Mesh");
+                    break;
+                case Primitives::PrimitiveType_3D::SPHERE:
+                    logger.InfoLog("Spehere Mesh");
+                    break;
+                default:
+                    logger.ErrorLog("Invalid Primitive Type ");
+                    break;
             }
-            parentObject->objectShader = std::move(shader);
-            parentObject->vertexArray = std::move(v);
-            //parentObject->objectTexture = std::move(texu);
+            gameObject->objectShader = std::move(shader);
+            gameObject->vertexArray = std::move(v);
+
+            gameObject->objectTexture = std::move(texu);
         }
     }
-    void Mesh::ProcessNode(aiNode* node, const aiScene* scene,GoCS::GameObject& GO){
-        GoCS::GameObject temp(node->mName.C_Str());
-
-        for (unsigned int i = 0; i < node->mNumMeshes; i++) {
-            aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-            ProcessMesh(mesh, temp);
-        }
-
-        GO.children.push_back(&temp);
-
-        for (unsigned int i = 0; i < node->mNumChildren; i++) {
-            ProcessNode(node->mChildren[i], scene, temp);
-        }
-
-
-
-    }
-
-    void Mesh::ProcessMesh(aiMesh* mesh, GoCS::GameObject& GO){
-        std::vector<Vertex> verts;
-        std::vector<unsigned int> faceIndices;
-
-        for(int i = 0 ; i < mesh->mNumVertices; i++){
-            Vertex v;
-            aiVector3D vert = mesh->mVertices[i];
-            aiVector3D* uvs = mesh->mTextureCoords[0];
-            aiVector3D normals = mesh->mNormals[i];
-            
-            v.vertices = glm::vec3(vert.x,vert.y,vert.z);
-
-            //Vertex Color
-            if(mesh->HasVertexColors(0)){
-                v.color = glm::vec3(mesh->mColors[0][i].r, mesh->mColors[0][i].g, mesh->mColors[0][i].b);
-            }
-            // Vertex Normal
-            if (mesh->HasNormals()) {
-                v.normal = glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
-            }
-            // Texture Coords (UV)
-            if(mesh->HasTextureCoords(0)){
-                v.uv = glm::vec2(uvs[i].x,uvs[i].y);
-            }
-            verts.push_back(v);
-        }
-        //Process face indicies
-        for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
-            aiFace face = mesh->mFaces[i];
-            for (unsigned int j = 0; j < face.mNumIndices; j++) {
-                faceIndices.push_back(face.mIndices[j]);
-            }
-
-        }
-        VertexArray* v  = Core::App::Application::GetRenderer().CreateVertexArray(&verts,&faceIndices);
-        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/defaultShaderFrag.glsl","Assets/Shaders/2D/defaultShaderVert.glsl");
-        GO.vertexArray = std::move(v);
-        GO.objectShader = std::move(shader);
-    }
-
 
 
     #pragma endregion

@@ -3,6 +3,7 @@
 #include "timestep.h"
 #include <argparse/argparse.hpp>
 #include "core_version.h"
+#include "BinarySearching.h"
 namespace Core {
 	namespace App {
 		Application* Application::s_instance = nullptr;
@@ -40,10 +41,15 @@ namespace Core {
 			//logger.InfoLog("Glass Engine Core Version: %s" GLASSENGINECORE_VERSION);
 			Root = GoCS::GameObject();
 			Root.transform = new Components::Transform();
+			Root.name = "Root";
+			Root.Tag = "RootTag";
+			Root.setLN("Root");
+			Root.root = &Root;
 			MainCamera = new GoCS::GameObject("Main Camera");
+			MainCamera->Tag = "Camera";
 			if(backend == App::RenderBackend::OPENGL){
 				bool ld = loadPlugin("GlassGFX.openGL", Plugin::GFX_PLUGIN);
-				logger.DebugLog("GLASS LOADED %i",ld);
+				logger.DebugLog("GLASS PLUGIN LOADED %i",ld);
 			}
 			if(backend == App::RenderBackend::DX11){
 				bool ld = loadPlugin("GlassGFX.DX11", Plugin::GFX_PLUGIN);
@@ -53,15 +59,19 @@ namespace Core {
 				bool ld = loadPlugin("GlassGFX.DX12", Plugin::GFX_PLUGIN);
 				logger.InfoLog("GLASS LOADED %i",ld);
 			}
+			if(backend == App::RenderBackend::VULKAN){
+				bool ld = loadPlugin("GlassGFX.VULKAN", Plugin::GFX_PLUGIN);
+				logger.InfoLog("GLASS LOADED %i",ld);
+			}
 			if(backend == App::RenderBackend::CUSTOM) {
 				bool ld = loadPlugin(customRendererPath, Plugin::GFX_PLUGIN);
 				logger.InfoLog("GLASS LOADED %i",ld);
 			}
+
 			if(appSpec.sceneType == SceneType::DIM_2){
 				logger.DebugLog("Ortho Camera");
 				//MainCamera = Cameras::OrthoCamera(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 100000.0f);
 				MainCamera->AddComponent<Components::Camera>(winProp.width, winProp.height, 0.1f, 100.0f);
-
 				//MainCamera.transform = Components::Transform();
 			}
 			else {
@@ -79,7 +89,7 @@ namespace Core {
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;
 			GO->parent = &Root;
-			Root.children.push_back(GO);
+			Root.children.push_back(GO);	
 			logger.DebugLog("Added Gameobject: %s to Root as a child", GO->name.c_str());
 		}
 		bool Application::isRunning(){
@@ -99,9 +109,11 @@ namespace Core {
 				deltaTime = timestep;
 				//timer.Update();
 				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
-				for(GoCS::GameObject* go : Root.children){
-					go->Update();
+				Root.Update();
+				for(GoCS::GameObject* child : Root.children){
+					child->Update();
 				}
+				GetRenderer().Draw();
 				GetRenderer().GetBackend().apiInstance->EndScene();
 				pluginLoader.pluginUpdate();
 			}

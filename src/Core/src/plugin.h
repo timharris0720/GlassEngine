@@ -7,6 +7,7 @@
 #include "VertexArray.h"
 #include "texture.h"
 #include "GoCS.h"
+#include "RenderCommand.h"
 //#include "camera.h"
 struct WindowProperties {
     std::string name;
@@ -38,6 +39,7 @@ private:
 public:
     WindowProperties winData;
     GoCS::GameObject* sceneMainCamera;
+    std::vector<RenderCommand> RenderQueue;
     virtual void createRenderContext(WindowProperties* winProps) = 0;
     virtual bool shouldWindowClose() = 0;
     virtual void Shutdown() = 0;
@@ -53,7 +55,9 @@ public:
     virtual Shader* CreateShader() = 0;
     virtual VertexArray* CreateVAO() = 0;
     virtual texture::Texture* CreateTexture(std::string path,texture::ImageWrapping wrapType) = 0 ;
-    virtual void DrawVertexArray(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture = nullptr, Components::Transform* objectTransform = nullptr) = 0;
+    virtual void AddToRenderQueue(VertexArray* vertArray, Shader* objShader,texture::Texture* m_texture, Components::Transform* objectTransform, RenderType type) = 0;
+    virtual void DrawVertexArray(RenderCommand* renderCMD) = 0;
+    virtual void Render() = 0;
     //virtual void DrawVertexArray(Renderer::VertexArray* vertArray, unsigned int indicesCount) = 0 ;
     //virtual void CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     void toggleVsync() {winData.vsync = !winData.vsync; VsyncCallback();}

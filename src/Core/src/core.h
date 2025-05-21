@@ -15,6 +15,7 @@
 #include "ErrorCodes.h"
 #include "RendererAPI.h"
 #include "GoCS.h"
+#include "ModelLoading/Material.h"
 //#include "version.h"
 //#include "SceneLoader.h"
 //#include "Time.h"
@@ -171,6 +172,7 @@ namespace Core {
 			float deltaTime;
 			static Renderer::RendererAPI* renderAPI;
 			WindowProperties winProp;
+			std::vector<Material> Materials;
 			//Time timer;
 		public:
 			static Application* s_instance;
@@ -186,7 +188,21 @@ namespace Core {
 			static Application& GetInstance() { return *s_instance; }
 			static Renderer::RendererAPI& GetRenderer() { return *renderAPI; }
 			GoCS::GameObject* GetRoot(){ return &Root; }
-
+			Material* GetMaterialByID(int id){
+				return &Materials[id];
+			}
+			Material* GetMaterialByName(std::string name){
+				for(Material mat : Materials){
+					if(mat.name == name){
+						return &mat;
+					}
+				}
+				return NULL;
+			}
+			int AddMaterial(Material mat){
+				Materials.push_back(mat);
+				return Materials.size();
+			}
 			Logger* GetLogger() { return &logger;}
 			
 			Plugin::PluginLoader pluginLoader;

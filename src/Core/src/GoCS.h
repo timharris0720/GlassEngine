@@ -19,6 +19,7 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "ModelLoader.h"
+#include "PrimitiveTypes.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -50,7 +51,8 @@ namespace GoCS {
         public:
         std::string name;
         Logger logger = Logger("TempName", "Log.txt");
-        GoCS::GameObject* parentObject;
+        GoCS::GameObject* parent;
+        GoCS::GameObject* gameObject;
         
         //Core::App::Application* applicationInstance;
         GameComponent() = default;
@@ -61,8 +63,12 @@ namespace GoCS {
         GLASS_ENGINE_API double getDeltaTime();
         GLASS_ENGINE_API void CloseApplication();
         void SetParent(GoCS::GameObject* _parentObject) {
-            parentObject = _parentObject;
-
+            parent = _parentObject;
+            //logger.InfoLog("Comp: Parent name: %s, %s", _parentObject->name.c_str(), parent->name.c_str());
+        }
+        void SetGameObject(GoCS::GameObject* _parentObject) {
+            gameObject = _parentObject;
+            //logger.InfoLog("Comp: Parent name: %s, %s", _parentObject->name.c_str(), parent->name.c_str());
         }
         GLASS_ENGINE_API Components::Transform* GetTransform(); 
             
@@ -74,7 +80,9 @@ namespace GoCS {
     class GameObject {
         private:
             Logger logger = Logger("TempName", "Log.txt");
-
+            GLASS_ENGINE_API void updateChildren();
+            GLASS_ENGINE_API void updateComponents();
+            GLASS_ENGINE_API void Draw();
         public: 
             std::vector<GameObject*> children;
             std::vector<std::unique_ptr<GameComponent>> components;
@@ -90,44 +98,49 @@ namespace GoCS {
             
             bool isActive;
             bool isAlive;
-
+            GameObject() = default;
             void Start() {};
+
             GLASS_ENGINE_API void Update();
-            GLASS_ENGINE_API double getDeltaTime();
-            GameObject* getRootGameObject() {
-                return root;
-            }
-            void SetParent(GameObject* parentObject) {
-                parent = parentObject;
-            }
-
-            template <typename T, typename... Args>
-            T* AddComponent(Args&&... args) {
-                if (std::is_base_of<GameComponent, T>()) {
-                    auto component = std::make_unique<T>(std::forward<Args>(args)...);
-                    T* ptr = component.get();
-                    ptr->SetParent(this);
-
-                    //ptr->root = root;
-                    //ptr->Init();
-                    ptr->Start();
-
-                    components.push_back(std::move(component));
-                    
-                    return ptr;
-                }
-                return NULL;
-            }
-            GameObject* GetChild(std::string name){
+            GameObject* GetChild(std::string m_name){
+                logger.InfoLog("Size of Children of gameobject: %s %i",this->name.c_str(), children.size());
+                
                 for(GameObject* GO : children){
-                    if(GO->name == name)
+                    if(GO->name == m_name)
                     {
-                        logger.InfoLog("Found %s Returning it", name.c_str()); 
+                        logger.InfoLog("Found %s Returning it", m_name.c_str()); 
                         return GO;
                     }
                     
                 }
                 return nullptr;
+            }
+            GLASS_ENGINE_API double getDeltaTime();
+            GLASS_ENGINE_API GameObject* getRootGameObject();
+            void SetParent(GameObject* parentObject) {
+                parent = parentObject;
+            }
+            void setLN(std::string n){
+                logger.setLoggerName(n);
+            }
+            template <typename T, typename... Args>
+            T* AddComponent(Args&&... args) {
+                if (std::is_base_of<GameComponent, T>()) {
+                    auto component = std::make_unique<T>(std::forward<Args>(args)...);
+                    T* ptr = component.get();
+                    ptr->SetParent(parent);
+                    ptr->SetGameObject(this);
+                    logger.DebugLog("Adding Component %s to GameObject-Parent %s, Componenets GameObject Name: %s", component->name.c_str(), component->parent->name.c_str(),component->gameObject->name.c_str());
+                    
+                    //ptr->root = root;
+                    //ptr->Init();
+                    ptr->Start();
+                    
+                    components.push_back(std::move(component));
+                    
+                    return ptr;
+                }
+                return NULL;
             }
             template <typename T>
             T* GetComponent() {
@@ -138,12 +151,7 @@ namespace GoCS {
                 }
                 return nullptr;
             }
-            GameObject* CreateChild(std::string name){
-                GameObject* GO = new GameObject(name,  this);
-                logger.DebugLog("Created Child Called %s, parent is %s", name.c_str(), this->name.c_str());
-                return GO;
-            }
-            GameObject() = default;
+            GLASS_ENGINE_API GameObject* CreateChild(std::string name);
             GLASS_ENGINE_API GameObject(std::string name);
             GLASS_ENGINE_API GameObject(std::string name, GameObject* pParent);
     };
@@ -177,9 +185,15 @@ namespace Components {
         private:
         std::string path;
         texture::ImageWrapping wrapType;
+        Primitives::PrimitiveType_2D CurrentSpriteType;
+        glm::vec2 textueScalingWidth;
+        float radius = 0.5f;
+        float segments = 64;
+        
         public:
             GLASS_ENGINE_API Sprite() = default;
-            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType);
+            GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType,Primitives::PrimitiveType_2D type, glm::vec2 scalingWidth = glm::vec2(1));
+            GLASS_ENGINE_API Sprite(std::string imagePath, texture::ImageWrapping wrapType, Primitives::PrimitiveType_2D type, int Segments, float Radius,glm::vec2 scalingWidth = glm::vec2(1));
             GLASS_ENGINE_API void Start();
             GLASS_ENGINE_API void Hello();
 
@@ -188,110 +202,18 @@ namespace Components {
         private:
             std::string path;
             bool PrimativeMesh;
-            Defaults::PrimativeType PrimType;
-            GLASS_ENGINE_API void ProcessMesh(aiMesh* mesh, GoCS::GameObject& GO);
-            GLASS_ENGINE_API void ProcessNode(aiNode* node, const aiScene* scene, GoCS::GameObject& GO);
-
+            Primitives::PrimitiveType_3D PrimType;
         public:
             GLASS_ENGINE_API Mesh() = default;
             GLASS_ENGINE_API Mesh(std::string path);
-            GLASS_ENGINE_API Mesh(Defaults::PrimativeType type);
+            GLASS_ENGINE_API Mesh(Primitives::PrimitiveType_3D type);
             GLASS_ENGINE_API void Start();
     };
 
     
 
 
-    /*
-    class Camera : public  GoCS::GameComponent {
-    public:
-        GLASS_ENGINE_API Camera() = default;
-        GLASS_ENGINE_API Camera(std::string name);
-        virtual ~Camera() = default;
-        
-        // Pure virtual methods for projection matrix
-        virtual void setProjection(float width, float height){};
-        virtual void updateProjectionMatrix(){};
-
-        // Convenience methods for setting and getting position and rotation
-        void setPosition(const glm::vec3& newPosition) { transform.Position = newPosition; }
-        void setRotation(const glm::vec3& newRotation) { transform.Rotation = newRotation; }
-
-        glm::vec3 getPosition() const { return transform.Position; }
-        glm::vec3 getRotation() const { return transform.Rotation; }
-        glm::mat4 getViewMatrix() const {
-            glm::vec3 position = getPosition();
-            glm::vec3 rotation = getRotation();
-
-            // Calculate forward, right, and up vectors from the rotation
-            glm::vec3 forward = glm::normalize(glm::vec3(
-                cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
-                sin(glm::radians(rotation.x)),
-                sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x))
-            ));
-            glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-            glm::vec3 right = glm::normalize(glm::cross(up, forward));
-            up = glm::normalize(glm::cross(forward, right));
-
-            return glm::lookAt(position, position + forward, up);
-        }
-        glm::mat4 getProjectionMatrix() const {return projectionMatrix;}
-        glm::mat4 projectionMatrix{1.0f};
-        Components::Transform transform;
-    };
-    class PerspectiveCamera : public Camera {
-    public:
-        float fov; // Field of View in degrees
-        float aspectRatio;
-        float nearPlane;
-        float farPlane;
-        PerspectiveCamera() = default;
-        PerspectiveCamera(float fov, float aspectRatio, float nearPlane, float farPlane) : fov(fov), aspectRatio(aspectRatio), nearPlane(nearPlane), farPlane(farPlane), Camera("Camera") {
-            updateProjectionMatrix();
-        }
-
-        void setProjection(float width, float height) override {
-            aspectRatio = width / height;
-            updateProjectionMatrix();
-        }
-
-        void updateProjectionMatrix() override {
-            projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
-        }
-
-        void setFOV(float newFov) {
-            fov = newFov;
-            updateProjectionMatrix();
-        }
-        
-    };
-    class OrthoCamera : public Camera {
-    public:
-        OrthoCamera() = default;
-        OrthoCamera(float left, float right, float bottom, float top, float nearPlane, float farPlane) : left(left), right(right), bottom(bottom), top(top), nearPlane(nearPlane), farPlane(farPlane), Camera("Camera") {
-            updateProjectionMatrix();
-        }
-
-        void setProjection(float width, float height) override {
-            left = -width / 2.0f;
-            right = width / 2.0f;
-            bottom = -height / 2.0f;
-            top = height / 2.0f;
-            updateProjectionMatrix();
-        }
-
-        void updateProjectionMatrix() override {
-            projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
-        }
-        float left;
-        float right;
-        float bottom;   
-        float top;
-        float nearPlane;
-        float farPlane;
-    };
-
-    */
+   
     class Camera : public GoCS::GameComponent {
         private:
         
@@ -334,8 +256,8 @@ namespace Components {
                 logger.ErrorLog("ProjectionTypeFuckeddd");
                 break;
             }
-            float pitch = glm::radians(parentObject->transform->Rotation.x);
-            float yaw   = glm::radians(parentObject->transform->Rotation.y);
+            float pitch = glm::radians(gameObject->transform->Rotation.x);
+            float yaw   = glm::radians(gameObject->transform->Rotation.y);
 
             glm::vec3 front;
             front.x = cos(pitch) * cos(yaw);
@@ -345,7 +267,7 @@ namespace Components {
 
             glm::vec3 right = glm::normalize(glm::cross(front, glm::vec3(0, 1, 0)));
             glm::vec3 up    = glm::normalize(glm::cross(right, front));
-            m_ViewMatrix = glm::lookAt(parentObject->transform->Position, parentObject->transform->Position + front, up);;
+            m_ViewMatrix = glm::lookAt(gameObject->transform->Position, gameObject->transform->Position + front, up);;
             //calc view
         }
 

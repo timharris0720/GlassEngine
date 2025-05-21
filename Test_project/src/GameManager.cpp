@@ -2,24 +2,33 @@
 
 
 void GameManager::Start(){
-    testChild = new GameObject("testChild"); 
-    testChild2 = new GameObject("testChild2");
+    GRID = new GameObject("Grid",gameObject);
+    square1 = new GameObject("square1"); 
+    square2 = new GameObject("square2");
+    cube = new GameObject("cube");
     //testChild3d = new GameObject("testChild2");
-    testChild->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT);
-    testChild2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT);
+    
+    square1->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT, Primitives::SQUARE);
+    square2->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_NormalGL.jpg", texture::REPEAT,Primitives::SQUARE);
+    GRID->AddComponent<Components::Sprite>("Assets/Textures/Prototype/Orange/texture_08.png", texture::REPEAT,Primitives::CIRCLE, 64, 5.0f);
+
+    cube->AddComponent<Components::Mesh>(Primitives::CUBE);
+
+
     //testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
-    testChild2->transform->Position= glm::vec3(1, 3, -5);
-    //testChild3d->AddComponent<Components::Mesh>(Defaults::CUBE);
+    GRID->transform->Scale = glm::vec3(1,1,1);
+    GRID->transform->Rotation = glm::vec3(90,0,0);
 
-    Components::Camera* camera = parentObject->root->GetChild("Main Camera")->GetComponent<Components::Camera>();
-    camera->FarClip = 10.0f;
+
+    square2->transform->Position = glm::vec3(1,5, -3);
+    //testChild2->AddComponent<Components::Mesh>(Defaults::CUBE);
+    //testChild2->objectShader->AddShaderCommand(glm::vec3(1,0,0.3), "vertexColorIN");
+    Components::Camera* camera = parent->root->GetChild("Main Camera")->GetComponent<Components::Camera>();
+    camera->FarClip = 1000000.0f;
     camera->NearClip = 0.0001f;
-
-    //testChild->objectShader->AddShaderCommand(glm::vec3(1,0,0), "testColor");
 }
 void GameManager::Update() {
-    
     //testChild->transform->Position.x += playerSpeed;
-    testChild2->transform->Rotation.y += playerSpeed * getDeltaTime();
+    square2->transform->Rotation.y += 90 * getDeltaTime();
   
 }
