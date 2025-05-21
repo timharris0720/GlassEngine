@@ -1,14 +1,21 @@
 # Glass Engine
 
-## File struct
- - src
-    - Core -> source files related to the core .dll and .so
-    - Plugins
-        - GlassGFXopenGL -> OpenGL plugin for renderer
+Shitly made game engine, that uses a plugin type system that allows easy addition of new functions and graphic apis such as OpenGL and DX11
 
 ## To Do
-    - Model Loading
-    - 3D Rendering
+
+- [ ] Scene Loader
+    - YamlCPP
+- [ ] Settings Loader
+- [ ] 3D Working
+    - [ ] Lighting Support
+    - [ ] Mesh Loader
+- [ ] Audio System
+- [ ] Physics System
+    - [ ] Collision
+    - [ ] Raycasts
+
+
 
 
 ## Third Party Libs
