@@ -1,6 +1,6 @@
 # Glass Engine
 
-Shitly made game engine, that uses a plugin type system that allows easy addition of new functions and graphic apis such as OpenGL and DX11
+Utterly shit game engine, that uses a plugin type system that allows easy addition of new functions and graphic apis such as OpenGL and DX11
 
 ## To Do
 
@@ -10,6 +10,7 @@ Shitly made game engine, that uses a plugin type system that allows easy additio
 - [ ] 3D Working
     - [ ] Lighting Support
     - [ ] Mesh Loader
+        - [ ] Assimp Proper Support
 - [ ] Audio System
 - [ ] Physics System
     - [ ] Collision
@@ -19,7 +20,7 @@ Shitly made game engine, that uses a plugin type system that allows easy additio
 
 
 ## Third Party Libs
-
+[YAML_CPP](https://github.com/jbeder/yaml-cpp)
 [GLFW](https://github.com/glfw/glfw)
 [Assimp](https://github.com/assimp/assimp)
 [STB_Image](https://github.com/nothings/stb)

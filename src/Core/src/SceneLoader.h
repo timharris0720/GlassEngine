@@ -9,7 +9,7 @@
 #define GLASS_ENGINE_API
 #endif
 #include <iostream>
-#include <nlohmann/json.hpp>
+
 #include "GoCS.h"
 namespace SceneNS {
     class SceneLoader {
