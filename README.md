@@ -11,8 +11,16 @@ Utterly shit game engine, that uses a plugin type system that allows easy additi
 - [ ] Settings Loader
 - [ ] 3D Working
     - [ ] Lighting Support
+        - Multiple Light Colors
+        - Specular
+        - Different Light types (Directional, Spot, Point)
     - [ ] Mesh Loader
         - [ ] Assimp Proper Support
+    - [ ] Materials
+        - Emissive
+        - Albedo
+        - Normal Maps
+        - Roughness maps etc
 - [ ] Audio System
 - [ ] Physics System
     - [ ] Collision
