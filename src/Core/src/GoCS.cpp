@@ -105,14 +105,9 @@ namespace Components {
         else if(CurrentSpriteType == Primitives::PrimitiveType_2D::CIRCLE){
             v = Defaults::Circle(radius,segments,textueScalingWidth);
         }
+        if(gameObject->objectShader == nullptr)
+            Shader* shader = Core::App::Application::GetRenderer().GetShader("2D_Unlit");
         
-        Shader* shader = Core::App::Application::GetRenderer().GetShader(shaderName);
-        if(shader == NULL){
-            logger.ErrorLog("Shader Doesnt Exist %s", shaderName.c_str());
-        }
-        else{
-            gameObject->objectShader = shader;
-        }
         gameObject->vertexArray = std::move(v);
         gameObject->objectTexture = std::move(texu);
     }
@@ -145,7 +140,8 @@ namespace Components {
                     logger.ErrorLog("Invalid Primitive Type ");
                     break;
             }
-            gameObject->objectShader = Core::App::Application::GetRenderer().GetShader("3D_Lit");
+            if(gameObject->objectShader == nullptr)
+                gameObject->objectShader = Core::App::Application::GetRenderer().GetShader("3D_Lit");
             gameObject->vertexArray = std::move(v);
 
             gameObject->objectTexture = std::move(texu);
@@ -188,4 +184,19 @@ namespace Components {
         RecaculateMatrices();
     }
     #pragma endregion
+    
+
+    Light::Light(LightType type, glm::vec3 color, glm::vec3 diffuse, glm::vec3 specular, float intensity) :  GameComponent("Light"){
+        LightColor = color;
+        Diffuse = diffuse;
+        Specular = specular;
+        Intensity = intensity;
+        this->type = type;
+
+        Core::App::Application::GetInstance().AddLight(this);
+    }
+
+
 }
+
+

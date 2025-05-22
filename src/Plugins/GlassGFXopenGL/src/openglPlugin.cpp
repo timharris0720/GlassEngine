@@ -66,11 +66,17 @@ void OpenGLRenderAPI::createRenderContext(WindowProperties* winProps){    winDat
     glfwSwapInterval(winData.vsync);
 
 }
-void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera){
+void OpenGLRenderAPI::BeginScene(GoCS::GameObject* mCamera, std::vector<Components::Light*>* sceneLights){
     sceneMainCamera = mCamera;
     sceneCameraComponent = mCamera->GetComponent<Components::Camera>();
     scenecamtrans = mCamera->transform;
     RenderQueue.clear();
+    SceneLights.clear();
+
+    //SceneLights = sceneLights.data();
+    if(sceneLights->size() > 0)
+        SceneLights.insert(SceneLights.begin(), sceneLights->begin(), sceneLights->end());
+    //logger.InfoLog("Lights In Scene: %i", SceneLights.size());
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0,0,1,1);
@@ -136,9 +142,8 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
     vertArray->Bind();
 
     //objShader->RunShaderCommands();
-
+    #pragma region ObjectTransforms
     glm::mat4 model = glm::mat4(1.0f); // Identity matrix
-
     glm::vec3 objPos = glm::vec3(objectTransform->Position.x,objectTransform->Position.y,objectTransform->Position.z);
     glm::vec3 objRot = glm::vec3(objectTransform->Rotation.x,objectTransform->Rotation.y,objectTransform->Rotation.z);
     glm::vec3 objScl = glm::vec3(objectTransform->Scale.x,objectTransform->Scale.y,objectTransform->Scale.z);
@@ -147,12 +152,6 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
     model = glm::rotate(model, glm::radians(objRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(objRot.z), glm::vec3(0.0f, 0.0f, 1.0f));
     model = glm::scale(model, objScl); 
-
-    
-
-
-    
-
     if(sceneCameraComponent){
         //logger.InfoLog("Camera Comp Exists");
         glm::mat4 projection = sceneCameraComponent->GetProjectionMatrix();
@@ -160,8 +159,22 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
         objShader->setMat4("projection", projection);
         objShader->setMat4("view", view);
     }
-    
     objShader->setMat4("model", model);
+    #pragma endregion ObjectTransforms
+    
+    #pragma region setLighting
+    
+    if (objShader->type == ShaderType::Lit)
+    {
+        // Do Light detail sending
+
+        objShader->setInt("light.type", 1);
+        objShader->setVec3("light.color", SceneLights[0]->GetColor());
+
+
+    }
+
+    #pragma endregion
 /*
     GL_POINTS 0x0000
     GL_LINES 0x0001
@@ -219,6 +232,7 @@ void OpenGLShader::checkCompileErrors(GLuint shader, std::string type) {
     }
 }
 void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexShaderPath){
+    
     logger.DebugLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
     logger.DebugLog("Vertex shader path: %s ", vertexShaderPath.c_str());
     VertShader = FileIO::readFile(vertexShaderPath);

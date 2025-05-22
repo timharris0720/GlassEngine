@@ -6,6 +6,9 @@ void GameManager::Start(){
     square1 = new GameObject("square1"); 
     square2 = new GameObject("square2");
     cube = new GameObject("cube");
+
+    Light = new GameObject("Light1");
+    Light->AddComponent<Components::Light>(LightType::SUNLIGHT);
     //testChild3d = new GameObject("testChild2");
     
     square1->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT, Primitives::SQUARE);
@@ -25,7 +28,7 @@ void GameManager::Start(){
     //testChild2->objectShader->AddShaderCommand(glm::vec3(1,0,0.3), "vertexColorIN");
     Components::Camera* camera = parent->root->GetChild("Main Camera")->GetComponent<Components::Camera>();
     camera->FarClip = 1000000.0f;
-    camera->NearClip = 0.0001f;
+    camera->NearClip = 0.1f;
 }
 void GameManager::Update() {
     //testChild->transform->Position.x += playerSpeed;

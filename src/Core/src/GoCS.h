@@ -20,6 +20,7 @@
 #include "VertexArray.h"
 #include "ModelLoader.h"
 #include "PrimitiveTypes.h"
+#include "Light.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -208,6 +209,47 @@ namespace Components {
             GLASS_ENGINE_API Mesh(std::string path);
             GLASS_ENGINE_API Mesh(Primitives::PrimitiveType_3D type);
             GLASS_ENGINE_API void Start();
+    };
+    /*
+    class DirectionalLight : public GoCS::GameComponent {
+        private:
+            glm::vec3 LightColor;
+            glm::vec3 Direction;
+            glm::vec3 Diffuse;
+            glm::vec3 specular;
+        public:
+            GLASS_ENGINE_API DirectionalLight() = default;
+            GLASS_ENGINE_API DirectionalLight(glm::vec3 color = glm::vec3(1));
+            GLASS_ENGINE_API void Start();
+    };
+    */
+    class Light : public GoCS::GameComponent {            
+        public:
+
+            glm::vec3 LightColor;
+            glm::vec3 Diffuse;
+            glm::vec3 Specular;
+            float Intensity;
+            float ambientStrength;
+            LightType type;
+
+            GLASS_ENGINE_API Light() = default;
+            GLASS_ENGINE_API Light(LightType type, glm::vec3 color = glm::vec3(1), glm::vec3 diffuse = glm::vec3(1), glm::vec3 specular = glm::vec3(1), float Intensity = 10);
+            //GLASS_ENGINE_API void Start();
+
+            glm::vec3 GetColor() {return LightColor;}
+            glm::vec3 GetDiffuse() {return Diffuse;}
+            glm::vec3 GetSpecular() {return Specular;}
+            float GetIntensity() {return Intensity;}
+            float GetAmbientStrength() {return ambientStrength;}
+            LightType GetLightType() {return type;}
+
+            void setColor(glm::vec3 color) {LightColor = color;}
+            void setDiffuse(glm::vec3 diff) {Diffuse = diff;}
+            void setSpecular(glm::vec3 spec) {Specular = spec;}
+            void setIntensity(float inten) {Intensity = inten;}
+            void setAmbientStrength(float strength) {ambientStrength = strength;}
+            void setLightType(LightType type) {type = type;}
     };
 
     

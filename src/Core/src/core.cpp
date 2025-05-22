@@ -78,7 +78,7 @@ namespace Core {
 				logger.DebugLog("Perspective Camera");
 				float ar = winProp.width / winProp.height;
 				logger.InfoLog("Aspect ratio: %f, WIDTH %f HEIGHT %f", ar,  winProp.width ,winProp.height);
-				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width , winProp.height, 0.1f, 100.0f);
+				MainCamera->AddComponent<Components::Camera>(90.0f, winProp.width , winProp.height,  0.1f, 100.0f);
 				
 				//MainCamera = Cameras::PerspectiveCamera(90.0f, winProp.width / winProp.height, 0.000001f, 100.0f);
 				//MainCamera.transform = Components::Transform();
@@ -112,7 +112,8 @@ namespace Core {
 				m_lastFrameTime = time;
 				deltaTime = timestep;
 				//timer.Update();
-				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
+				//GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera);
+				GetRenderer().GetBackend().apiInstance->BeginScene(MainCamera, &Lights);
 				Root.Update();
 				for(GoCS::GameObject* child : Root.children){
 					child->Update();

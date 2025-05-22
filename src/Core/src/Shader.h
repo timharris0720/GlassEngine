@@ -13,15 +13,20 @@ struct ShaderCommand{
     std::string commandName;
     ShaderData commandData;
 };
+
+enum ShaderType {
+    Unlit = 0,
+    Lit
+};
 class Shader {
     private:
     std::vector<ShaderCommand> ShaderCommands;
     public:
-
+    std::string name;
     unsigned int ShaderID;
     std::string VertShader;
     std::string FragShader;
-    
+    ShaderType type;
     virtual void Compile(std::string fragmentShaderPath, std::string vertexShaderPath) {};
     template<typename T>
     void AddShaderCommand(T value, const std::string& variableName){

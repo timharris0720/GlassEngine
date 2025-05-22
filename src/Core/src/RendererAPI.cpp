@@ -1,5 +1,5 @@
 #include "RendererAPI.h"
-
+#include <Utils/Strings.h>
 namespace Renderer{
     //Plugin::PluginStruct_GFX* RendererAPI::pRenderingBackend = nullptr;
     Shader* RendererAPI::CreateShader(std::string fragmentShaderPath, std::string vertexShaderPath){
@@ -29,9 +29,12 @@ namespace Renderer{
         
         for (const auto& shader : shaders) {
             logger.InfoLog("Found Shader Pair: %s PATHS:   Vertex: %s Fragment %s", shader.name.c_str(), shader.vertexPath.c_str(), shader.fragmentPath.c_str());
-            shaderCollection[shader.name] = std::move(CreateShader(shader.fragmentPath.c_str(),shader.vertexPath.c_str()));
+            Shader* createdShader = CreateShader(shader.fragmentPath.c_str(),shader.vertexPath.c_str());
 
-
+            createdShader->name = shader.name;
+            if(String::Contains(shader.name, "Lit")) createdShader->type = ShaderType::Lit;
+            if(String::Contains(shader.name, "Unlit")) createdShader->type = ShaderType::Unlit;
+            shaderCollection[shader.name] = std::move(createdShader);
         }
         logger.InfoLog("FINISHED LOADING SHADERS");
 

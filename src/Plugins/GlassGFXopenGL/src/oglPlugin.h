@@ -40,8 +40,7 @@ class OpenGLRenderAPI : public GlassPlugin_GFX {
 private:
     GLFWwindow* window;
     Logger logger = Logger("GlassGFX.OpenGL.Plugin", "Log.txt");
-    Components::Camera* sceneCameraComponent;
-    Components::Transform* scenecamtrans;
+    
     
 public:
     
@@ -50,7 +49,7 @@ public:
     GLASS_PLUGIN_API void* GetNativeWindow() const {return window;}
     void GlfwErrorCB(int error, const char* description);
     GLASS_PLUGIN_API void Update() override;
-    GLASS_PLUGIN_API void BeginScene(GoCS::GameObject* mCamera) override;
+    GLASS_PLUGIN_API void BeginScene(GoCS::GameObject* mCamera, std::vector<Components::Light*>* sceneLights) override;
     GLASS_PLUGIN_API void EndScene() override;
     GLASS_PLUGIN_API double GetTime() override;
     GLASS_PLUGIN_API bool shouldWindowClose() override;

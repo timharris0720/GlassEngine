@@ -39,7 +39,11 @@ private:
 public:
     WindowProperties winData;
     GoCS::GameObject* sceneMainCamera;
+    Components::Camera* sceneCameraComponent;
+    Components::Transform* scenecamtrans;
     std::vector<RenderCommand> RenderQueue;
+    std::vector<Components::Light*> SceneLights;
+    
     virtual void createRenderContext(WindowProperties* winProps) = 0;
     virtual bool shouldWindowClose() = 0;
     virtual void Shutdown() = 0;
@@ -49,7 +53,7 @@ public:
     virtual void* GetNativeWindow() const = 0;
     virtual bool isVsyncEnabled() {return winData.vsync;};
     virtual void VsyncCallback() = 0;
-    virtual void BeginScene(GoCS::GameObject* mCamera) = 0;
+    virtual void BeginScene(GoCS::GameObject* mCamera, std::vector<Components::Light*>* sceneLights) = 0;
     virtual void EndScene() = 0;
     virtual double GetTime() = 0;
     virtual Shader* CreateShader() = 0;
