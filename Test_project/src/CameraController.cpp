@@ -110,6 +110,6 @@ void CameraController::Start() {
     testChild = gameObject->root->GetChild("cube");;
     camera = gameObject->GetComponent<Components::Camera>();
 
-    gameObject->transform->Position = glm::vec3(0,0,-5);
+    gameObject->transform->Position = glm::vec3(0,5,-5);
     gameObject->transform->Rotation = glm::vec3(0,90,0);
 }

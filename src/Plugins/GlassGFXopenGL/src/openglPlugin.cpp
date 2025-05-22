@@ -166,12 +166,9 @@ void OpenGLRenderAPI::DrawVertexArray(RenderCommand* renderCMD){
     
     if (objShader->type == ShaderType::Lit)
     {
-        // Do Light detail sending
-
         objShader->setInt("light.type", 1);
         objShader->setVec3("light.color", SceneLights[0]->GetColor());
-
-
+        objShader->setVec3("light.position", SceneLights[0]->gameObject->transform->Position);
     }
 
     #pragma endregion
@@ -232,9 +229,6 @@ void OpenGLShader::checkCompileErrors(GLuint shader, std::string type) {
     }
 }
 void OpenGLShader::Compile(std::string fragmentShaderPath, std::string vertexShaderPath){
-    
-    logger.DebugLog("Fragment shader path: %s ", fragmentShaderPath.c_str());
-    logger.DebugLog("Vertex shader path: %s ", vertexShaderPath.c_str());
     VertShader = FileIO::readFile(vertexShaderPath);
     FragShader = FileIO::readFile(fragmentShaderPath);
     const char* vShaderCode = VertShader.c_str();

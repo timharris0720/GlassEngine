@@ -59,7 +59,9 @@ namespace GoCS {
         }
     }
 
-
+    void GameObject::SetShader(std::string name){
+        objectShader = Core::App::Application::GetRenderer().GetShader(name);
+    }
     void GameObject::Update(){
         Draw();
         if(components.size() > 0){
@@ -105,9 +107,9 @@ namespace Components {
         else if(CurrentSpriteType == Primitives::PrimitiveType_2D::CIRCLE){
             v = Defaults::Circle(radius,segments,textueScalingWidth);
         }
-        if(gameObject->objectShader == nullptr)
-            Shader* shader = Core::App::Application::GetRenderer().GetShader("2D_Unlit");
         
+        Shader* shader = Core::App::Application::GetRenderer().GetShader("2D_Unlit");
+        gameObject->objectShader = shader;
         gameObject->vertexArray = std::move(v);
         gameObject->objectTexture = std::move(texu);
     }

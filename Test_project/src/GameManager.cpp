@@ -8,7 +8,7 @@ void GameManager::Start(){
     cube = new GameObject("cube");
 
     Light = new GameObject("Light1");
-    Light->AddComponent<Components::Light>(LightType::SUNLIGHT);
+    Light->AddComponent<Components::Light>(LightType::SUNLIGHT, glm::vec3(1,0,0));
     //testChild3d = new GameObject("testChild2");
     
     square1->AddComponent<Components::Sprite>("Assets/Textures/Brick100/Bricks100_1K-JPG_Color.jpg", texture::REPEAT, Primitives::SQUARE);
@@ -16,7 +16,7 @@ void GameManager::Start(){
     GRID->AddComponent<Components::Sprite>("Assets/Textures/Prototype/Orange/texture_08.png", texture::REPEAT,Primitives::CIRCLE, 64, 5.0f);
 
     cube->AddComponent<Components::Mesh>(Primitives::CUBE);
-
+    
 
     //testChild2->transform->Scale = glm::vec3(0.1,0.1,0);
     GRID->transform->Scale = glm::vec3(1,1,1);

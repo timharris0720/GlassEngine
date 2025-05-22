@@ -28,13 +28,13 @@ namespace Renderer{
         logger.InfoLog("LOADING SHADERS");
         
         for (const auto& shader : shaders) {
-            logger.InfoLog("Found Shader Pair: %s PATHS:   Vertex: %s Fragment %s", shader.name.c_str(), shader.vertexPath.c_str(), shader.fragmentPath.c_str());
             Shader* createdShader = CreateShader(shader.fragmentPath.c_str(),shader.vertexPath.c_str());
 
             createdShader->name = shader.name;
             if(String::Contains(shader.name, "Lit")) createdShader->type = ShaderType::Lit;
             if(String::Contains(shader.name, "Unlit")) createdShader->type = ShaderType::Unlit;
             shaderCollection[shader.name] = std::move(createdShader);
+            logger.InfoLog("Found Shader Pair: %s PATHS:   Vertex: %s Fragment %s, TYPE: %s", shader.name.c_str(), shader.vertexPath.c_str(), shader.fragmentPath.c_str(), shaderCollection[shader.name]->type ? "Lit" : "Unlit");
         }
         logger.InfoLog("FINISHED LOADING SHADERS");
 

@@ -101,7 +101,8 @@ namespace GoCS {
             bool isAlive;
             GameObject() = default;
             void Start() {};
-
+            GLASS_ENGINE_API void SetShader(std::string name);
+                
             GLASS_ENGINE_API void Update();
             GameObject* GetChild(std::string m_name){
                 logger.InfoLog("Size of Children of gameobject: %s %i",this->name.c_str(), children.size());

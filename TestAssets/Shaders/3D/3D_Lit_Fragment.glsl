@@ -7,21 +7,19 @@ in vec3 Normal;
 
 struct LightingData {
     int type;
+
     float intensity;
-    vec3 color;
     float ambientStrength;
+
+    vec3 color;
+    vec3 position;
+
 };
 
 uniform LightingData light;
 
 
 uniform sampler2D ourTexture;
-
-
-
-
-
-
 out vec4 FragOutput;
 void main()
 {
