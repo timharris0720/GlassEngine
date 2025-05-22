@@ -29,6 +29,5 @@ void GameManager::Start(){
 }
 void GameManager::Update() {
     //testChild->transform->Position.x += playerSpeed;
-    square2->transform->Rotation.y += 90 * getDeltaTime();
   
 }

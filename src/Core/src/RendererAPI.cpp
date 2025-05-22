@@ -22,5 +22,30 @@ namespace Renderer{
         texture::Texture* pTexture = pRenderingBackend.apiInstance->CreateTexture(path,wrapType);
         return pTexture;
     }
-    
+
+    void RendererAPI::LoadShaders(){
+        std::vector<ShaderPair> shaders = FindShaderPairs("Assets/Shaders");
+        logger.InfoLog("LOADING SHADERS");
+        
+        for (const auto& shader : shaders) {
+            logger.InfoLog("Found Shader Pair: %s PATHS:   Vertex: %s Fragment %s", shader.name.c_str(), shader.vertexPath.c_str(), shader.fragmentPath.c_str());
+            shaderCollection[shader.name] = std::move(CreateShader(shader.fragmentPath.c_str(),shader.vertexPath.c_str()));
+
+
+        }
+        logger.InfoLog("FINISHED LOADING SHADERS");
+
+    }
+    Shader* RendererAPI::GetShader(std::string name){
+
+        auto it = shaderCollection.find(name);
+        if (it != shaderCollection.end()) {
+            logger.InfoLog("SHADER: %s, Exists In Shader Collection", name.c_str());
+            return shaderCollection[name];
+
+        } else {
+           logger.ErrorLog("SHADER: %s Not Found in collection");
+           return NULL;
+        }
+    }
 }

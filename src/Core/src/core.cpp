@@ -84,7 +84,11 @@ namespace Core {
 				//MainCamera.transform = Components::Transform();
 			}
 			logger.InfoLog("Core Version: %s", CORE_VERSION_STRING);
+
+			
 			GetRenderer().GetBackend().apiInstance->createRenderContext(&winProp);
+
+			renderAPI->LoadShaders();
 		}
 		void Application::PushGameObject(GoCS::GameObject* GO){
 			GO->root = &Root;

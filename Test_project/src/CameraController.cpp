@@ -102,6 +102,8 @@ void CameraController::Update() {
         
         
     }
+
+    testChild->transform->Rotation.y += 90 * rotateSpeed * getDeltaTime();
     
 }
 void CameraController::Start() {
@@ -109,5 +111,5 @@ void CameraController::Start() {
     camera = gameObject->GetComponent<Components::Camera>();
 
     gameObject->transform->Position = glm::vec3(0,0,-5);
-    gameObject->transform->Rotation = glm::vec3(0,-90,0);
+    gameObject->transform->Rotation = glm::vec3(0,90,0);
 }
