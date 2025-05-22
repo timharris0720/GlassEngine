@@ -3,7 +3,7 @@
 Utterly shit game engine, that uses a plugin type system that allows easy addition of new functions and graphic apis such as OpenGL and DX11
 
 ## To Do
-- [ ] Shader Rework
+- [x] Shader Rework
     - Build Shaders on boot
     - Add to a dictionary based of name and then set object shader based of a ref to that location
 - [ ] Scene Loader
