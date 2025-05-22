@@ -189,7 +189,7 @@ namespace Components {
         glm::vec2 textueScalingWidth;
         float radius = 0.5f;
         float segments = 64;
-        
+        std::string shaderName = "2D_Unlit";
         public:
             GLASS_ENGINE_API Sprite() = default;
             GLASS_ENGINE_API Sprite(std::string imagePath,texture::ImageWrapping wrapType,Primitives::PrimitiveType_2D type, glm::vec2 scalingWidth = glm::vec2(1));

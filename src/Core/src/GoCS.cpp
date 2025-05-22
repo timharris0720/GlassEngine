@@ -97,7 +97,7 @@ namespace Components {
     } 
     void Sprite::Start() {
         texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture(path,wrapType);
-        Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
+        //Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/2D/2D_Unlit_Fragment.glsl","Assets/Shaders/2D/2D_Unlit_Vertex.glsl");
         VertexArray* v;
         if(CurrentSpriteType == Primitives::PrimitiveType_2D::SQUARE){
             v = Defaults::SquareSprite(textueScalingWidth);
@@ -105,7 +105,14 @@ namespace Components {
         else if(CurrentSpriteType == Primitives::PrimitiveType_2D::CIRCLE){
             v = Defaults::Circle(radius,segments,textueScalingWidth);
         }
-        gameObject->objectShader = std::move(shader);
+        
+        Shader* shader = Core::App::Application::GetRenderer().GetShader(shaderName);
+        if(shader == NULL){
+            logger.ErrorLog("Shader Doesnt Exist %s", shaderName.c_str());
+        }
+        else{
+            gameObject->objectShader = shader;
+        }
         gameObject->vertexArray = std::move(v);
         gameObject->objectTexture = std::move(texu);
     }
@@ -125,8 +132,6 @@ namespace Components {
         }
         else{
             texture::Texture* texu =  Core::App::Application::GetRenderer().CreateTexture("Assets/Textures/Prototype/Purple/texture_02.png",texture::REPEAT);
-
-            Shader* shader = Core::App::Application::GetRenderer().CreateShader("Assets/Shaders/3D/3D_Unlit_Fragment.glsl","Assets/Shaders/3D/3D_Unlit_Vertex.glsl");
             VertexArray* v;
             switch(PrimType) {
                 case Primitives::PrimitiveType_3D::CUBE:
@@ -140,7 +145,7 @@ namespace Components {
                     logger.ErrorLog("Invalid Primitive Type ");
                     break;
             }
-            gameObject->objectShader = std::move(shader);
+            gameObject->objectShader = Core::App::Application::GetRenderer().GetShader("3D_Lit");
             gameObject->vertexArray = std::move(v);
 
             gameObject->objectTexture = std::move(texu);
